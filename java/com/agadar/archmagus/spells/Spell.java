@@ -2,7 +2,10 @@ package com.agadar.archmagus.spells;
 
 import java.util.Random;
 
+import com.agadar.archmagus.items.ModItems;
+
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.Item;
 import net.minecraft.util.StatCollector;
 import net.minecraft.world.World;
 
@@ -12,7 +15,28 @@ public abstract class Spell
 	public final static Spell[] spellList = new Spell[256];
 	public final static Spell blazeFire = new SpellBlazeFire(0);
 	public final static Spell ghastFire = new SpellGhastFire(1);
-	public final static Spell conjureSword = new SpellConjureSword(2);
+	public final static Spell conjureAxe = new SpellConjureItem(2,
+			"conjure_axe", new Item[] { ModItems.conjured_axe_1,
+					ModItems.conjured_axe_2, ModItems.conjured_axe_3,
+					ModItems.conjured_axe_4 });
+	public final static Spell conjureBow = new SpellConjureItem(3,
+			"conjure_bow", new Item[] { ModItems.conjured_bow });
+	public final static Spell conjureHoe = new SpellConjureItem(4,
+			"conjure_hoe", new Item[] { ModItems.conjured_hoe_1,
+					ModItems.conjured_hoe_2, ModItems.conjured_hoe_3,
+					ModItems.conjured_hoe_4 });
+	public final static Spell conjurePickaxe = new SpellConjureItem(5,
+			"conjure_pickaxe", new Item[] { ModItems.conjured_pickaxe_1,
+					ModItems.conjured_pickaxe_2, ModItems.conjured_pickaxe_3,
+					ModItems.conjured_pickaxe_4 });
+	public final static Spell conjureShovel = new SpellConjureItem(6,
+			"conjure_shovel", new Item[] { ModItems.conjured_shovel_1,
+					ModItems.conjured_shovel_2, ModItems.conjured_shovel_3,
+					ModItems.conjured_shovel_4 });
+	public final static Spell conjureSword = new SpellConjureItem(7,
+			"conjure_sword", new Item[] { ModItems.conjured_sword_1,
+					ModItems.conjured_sword_2, ModItems.conjured_sword_3,
+					ModItems.conjured_sword_4 });
 	/** The cooldown of all spells in game ticks. */
 	public final static short coolDown = 20;
 	/** A Random object used by some child classes of Spell. */

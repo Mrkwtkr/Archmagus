@@ -1,6 +1,23 @@
 itemGroup.tabArchmagus=Archmagus
 
 item.spellTome.name=Spell Tome
+item.conjured_axe_1.name=Conjured Axe I
+item.conjured_axe_2.name=Conjured Axe II
+item.conjured_axe_3.name=Conjured Axe III
+item.conjured_axe_4.name=Conjured Axe IV
+item.conjured_bow.name=Conjured Bow I
+item.conjured_hoe_1.name=Conjured Hoe I
+item.conjured_hoe_2.name=Conjured Hoe II
+item.conjured_hoe_3.name=Conjured Hoe III
+item.conjured_hoe_4.name=Conjured Hoe IV
+item.conjured_pickaxe_1.name=Conjured Pickaxe I
+item.conjured_pickaxe_2.name=Conjured Pickaxe II
+item.conjured_pickaxe_3.name=Conjured Pickaxe III
+item.conjured_pickaxe_4.name=Conjured Pickaxe IV
+item.conjured_shovel_1.name=Conjured Shovel I
+item.conjured_shovel_2.name=Conjured Shovel II
+item.conjured_shovel_3.name=Conjured Shovel III
+item.conjured_shovel_4.name=Conjured Shovel IV
 item.conjured_sword_1.name=Conjured Sword I
 item.conjured_sword_2.name=Conjured Sword II
 item.conjured_sword_3.name=Conjured Sword III
@@ -8,6 +25,11 @@ item.conjured_sword_4.name=Conjured Sword IV
 
 spell.blazeFire=Blazefire
 spell.ghastFire=Ghastfire
+spell.conjure_axe=Conjure Axe
+spell.conjure_bow=Conjure Bow
+spell.conjure_hoe=Conjure Hoe
+spell.conjure_pickaxe=Conjure Pickaxe
+spell.conjure_shovel=Conjure Shovel
 spell.conjure_sword=Conjure Sword
 
 spell.level.1=I

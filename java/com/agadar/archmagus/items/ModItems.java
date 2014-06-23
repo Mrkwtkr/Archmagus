@@ -24,7 +24,24 @@ public class ModItems
 	public final static ToolMaterial CONJURED_3 = EnumHelper.addToolMaterial("CONJURED_3", 2, 59, 6.0F, 2.0F, 0);
 	public final static ToolMaterial CONJURED_4 = EnumHelper.addToolMaterial("CONJURED_4", 3, 59, 8.0F, 3.0F, 0);
 	
-	// Conjured Tools
+	// Conjured Items
+	public final static Item conjured_axe_1 = new ItemConjuredAxe(CONJURED_1, "conjured_axe_1");
+	public final static Item conjured_axe_2 = new ItemConjuredAxe(CONJURED_2, "conjured_axe_2");
+	public final static Item conjured_axe_3 = new ItemConjuredAxe(CONJURED_3, "conjured_axe_3");
+	public final static Item conjured_axe_4 = new ItemConjuredAxe(CONJURED_4, "conjured_axe_4");
+	public final static Item conjured_bow = new ItemConjuredBow("conjured_bow");
+	public final static Item conjured_hoe_1 = new ItemConjuredHoe(CONJURED_1, "conjured_hoe_1");
+	public final static Item conjured_hoe_2 = new ItemConjuredHoe(CONJURED_2, "conjured_hoe_2");
+	public final static Item conjured_hoe_3 = new ItemConjuredHoe(CONJURED_3, "conjured_hoe_3");
+	public final static Item conjured_hoe_4 = new ItemConjuredHoe(CONJURED_4, "conjured_hoe_4");
+	public final static Item conjured_pickaxe_1 = new ItemConjuredPickaxe(CONJURED_1, "conjured_pickaxe_1");
+	public final static Item conjured_pickaxe_2 = new ItemConjuredPickaxe(CONJURED_2, "conjured_pickaxe_2");
+	public final static Item conjured_pickaxe_3 = new ItemConjuredPickaxe(CONJURED_3, "conjured_pickaxe_3");
+	public final static Item conjured_pickaxe_4 = new ItemConjuredPickaxe(CONJURED_4, "conjured_pickaxe_4");
+	public final static Item conjured_shovel_1 = new ItemConjuredShovel(CONJURED_1, "conjured_shovel_1");
+	public final static Item conjured_shovel_2 = new ItemConjuredShovel(CONJURED_2, "conjured_shovel_2");
+	public final static Item conjured_shovel_3 = new ItemConjuredShovel(CONJURED_3, "conjured_shovel_3");
+	public final static Item conjured_shovel_4 = new ItemConjuredShovel(CONJURED_4, "conjured_shovel_4");
 	public final static Item conjured_sword_1 = new ItemConjuredSword(CONJURED_1, "conjured_sword_1");
 	public final static Item conjured_sword_2 = new ItemConjuredSword(CONJURED_2, "conjured_sword_2");
 	public final static Item conjured_sword_3 = new ItemConjuredSword(CONJURED_3, "conjured_sword_3");
@@ -43,6 +60,11 @@ public class ModItems
 	    {       
 	    	((ItemSpellTome) ModItems.spell_tome).func_92113_a(Spell.blazeFire, itemList);
 	    	((ItemSpellTome) ModItems.spell_tome).func_92113_a(Spell.ghastFire, itemList);
+	    	((ItemSpellTome) ModItems.spell_tome).func_92113_a(Spell.conjureAxe, itemList);
+	    	((ItemSpellTome) ModItems.spell_tome).func_92113_a(Spell.conjureBow, itemList);
+	    	((ItemSpellTome) ModItems.spell_tome).func_92113_a(Spell.conjureHoe, itemList);
+	    	((ItemSpellTome) ModItems.spell_tome).func_92113_a(Spell.conjurePickaxe, itemList);
+	    	((ItemSpellTome) ModItems.spell_tome).func_92113_a(Spell.conjureShovel, itemList);
 	    	((ItemSpellTome) ModItems.spell_tome).func_92113_a(Spell.conjureSword, itemList);
 	    }
 	};
@@ -50,6 +72,23 @@ public class ModItems
 	public static void loadItems()
 	{
 		RegisterHelper.registerItem(spell_tome);
+		RegisterHelper.registerItem(conjured_axe_1);
+		RegisterHelper.registerItem(conjured_axe_2);
+		RegisterHelper.registerItem(conjured_axe_3);
+		RegisterHelper.registerItem(conjured_axe_4);
+		RegisterHelper.registerItem(conjured_bow);
+		RegisterHelper.registerItem(conjured_hoe_1);
+		RegisterHelper.registerItem(conjured_hoe_2);
+		RegisterHelper.registerItem(conjured_hoe_3);
+		RegisterHelper.registerItem(conjured_hoe_4);
+		RegisterHelper.registerItem(conjured_pickaxe_1);
+		RegisterHelper.registerItem(conjured_pickaxe_2);
+		RegisterHelper.registerItem(conjured_pickaxe_3);
+		RegisterHelper.registerItem(conjured_pickaxe_4);
+		RegisterHelper.registerItem(conjured_shovel_1);
+		RegisterHelper.registerItem(conjured_shovel_2);
+		RegisterHelper.registerItem(conjured_shovel_3);
+		RegisterHelper.registerItem(conjured_shovel_4);
 		RegisterHelper.registerItem(conjured_sword_1);
 		RegisterHelper.registerItem(conjured_sword_2);
 		RegisterHelper.registerItem(conjured_sword_3);
