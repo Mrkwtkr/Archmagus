@@ -7,6 +7,7 @@ import com.agadar.archmagus.spells.SpellData;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.EnumRarity;
 import net.minecraft.item.Item;
@@ -135,25 +136,48 @@ public class ItemSpellTome extends Item
     public ItemStack onItemRightClick(ItemStack par1ItemStack, World par2World, EntityPlayer par3EntityPlayer)
     {
 		if (!par2World.isRemote) 
-		{
-			//if (!par1ItemStack.isItemDamaged())
-			//{
-			//	par1ItemStack.damageItem(par1ItemStack.getMaxDamage(), par3EntityPlayer);				
+		{				
 				NBTTagList nbttaglist = this.func_92110_g(par1ItemStack);
 			
 				if (nbttaglist != null)
 		        {
 		            for (int i = 0; i < nbttaglist.tagCount(); ++i)
 		            {
-		                short spellId = nbttaglist.getCompoundTagAt(i).getShort("id");
-		                short level = nbttaglist.getCompoundTagAt(i).getShort("lvl");
-		                Spell.spellList[spellId].cast(level, par2World, par3EntityPlayer);
+		            	short cooldown = nbttaglist.getCompoundTagAt(i).getShort("cooldown");
+		            	
+		            	if (cooldown == 0)
+		            	{		  
+		            		nbttaglist.getCompoundTagAt(i).setShort("cooldown", Spell.coolDown);
+		            		short spellId = nbttaglist.getCompoundTagAt(i).getShort("id");
+		            		short level = nbttaglist.getCompoundTagAt(i).getShort("lvl");
+		            		Spell.spellList[spellId].cast(level, par2World, par3EntityPlayer);
+		            	}
 		            }
-		        
-			//	}
 			}
 		}
 
         return par1ItemStack;
+    }
+    
+    @Override
+    public void onUpdate(ItemStack par1ItemStack, World par2World, Entity par3Entity, int par4, boolean par5) 
+    {
+    	if (!par2World.isRemote)
+    	{
+    		NBTTagList nbttaglist = this.func_92110_g(par1ItemStack);
+			
+			if (nbttaglist != null)
+	        {
+	            for (int i = 0; i < nbttaglist.tagCount(); ++i)
+	            {
+	            	short cooldown = nbttaglist.getCompoundTagAt(i).getShort("cooldown");
+	            	
+	            	if (cooldown > 0)
+	            	{
+	            		nbttaglist.getCompoundTagAt(i).setShort("cooldown", (short) (cooldown - 1));
+	            	}
+	            }
+			}
+    	}
     }
 }
