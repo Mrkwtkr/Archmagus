@@ -19,10 +19,14 @@ public class ModItems
 	};
 	
 	// Spell Tomes
-		public final static Item blazefire_tome = new ItemBlazefireTome();
+	public final static Item blazefire_tome_1 = new ItemBlazefireTome(1);
+	public final static Item blazefire_tome_2 = new ItemBlazefireTome(2);
+	public final static Item blazefire_tome_3 = new ItemBlazefireTome(3);
 	
 	public static void loadItems()
 	{
-		RegisterHelper.registerItem(blazefire_tome);
+		RegisterHelper.registerItem(blazefire_tome_1);
+		RegisterHelper.registerItem(blazefire_tome_2);
+		RegisterHelper.registerItem(blazefire_tome_3);
 	}
 }

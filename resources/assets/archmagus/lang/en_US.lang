@@ -1,4 +1,6 @@
 itemGroup.tabArchmagus=Archmagus
 
-item.blazefire_tome.name=Spell Tome: Blazefire
+item.blazefire_tome_1.name=Spell Tome: Blazefire I
+item.blazefire_tome_2.name=Spell Tome: Blazefire II
+item.blazefire_tome_3.name=Spell Tome: Blazefire III
 
