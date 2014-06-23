@@ -135,28 +135,30 @@ public class ItemSpellTome extends Item
     @Override
     public ItemStack onItemRightClick(ItemStack par1ItemStack, World par2World, EntityPlayer par3EntityPlayer)
     {
-		if (!par2World.isRemote) 
-		{				
-				NBTTagList nbttaglist = this.func_92110_g(par1ItemStack);
-			
-				if (nbttaglist != null)
-		        {
-		            for (int i = 0; i < nbttaglist.tagCount(); ++i)
-		            {
-		            	short cooldown = nbttaglist.getCompoundTagAt(i).getShort("cooldown");
-		            	
-		            	if (cooldown == 0)
-		            	{		  
-		            		nbttaglist.getCompoundTagAt(i).setShort("cooldown", Spell.coolDown);
-		            		short spellId = nbttaglist.getCompoundTagAt(i).getShort("id");
-		            		short level = nbttaglist.getCompoundTagAt(i).getShort("lvl");
-		            		Spell.spellList[spellId].cast(level, par2World, par3EntityPlayer);
-		            	}
-		            }
-			}
-		}
+    	if (!par2World.isRemote) 
+    	{				
+    		NBTTagList nbttaglist = this.func_92110_g(par1ItemStack);
+    		if (nbttaglist != null)
+    		{
+    			for (int i = 0; i < nbttaglist.tagCount(); ++i)
+    			{
+    				short cooldown = nbttaglist.getCompoundTagAt(i).getShort("cooldown");	            	
+    				if (cooldown == 0)
+    				{
+    					short spellId = nbttaglist.getCompoundTagAt(i).getShort("id");
+    					if (par3EntityPlayer.getFoodStats().getFoodLevel() >= Spell.spellList[spellId].getHungerCost())
+    					{
+    						nbttaglist.getCompoundTagAt(i).setShort("cooldown", Spell.coolDown);
+    						par3EntityPlayer.getFoodStats().addStats(-Spell.spellList[spellId].getHungerCost(), 0);        		
+    						short level = nbttaglist.getCompoundTagAt(i).getShort("lvl");
+    						Spell.spellList[spellId].cast(level, par2World, par3EntityPlayer);
+    					}
+    				}
+    			}
+    		}
+    	}
 
-        return par1ItemStack;
+    	return par1ItemStack;
     }
     
     @Override

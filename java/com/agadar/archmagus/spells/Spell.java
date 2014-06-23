@@ -51,6 +51,14 @@ public abstract class Spell
     }
     
     /**
+     * Returns the amount of hunger the spell costs to cast.
+     */
+    public int getHungerCost()
+    {
+    	return 1;
+    }
+    
+    /**
      * Sets the spell name.
      */
     public Spell setName(String par1Str)
