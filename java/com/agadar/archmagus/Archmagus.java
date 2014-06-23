@@ -1,6 +1,7 @@
 package com.agadar.archmagus;
 
 import com.agadar.archmagus.help.References;
+import com.agadar.archmagus.items.ModItems;
 
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.SidedProxy;
@@ -20,6 +21,6 @@ public class Archmagus
 	@EventHandler
 	public void preInit(FMLPreInitializationEvent event) 
 	{		
-		
+		ModItems.loadItems();
 	}
 }
