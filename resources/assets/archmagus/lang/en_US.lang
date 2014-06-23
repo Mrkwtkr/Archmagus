@@ -1,6 +1,17 @@
 itemGroup.tabArchmagus=Archmagus
 
-item.blazefire_tome_1.name=Spell Tome: Blazefire I
-item.blazefire_tome_2.name=Spell Tome: Blazefire II
-item.blazefire_tome_3.name=Spell Tome: Blazefire III
+item.spellTome.name=Spell Tome
+
+spell.blazeFire=Blazefire
+
+spell.level.1=I
+spell.level.2=II
+spell.level.3=III
+spell.level.4=IV
+spell.level.5=V
+spell.level.6=VI
+spell.level.7=VII
+spell.level.8=VIII
+spell.level.9=IX
+spell.level.10=X
 

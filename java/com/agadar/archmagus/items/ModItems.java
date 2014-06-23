@@ -1,6 +1,9 @@
 package com.agadar.archmagus.items;
 
+import java.util.List;
+
 import com.agadar.archmagus.help.RegisterHelper;
+import com.agadar.archmagus.spells.Spell;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -10,23 +13,26 @@ import net.minecraft.item.Item;
 
 public class ModItems 
 {
+	// The Spell Tome
+	public final static Item spellTome = new ItemSpellTome();
+	
 	// The Creative Tab
 	public final static CreativeTabs tabArchmagus = new CreativeTabs("tabArchmagus") 
 	{
 	    @Override
 	    @SideOnly(Side.CLIENT)
 	    public Item getTabIconItem() { return Items.enchanted_book; }
-	};
 	
-	// Spell Tomes
-	public final static Item blazefire_tome_1 = new ItemBlazefireTome(1);
-	public final static Item blazefire_tome_2 = new ItemBlazefireTome(2);
-	public final static Item blazefire_tome_3 = new ItemBlazefireTome(3);
+	    @SuppressWarnings("rawtypes")
+		@SideOnly(Side.CLIENT)
+	    public void displayAllReleventItems(List itemList) 
+	    {       
+	    	((ItemSpellTome) ModItems.spellTome).func_92113_a(Spell.blazeFire, itemList);
+	    }
+	};
 	
 	public static void loadItems()
 	{
-		RegisterHelper.registerItem(blazefire_tome_1);
-		RegisterHelper.registerItem(blazefire_tome_2);
-		RegisterHelper.registerItem(blazefire_tome_3);
+		RegisterHelper.registerItem(spellTome);
 	}
 }
