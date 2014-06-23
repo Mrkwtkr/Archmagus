@@ -1,8 +1,14 @@
 itemGroup.tabArchmagus=Archmagus
 
 item.spellTome.name=Spell Tome
+item.conjured_sword_1.name=Conjured Sword I
+item.conjured_sword_2.name=Conjured Sword II
+item.conjured_sword_3.name=Conjured Sword III
+item.conjured_sword_4.name=Conjured Sword IV
 
 spell.blazeFire=Blazefire
+spell.ghastFire=Ghastfire
+spell.conjure_sword=Conjure Sword
 
 spell.level.1=I
 spell.level.2=II

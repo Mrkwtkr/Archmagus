@@ -11,6 +11,8 @@ public abstract class Spell
 	/** The list of all spells. */
 	public final static Spell[] spellList = new Spell[256];
 	public final static Spell blazeFire = new SpellBlazeFire(0);
+	public final static Spell ghastFire = new SpellGhastFire(1);
+	public final static Spell conjureSword = new SpellConjureSword(2);
 	/** The cooldown of all spells in game ticks. */
 	public final static short coolDown = 20;
 	/** A Random object used by some child classes of Spell. */
