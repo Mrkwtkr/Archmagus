@@ -11,6 +11,7 @@ import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.Item.ToolMaterial;
+import net.minecraft.item.ItemArmor.ArmorMaterial;
 import net.minecraftforge.common.util.EnumHelper;
 
 public class ModItems 
@@ -18,53 +19,50 @@ public class ModItems
 	// The Spell Tome
 	public final static Item spell_tome = new ItemSpellTome();
 	
-	// Conjured Tools Materials
-	public final static ToolMaterial CONJURED_1 = EnumHelper.addToolMaterial("CONJURED_1", 0, 59, 2.0F, 0.0F, 0);
-	public final static ToolMaterial CONJURED_2 = EnumHelper.addToolMaterial("CONJURED_2", 1, 59, 4.0F, 1.0F, 0);
-	public final static ToolMaterial CONJURED_3 = EnumHelper.addToolMaterial("CONJURED_3", 2, 59, 6.0F, 2.0F, 0);
-	public final static ToolMaterial CONJURED_4 = EnumHelper.addToolMaterial("CONJURED_4", 3, 59, 8.0F, 3.0F, 0);
+	// Conjured Tools/Weapons Materials
+	public final static ToolMaterial CONJ_TOOL_1 = EnumHelper.addToolMaterial("CONJURED_1", 0, 59, 2.0F, 0.0F, 0);
+	public final static ToolMaterial CONJ_TOOL_2 = EnumHelper.addToolMaterial("CONJURED_2", 1, 59, 4.0F, 1.0F, 0);
+	public final static ToolMaterial CONJ_TOOL_3 = EnumHelper.addToolMaterial("CONJURED_3", 2, 59, 6.0F, 2.0F, 0);
+	public final static ToolMaterial CONJ_TOOL_4 = EnumHelper.addToolMaterial("CONJURED_4", 3, 59, 8.0F, 3.0F, 0);
 	
-	// Conjured Items
-	public final static Item conjured_axe_1 = new ItemConjuredAxe(CONJURED_1, "conjured_axe_1");
-	public final static Item conjured_axe_2 = new ItemConjuredAxe(CONJURED_2, "conjured_axe_2");
-	public final static Item conjured_axe_3 = new ItemConjuredAxe(CONJURED_3, "conjured_axe_3");
-	public final static Item conjured_axe_4 = new ItemConjuredAxe(CONJURED_4, "conjured_axe_4");
+	// Conjured Armor Materials
+	public final static ArmorMaterial CONJ_ARMOR_1 = EnumHelper.addArmorMaterial("CONJ_ARMOR_1", 5, new int[]{1, 3, 2, 1}, 0);
+	public final static ArmorMaterial CONJ_ARMOR_2 = EnumHelper.addArmorMaterial("CONJ_ARMOR_2", 5, new int[]{2, 6, 5, 2}, 0);
+	public final static ArmorMaterial CONJ_ARMOR_3 = EnumHelper.addArmorMaterial("CONJ_ARMOR_3", 5, new int[]{3, 8, 6, 3}, 0);
+			
+	// Conjured Tools/Weapons
+	public final static Item conjured_axe_1 = new ItemConjuredAxe(CONJ_TOOL_1, "conjured_axe_1");
+	public final static Item conjured_axe_2 = new ItemConjuredAxe(CONJ_TOOL_2, "conjured_axe_2");
+	public final static Item conjured_axe_3 = new ItemConjuredAxe(CONJ_TOOL_3, "conjured_axe_3");
+	public final static Item conjured_axe_4 = new ItemConjuredAxe(CONJ_TOOL_4, "conjured_axe_4");
 	public final static Item conjured_bow = new ItemConjuredBow("conjured_bow");
-	public final static Item conjured_hoe = new ItemConjuredHoe(CONJURED_1, "conjured_hoe");
-	public final static Item conjured_pickaxe_1 = new ItemConjuredPickaxe(CONJURED_1, "conjured_pickaxe_1");
-	public final static Item conjured_pickaxe_2 = new ItemConjuredPickaxe(CONJURED_2, "conjured_pickaxe_2");
-	public final static Item conjured_pickaxe_3 = new ItemConjuredPickaxe(CONJURED_3, "conjured_pickaxe_3");
-	public final static Item conjured_pickaxe_4 = new ItemConjuredPickaxe(CONJURED_4, "conjured_pickaxe_4");
-	public final static Item conjured_shovel_1 = new ItemConjuredShovel(CONJURED_1, "conjured_shovel_1");
-	public final static Item conjured_shovel_2 = new ItemConjuredShovel(CONJURED_2, "conjured_shovel_2");
-	public final static Item conjured_shovel_3 = new ItemConjuredShovel(CONJURED_3, "conjured_shovel_3");
-	public final static Item conjured_shovel_4 = new ItemConjuredShovel(CONJURED_4, "conjured_shovel_4");
-	public final static Item conjured_sword_1 = new ItemConjuredSword(CONJURED_1, "conjured_sword_1");
-	public final static Item conjured_sword_2 = new ItemConjuredSword(CONJURED_2, "conjured_sword_2");
-	public final static Item conjured_sword_3 = new ItemConjuredSword(CONJURED_3, "conjured_sword_3");
-	public final static Item conjured_sword_4 = new ItemConjuredSword(CONJURED_4, "conjured_sword_4");
+	public final static Item conjured_hoe = new ItemConjuredHoe(CONJ_TOOL_1, "conjured_hoe");
+	public final static Item conjured_pickaxe_1 = new ItemConjuredPickaxe(CONJ_TOOL_1, "conjured_pickaxe_1");
+	public final static Item conjured_pickaxe_2 = new ItemConjuredPickaxe(CONJ_TOOL_2, "conjured_pickaxe_2");
+	public final static Item conjured_pickaxe_3 = new ItemConjuredPickaxe(CONJ_TOOL_3, "conjured_pickaxe_3");
+	public final static Item conjured_pickaxe_4 = new ItemConjuredPickaxe(CONJ_TOOL_4, "conjured_pickaxe_4");
+	public final static Item conjured_shovel_1 = new ItemConjuredShovel(CONJ_TOOL_1, "conjured_shovel_1");
+	public final static Item conjured_shovel_2 = new ItemConjuredShovel(CONJ_TOOL_2, "conjured_shovel_2");
+	public final static Item conjured_shovel_3 = new ItemConjuredShovel(CONJ_TOOL_3, "conjured_shovel_3");
+	public final static Item conjured_shovel_4 = new ItemConjuredShovel(CONJ_TOOL_4, "conjured_shovel_4");
+	public final static Item conjured_sword_1 = new ItemConjuredSword(CONJ_TOOL_1, "conjured_sword_1");
+	public final static Item conjured_sword_2 = new ItemConjuredSword(CONJ_TOOL_2, "conjured_sword_2");
+	public final static Item conjured_sword_3 = new ItemConjuredSword(CONJ_TOOL_3, "conjured_sword_3");
+	public final static Item conjured_sword_4 = new ItemConjuredSword(CONJ_TOOL_4, "conjured_sword_4");
 	
-	// The Creative Tab
- 	public final static CreativeTabs tabArchmagus = new CreativeTabs("tabArchmagus") 
-	{
-	    @Override
-	    @SideOnly(Side.CLIENT)
-	    public Item getTabIconItem() { return Items.enchanted_book; }
-	
-	    @SuppressWarnings("rawtypes")
-		@SideOnly(Side.CLIENT)
-	    public void displayAllReleventItems(List itemList) 
-	    {       
-	    	((ItemSpellTome) ModItems.spell_tome).func_92113_a(Spell.blazeFire, itemList);
-	    	((ItemSpellTome) ModItems.spell_tome).func_92113_a(Spell.ghastFire, itemList);
-	    	((ItemSpellTome) ModItems.spell_tome).func_92113_a(Spell.conjureAxe, itemList);
-	    	((ItemSpellTome) ModItems.spell_tome).func_92113_a(Spell.conjureBow, itemList);
-	    	((ItemSpellTome) ModItems.spell_tome).func_92113_a(Spell.conjureHoe, itemList);
-	    	((ItemSpellTome) ModItems.spell_tome).func_92113_a(Spell.conjurePickaxe, itemList);
-	    	((ItemSpellTome) ModItems.spell_tome).func_92113_a(Spell.conjureShovel, itemList);
-	    	((ItemSpellTome) ModItems.spell_tome).func_92113_a(Spell.conjureSword, itemList);
-	    }
-	};
+	// Conjured Armors
+	public static Item conjured_helmet_1 = new ItemConjuredArmor(0, "conjured_helmet_1", CONJ_ARMOR_1);
+	public static Item conjured_helmet_2 = new ItemConjuredArmor(0, "conjured_helmet_2", CONJ_ARMOR_2);
+	public static Item conjured_helmet_3 = new ItemConjuredArmor(0, "conjured_helmet_3", CONJ_ARMOR_3);
+	public static Item conjured_chestplate_1 = new ItemConjuredArmor(1, "conjured_chestplate_1", CONJ_ARMOR_1);
+	public static Item conjured_chestplate_2 = new ItemConjuredArmor(1, "conjured_chestplate_2", CONJ_ARMOR_2);
+	public static Item conjured_chestplate_3 = new ItemConjuredArmor(1, "conjured_chestplate_3", CONJ_ARMOR_3);
+	public static Item conjured_leggings_1 = new ItemConjuredArmor(2, "conjured_leggings_1", CONJ_ARMOR_1);
+	public static Item conjured_leggings_2 = new ItemConjuredArmor(2, "conjured_leggings_2", CONJ_ARMOR_2);
+	public static Item conjured_leggings_3 = new ItemConjuredArmor(2, "conjured_leggings_3", CONJ_ARMOR_3);
+	public static Item conjured_boots_1 = new ItemConjuredArmor(3, "conjured_boots_1", CONJ_ARMOR_1);
+	public static Item conjured_boots_2 = new ItemConjuredArmor(3, "conjured_boots_2", CONJ_ARMOR_2);
+	public static Item conjured_boots_3 = new ItemConjuredArmor(3, "conjured_boots_3", CONJ_ARMOR_3);
 	
 	public static void loadItems()
 	{
@@ -87,5 +85,43 @@ public class ModItems
 		RegisterHelper.registerItem(conjured_sword_2);
 		RegisterHelper.registerItem(conjured_sword_3);
 		RegisterHelper.registerItem(conjured_sword_4);
+		RegisterHelper.registerItem(conjured_helmet_1);
+		RegisterHelper.registerItem(conjured_helmet_2);
+		RegisterHelper.registerItem(conjured_helmet_3);
+		RegisterHelper.registerItem(conjured_chestplate_1);
+		RegisterHelper.registerItem(conjured_chestplate_2);
+		RegisterHelper.registerItem(conjured_chestplate_3);
+		RegisterHelper.registerItem(conjured_leggings_1);
+		RegisterHelper.registerItem(conjured_leggings_2);
+		RegisterHelper.registerItem(conjured_leggings_3);
+		RegisterHelper.registerItem(conjured_boots_1);
+		RegisterHelper.registerItem(conjured_boots_2);
+		RegisterHelper.registerItem(conjured_boots_3);
 	}
+	
+	// The Creative Tab
+ 	public final static CreativeTabs tabSpellTomes = new CreativeTabs("tabSpellTomes") 
+	{
+	    @Override
+	    @SideOnly(Side.CLIENT)
+	    public Item getTabIconItem() { return Items.enchanted_book; }
+	
+	    @SuppressWarnings("rawtypes")
+		@SideOnly(Side.CLIENT)
+	    public void displayAllReleventItems(List itemList) 
+	    {       
+	    	((ItemSpellTome) ModItems.spell_tome).func_92113_a(Spell.blazeFire, itemList);
+	    	((ItemSpellTome) ModItems.spell_tome).func_92113_a(Spell.ghastFire, itemList);
+	    	((ItemSpellTome) ModItems.spell_tome).func_92113_a(Spell.conjureAxe, itemList);
+	    	((ItemSpellTome) ModItems.spell_tome).func_92113_a(Spell.conjureBow, itemList);
+	    	((ItemSpellTome) ModItems.spell_tome).func_92113_a(Spell.conjureHoe, itemList);
+	    	((ItemSpellTome) ModItems.spell_tome).func_92113_a(Spell.conjurePickaxe, itemList);
+	    	((ItemSpellTome) ModItems.spell_tome).func_92113_a(Spell.conjureShovel, itemList);
+	    	((ItemSpellTome) ModItems.spell_tome).func_92113_a(Spell.conjureSword, itemList);
+	    	((ItemSpellTome) ModItems.spell_tome).func_92113_a(Spell.conjureHelmet, itemList);
+	    	((ItemSpellTome) ModItems.spell_tome).func_92113_a(Spell.conjureChestplate, itemList);
+	    	((ItemSpellTome) ModItems.spell_tome).func_92113_a(Spell.conjureLeggings, itemList);
+	    	((ItemSpellTome) ModItems.spell_tome).func_92113_a(Spell.conjureBoots, itemList);
+	    }
+	};
 }

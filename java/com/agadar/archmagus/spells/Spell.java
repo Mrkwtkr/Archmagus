@@ -35,6 +35,18 @@ public abstract class Spell
 			"conjure_sword", new Item[] { ModItems.conjured_sword_1,
 					ModItems.conjured_sword_2, ModItems.conjured_sword_3,
 					ModItems.conjured_sword_4 });
+	public final static Spell conjureHelmet = new SpellConjureItem(8,
+			"conjure_helmet", new Item[] { ModItems.conjured_helmet_1,
+					ModItems.conjured_helmet_2, ModItems.conjured_helmet_3 });
+	public final static Spell conjureChestplate = new SpellConjureItem(9,
+			"conjure_chestplate", new Item[] { ModItems.conjured_chestplate_1,
+					ModItems.conjured_chestplate_2, ModItems.conjured_chestplate_3 });
+	public final static Spell conjureLeggings = new SpellConjureItem(10,
+			"conjure_leggings", new Item[] { ModItems.conjured_leggings_1,
+					ModItems.conjured_leggings_2, ModItems.conjured_leggings_3 });
+	public final static Spell conjureBoots = new SpellConjureItem(11,
+			"conjure_boots", new Item[] { ModItems.conjured_boots_1,
+					ModItems.conjured_boots_2, ModItems.conjured_boots_3 });
 	/** The cooldown of all spells in game ticks. */
 	public final static short coolDown = 20;
 	/** A Random object used by some child classes of Spell. */

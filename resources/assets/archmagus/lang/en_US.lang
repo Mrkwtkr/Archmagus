@@ -1,4 +1,4 @@
-itemGroup.tabArchmagus=Archmagus
+itemGroup.tabSpellTomes=Spell Tomes
 
 item.spellTome.name=Spell Tome
 item.conjured_axe_1.name=Conjured Axe I
@@ -19,6 +19,18 @@ item.conjured_sword_1.name=Conjured Sword I
 item.conjured_sword_2.name=Conjured Sword II
 item.conjured_sword_3.name=Conjured Sword III
 item.conjured_sword_4.name=Conjured Sword IV
+item.conjured_helmet_1.name=Conjured Helmet I
+item.conjured_helmet_2.name=Conjured Helmet II
+item.conjured_helmet_3.name=Conjured Helmet III
+item.conjured_chestplate_1.name=Conjured Chestplate I
+item.conjured_chestplate_2.name=Conjured Chestplate II
+item.conjured_chestplate_3.name=Conjured Chestplate III
+item.conjured_leggings_1.name=Conjured Leggings I
+item.conjured_leggings_2.name=Conjured Leggings II
+item.conjured_leggings_3.name=Conjured Leggings III
+item.conjured_boots_1.name=Conjured Boots I
+item.conjured_boots_2.name=Conjured Boots II
+item.conjured_boots_3.name=Conjured Boots III
 
 spell.blazeFire=Blazefire
 spell.ghastFire=Ghastfire
@@ -28,6 +40,10 @@ spell.conjure_hoe=Conjure Hoe
 spell.conjure_pickaxe=Conjure Pickaxe
 spell.conjure_shovel=Conjure Shovel
 spell.conjure_sword=Conjure Sword
+spell.conjure_helmet=Conjure Helmet
+spell.conjure_chestplate=Conjure Chestplate
+spell.conjure_leggings=Conjure Leggings
+spell.conjure_boots=Conjure Boots
 
 spell.level.1=I
 spell.level.2=II
