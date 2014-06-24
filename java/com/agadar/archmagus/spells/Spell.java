@@ -22,9 +22,7 @@ public abstract class Spell
 	public final static Spell conjureBow = new SpellConjureItem(3,
 			"conjure_bow", new Item[] { ModItems.conjured_bow });
 	public final static Spell conjureHoe = new SpellConjureItem(4,
-			"conjure_hoe", new Item[] { ModItems.conjured_hoe_1,
-					ModItems.conjured_hoe_2, ModItems.conjured_hoe_3,
-					ModItems.conjured_hoe_4 });
+			"conjure_hoe", new Item[] { ModItems.conjured_hoe });
 	public final static Spell conjurePickaxe = new SpellConjureItem(5,
 			"conjure_pickaxe", new Item[] { ModItems.conjured_pickaxe_1,
 					ModItems.conjured_pickaxe_2, ModItems.conjured_pickaxe_3,

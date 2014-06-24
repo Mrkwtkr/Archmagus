@@ -15,6 +15,7 @@ public class ItemConjuredBow extends ItemBow
 		super();
 		this.setUnlocalizedName(name);
 		this.setTextureName(References.MODID + ":conjured_bow");
+		this.setMaxDamage(59);
 	}
 	
 	@Override

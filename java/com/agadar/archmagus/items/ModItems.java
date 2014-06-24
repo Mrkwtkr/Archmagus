@@ -30,10 +30,7 @@ public class ModItems
 	public final static Item conjured_axe_3 = new ItemConjuredAxe(CONJURED_3, "conjured_axe_3");
 	public final static Item conjured_axe_4 = new ItemConjuredAxe(CONJURED_4, "conjured_axe_4");
 	public final static Item conjured_bow = new ItemConjuredBow("conjured_bow");
-	public final static Item conjured_hoe_1 = new ItemConjuredHoe(CONJURED_1, "conjured_hoe_1");
-	public final static Item conjured_hoe_2 = new ItemConjuredHoe(CONJURED_2, "conjured_hoe_2");
-	public final static Item conjured_hoe_3 = new ItemConjuredHoe(CONJURED_3, "conjured_hoe_3");
-	public final static Item conjured_hoe_4 = new ItemConjuredHoe(CONJURED_4, "conjured_hoe_4");
+	public final static Item conjured_hoe = new ItemConjuredHoe(CONJURED_1, "conjured_hoe");
 	public final static Item conjured_pickaxe_1 = new ItemConjuredPickaxe(CONJURED_1, "conjured_pickaxe_1");
 	public final static Item conjured_pickaxe_2 = new ItemConjuredPickaxe(CONJURED_2, "conjured_pickaxe_2");
 	public final static Item conjured_pickaxe_3 = new ItemConjuredPickaxe(CONJURED_3, "conjured_pickaxe_3");
@@ -77,10 +74,7 @@ public class ModItems
 		RegisterHelper.registerItem(conjured_axe_3);
 		RegisterHelper.registerItem(conjured_axe_4);
 		RegisterHelper.registerItem(conjured_bow);
-		RegisterHelper.registerItem(conjured_hoe_1);
-		RegisterHelper.registerItem(conjured_hoe_2);
-		RegisterHelper.registerItem(conjured_hoe_3);
-		RegisterHelper.registerItem(conjured_hoe_4);
+		RegisterHelper.registerItem(conjured_hoe);
 		RegisterHelper.registerItem(conjured_pickaxe_1);
 		RegisterHelper.registerItem(conjured_pickaxe_2);
 		RegisterHelper.registerItem(conjured_pickaxe_3);
