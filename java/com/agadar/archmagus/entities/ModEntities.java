@@ -11,6 +11,7 @@ public class ModEntities
 		// Register the entities.
 		EntityRegistry.registerGlobalEntityID(EntityArcaneWolf.class, "Arcane Wolf", EntityRegistry.findGlobalUniqueEntityId());
 		EntityRegistry.registerGlobalEntityID(EntityRisenSkeleton.class, "Risen Skeleton", EntityRegistry.findGlobalUniqueEntityId());
+		EntityRegistry.registerGlobalEntityID(EntityRisenWitherSkeleton.class, "Risen Wither Skeleton", EntityRegistry.findGlobalUniqueEntityId());
 		
 		// Register the renderers.
 		Archmagus.proxy.registerRenderers();

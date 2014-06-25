@@ -8,29 +8,29 @@ import net.minecraft.util.ResourceLocation;
 
 import org.lwjgl.opengl.GL11;
 
-import com.agadar.archmagus.entities.EntityRisenSkeleton;
-import com.agadar.archmagus.models.ModelRisenSkeleton;
+import com.agadar.archmagus.entities.EntityRisenWitherSkeleton;
+import com.agadar.archmagus.models.ModelRisenWitherSkeleton;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
 @SideOnly(Side.CLIENT)
-public class RenderRisenSkeleton extends RenderBiped
+public class RenderRisenWitherSkeleton extends RenderBiped
 {
-    private static final ResourceLocation skeletonTextures = new ResourceLocation("textures/entity/skeleton/skeleton.png");
+    private static final ResourceLocation witherSkeletonTextures = new ResourceLocation("textures/entity/skeleton/wither_skeleton.png");
 
-    public RenderRisenSkeleton()
+    public RenderRisenWitherSkeleton()
     {
-        super(new ModelRisenSkeleton(), 0.5F);
+        super(new ModelRisenWitherSkeleton(), 0.5F);
     }
 
     /**
      * Allows the render to do any OpenGL state modifications necessary before the model is rendered. Args:
      * entityLiving, partialTickTime
      */
-    protected void preRenderCallback(EntityRisenSkeleton par1EntitySkeleton, float par2)
+    protected void preRenderCallback(EntityRisenWitherSkeleton par1EntitySkeleton, float par2)
     {
-        return;
+        GL11.glScalef(1.2F, 1.2F, 1.2F);
     }
 
     @Override
@@ -42,9 +42,9 @@ public class RenderRisenSkeleton extends RenderBiped
     /**
      * Returns the location of an entity's texture. Doesn't seem to be called unless you call Render.bindEntityTexture.
      */
-    protected ResourceLocation getEntityTexture(EntityRisenSkeleton par1EntitySkeleton)
+    protected ResourceLocation getEntityTexture(EntityRisenWitherSkeleton par1EntitySkeleton)
     {
-        return skeletonTextures;
+        return witherSkeletonTextures;
     }
 
     /**
@@ -53,7 +53,7 @@ public class RenderRisenSkeleton extends RenderBiped
     @Override
     protected ResourceLocation getEntityTexture(EntityLiving par1EntityLiving)
     {
-        return this.getEntityTexture((EntityRisenSkeleton)par1EntityLiving);
+        return this.getEntityTexture((EntityRisenWitherSkeleton)par1EntityLiving);
     }
 
     /**
@@ -63,7 +63,7 @@ public class RenderRisenSkeleton extends RenderBiped
     @Override
     protected void preRenderCallback(EntityLivingBase par1EntityLivingBase, float par2)
     {
-        this.preRenderCallback((EntityRisenSkeleton)par1EntityLivingBase, par2);
+        this.preRenderCallback((EntityRisenWitherSkeleton)par1EntityLivingBase, par2);
     }
 
     /**
@@ -72,6 +72,6 @@ public class RenderRisenSkeleton extends RenderBiped
     @Override
     protected ResourceLocation getEntityTexture(Entity par1Entity)
     {
-        return this.getEntityTexture((EntityRisenSkeleton)par1Entity);
+        return this.getEntityTexture((EntityRisenWitherSkeleton)par1Entity);
     }
 }

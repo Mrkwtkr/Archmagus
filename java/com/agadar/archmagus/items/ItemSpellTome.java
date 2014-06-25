@@ -111,11 +111,11 @@ public class ItemSpellTome extends Item
     {		
     	NBTTagCompound nbttagcomp = this.func_92110_g(par1ItemStack);
     	short cooldown = nbttagcomp.getShort("cooldown");	
-
-    	if (cooldown == 0)
+    	boolean inCreative = par3EntityPlayer.capabilities.isCreativeMode;
+    	
+    	if (cooldown == 0 || inCreative)
     	{
     		Spell spell = Spell.getSpellAt(nbttagcomp.getShort("id"));	
-    		boolean inCreative = par3EntityPlayer.capabilities.isCreativeMode;
 
     		if (par3EntityPlayer.getFoodStats().getFoodLevel() >= spell.getHungerCost() || inCreative)
     		{

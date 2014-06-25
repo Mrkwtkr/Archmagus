@@ -9,34 +9,35 @@ import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.EnumCreatureAttribute;
 import net.minecraft.entity.IRangedAttackMob;
 import net.minecraft.entity.SharedMonsterAttributes;
-import net.minecraft.entity.ai.EntityAIArrowAttack;
+import net.minecraft.entity.ai.EntityAIAttackOnCollide;
 import net.minecraft.entity.ai.EntityAIFollowOwner;
 import net.minecraft.entity.ai.EntityAILookIdle;
 import net.minecraft.entity.ai.EntityAISwimming;
 import net.minecraft.entity.ai.EntityAIWander;
 import net.minecraft.entity.ai.EntityAIWatchClosest;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.entity.projectile.EntityArrow;
 import net.minecraft.init.Items;
-
 import net.minecraft.item.ItemStack;
+import net.minecraft.potion.Potion;
+import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.DamageSource;
 import net.minecraft.world.World;
 
-public class EntityRisenSkeleton extends EntitySummonable implements IRangedAttackMob
+public class EntityRisenWitherSkeleton extends EntitySummonable implements IRangedAttackMob
 {
-    public EntityRisenSkeleton(World par1World)
+    public EntityRisenWitherSkeleton(World par1World)
     {
         super(par1World);
         
         this.tasks.addTask(1, new EntityAISwimming(this));
-        this.tasks.addTask(2, new EntityAIArrowAttack(this, 1.0D, 20, 60, 15.0F));
+        this.tasks.addTask(2, new EntityAIAttackOnCollide(this, 1.2D, true));
         this.tasks.addTask(3, new EntityAIFollowOwner(this, 1.0D, 10.0F, 2.0F));
         this.tasks.addTask(4, new EntityAIWander(this, 1.0D));
         this.tasks.addTask(5, new EntityAIWatchClosest(this, EntityPlayer.class, 8.0F));
         this.tasks.addTask(5, new EntityAILookIdle(this));
-        
-        this.setCurrentItemOrArmor(0, new ItemStack(Items.bow));
+
+        this.setCurrentItemOrArmor(0, new ItemStack(Items.stone_sword));
+        this.getAttributeMap().registerAttribute(SharedMonsterAttributes.attackDamage).setBaseValue(4.0D);
     }
 
     @Override
@@ -73,7 +74,9 @@ public class EntityRisenSkeleton extends EntitySummonable implements IRangedAtta
     @Override
     public boolean attackEntityAsMob(Entity par1Entity)
     {
-        return false;
+    	((EntityLivingBase)par1Entity).addPotionEffect(new PotionEffect(Potion.wither.id, 200));
+        float attackDamage = (float)getEntityAttribute(SharedMonsterAttributes.attackDamage).getAttributeValue();
+    	return par1Entity.attackEntityFrom(DamageSource.causeMobDamage(this), attackDamage);
     }
 
     @Override
@@ -89,10 +92,10 @@ public class EntityRisenSkeleton extends EntitySummonable implements IRangedAtta
         
         if (this.worldObj.isRemote)
         {
-        	 this.setSize(0.6F, 1.8F);
+            this.setSize(0.72F, 2.34F);
         }
-               
-        if (this.ticksExisted >= Spell.raise_skeleton.getCooldown())
+        
+        if (this.ticksExisted >= Spell.raise_wither_skeleton.getCooldown())
         {
         	this.damageEntity(DamageSource.generic, this.getMaxHealth());
         }
@@ -108,15 +111,6 @@ public class EntityRisenSkeleton extends EntitySummonable implements IRangedAtta
             EntityCreature entitycreature = (EntityCreature)this.ridingEntity;
             this.renderYawOffset = entitycreature.renderYawOffset;
         }
-    }
-
-    @Override
-    public void attackEntityWithRangedAttack(EntityLivingBase par1EntityLivingBase, float par2)
-    {
-        EntityArrow entityarrow = new EntityArrow(this.worldObj, this, par1EntityLivingBase, 1.6F, (float)(14 - this.worldObj.difficultySetting.getDifficultyId() * 4));
-        entityarrow.setDamage((double)(par2 * 2.0F) + this.rand.nextGaussian() * 0.25D + (double)((float)this.worldObj.difficultySetting.getDifficultyId() * 0.11F));
-        this.playSound("random.bow", 1.0F, 1.0F / (this.getRNG().nextFloat() * 0.4F + 0.8F));
-        this.worldObj.spawnEntityInWorld(entityarrow);
     }
 
     @Override
@@ -173,4 +167,10 @@ public class EntityRisenSkeleton extends EntitySummonable implements IRangedAtta
     {
         return p_146067_1_ > 4 ? "game.hostile.hurt.fall.big" : "game.hostile.hurt.fall.small";
     }
+
+	@Override
+	public void attackEntityWithRangedAttack(EntityLivingBase var1, float var2) 
+	{
+		return;
+	}
 }

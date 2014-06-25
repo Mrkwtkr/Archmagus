@@ -39,7 +39,7 @@ public class SpellSummon extends Spell
 	@Override
 	public int getMaxLevel()
     {
-        return 3;
+        return 4;
     }
 	
 	@Override
@@ -61,8 +61,8 @@ public class SpellSummon extends Spell
 		{
 			try 
 			{
-				int[] xSpawnOffset = { -2, 0, 2 };
-				int[] zSpawnOffset = { 0, 2, 0 };
+				int[] xSpawnOffset = { -2, 0, 2, 0 };
+				int[] zSpawnOffset = { 0, 2, 0, -2 };
 				
 				for (int i = 0; i < getNormalizedLevel(par1Level); i++)
 				{

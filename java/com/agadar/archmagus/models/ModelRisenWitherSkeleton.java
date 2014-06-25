@@ -8,14 +8,14 @@ import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
 @SideOnly(Side.CLIENT)
-public class ModelRisenSkeleton extends ModelZombie
+public class ModelRisenWitherSkeleton extends ModelZombie
 {
-    public ModelRisenSkeleton()
+    public ModelRisenWitherSkeleton()
     {
         this(0.0F);
     }
 
-    public ModelRisenSkeleton(float par1)
+    public ModelRisenWitherSkeleton(float par1)
     {
         super(par1, 0.0F, 64, 32);
         this.bipedRightArm = new ModelRenderer(this, 40, 16);
@@ -40,7 +40,7 @@ public class ModelRisenSkeleton extends ModelZombie
      */
     public void setLivingAnimations(EntityLivingBase par1EntityLivingBase, float par2, float par3, float par4)
     {
-        this.aimedBow = true;
+        this.aimedBow = false;
         super.setLivingAnimations(par1EntityLivingBase, par2, par3, par4);
     }
 

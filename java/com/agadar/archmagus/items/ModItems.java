@@ -126,6 +126,7 @@ public class ModItems
 	    	((ItemSpellTome) ModItems.spell_tome).func_92113_a(Spell.conjure_boots, itemList);
 	    	((ItemSpellTome) ModItems.spell_tome).func_92113_a(Spell.summon_arcane_wolf, itemList);
 	    	((ItemSpellTome) ModItems.spell_tome).func_92113_a(Spell.raise_skeleton, itemList);
+	    	((ItemSpellTome) ModItems.spell_tome).func_92113_a(Spell.raise_wither_skeleton, itemList);
 	    	((ItemSpellTome) ModItems.spell_tome).func_92113_a(Spell.teleport, itemList);
 	    	((ItemSpellTome) ModItems.spell_tome).func_92113_a(Spell.respawn, itemList);
 	    }
