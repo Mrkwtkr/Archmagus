@@ -1,6 +1,6 @@
 itemGroup.tabSpellTomes=Spell Tomes
 
-item.spellTome.name=Spell Tome
+item.spell_tome.name=Spell Tome
 item.conjured_axe_1.name=Conjured Axe I
 item.conjured_axe_2.name=Conjured Axe II
 item.conjured_axe_3.name=Conjured Axe III
@@ -32,8 +32,9 @@ item.conjured_boots_1.name=Conjured Boots I
 item.conjured_boots_2.name=Conjured Boots II
 item.conjured_boots_3.name=Conjured Boots III
 
-spell.blazeFire=Blazefire
-spell.ghastFire=Ghastfire
+spell.blazefire=Blazefire
+spell.ghastfire=Ghastfire
+spell.witherblast=Witherblast
 spell.conjure_axe=Conjure Axe
 spell.conjure_bow=Conjure Bow
 spell.conjure_hoe=Conjure Hoe
@@ -46,7 +47,7 @@ spell.conjure_leggings=Conjure Leggings
 spell.conjure_boots=Conjure Boots
 spell.summon_arcane_wolf=Summon Arcane Wolf
 spell.teleport=Teleport
-spell.teleport_home=Respawn
+spell.respawn=Respawn
 spell.lightning=Lightning
 
 spell.level.1=I

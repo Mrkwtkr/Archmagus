@@ -10,7 +10,7 @@ public class SpellGhastFire extends Spell
 	public SpellGhastFire(int par1) 
 	{
 		super(par1);
-		this.setName("ghastFire");
+		this.setName("ghastfire");
 	}
 	
 	@Override

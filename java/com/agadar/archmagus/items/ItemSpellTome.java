@@ -20,7 +20,7 @@ public class ItemSpellTome extends Item
 	public ItemSpellTome()
 	{
 		this.setMaxStackSize(1);
-		this.setUnlocalizedName("spellTome");
+		this.setUnlocalizedName("spell_tome");
 		this.setTextureName("book_enchanted");
 	}
 	

@@ -4,12 +4,12 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.ChunkCoordinates;
 import net.minecraft.world.World;
 
-public class SpellTeleportHome extends Spell 
+public class SpellRespawn extends Spell 
 {
-	protected SpellTeleportHome(int par1) 
+	protected SpellRespawn(int par1) 
 	{
 		super(par1);
-		this.setName("teleport_home");
+		this.setName("respawn");
 	}
 	
 	@Override

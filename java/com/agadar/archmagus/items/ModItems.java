@@ -110,21 +110,22 @@ public class ModItems
 		@SideOnly(Side.CLIENT)
 	    public void displayAllReleventItems(List itemList) 
 	    {       
-	    	((ItemSpellTome) ModItems.spell_tome).func_92113_a(Spell.blazeFire, itemList);
-	    	((ItemSpellTome) ModItems.spell_tome).func_92113_a(Spell.ghastFire, itemList);
-	    	((ItemSpellTome) ModItems.spell_tome).func_92113_a(Spell.conjureAxe, itemList);
-	    	((ItemSpellTome) ModItems.spell_tome).func_92113_a(Spell.conjureBow, itemList);
-	    	((ItemSpellTome) ModItems.spell_tome).func_92113_a(Spell.conjureHoe, itemList);
-	    	((ItemSpellTome) ModItems.spell_tome).func_92113_a(Spell.conjurePickaxe, itemList);
-	    	((ItemSpellTome) ModItems.spell_tome).func_92113_a(Spell.conjureShovel, itemList);
-	    	((ItemSpellTome) ModItems.spell_tome).func_92113_a(Spell.conjureSword, itemList);
-	    	((ItemSpellTome) ModItems.spell_tome).func_92113_a(Spell.conjureHelmet, itemList);
-	    	((ItemSpellTome) ModItems.spell_tome).func_92113_a(Spell.conjureChestplate, itemList);
-	    	((ItemSpellTome) ModItems.spell_tome).func_92113_a(Spell.conjureLeggings, itemList);
-	    	((ItemSpellTome) ModItems.spell_tome).func_92113_a(Spell.conjureBoots, itemList);
-	    	((ItemSpellTome) ModItems.spell_tome).func_92113_a(Spell.summonArcaneWolf, itemList);
+	    	((ItemSpellTome) ModItems.spell_tome).func_92113_a(Spell.blazefire, itemList);
+	    	((ItemSpellTome) ModItems.spell_tome).func_92113_a(Spell.ghastfire, itemList);
+	    	((ItemSpellTome) ModItems.spell_tome).func_92113_a(Spell.witherblast, itemList);
+	    	((ItemSpellTome) ModItems.spell_tome).func_92113_a(Spell.conjure_axe, itemList);
+	    	((ItemSpellTome) ModItems.spell_tome).func_92113_a(Spell.conjure_bow, itemList);
+	    	((ItemSpellTome) ModItems.spell_tome).func_92113_a(Spell.conjure_hoe, itemList);
+	    	((ItemSpellTome) ModItems.spell_tome).func_92113_a(Spell.conjure_pickaxe, itemList);
+	    	((ItemSpellTome) ModItems.spell_tome).func_92113_a(Spell.conjure_shovel, itemList);
+	    	((ItemSpellTome) ModItems.spell_tome).func_92113_a(Spell.conjure_sword, itemList);
+	    	((ItemSpellTome) ModItems.spell_tome).func_92113_a(Spell.conjure_helmet, itemList);
+	    	((ItemSpellTome) ModItems.spell_tome).func_92113_a(Spell.conjure_chestplate, itemList);
+	    	((ItemSpellTome) ModItems.spell_tome).func_92113_a(Spell.conjure_leggings, itemList);
+	    	((ItemSpellTome) ModItems.spell_tome).func_92113_a(Spell.conjure_boots, itemList);
+	    	((ItemSpellTome) ModItems.spell_tome).func_92113_a(Spell.summon_arcane_wolf, itemList);
 	    	((ItemSpellTome) ModItems.spell_tome).func_92113_a(Spell.teleport, itemList);
-	    	((ItemSpellTome) ModItems.spell_tome).func_92113_a(Spell.teleportHome, itemList);
+	    	((ItemSpellTome) ModItems.spell_tome).func_92113_a(Spell.respawn, itemList);
 	    	((ItemSpellTome) ModItems.spell_tome).func_92113_a(Spell.lightning, itemList);
 	    }
 	};
