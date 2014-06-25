@@ -29,6 +29,7 @@ public abstract class Spell
 	public final static Spell conjureBoots = new SpellConjureItem(11, "conjure_boots", new Item[] { ModItems.conjured_boots_1, ModItems.conjured_boots_2, ModItems.conjured_boots_3 });
 	public final static Spell summonArcaneWolf = new SpellSummon(12, "summon_arcane_wolf", EntityArcaneWolf.class);
 	public final static Spell teleport = new SpellTeleport(13);
+	public final static Spell teleportHome = new SpellTeleportHome(14);
 	/** A Random object used by some child classes of Spell. */
 	protected final static Random random = new Random();
 	/** The index of this spell in the spellList. */

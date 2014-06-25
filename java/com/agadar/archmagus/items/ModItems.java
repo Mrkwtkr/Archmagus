@@ -124,6 +124,7 @@ public class ModItems
 	    	((ItemSpellTome) ModItems.spell_tome).func_92113_a(Spell.conjureBoots, itemList);
 	    	((ItemSpellTome) ModItems.spell_tome).func_92113_a(Spell.summonArcaneWolf, itemList);
 	    	((ItemSpellTome) ModItems.spell_tome).func_92113_a(Spell.teleport, itemList);
+	    	((ItemSpellTome) ModItems.spell_tome).func_92113_a(Spell.teleportHome, itemList);
 	    }
 	};
 }

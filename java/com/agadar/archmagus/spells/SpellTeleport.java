@@ -12,7 +12,7 @@ public class SpellTeleport extends Spell
 	 * and where the distance with index 1 is the distance the player can teleport if
 	 * the spell is level 2, etcetera.
 	 */
-	private final int[] distances = { 10, 20, 30};
+	private final int[] distances = { 10, 15, 20};
 	
 	public SpellTeleport(int par1) 
 	{
