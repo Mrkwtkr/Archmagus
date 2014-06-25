@@ -109,14 +109,17 @@ public class ItemSpellTome extends Item
     		
     		if (cooldown == 0)
     		{
-    			short spellId = nbttagcomp.getShort("id");
+    			short spellId = nbttagcomp.getShort("id");		
+    			boolean inCreative = par3EntityPlayer.capabilities.isCreativeMode;
     			
-    			if (par3EntityPlayer.getFoodStats().getFoodLevel() >= Spell.spellList[spellId].getHungerCost())
+    			if (par3EntityPlayer.getFoodStats().getFoodLevel() >= Spell.spellList[spellId].getHungerCost() || inCreative)
     			{
     				nbttagcomp.setShort("cooldown", Spell.coolDown);
-    				par3EntityPlayer.getFoodStats().addStats(-Spell.spellList[spellId].getHungerCost(), 0);        		
+    				
     				short level = nbttagcomp.getShort("lvl");
     				Spell.spellList[spellId].cast(level, par2World, par3EntityPlayer);
+    				
+    				if (!inCreative) par3EntityPlayer.getFoodStats().addStats(-Spell.spellList[spellId].getHungerCost(), 0);        		
     			}
     		}
     	}
