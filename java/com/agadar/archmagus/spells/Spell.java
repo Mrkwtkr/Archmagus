@@ -3,6 +3,7 @@ package com.agadar.archmagus.spells;
 import java.util.Random;
 
 import com.agadar.archmagus.entities.EntityArcaneWolf;
+import com.agadar.archmagus.entities.EntityRisenSkeleton;
 import com.agadar.archmagus.items.ModItems;
 
 import net.minecraft.entity.player.EntityPlayer;
@@ -29,9 +30,10 @@ public abstract class Spell
 	public final static Spell conjure_leggings = new SpellConjureItem(11, "conjure_leggings", new Item[] { ModItems.conjured_leggings_1, ModItems.conjured_leggings_2, ModItems.conjured_leggings_3 });
 	public final static Spell conjure_boots = new SpellConjureItem(12, "conjure_boots", new Item[] { ModItems.conjured_boots_1, ModItems.conjured_boots_2, ModItems.conjured_boots_3 });
 	public final static Spell summon_arcane_wolf = new SpellSummon(13, "summon_arcane_wolf", EntityArcaneWolf.class);
-	public final static Spell teleport = new SpellTeleport(14);
-	public final static Spell respawn = new SpellRespawn(15);
-	public final static Spell lightning = new SpellLightning(16);
+	public final static Spell raise_skeleton = new SpellSummon(14, "raise_skeleton", EntityRisenSkeleton.class);
+	public final static Spell teleport = new SpellTeleport(15);
+	public final static Spell respawn = new SpellRespawn(16);
+	public final static Spell lightning = new SpellLightning(17);
 	/** A Random object used by some child classes of Spell. */
 	protected final static Random random = new Random();
 	/** The index of this spell in the spellList. */

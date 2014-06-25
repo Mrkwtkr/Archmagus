@@ -1,5 +1,7 @@
 package com.agadar.archmagus.entities;
 
+import com.agadar.archmagus.spells.Spell;
+
 import net.minecraft.block.Block;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityAgeable;
@@ -34,9 +36,6 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 public class EntityArcaneWolf extends EntityTameable
 {
-	/** The time until this wolf despawns. */
-	private final int timeUntilDespawn = 1200;
-	
     private float field_70926_e;
     /** true is the wolf is wet else false */
     private boolean isShaking;
@@ -62,7 +61,7 @@ public class EntityArcaneWolf extends EntityTameable
         this.tasks.addTask(7, new EntityAILookIdle(this));
         this.targetTasks.addTask(1, new EntityAIOwnerHurtByTarget(this));
         this.targetTasks.addTask(2, new EntityAIOwnerHurtTarget(this));
-        this.targetTasks.addTask(3, new EntityAIHurtByTarget(this, true));
+        this.targetTasks.addTask(3, new EntityAIHurtByTarget(this, false));
         
         this.setTamed(true);
         this.setPathToEntity((PathEntity)null);
@@ -194,7 +193,7 @@ public class EntityArcaneWolf extends EntityTameable
     {
         super.onUpdate();
 
-        if (this.ticksExisted >= timeUntilDespawn)
+        if (this.ticksExisted >= Spell.summon_arcane_wolf.getCooldown())
         {
         	this.damageEntity(DamageSource.generic, this.getMaxHealth());
         }

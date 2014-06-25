@@ -4,7 +4,6 @@ import java.lang.reflect.Constructor;
 
 import net.minecraft.entity.EntityCreature;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
 import net.minecraft.entity.passive.EntityTameable;
 
@@ -68,11 +67,11 @@ public class SpellSummon extends Spell
 				for (int i = 0; i < getNormalizedLevel(par1Level); i++)
 				{
 					EntityCreature entity = (EntityCreature) entityConstr.newInstance(par2World);
-					entity.setLocationAndAngles(par3EntityPlayer.posX + xSpawnOffset[i], par3EntityPlayer.posY, par3EntityPlayer.posZ + zSpawnOffset[i], MathHelper.wrapAngleTo180_float(par2World.rand.nextFloat() * 360.0F), 0.0F);
-					entity.rotationYawHead = entity.rotationYaw;
-					entity.renderYawOffset = entity.rotationYaw;
-					((EntityTameable) entity).setOwner(par3EntityPlayer.getCommandSenderName());
-
+					entity.setLocationAndAngles(par3EntityPlayer.posX + xSpawnOffset[i], par3EntityPlayer.posY, par3EntityPlayer.posZ + zSpawnOffset[i], entity.rotationYaw, 0.0F);					
+					String comSendName = par3EntityPlayer.getCommandSenderName();
+					((EntityTameable) entity).setOwner(comSendName);
+					entity.setCustomNameTag(comSendName + "'s Minion");
+					entity.setAlwaysRenderNameTag(true);
 					par2World.spawnEntityInWorld(entity);
 				}	
 			} 

@@ -6,6 +6,6 @@
   "version": "${version}",
   "mcversion": "${mcversion}",
   "url": "",
-  "authorList": ["Agadar"],
+  "authorList": ["Agadar"]
 }
 ]

@@ -8,8 +8,11 @@ public class ModEntities
 {
 	public static void registerEntities()
 	{
-		// Register our arcane wolf and its renderer.
+		// Register the entities.
 		EntityRegistry.registerGlobalEntityID(EntityArcaneWolf.class, "Arcane Wolf", EntityRegistry.findGlobalUniqueEntityId());
-		Archmagus.proxy.registerArcaneWolf();
+		EntityRegistry.registerGlobalEntityID(EntityRisenSkeleton.class, "Risen Skeleton", EntityRegistry.findGlobalUniqueEntityId());
+		
+		// Register the renderers.
+		Archmagus.proxy.registerRenderers();
 	}
 }
