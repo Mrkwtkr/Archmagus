@@ -44,6 +44,7 @@ spell.conjure_helmet=Conjure Helmet
 spell.conjure_chestplate=Conjure Chestplate
 spell.conjure_leggings=Conjure Leggings
 spell.conjure_boots=Conjure Boots
+spell.summon_arcane_wolf=Summon Arcane Wolf
 
 spell.level.1=I
 spell.level.2=II

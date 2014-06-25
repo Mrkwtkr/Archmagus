@@ -122,6 +122,7 @@ public class ModItems
 	    	((ItemSpellTome) ModItems.spell_tome).func_92113_a(Spell.conjureChestplate, itemList);
 	    	((ItemSpellTome) ModItems.spell_tome).func_92113_a(Spell.conjureLeggings, itemList);
 	    	((ItemSpellTome) ModItems.spell_tome).func_92113_a(Spell.conjureBoots, itemList);
+	    	((ItemSpellTome) ModItems.spell_tome).func_92113_a(Spell.summonArcaneWolf, itemList);
 	    }
 	};
 }

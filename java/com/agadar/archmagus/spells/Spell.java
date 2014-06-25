@@ -2,6 +2,7 @@ package com.agadar.archmagus.spells;
 
 import java.util.Random;
 
+import com.agadar.archmagus.entities.EntityArcaneWolf;
 import com.agadar.archmagus.items.ModItems;
 
 import net.minecraft.entity.player.EntityPlayer;
@@ -47,6 +48,7 @@ public abstract class Spell
 	public final static Spell conjureBoots = new SpellConjureItem(11,
 			"conjure_boots", new Item[] { ModItems.conjured_boots_1,
 					ModItems.conjured_boots_2, ModItems.conjured_boots_3 });
+	public final static Spell summonArcaneWolf = new SpellSummon(12, "summon_arcane_wolf", EntityArcaneWolf.class);
 	/** The cooldown of all spells in game ticks. */
 	public final static short coolDown = 20;
 	/** A Random object used by some child classes of Spell. */

@@ -1,5 +1,6 @@
 package com.agadar.archmagus;
 
+import com.agadar.archmagus.entities.ModEntities;
 import com.agadar.archmagus.help.References;
 import com.agadar.archmagus.items.ModItems;
 
@@ -22,5 +23,6 @@ public class Archmagus
 	public void preInit(FMLPreInitializationEvent event) 
 	{		
 		ModItems.loadItems();
+		ModEntities.registerEntities();
 	}
 }

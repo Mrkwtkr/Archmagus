@@ -1,0 +1,69 @@
+package com.agadar.archmagus.spells;
+
+import java.lang.reflect.Constructor;
+
+import net.minecraft.entity.EntityCreature;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.world.World;
+
+public class SpellSummon extends Spell 
+{
+	/** The constructor of the entity this spell summons. 
+	 *  It is assumed the only parameter is a World reference. */
+	@SuppressWarnings("rawtypes")
+	private final Constructor entityConstr;
+	
+	@SuppressWarnings({ "rawtypes" })
+	public SpellSummon(int par1, String name, Class entityClass)
+	{
+		super(par1);
+		this.setName(name);	
+		entityConstr = getConstructor(entityClass);
+	}
+	
+	@SuppressWarnings({ "unchecked", "rawtypes" })
+	private static Constructor getConstructor(Class entityClass)
+	{
+		try 
+		{
+			return entityClass.getConstructor(World.class);
+		} 
+		catch (NoSuchMethodException | SecurityException e) 
+		{
+			e.printStackTrace();
+			return null;
+		}
+	}
+	
+	@Override
+	public int getMaxLevel()
+    {
+        return 3;
+    }
+	
+	@Override
+	public int getHungerCost()
+    {
+    	return 8;
+    }
+
+	@Override
+	public void cast(short par1Level, World par2World, EntityPlayer par3EntityPlayer) 
+	{
+		try 
+		{
+			for (int i = 0; i < par1Level; i++)
+			{
+				EntityCreature entity = (EntityCreature) entityConstr.newInstance(par2World);
+				entity.posX = par3EntityPlayer.posX;
+				entity.posY = par3EntityPlayer.posY;
+				entity.posZ = par3EntityPlayer.posZ;
+				par2World.spawnEntityInWorld(entity);
+			}	
+		} 
+		catch (Exception e) 
+		{
+			e.printStackTrace();
+		}
+	}
+}
