@@ -4,6 +4,7 @@ import java.lang.reflect.Constructor;
 
 import net.minecraft.entity.EntityCreature;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
 
 public class SpellSummon extends Spell 
@@ -55,9 +56,9 @@ public class SpellSummon extends Spell
 			for (int i = 0; i < par1Level; i++)
 			{
 				EntityCreature entity = (EntityCreature) entityConstr.newInstance(par2World);
-				entity.posX = par3EntityPlayer.posX;
-				entity.posY = par3EntityPlayer.posY;
-				entity.posZ = par3EntityPlayer.posZ;
+				entity.setLocationAndAngles(par3EntityPlayer.posX, par3EntityPlayer.posY, par3EntityPlayer.posZ, MathHelper.wrapAngleTo180_float(par2World.rand.nextFloat() * 360.0F), 0.0F);
+				entity.rotationYawHead = entity.rotationYaw;
+				entity.renderYawOffset = entity.rotationYaw;
 				par2World.spawnEntityInWorld(entity);
 			}	
 		} 
