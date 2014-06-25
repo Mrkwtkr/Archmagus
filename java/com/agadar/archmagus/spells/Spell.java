@@ -13,41 +13,20 @@ import net.minecraft.world.World;
 public abstract class Spell 
 {
 	/** The list of all spells. */
-	public final static Spell[] spellList = new Spell[256];
+	private final static Spell[] spellList = new Spell[256];
+	/** All individual spells. */
 	public final static Spell blazeFire = new SpellBlazeFire(0);
 	public final static Spell ghastFire = new SpellGhastFire(1);
-	public final static Spell conjureAxe = new SpellConjureItem(2,
-			"conjure_axe", new Item[] { ModItems.conjured_axe_1,
-					ModItems.conjured_axe_2, ModItems.conjured_axe_3,
-					ModItems.conjured_axe_4 });
-	public final static Spell conjureBow = new SpellConjureItem(3,
-			"conjure_bow", new Item[] { ModItems.conjured_bow });
-	public final static Spell conjureHoe = new SpellConjureItem(4,
-			"conjure_hoe", new Item[] { ModItems.conjured_hoe });
-	public final static Spell conjurePickaxe = new SpellConjureItem(5,
-			"conjure_pickaxe", new Item[] { ModItems.conjured_pickaxe_1,
-					ModItems.conjured_pickaxe_2, ModItems.conjured_pickaxe_3,
-					ModItems.conjured_pickaxe_4 });
-	public final static Spell conjureShovel = new SpellConjureItem(6,
-			"conjure_shovel", new Item[] { ModItems.conjured_shovel_1,
-					ModItems.conjured_shovel_2, ModItems.conjured_shovel_3,
-					ModItems.conjured_shovel_4 });
-	public final static Spell conjureSword = new SpellConjureItem(7,
-			"conjure_sword", new Item[] { ModItems.conjured_sword_1,
-					ModItems.conjured_sword_2, ModItems.conjured_sword_3,
-					ModItems.conjured_sword_4 });
-	public final static Spell conjureHelmet = new SpellConjureItem(8,
-			"conjure_helmet", new Item[] { ModItems.conjured_helmet_1,
-					ModItems.conjured_helmet_2, ModItems.conjured_helmet_3 });
-	public final static Spell conjureChestplate = new SpellConjureItem(9,
-			"conjure_chestplate", new Item[] { ModItems.conjured_chestplate_1,
-					ModItems.conjured_chestplate_2, ModItems.conjured_chestplate_3 });
-	public final static Spell conjureLeggings = new SpellConjureItem(10,
-			"conjure_leggings", new Item[] { ModItems.conjured_leggings_1,
-					ModItems.conjured_leggings_2, ModItems.conjured_leggings_3 });
-	public final static Spell conjureBoots = new SpellConjureItem(11,
-			"conjure_boots", new Item[] { ModItems.conjured_boots_1,
-					ModItems.conjured_boots_2, ModItems.conjured_boots_3 });
+	public final static Spell conjureAxe = new SpellConjureItem(2, "conjure_axe", new Item[] { ModItems.conjured_axe_1, ModItems.conjured_axe_2, ModItems.conjured_axe_3, ModItems.conjured_axe_4 });
+	public final static Spell conjureBow = new SpellConjureItem(3, "conjure_bow", new Item[] { ModItems.conjured_bow });
+	public final static Spell conjureHoe = new SpellConjureItem(4, "conjure_hoe", new Item[] { ModItems.conjured_hoe });
+	public final static Spell conjurePickaxe = new SpellConjureItem(5, "conjure_pickaxe", new Item[] { ModItems.conjured_pickaxe_1, ModItems.conjured_pickaxe_2, ModItems.conjured_pickaxe_3, ModItems.conjured_pickaxe_4 });
+	public final static Spell conjureShovel = new SpellConjureItem(6, "conjure_shovel", new Item[] { ModItems.conjured_shovel_1, ModItems.conjured_shovel_2, ModItems.conjured_shovel_3, ModItems.conjured_shovel_4 });
+	public final static Spell conjureSword = new SpellConjureItem(7, "conjure_sword", new Item[] { ModItems.conjured_sword_1, ModItems.conjured_sword_2, ModItems.conjured_sword_3, ModItems.conjured_sword_4 });
+	public final static Spell conjureHelmet = new SpellConjureItem(8, "conjure_helmet", new Item[] { ModItems.conjured_helmet_1, ModItems.conjured_helmet_2, ModItems.conjured_helmet_3 });
+	public final static Spell conjureChestplate = new SpellConjureItem(9, "conjure_chestplate", new Item[] { ModItems.conjured_chestplate_1, ModItems.conjured_chestplate_2, ModItems.conjured_chestplate_3 });
+	public final static Spell conjureLeggings = new SpellConjureItem(10, "conjure_leggings", new Item[] { ModItems.conjured_leggings_1, ModItems.conjured_leggings_2, ModItems.conjured_leggings_3 });
+	public final static Spell conjureBoots = new SpellConjureItem(11, "conjure_boots", new Item[] { ModItems.conjured_boots_1, ModItems.conjured_boots_2, ModItems.conjured_boots_3 });
 	public final static Spell summonArcaneWolf = new SpellSummon(12, "summon_arcane_wolf", EntityArcaneWolf.class);
 	/** The cooldown of all spells in game ticks. */
 	public final static short coolDown = 20;
@@ -130,5 +109,16 @@ public abstract class Spell
     	return Math.max(getMinLevel(), Math.min(par1Level, getMaxLevel()));
     }
 
+    /**
+     * Casts this spell based on the given level.
+     */
 	public abstract void cast(short par1Level, World par2World, EntityPlayer par3EntityPlayer);
+	
+	/**
+	 * Returns the spell with the given index.
+	 */
+	public static Spell getSpellAt(int index)
+	{
+		return spellList[Math.max(0, Math.min(index, spellList.length - 1))];
+	}
 }

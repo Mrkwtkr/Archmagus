@@ -57,10 +57,8 @@ public class ItemSpellTome extends Item
         short short1 = nbttagcomp.getShort("id");
         short short2 = nbttagcomp.getShort("lvl");
 
-        if (Spell.spellList[short1] != null)
-        {
-        	par3List.add(Spell.spellList[short1].getTranslatedName(short2));
-        }
+        Spell spell = Spell.getSpellAt(short1);       
+        if (spell != null) par3List.add(spell.getTranslatedName(short2));
     }
 
     /**
@@ -109,17 +107,17 @@ public class ItemSpellTome extends Item
     		
     		if (cooldown == 0)
     		{
-    			short spellId = nbttagcomp.getShort("id");		
+    			Spell spell = Spell.getSpellAt(nbttagcomp.getShort("id"));	
     			boolean inCreative = par3EntityPlayer.capabilities.isCreativeMode;
     			
-    			if (par3EntityPlayer.getFoodStats().getFoodLevel() >= Spell.spellList[spellId].getHungerCost() || inCreative)
+    			if (par3EntityPlayer.getFoodStats().getFoodLevel() >= spell.getHungerCost() || inCreative)
     			{
     				nbttagcomp.setShort("cooldown", Spell.coolDown);
     				
     				short level = nbttagcomp.getShort("lvl");
-    				Spell.spellList[spellId].cast(level, par2World, par3EntityPlayer);
+    				spell.cast(level, par2World, par3EntityPlayer);
     				
-    				if (!inCreative) par3EntityPlayer.getFoodStats().addStats(-Spell.spellList[spellId].getHungerCost(), 0);        		
+    				if (!inCreative) par3EntityPlayer.getFoodStats().addStats(-spell.getHungerCost(), 0);        		
     			}
     		}
     	}
