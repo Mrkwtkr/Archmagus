@@ -7,7 +7,7 @@ import net.minecraft.world.World;
 
 public class SpellBlazeFire extends Spell 
 {
-	public SpellBlazeFire(int par1)
+	protected SpellBlazeFire(int par1)
     {
         super(par1);
         this.setName("blazefire");

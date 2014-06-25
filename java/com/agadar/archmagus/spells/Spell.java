@@ -27,15 +27,15 @@ public abstract class Spell
 	public final static Spell conjure_pickaxe = new SpellConjureItem(7, "conjure_pickaxe", new Item[] { ModItems.conjured_pickaxe_1, ModItems.conjured_pickaxe_2, ModItems.conjured_pickaxe_3, ModItems.conjured_pickaxe_4 });
 	public final static Spell conjure_shovel = new SpellConjureItem(8, "conjure_shovel", new Item[] { ModItems.conjured_shovel_1, ModItems.conjured_shovel_2, ModItems.conjured_shovel_3, ModItems.conjured_shovel_4 });
 	public final static Spell conjure_sword = new SpellConjureItem(9, "conjure_sword", new Item[] { ModItems.conjured_sword_1, ModItems.conjured_sword_2, ModItems.conjured_sword_3, ModItems.conjured_sword_4 });
-	public final static Spell conjure_helmet = new SpellConjureItem(10, "conjure_helmet", new Item[] { ModItems.conjured_helmet_1, ModItems.conjured_helmet_2, ModItems.conjured_helmet_3 });
-	public final static Spell conjure_chestplate = new SpellConjureItem(11, "conjure_chestplate", new Item[] { ModItems.conjured_chestplate_1, ModItems.conjured_chestplate_2, ModItems.conjured_chestplate_3 });
-	public final static Spell conjure_leggings = new SpellConjureItem(12, "conjure_leggings", new Item[] { ModItems.conjured_leggings_1, ModItems.conjured_leggings_2, ModItems.conjured_leggings_3 });
-	public final static Spell conjure_boots = new SpellConjureItem(13, "conjure_boots", new Item[] { ModItems.conjured_boots_1, ModItems.conjured_boots_2, ModItems.conjured_boots_3 });
-	public final static Spell summon_arcane_wolf = new SpellSummon(14, "summon_arcane_wolf", EntityArcaneWolf.class);
-	public final static Spell raise_skeleton = new SpellSummon(15, "raise_skeleton", EntityRisenSkeleton.class);
-	public final static Spell raise_wither_skeleton = new SpellSummon(16, "raise_wither_skeleton", EntityRisenWitherSkeleton.class);
-	public final static Spell teleport = new SpellTeleport(17);
-	public final static Spell respawn = new SpellRespawn(18);
+	public final static Spell conjure_armor = new SpellConjureArmor(10, "conjure_armor", new Item[][] { 
+			new Item[] { ModItems.conjured_helmet_1, ModItems.conjured_chestplate_1, ModItems.conjured_leggings_1, ModItems.conjured_boots_1 }, 
+			new Item[] { ModItems.conjured_helmet_2, ModItems.conjured_chestplate_2, ModItems.conjured_leggings_2, ModItems.conjured_boots_2 },
+			new Item[] { ModItems.conjured_helmet_3, ModItems.conjured_chestplate_3, ModItems.conjured_leggings_3, ModItems.conjured_boots_3 }});
+	public final static Spell summon_arcane_wolf = new SpellSummon(11, "summon_arcane_wolf", EntityArcaneWolf.class);
+	public final static Spell raise_skeleton = new SpellSummon(12, "raise_skeleton", EntityRisenSkeleton.class);
+	public final static Spell raise_wither_skeleton = new SpellSummon(13, "raise_wither_skeleton", EntityRisenWitherSkeleton.class);
+	public final static Spell teleport = new SpellTeleport(14);
+	public final static Spell respawn = new SpellRespawn(15);
 	/** A Random object used by some child classes of Spell. */
 	protected final static Random random = new Random();
 	/** The index of this spell in the spellList. */

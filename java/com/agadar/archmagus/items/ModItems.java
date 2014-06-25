@@ -119,10 +119,7 @@ public class ModItems
 	    	((ItemSpellTome) ModItems.spell_tome).func_92113_a(Spell.conjure_pickaxe, itemList);
 	    	((ItemSpellTome) ModItems.spell_tome).func_92113_a(Spell.conjure_shovel, itemList);
 	    	((ItemSpellTome) ModItems.spell_tome).func_92113_a(Spell.conjure_sword, itemList);
-	    	((ItemSpellTome) ModItems.spell_tome).func_92113_a(Spell.conjure_helmet, itemList);
-	    	((ItemSpellTome) ModItems.spell_tome).func_92113_a(Spell.conjure_chestplate, itemList);
-	    	((ItemSpellTome) ModItems.spell_tome).func_92113_a(Spell.conjure_leggings, itemList);
-	    	((ItemSpellTome) ModItems.spell_tome).func_92113_a(Spell.conjure_boots, itemList);
+	    	((ItemSpellTome) ModItems.spell_tome).func_92113_a(Spell.conjure_armor, itemList);
 	    	((ItemSpellTome) ModItems.spell_tome).func_92113_a(Spell.summon_arcane_wolf, itemList);
 	    	((ItemSpellTome) ModItems.spell_tome).func_92113_a(Spell.raise_skeleton, itemList);
 	    	((ItemSpellTome) ModItems.spell_tome).func_92113_a(Spell.raise_wither_skeleton, itemList);

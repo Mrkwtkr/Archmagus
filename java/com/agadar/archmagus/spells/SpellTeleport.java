@@ -14,7 +14,7 @@ public class SpellTeleport extends Spell
 	 */
 	private final int[] distances = { 10, 15, 20};
 	
-	public SpellTeleport(int par1) 
+	protected SpellTeleport(int par1) 
 	{
 		super(par1);
 		this.setName("teleport");

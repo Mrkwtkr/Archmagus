@@ -19,7 +19,7 @@ public class SpellSummon extends Spell
 	private final Constructor entityConstr;
 	
 	@SuppressWarnings({ "rawtypes" })
-	public SpellSummon(int par1, String name, Class entityClass)
+	protected SpellSummon(int par1, String name, Class entityClass)
 	{
 		super(par1);
 		this.setName(name);	

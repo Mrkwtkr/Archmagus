@@ -14,7 +14,7 @@ public class SpellConjureItem extends Spell
 	 */
 	private final Item[] items;
 	
-	public SpellConjureItem(int par1, String name, Item[] items) 
+	protected SpellConjureItem(int par1, String name, Item[] items) 
 	{
 		super(par1);
 		this.setName(name);
