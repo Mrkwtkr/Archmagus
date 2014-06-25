@@ -62,10 +62,13 @@ public class SpellSummon extends Spell
 		{
 			try 
 			{
+				int[] xSpawnOffset = { -2, 0, 2 };
+				int[] zSpawnOffset = { 0, 2, 0 };
+				
 				for (int i = 0; i < getNormalizedLevel(par1Level); i++)
 				{
 					EntityCreature entity = (EntityCreature) entityConstr.newInstance(par2World);
-					entity.setLocationAndAngles(par3EntityPlayer.posX, par3EntityPlayer.posY, par3EntityPlayer.posZ, MathHelper.wrapAngleTo180_float(par2World.rand.nextFloat() * 360.0F), 0.0F);
+					entity.setLocationAndAngles(par3EntityPlayer.posX + xSpawnOffset[i], par3EntityPlayer.posY, par3EntityPlayer.posZ + zSpawnOffset[i], MathHelper.wrapAngleTo180_float(par2World.rand.nextFloat() * 360.0F), 0.0F);
 					entity.rotationYawHead = entity.rotationYaw;
 					entity.renderYawOffset = entity.rotationYaw;
 					((EntityTameable) entity).setOwner(par3EntityPlayer.getCommandSenderName());
