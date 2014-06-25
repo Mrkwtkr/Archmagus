@@ -1,9 +1,13 @@
 package com.agadar.archmagus.spells;
 
 import java.lang.reflect.Constructor;
+import java.util.List;
+
+import com.agadar.archmagus.entities.EntitySummonable;
 
 import net.minecraft.entity.EntityCreature;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.util.DamageSource;
 import net.minecraft.world.World;
 import net.minecraft.entity.passive.EntityTameable;
 
@@ -59,6 +63,17 @@ public class SpellSummon extends Spell
 	{
 		if (!par2World.isRemote)
 		{
+			@SuppressWarnings("unchecked")
+			List<EntitySummonable> entities = par2World.getEntitiesWithinAABB(EntitySummonable.class, par3EntityPlayer.boundingBox.expand(10.0D, 10.0D, 10.0D));
+			
+			for (EntitySummonable entity : entities)
+			{
+				if (entity.getOwnerName().equalsIgnoreCase(par3EntityPlayer.getCommandSenderName()))
+				{
+					entity.attackEntityFrom(DamageSource.generic, entity.getMaxHealth());
+				}
+			}
+			
 			try 
 			{
 				int[] xSpawnOffset = { -2, 0, 2, 0 };
