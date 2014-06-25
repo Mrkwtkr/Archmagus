@@ -6,7 +6,6 @@ import net.minecraft.block.Block;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.Entity;
-import net.minecraft.entity.EntityAgeable;
 import net.minecraft.entity.EntityCreature;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.EnumCreatureAttribute;
@@ -22,12 +21,9 @@ import net.minecraft.entity.ai.EntityAIOwnerHurtTarget;
 import net.minecraft.entity.ai.EntityAISwimming;
 import net.minecraft.entity.ai.EntityAIWander;
 import net.minecraft.entity.ai.EntityAIWatchClosest;
-import net.minecraft.entity.passive.EntityAnimal;
-import net.minecraft.entity.passive.EntityTameable;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.projectile.EntityArrow;
 import net.minecraft.init.Items;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.pathfinding.PathEntity;
@@ -36,7 +32,7 @@ import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.DamageSource;
 import net.minecraft.world.World;
 
-public class EntityRisenSkeleton extends EntityTameable implements IRangedAttackMob
+public class EntityRisenSkeleton extends EntitySummonable implements IRangedAttackMob
 {
 	private EntityAIArrowAttack aiArrowAttack = new EntityAIArrowAttack(this, 1.0D, 20, 60, 15.0F);
     private EntityAIAttackOnCollide aiAttackOnCollide = new EntityAIAttackOnCollide(this, EntityPlayer.class, 1.2D, false);
@@ -77,15 +73,6 @@ public class EntityRisenSkeleton extends EntityTameable implements IRangedAttack
     {
         super.entityInit();
         this.dataWatcher.addObject(13, new Byte((byte)0));
-    }
-
-    /**
-     * Returns true if the newer Entity AI code should be run
-     */
-    @Override
-    public boolean isAIEnabled()
-    {
-        return true;
     }
 
     /**
@@ -181,12 +168,6 @@ public class EntityRisenSkeleton extends EntityTameable implements IRangedAttack
             EntityCreature entitycreature = (EntityCreature)this.ridingEntity;
             this.renderYawOffset = entitycreature.renderYawOffset;
         }
-    }
-
-    @Override
-    protected Item getDropItem()
-    {
-    	return Item.getItemById(-1);
     }
 
     /**
@@ -301,12 +282,6 @@ public class EntityRisenSkeleton extends EntityTameable implements IRangedAttack
     }
 
 	@Override
-	public EntityAgeable createChild(EntityAgeable var1) 
-	{
-		return null;
-	}
-
-	@Override
 	protected String getSwimSound()
     {
         return "game.hostile.swim";
@@ -356,42 +331,5 @@ public class EntityRisenSkeleton extends EntityTameable implements IRangedAttack
 	protected String func_146067_o(int p_146067_1_)
     {
         return p_146067_1_ > 4 ? "game.hostile.hurt.fall.big" : "game.hostile.hurt.fall.small";
-    }
-	
-	/**
-     * Checks if the parameter is an item which this animal can be fed to breed it (wheat, carrots or seeds depending on
-     * the animal type)
-     */
-    @Override
-    public boolean isBreedingItem(ItemStack par1ItemStack)
-    {
-        return false;
-    }
-
-    /**
-     * Will return how many at most can spawn in a chunk at once.
-     */
-    @Override
-    public int getMaxSpawnedInChunk()
-    {
-        return 0;
-    }
-
-    /**
-     * Returns true if the mob is currently able to mate with the specified mob.
-     */
-    @Override
-    public boolean canMateWith(EntityAnimal par1EntityAnimal)
-    {
-        return false;
-    }
-
-    /**
-     * Determines if an entity can be despawned, used on idle far away entities
-     */
-    @Override
-    protected boolean canDespawn()
-    {
-        return false;
     }
 }

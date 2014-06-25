@@ -113,6 +113,7 @@ public class ModItems
 	    	((ItemSpellTome) ModItems.spell_tome).func_92113_a(Spell.blazefire, itemList);
 	    	((ItemSpellTome) ModItems.spell_tome).func_92113_a(Spell.ghastfire, itemList);
 	    	((ItemSpellTome) ModItems.spell_tome).func_92113_a(Spell.witherblast, itemList);
+	    	((ItemSpellTome) ModItems.spell_tome).func_92113_a(Spell.lightning, itemList);
 	    	((ItemSpellTome) ModItems.spell_tome).func_92113_a(Spell.conjure_axe, itemList);
 	    	((ItemSpellTome) ModItems.spell_tome).func_92113_a(Spell.conjure_bow, itemList);
 	    	((ItemSpellTome) ModItems.spell_tome).func_92113_a(Spell.conjure_hoe, itemList);
@@ -127,7 +128,6 @@ public class ModItems
 	    	((ItemSpellTome) ModItems.spell_tome).func_92113_a(Spell.raise_skeleton, itemList);
 	    	((ItemSpellTome) ModItems.spell_tome).func_92113_a(Spell.teleport, itemList);
 	    	((ItemSpellTome) ModItems.spell_tome).func_92113_a(Spell.respawn, itemList);
-	    	((ItemSpellTome) ModItems.spell_tome).func_92113_a(Spell.lightning, itemList);
 	    }
 	};
 }

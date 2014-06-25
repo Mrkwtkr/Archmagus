@@ -4,7 +4,6 @@ import com.agadar.archmagus.spells.Spell;
 
 import net.minecraft.block.Block;
 import net.minecraft.entity.Entity;
-import net.minecraft.entity.EntityAgeable;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.EntityAIAttackOnCollide;
@@ -19,14 +18,9 @@ import net.minecraft.entity.ai.EntityAIWander;
 import net.minecraft.entity.ai.EntityAIWatchClosest;
 import net.minecraft.entity.monster.EntityCreeper;
 import net.minecraft.entity.monster.EntityGhast;
-import net.minecraft.entity.passive.EntityAnimal;
 import net.minecraft.entity.passive.EntityHorse;
-import net.minecraft.entity.passive.EntityTameable;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.projectile.EntityArrow;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.pathfinding.PathEntity;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.MathHelper;
@@ -34,7 +28,7 @@ import net.minecraft.world.World;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class EntityArcaneWolf extends EntityTameable
+public class EntityArcaneWolf extends EntitySummonable
 {
     private float field_70926_e;
     /** true is the wolf is wet else false */
@@ -77,15 +71,6 @@ public class EntityArcaneWolf extends EntityTameable
     }
 
     /**
-     * Returns true if the newer Entity AI code should be run
-     */
-    @Override
-    public boolean isAIEnabled()
-    {
-        return true;
-    }
-
-    /**
      * main AI tick function, replaces updateEntityActionState
      */
     @Override
@@ -105,24 +90,6 @@ public class EntityArcaneWolf extends EntityTameable
     protected void func_145780_a(int p_145780_1_, int p_145780_2_, int p_145780_3_, Block p_145780_4_)
     {
         this.playSound("mob.wolf.step", 0.15F, 1.0F);
-    }
-
-    /**
-     * (abstract) Protected helper method to write subclass entity data to NBT.
-     */
-    @Override
-    public void writeEntityToNBT(NBTTagCompound par1NBTTagCompound)
-    {
-        super.writeEntityToNBT(par1NBTTagCompound);
-    }
-
-    /**
-     * (abstract) Protected helper method to read subclass entity data from NBT.
-     */
-    @Override
-    public void readEntityFromNBT(NBTTagCompound par1NBTTagCompound)
-    {
-        super.readEntityFromNBT(par1NBTTagCompound);
     }
 
     /**
@@ -159,12 +126,6 @@ public class EntityArcaneWolf extends EntityTameable
     protected float getSoundVolume()
     {
         return 0.4F;
-    }
-
-    @Override
-    protected Item getDropItem()
-    {
-        return Item.getItemById(-1);
     }
 
     /**
@@ -358,43 +319,6 @@ public class EntityArcaneWolf extends EntityTameable
         return (0.55F - (20.0F - this.dataWatcher.getWatchableObjectFloat(18)) * 0.02F) * (float)Math.PI;
     }
 
-    /**
-     * Checks if the parameter is an item which this animal can be fed to breed it (wheat, carrots or seeds depending on
-     * the animal type)
-     */
-    @Override
-    public boolean isBreedingItem(ItemStack par1ItemStack)
-    {
-        return false;
-    }
-
-    /**
-     * Will return how many at most can spawn in a chunk at once.
-     */
-    @Override
-    public int getMaxSpawnedInChunk()
-    {
-        return 0;
-    }
-
-    /**
-     * Returns true if the mob is currently able to mate with the specified mob.
-     */
-    @Override
-    public boolean canMateWith(EntityAnimal par1EntityAnimal)
-    {
-        return false;
-    }
-
-    /**
-     * Determines if an entity can be despawned, used on idle far away entities
-     */
-    @Override
-    protected boolean canDespawn()
-    {
-        return false;
-    }
-
     @Override
     public boolean func_142018_a(EntityLivingBase par1EntityLivingBase, EntityLivingBase par2EntityLivingBase)
     {
@@ -417,10 +341,4 @@ public class EntityArcaneWolf extends EntityTameable
             return false;
         }
     }
-
-	@Override
-	public EntityAgeable createChild(EntityAgeable var1) 
-	{
-		return null;
-	}
 }
