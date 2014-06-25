@@ -2,6 +2,7 @@ package com.agadar.archmagus.items;
 
 import java.util.List;
 
+import com.agadar.archmagus.help.References;
 import com.agadar.archmagus.spells.Spell;
 import com.agadar.archmagus.spells.SpellData;
 
@@ -21,7 +22,7 @@ public class ItemSpellTome extends Item
 	{
 		this.setMaxStackSize(1);
 		this.setUnlocalizedName("spell_tome");
-		this.setTextureName("book_enchanted");
+		this.setTextureName(References.MODID + ":" + getUnlocalizedName().substring(5));
 	}
 	
 	@Override

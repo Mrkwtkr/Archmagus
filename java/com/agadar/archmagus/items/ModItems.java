@@ -8,7 +8,6 @@ import com.agadar.archmagus.spells.Spell;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.creativetab.CreativeTabs;
-import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.Item.ToolMaterial;
 import net.minecraft.item.ItemArmor.ArmorMaterial;
@@ -104,7 +103,7 @@ public class ModItems
 	{
 	    @Override
 	    @SideOnly(Side.CLIENT)
-	    public Item getTabIconItem() { return Items.enchanted_book; }
+	    public Item getTabIconItem() { return ModItems.spell_tome; }
 	
 	    @SuppressWarnings("rawtypes")
 		@SideOnly(Side.CLIENT)
