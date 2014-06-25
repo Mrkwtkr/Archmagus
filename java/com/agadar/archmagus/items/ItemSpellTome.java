@@ -108,26 +108,26 @@ public class ItemSpellTome extends Item
 
     @Override
     public ItemStack onItemRightClick(ItemStack par1ItemStack, World par2World, EntityPlayer par3EntityPlayer)
-    {
-    	if (!par2World.isRemote) 
-    	{				
-    		NBTTagCompound nbttagcomp = this.func_92110_g(par1ItemStack);
-    		short cooldown = nbttagcomp.getShort("cooldown");	
-    		
-    		if (cooldown == 0)
+    {		
+    	NBTTagCompound nbttagcomp = this.func_92110_g(par1ItemStack);
+    	short cooldown = nbttagcomp.getShort("cooldown");	
+
+    	if (cooldown == 0)
+    	{
+    		Spell spell = Spell.getSpellAt(nbttagcomp.getShort("id"));	
+    		boolean inCreative = par3EntityPlayer.capabilities.isCreativeMode;
+
+    		if (par3EntityPlayer.getFoodStats().getFoodLevel() >= spell.getHungerCost() || inCreative)
     		{
-    			Spell spell = Spell.getSpellAt(nbttagcomp.getShort("id"));	
-    			boolean inCreative = par3EntityPlayer.capabilities.isCreativeMode;
-    			
-    			if (par3EntityPlayer.getFoodStats().getFoodLevel() >= spell.getHungerCost() || inCreative)
+    			if (!par2World.isRemote)
     			{
     				nbttagcomp.setShort("cooldown", spell.getCooldown());
-    				
-    				short level = nbttagcomp.getShort("lvl");
-    				spell.cast(level, par2World, par3EntityPlayer);
-    				
-    				if (!inCreative) par3EntityPlayer.getFoodStats().addStats(-spell.getHungerCost(), 0);        		
     			}
+    			
+    			short level = nbttagcomp.getShort("lvl");
+    			spell.cast(level, par2World, par3EntityPlayer);
+
+    			if (!inCreative) par3EntityPlayer.getFoodStats().addStats(-spell.getHungerCost(), 0);        		
     		}
     	}
 

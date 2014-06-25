@@ -58,22 +58,25 @@ public class SpellSummon extends Spell
 	@Override
 	public void cast(short par1Level, World par2World, EntityPlayer par3EntityPlayer) 
 	{
-		try 
+		if (!par2World.isRemote)
 		{
-			for (int i = 0; i < getNormalizedLevel(par1Level); i++)
+			try 
 			{
-				EntityCreature entity = (EntityCreature) entityConstr.newInstance(par2World);
-				entity.setLocationAndAngles(par3EntityPlayer.posX, par3EntityPlayer.posY, par3EntityPlayer.posZ, MathHelper.wrapAngleTo180_float(par2World.rand.nextFloat() * 360.0F), 0.0F);
-				entity.rotationYawHead = entity.rotationYaw;
-				entity.renderYawOffset = entity.rotationYaw;
-				((EntityTameable) entity).setOwner(par3EntityPlayer.getCommandSenderName());
-				
-				par2World.spawnEntityInWorld(entity);
-			}	
-		} 
-		catch (Exception e) 
-		{
-			e.printStackTrace();
+				for (int i = 0; i < getNormalizedLevel(par1Level); i++)
+				{
+					EntityCreature entity = (EntityCreature) entityConstr.newInstance(par2World);
+					entity.setLocationAndAngles(par3EntityPlayer.posX, par3EntityPlayer.posY, par3EntityPlayer.posZ, MathHelper.wrapAngleTo180_float(par2World.rand.nextFloat() * 360.0F), 0.0F);
+					entity.rotationYawHead = entity.rotationYaw;
+					entity.renderYawOffset = entity.rotationYaw;
+					((EntityTameable) entity).setOwner(par3EntityPlayer.getCommandSenderName());
+
+					par2World.spawnEntityInWorld(entity);
+				}	
+			} 
+			catch (Exception e) 
+			{
+				e.printStackTrace();
+			}
 		}
 	}
 }

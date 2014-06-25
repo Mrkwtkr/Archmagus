@@ -41,15 +41,18 @@ public class SpellTeleport extends Spell
 	@Override
 	public void cast(short par1Level, World par2World, EntityPlayer par3EntityPlayer) 
 	{
-		int distance = distances[getNormalizedLevel(par1Level) - 1];
-		Minecraft mc = Minecraft.getMinecraft();
-		
-		if((mc.renderViewEntity.rayTrace(distance, 1.0F) != null))
+		if (!par2World.isRemote)
 		{
-			int blockHitX = mc.renderViewEntity.rayTrace(distance, 1.0F).blockX;
-			int blockHitY = mc.renderViewEntity.rayTrace(distance, 1.0F).blockY;
-			int blockHitZ = mc.renderViewEntity.rayTrace(distance, 1.0F).blockZ;
-			par3EntityPlayer.setPositionAndUpdate(blockHitX, blockHitY + 1, blockHitZ);
+			int distance = distances[getNormalizedLevel(par1Level) - 1];
+			Minecraft mc = Minecraft.getMinecraft();
+
+			if((mc.renderViewEntity.rayTrace(distance, 1.0F) != null))
+			{
+				int blockHitX = mc.renderViewEntity.rayTrace(distance, 1.0F).blockX;
+				int blockHitY = mc.renderViewEntity.rayTrace(distance, 1.0F).blockY;
+				int blockHitZ = mc.renderViewEntity.rayTrace(distance, 1.0F).blockZ;
+				par3EntityPlayer.setPositionAndUpdate(blockHitX, blockHitY + 1, blockHitZ);
+			}
 		}
 	}
 }

@@ -27,16 +27,19 @@ public class SpellTeleportHome extends Spell
 	@Override
 	public void cast(short par1Level, World par2World, EntityPlayer par3EntityPlayer) 
 	{
-		ChunkCoordinates coordBed = par3EntityPlayer.getBedLocation(0);
-		
-		if (coordBed != null)
+		if (!par2World.isRemote)
 		{
-			par3EntityPlayer.setPositionAndUpdate(coordBed.posX, coordBed.posY + 1, coordBed.posZ);
-		}
-		else
-		{
-			ChunkCoordinates coordSpawn = par2World.getSpawnPoint();
-			par3EntityPlayer.setPositionAndUpdate(coordSpawn.posX, coordSpawn.posY, coordSpawn.posZ);
+			ChunkCoordinates coordBed = par3EntityPlayer.getBedLocation(0);
+
+			if (coordBed != null)
+			{
+				par3EntityPlayer.setPositionAndUpdate(coordBed.posX, coordBed.posY + 1, coordBed.posZ);
+			}
+			else
+			{
+				ChunkCoordinates coordSpawn = par2World.getSpawnPoint();
+				par3EntityPlayer.setPositionAndUpdate(coordSpawn.posX, coordSpawn.posY, coordSpawn.posZ);
+			}
 		}
 	}
 }
