@@ -56,9 +56,18 @@ public class ItemSpellTome extends Item
         NBTTagCompound nbttagcomp = this.func_92110_g(par1ItemStack);
         short short1 = nbttagcomp.getShort("id");
         short short2 = nbttagcomp.getShort("lvl");
-
-        Spell spell = Spell.getSpellAt(short1);       
-        if (spell != null) par3List.add(spell.getTranslatedName(short2));
+        short cooldown = (short) (nbttagcomp.getShort("cooldown") / 20);
+        Spell spell = Spell.getSpellAt(short1); 
+        
+        if (spell != null)
+        {
+        	par3List.add(spell.getTranslatedName(short2));
+        	
+        	if (cooldown != 0)
+        	{
+        		par3List.add("Cooldown: " + cooldown + " seconds");
+        	}
+        }
     }
 
     /**

@@ -36,7 +36,7 @@ public class SpellConjureItem extends Spell
 	@Override
 	public short getCooldown()
 	{
-		return 80;
+		return 300;
 	}
 
 	@Override
