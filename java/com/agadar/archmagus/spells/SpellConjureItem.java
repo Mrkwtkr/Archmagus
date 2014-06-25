@@ -32,6 +32,12 @@ public class SpellConjureItem extends Spell
     {
         return items.length;
     }
+	
+	@Override
+	public short getCooldown()
+	{
+		return 80;
+	}
 
 	@Override
 	public void cast(short par1Level, World par2World, EntityPlayer par3EntityPlayer) 

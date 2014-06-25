@@ -28,8 +28,6 @@ public abstract class Spell
 	public final static Spell conjureLeggings = new SpellConjureItem(10, "conjure_leggings", new Item[] { ModItems.conjured_leggings_1, ModItems.conjured_leggings_2, ModItems.conjured_leggings_3 });
 	public final static Spell conjureBoots = new SpellConjureItem(11, "conjure_boots", new Item[] { ModItems.conjured_boots_1, ModItems.conjured_boots_2, ModItems.conjured_boots_3 });
 	public final static Spell summonArcaneWolf = new SpellSummon(12, "summon_arcane_wolf", EntityArcaneWolf.class);
-	/** The cooldown of all spells in game ticks. */
-	public final static short coolDown = 20;
 	/** A Random object used by some child classes of Spell. */
 	protected final static Random random = new Random();
 	/** The index of this spell in the spellList. */
@@ -76,9 +74,17 @@ public abstract class Spell
     }
     
     /**
+     * Returns the cooldown of this spell in game ticks.
+     */
+    public short getCooldown()
+    {
+    	return 20;
+    }
+    
+    /**
      * Sets the spell name.
      */
-    public Spell setName(String par1Str)
+    protected Spell setName(String par1Str)
     {
         this.name = par1Str;
         return this;
@@ -87,7 +93,7 @@ public abstract class Spell
     /**
      * Returns the name of key in translation table of this spell.
      */
-    public String getName()
+    private String getName()
     {
         return "spell." + this.name;
     }

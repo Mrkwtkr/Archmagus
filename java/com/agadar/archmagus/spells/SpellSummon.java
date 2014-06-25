@@ -6,6 +6,7 @@ import net.minecraft.entity.EntityCreature;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
+import net.minecraft.entity.passive.EntityTameable;
 
 public class SpellSummon extends Spell 
 {
@@ -47,6 +48,12 @@ public class SpellSummon extends Spell
     {
     	return 8;
     }
+	
+	@Override
+	public short getCooldown()
+	{
+		return 1200;
+	}
 
 	@Override
 	public void cast(short par1Level, World par2World, EntityPlayer par3EntityPlayer) 
@@ -59,6 +66,8 @@ public class SpellSummon extends Spell
 				entity.setLocationAndAngles(par3EntityPlayer.posX, par3EntityPlayer.posY, par3EntityPlayer.posZ, MathHelper.wrapAngleTo180_float(par2World.rand.nextFloat() * 360.0F), 0.0F);
 				entity.rotationYawHead = entity.rotationYaw;
 				entity.renderYawOffset = entity.rotationYaw;
+				((EntityTameable) entity).setOwner(par3EntityPlayer.getCommandSenderName());
+				
 				par2World.spawnEntityInWorld(entity);
 			}	
 		} 

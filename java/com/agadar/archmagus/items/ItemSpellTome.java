@@ -112,7 +112,7 @@ public class ItemSpellTome extends Item
     			
     			if (par3EntityPlayer.getFoodStats().getFoodLevel() >= spell.getHungerCost() || inCreative)
     			{
-    				nbttagcomp.setShort("cooldown", Spell.coolDown);
+    				nbttagcomp.setShort("cooldown", spell.getCooldown());
     				
     				short level = nbttagcomp.getShort("lvl");
     				spell.cast(level, par2World, par3EntityPlayer);

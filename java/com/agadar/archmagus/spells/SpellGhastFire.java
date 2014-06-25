@@ -18,6 +18,12 @@ public class SpellGhastFire extends Spell
     {
     	return 2;
     }
+	
+	@Override
+	public short getCooldown()
+	{
+		return 40;
+	}
 
 	@Override
 	public void cast(short par1Level, World par2World, EntityPlayer par3EntityPlayer) 
@@ -27,7 +33,7 @@ public class SpellGhastFire extends Spell
 		
 		for (int i = 0; i < getNormalizedLevel(par1Level); i++)
 		{
-			EntityLargeFireball largefireball = new EntityLargeFireball(par2World, par3EntityPlayer.posX, par3EntityPlayer.posY + par3EntityPlayer.eyeHeight, par3EntityPlayer.posZ, v3.xCoord + random.nextGaussian() / 6, v3.yCoord, v3.zCoord + random.nextGaussian() / 6);
+			EntityLargeFireball largefireball = new EntityLargeFireball(par2World, par3EntityPlayer.posX, par3EntityPlayer.posY + par3EntityPlayer.eyeHeight, par3EntityPlayer.posZ, v3.xCoord + random.nextGaussian() / 4, v3.yCoord, v3.zCoord + random.nextGaussian() / 4);
 			largefireball.shootingEntity = par3EntityPlayer;
 			par2World.spawnEntityInWorld(largefireball);
 		}
