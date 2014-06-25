@@ -36,9 +36,11 @@ public class SpellConjureItem extends Spell
 	@Override
 	public void cast(short par1Level, World par2World, EntityPlayer par3EntityPlayer) 
 	{			
-		if (!par3EntityPlayer.inventory.addItemStackToInventory(new ItemStack(items[par1Level - 1]))) 
+		Item item = items[getNormalizedLevel(par1Level) - 1];
+		
+		if (!par3EntityPlayer.inventory.addItemStackToInventory(new ItemStack(item))) 
 		{
-			par3EntityPlayer.dropItem(items[par1Level - 1], 1);
+			par3EntityPlayer.dropItem(item, 1);
 		}
 		par3EntityPlayer.inventoryContainer.detectAndSendChanges();
 	}

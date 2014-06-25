@@ -53,7 +53,7 @@ public class SpellSummon extends Spell
 	{
 		try 
 		{
-			for (int i = 0; i < par1Level; i++)
+			for (int i = 0; i < getNormalizedLevel(par1Level); i++)
 			{
 				EntityCreature entity = (EntityCreature) entityConstr.newInstance(par2World);
 				entity.setLocationAndAngles(par3EntityPlayer.posX, par3EntityPlayer.posY, par3EntityPlayer.posZ, MathHelper.wrapAngleTo180_float(par2World.rand.nextFloat() * 360.0F), 0.0F);

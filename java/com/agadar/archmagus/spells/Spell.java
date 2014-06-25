@@ -121,6 +121,14 @@ public abstract class Spell
         String s = StatCollector.translateToLocal(this.getName());
         return s + " " + StatCollector.translateToLocal("spell.level." + par1);
     }
+    
+    /**
+     * Ensures that a given level lies between this spell's minimum and maximum levels.
+     */
+    protected int getNormalizedLevel(int par1Level)
+    {
+    	return Math.max(getMinLevel(), Math.min(par1Level, getMaxLevel()));
+    }
 
 	public abstract void cast(short par1Level, World par2World, EntityPlayer par3EntityPlayer);
 }
