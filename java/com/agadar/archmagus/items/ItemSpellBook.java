@@ -129,6 +129,14 @@ public class ItemSpellBook extends Item
     			}
     			
     			if (!inCreative && succes) par3EntityPlayer.getFoodStats().addStats(-spell.getHungerCost(), 0);        		
+    		
+    	    	for (int i = 0; i < 10; ++i)
+    	        {
+    	            double d0 = par2World.rand.nextGaussian() * 0.02D;
+    	            double d1 = par2World.rand.nextGaussian() * 0.02D;
+    	            double d2 = par2World.rand.nextGaussian() * 0.02D;
+    	            par2World.spawnParticle("flame", par3EntityPlayer.posX + (double)(par2World.rand.nextFloat() * par3EntityPlayer.width * 2.0F) - (double)par3EntityPlayer.width, par3EntityPlayer.posY - 1.5D + (double)(par2World.rand.nextFloat() * par3EntityPlayer.height), par3EntityPlayer.posZ + (double)(par2World.rand.nextFloat() * par3EntityPlayer.width * 2.0F) - (double)par3EntityPlayer.width, d0, d1, d2);
+    	        }
     		}
     	}
 
