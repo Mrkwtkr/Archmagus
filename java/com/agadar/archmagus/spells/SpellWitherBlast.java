@@ -33,13 +33,11 @@ public class SpellWitherBlast extends Spell
 		if (!par2World.isRemote)
 		{
 			Vec3 v3 = par3EntityPlayer.getLook(1);
+			int accuracy = 10;
+			EntityWitherSkull entitywitherskull = new EntityWitherSkull(par2World, par3EntityPlayer.posX, par3EntityPlayer.posY + par3EntityPlayer.eyeHeight, par3EntityPlayer.posZ, v3.xCoord + random.nextGaussian() / accuracy, v3.yCoord, v3.zCoord + random.nextGaussian() / accuracy);
+			entitywitherskull.shootingEntity = par3EntityPlayer;
+			par2World.spawnEntityInWorld(entitywitherskull);
 
-			for (int i = 0; i < getNormalizedLevel(par1Level); i++)
-			{
-				EntityWitherSkull entitywitherskull = new EntityWitherSkull(par2World, par3EntityPlayer.posX, par3EntityPlayer.posY + par3EntityPlayer.eyeHeight, par3EntityPlayer.posZ, v3.xCoord + random.nextGaussian() / 4, v3.yCoord, v3.zCoord + random.nextGaussian() / 4);
-				entitywitherskull.shootingEntity = par3EntityPlayer;
-				par2World.spawnEntityInWorld(entitywitherskull);
-			}
 		}
 	}
 }

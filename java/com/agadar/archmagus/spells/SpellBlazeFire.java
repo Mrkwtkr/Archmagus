@@ -27,10 +27,11 @@ public class SpellBlazeFire extends Spell
 		if (!par2World.isRemote)
 		{
 			Vec3 v3 = par3EntityPlayer.getLook(1);
+			int[] accuracies = { 10, 8, 6 };
 
 			for (int i = 0; i < getNormalizedLevel(par1Level); i++)
 			{
-				EntitySmallFireball smallfireball = new EntitySmallFireball(par2World, par3EntityPlayer.posX, par3EntityPlayer.posY + par3EntityPlayer.eyeHeight, par3EntityPlayer.posZ, v3.xCoord + random.nextGaussian() / 4, v3.yCoord, v3.zCoord + random.nextGaussian() / 4);
+				EntitySmallFireball smallfireball = new EntitySmallFireball(par2World, par3EntityPlayer.posX, par3EntityPlayer.posY + par3EntityPlayer.eyeHeight, par3EntityPlayer.posZ, v3.xCoord + random.nextGaussian() / accuracies[par1Level - 1], v3.yCoord, v3.zCoord + random.nextGaussian() / accuracies[par1Level - 1]);
 				smallfireball.shootingEntity = par3EntityPlayer;
 				par2World.spawnEntityInWorld(smallfireball);
 			}

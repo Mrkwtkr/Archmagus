@@ -28,7 +28,7 @@ public class SpellLightning extends Spell
 	@Override
 	public short getCooldown()
 	{
-		return 60;
+		return 50;
 	}
 
 	@Override
@@ -42,10 +42,11 @@ public class SpellLightning extends Spell
 			int blockHitX = mc.renderViewEntity.rayTrace(distance, 1.0F).blockX;
 			int blockHitY = mc.renderViewEntity.rayTrace(distance, 1.0F).blockY;
 			int blockHitZ = mc.renderViewEntity.rayTrace(distance, 1.0F).blockZ;
+			int[] accuracies = { 2, 3, 4 };
 			
 			for (int i = 0; i < getNormalizedLevel(par1Level); i++)
 			{
-				par2World.spawnEntityInWorld(new EntityLightningBolt(par2World, blockHitX + random.nextGaussian() * 4, blockHitY, blockHitZ + random.nextGaussian() * 4));
+				par2World.spawnEntityInWorld(new EntityLightningBolt(par2World, blockHitX + random.nextGaussian() * accuracies[par1Level - 1], blockHitY, blockHitZ + random.nextGaussian() * accuracies[par1Level - 1]));
 			}
 		}		
 	}
