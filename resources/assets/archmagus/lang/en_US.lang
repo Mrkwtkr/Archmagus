@@ -1,6 +1,6 @@
-itemGroup.tabSpellTomes=Spell Tomes
+itemGroup.tabSpellBooks=Spell Books
 
-item.spell_tome.name=Spell Tome
+item.spell_book.name=Spell Book
 item.conjured_axe_1.name=Conjured Axe I
 item.conjured_axe_2.name=Conjured Axe II
 item.conjured_axe_3.name=Conjured Axe III

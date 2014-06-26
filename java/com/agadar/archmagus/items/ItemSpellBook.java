@@ -16,12 +16,12 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.world.World;
 
-public class ItemSpellTome extends Item 
+public class ItemSpellBook extends Item 
 {
-	public ItemSpellTome()
+	public ItemSpellBook()
 	{
 		this.setMaxStackSize(1);
-		this.setUnlocalizedName("spell_tome");
+		this.setUnlocalizedName("spell_book");
 		this.setTextureName(References.MODID + ":" + getUnlocalizedName().substring(5));
 	}
 	

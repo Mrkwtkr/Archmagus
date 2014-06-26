@@ -15,8 +15,8 @@ import net.minecraftforge.common.util.EnumHelper;
 
 public class ModItems 
 {
-	// The Spell Tome
-	public final static Item spell_tome = new ItemSpellTome();
+	// The Spell Book
+	public final static Item spell_book = new ItemSpellBook();
 	
 	// Conjured Tools/Weapons Materials
 	public final static ToolMaterial CONJ_TOOL_1 = EnumHelper.addToolMaterial("CONJURED_1", 0, 59, 2.0F, 0.0F, 0);
@@ -65,7 +65,7 @@ public class ModItems
 	
 	public static void loadItems()
 	{
-		RegisterHelper.registerItem(spell_tome);
+		RegisterHelper.registerItem(spell_book);
 		RegisterHelper.registerItem(conjured_axe_1);
 		RegisterHelper.registerItem(conjured_axe_2);
 		RegisterHelper.registerItem(conjured_axe_3);
@@ -99,32 +99,32 @@ public class ModItems
 	}
 	
 	// The Creative Tab
- 	public final static CreativeTabs tabSpellTomes = new CreativeTabs("tabSpellTomes") 
+ 	public final static CreativeTabs tabSpellBooks = new CreativeTabs("tabSpellBooks") 
 	{
 	    @Override
 	    @SideOnly(Side.CLIENT)
-	    public Item getTabIconItem() { return ModItems.spell_tome; }
+	    public Item getTabIconItem() { return ModItems.spell_book; }
 	
 	    @SuppressWarnings("rawtypes")
 		@SideOnly(Side.CLIENT)
 	    public void displayAllReleventItems(List itemList) 
 	    {       
-	    	((ItemSpellTome) ModItems.spell_tome).func_92113_a(Spell.blazefire, itemList);
-	    	((ItemSpellTome) ModItems.spell_tome).func_92113_a(Spell.ghastfire, itemList);
-	    	((ItemSpellTome) ModItems.spell_tome).func_92113_a(Spell.witherblast, itemList);
-	    	((ItemSpellTome) ModItems.spell_tome).func_92113_a(Spell.lightning, itemList);
-	    	((ItemSpellTome) ModItems.spell_tome).func_92113_a(Spell.conjure_axe, itemList);
-	    	((ItemSpellTome) ModItems.spell_tome).func_92113_a(Spell.conjure_bow, itemList);
-	    	((ItemSpellTome) ModItems.spell_tome).func_92113_a(Spell.conjure_hoe, itemList);
-	    	((ItemSpellTome) ModItems.spell_tome).func_92113_a(Spell.conjure_pickaxe, itemList);
-	    	((ItemSpellTome) ModItems.spell_tome).func_92113_a(Spell.conjure_shovel, itemList);
-	    	((ItemSpellTome) ModItems.spell_tome).func_92113_a(Spell.conjure_sword, itemList);
-	    	((ItemSpellTome) ModItems.spell_tome).func_92113_a(Spell.conjure_armor, itemList);
-	    	((ItemSpellTome) ModItems.spell_tome).func_92113_a(Spell.summon_arcane_wolf, itemList);
-	    	((ItemSpellTome) ModItems.spell_tome).func_92113_a(Spell.raise_skeleton, itemList);
-	    	((ItemSpellTome) ModItems.spell_tome).func_92113_a(Spell.raise_wither_skeleton, itemList);
-	    	((ItemSpellTome) ModItems.spell_tome).func_92113_a(Spell.teleport, itemList);
-	    	((ItemSpellTome) ModItems.spell_tome).func_92113_a(Spell.respawn, itemList);
+	    	((ItemSpellBook) ModItems.spell_book).func_92113_a(Spell.blazefire, itemList);
+	    	((ItemSpellBook) ModItems.spell_book).func_92113_a(Spell.ghastfire, itemList);
+	    	((ItemSpellBook) ModItems.spell_book).func_92113_a(Spell.witherblast, itemList);
+	    	((ItemSpellBook) ModItems.spell_book).func_92113_a(Spell.lightning, itemList);
+	    	((ItemSpellBook) ModItems.spell_book).func_92113_a(Spell.conjure_axe, itemList);
+	    	((ItemSpellBook) ModItems.spell_book).func_92113_a(Spell.conjure_bow, itemList);
+	    	((ItemSpellBook) ModItems.spell_book).func_92113_a(Spell.conjure_hoe, itemList);
+	    	((ItemSpellBook) ModItems.spell_book).func_92113_a(Spell.conjure_pickaxe, itemList);
+	    	((ItemSpellBook) ModItems.spell_book).func_92113_a(Spell.conjure_shovel, itemList);
+	    	((ItemSpellBook) ModItems.spell_book).func_92113_a(Spell.conjure_sword, itemList);
+	    	((ItemSpellBook) ModItems.spell_book).func_92113_a(Spell.conjure_armor, itemList);
+	    	((ItemSpellBook) ModItems.spell_book).func_92113_a(Spell.summon_arcane_wolf, itemList);
+	    	((ItemSpellBook) ModItems.spell_book).func_92113_a(Spell.raise_skeleton, itemList);
+	    	((ItemSpellBook) ModItems.spell_book).func_92113_a(Spell.raise_wither_skeleton, itemList);
+	    	((ItemSpellBook) ModItems.spell_book).func_92113_a(Spell.teleport, itemList);
+	    	((ItemSpellBook) ModItems.spell_book).func_92113_a(Spell.respawn, itemList);
 	    }
 	};
 }
