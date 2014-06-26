@@ -40,7 +40,7 @@ public class SpellConjureArmor extends Spell
 	}
 
 	@Override
-	public void cast(short par1Level, World par2World, EntityPlayer par3EntityPlayer) 
+	public boolean cast(short par1Level, World par2World, EntityPlayer par3EntityPlayer) 
 	{
 		if (!par2World.isRemote)
 		{
@@ -58,5 +58,7 @@ public class SpellConjureArmor extends Spell
 			
 			par3EntityPlayer.inventoryContainer.detectAndSendChanges();
 		}
+		
+		return true;
 	}
 }

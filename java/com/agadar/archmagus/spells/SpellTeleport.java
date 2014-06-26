@@ -39,7 +39,7 @@ public class SpellTeleport extends Spell
     }
 
 	@Override
-	public void cast(short par1Level, World par2World, EntityPlayer par3EntityPlayer) 
+	public boolean cast(short par1Level, World par2World, EntityPlayer par3EntityPlayer) 
 	{
 		if (!par2World.isRemote)
 		{
@@ -52,7 +52,12 @@ public class SpellTeleport extends Spell
 				int blockHitY = mc.renderViewEntity.rayTrace(distance, 1.0F).blockY;
 				int blockHitZ = mc.renderViewEntity.rayTrace(distance, 1.0F).blockZ;
 				par3EntityPlayer.setPositionAndUpdate(blockHitX, blockHitY + 1, blockHitZ);
+			} 
+			else
+			{
+				return false;
 			}
 		}
+		return true;
 	}
 }

@@ -32,7 +32,7 @@ public class SpellLightning extends Spell
 	}
 
 	@Override
-	public void cast(short par1Level, World par2World, EntityPlayer par3EntityPlayer) 
+	public boolean cast(short par1Level, World par2World, EntityPlayer par3EntityPlayer) 
 	{
 		int distance = 100;
 		Minecraft mc = Minecraft.getMinecraft();
@@ -48,6 +48,12 @@ public class SpellLightning extends Spell
 			{
 				par2World.spawnEntityInWorld(new EntityLightningBolt(par2World, blockHitX + random.nextGaussian() * accuracies[par1Level - 1], blockHitY, blockHitZ + random.nextGaussian() * accuracies[par1Level - 1]));
 			}
-		}		
+		}
+		else
+		{
+			return false;
+		}
+		
+		return true;
 	}
 }

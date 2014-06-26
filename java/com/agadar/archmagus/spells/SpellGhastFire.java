@@ -26,7 +26,7 @@ public class SpellGhastFire extends Spell
 	}
 
 	@Override
-	public void cast(short par1Level, World par2World, EntityPlayer par3EntityPlayer) 
+	public boolean cast(short par1Level, World par2World, EntityPlayer par3EntityPlayer) 
 	{
 		par2World.playAuxSFXAtEntity((EntityPlayer)null, 1008, (int)par3EntityPlayer.posX, (int)par3EntityPlayer.posY, (int)par3EntityPlayer.posZ, 0);
 		
@@ -38,5 +38,7 @@ public class SpellGhastFire extends Spell
 			largefireball.shootingEntity = par3EntityPlayer;
 			par2World.spawnEntityInWorld(largefireball);
 		}
+		
+		return true;
 	}
 }

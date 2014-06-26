@@ -125,8 +125,9 @@ public abstract class Spell
 
     /**
      * Casts this spell based on the given level.
+     * @return An indication of whether the spell was cast succesfully.
      */
-	public abstract void cast(short par1Level, World par2World, EntityPlayer par3EntityPlayer);
+	public abstract boolean cast(short par1Level, World par2World, EntityPlayer par3EntityPlayer);
 	
 	/**
 	 * Returns the spell with the given index.

@@ -25,7 +25,7 @@ public class SpellRespawn extends Spell
     }
 
 	@Override
-	public void cast(short par1Level, World par2World, EntityPlayer par3EntityPlayer) 
+	public boolean cast(short par1Level, World par2World, EntityPlayer par3EntityPlayer) 
 	{
 		if (!par2World.isRemote)
 		{
@@ -41,5 +41,7 @@ public class SpellRespawn extends Spell
 				par3EntityPlayer.setPositionAndUpdate(coordSpawn.posX, coordSpawn.posY, coordSpawn.posZ);
 			}
 		}
+		
+		return true;
 	}
 }

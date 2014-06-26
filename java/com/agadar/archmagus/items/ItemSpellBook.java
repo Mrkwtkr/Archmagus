@@ -120,15 +120,15 @@ public class ItemSpellBook extends Item
 
     		if (par3EntityPlayer.getFoodStats().getFoodLevel() >= spell.getHungerCost() || inCreative)
     		{
-    			if (!par2World.isRemote)
+    			short level = nbttagcomp.getShort("lvl");
+    			boolean succes = spell.cast(level, par2World, par3EntityPlayer);
+
+    			if (!par2World.isRemote && succes)
     			{
     				nbttagcomp.setShort("cooldown", spell.getCooldown());
     			}
     			
-    			short level = nbttagcomp.getShort("lvl");
-    			spell.cast(level, par2World, par3EntityPlayer);
-
-    			if (!inCreative) par3EntityPlayer.getFoodStats().addStats(-spell.getHungerCost(), 0);        		
+    			if (!inCreative && succes) par3EntityPlayer.getFoodStats().addStats(-spell.getHungerCost(), 0);        		
     		}
     	}
 
