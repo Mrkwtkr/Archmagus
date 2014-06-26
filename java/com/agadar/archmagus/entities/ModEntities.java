@@ -9,7 +9,7 @@ public class ModEntities
 	public static void registerEntities()
 	{
 		// Register the entities.
-		EntityRegistry.registerGlobalEntityID(EntityArcaneWolf.class, "Arcane Wolf", EntityRegistry.findGlobalUniqueEntityId());
+		EntityRegistry.registerGlobalEntityID(EntitySpiritWolf.class, "Spirit Wolf", EntityRegistry.findGlobalUniqueEntityId());
 		EntityRegistry.registerGlobalEntityID(EntityRisenSkeleton.class, "Risen Skeleton", EntityRegistry.findGlobalUniqueEntityId());
 		EntityRegistry.registerGlobalEntityID(EntityRisenWitherSkeleton.class, "Risen Wither Skeleton", EntityRegistry.findGlobalUniqueEntityId());
 		

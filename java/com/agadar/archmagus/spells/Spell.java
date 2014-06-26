@@ -2,7 +2,7 @@ package com.agadar.archmagus.spells;
 
 import java.util.Random;
 
-import com.agadar.archmagus.entities.EntityArcaneWolf;
+import com.agadar.archmagus.entities.EntitySpiritWolf;
 import com.agadar.archmagus.entities.EntityRisenSkeleton;
 import com.agadar.archmagus.entities.EntityRisenWitherSkeleton;
 import com.agadar.archmagus.items.ModItems;
@@ -31,7 +31,7 @@ public abstract class Spell
 			new Item[] { ModItems.conjured_helmet_1, ModItems.conjured_chestplate_1, ModItems.conjured_leggings_1, ModItems.conjured_boots_1 }, 
 			new Item[] { ModItems.conjured_helmet_2, ModItems.conjured_chestplate_2, ModItems.conjured_leggings_2, ModItems.conjured_boots_2 },
 			new Item[] { ModItems.conjured_helmet_3, ModItems.conjured_chestplate_3, ModItems.conjured_leggings_3, ModItems.conjured_boots_3 }});
-	public final static Spell summon_arcane_wolf = new SpellSummon(11, "summon_arcane_wolf", EntityArcaneWolf.class);
+	public final static Spell summon_spirit_wolf = new SpellSummon(11, "summon_spirit_wolf", EntitySpiritWolf.class);
 	public final static Spell raise_skeleton = new SpellSummon(12, "raise_skeleton", EntityRisenSkeleton.class);
 	public final static Spell raise_wither_skeleton = new SpellSummon(13, "raise_wither_skeleton", EntityRisenWitherSkeleton.class);
 	public final static Spell teleport = new SpellTeleport(14);

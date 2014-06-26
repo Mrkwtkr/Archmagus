@@ -2,7 +2,7 @@ package com.agadar.archmagus.renderers;
 
 import org.lwjgl.opengl.GL11;
 
-import com.agadar.archmagus.entities.EntityArcaneWolf;
+import com.agadar.archmagus.entities.EntitySpiritWolf;
 import com.agadar.archmagus.help.References;
 
 import cpw.mods.fml.relauncher.Side;
@@ -14,11 +14,11 @@ import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.util.ResourceLocation;
 
 @SideOnly(Side.CLIENT)
-public class RenderArcaneWolf extends RenderLiving 
+public class RenderSpiritWolf extends RenderLiving 
 {
-	private static final ResourceLocation wolfTextures = new ResourceLocation(References.MODID + ":textures/entity/arcane_wolf.png");
+	private static final ResourceLocation wolfTextures = new ResourceLocation(References.MODID + ":textures/entity/spirit_wolf.png");
 	
-	public RenderArcaneWolf(ModelBase par1ModelBase, ModelBase par2ModelBase, float par3) 
+	public RenderSpiritWolf(ModelBase par1ModelBase, ModelBase par2ModelBase, float par3) 
 	{
 		super(par1ModelBase, par3);
 		this.setRenderPassModel(par2ModelBase);
@@ -27,12 +27,12 @@ public class RenderArcaneWolf extends RenderLiving
 	/**
      * Defines what float the third param in setRotationAngles of ModelBase is
      */
-    protected float handleRotationFloat(EntityArcaneWolf par1EntityWolf, float par2)
+    protected float handleRotationFloat(EntitySpiritWolf par1EntityWolf, float par2)
     {
         return par1EntityWolf.getTailRotation();
     }
 	
-	protected int shouldRenderPass(EntityArcaneWolf par1EntityWolf, int par2, float par3)
+	protected int shouldRenderPass(EntitySpiritWolf par1EntityWolf, int par2, float par3)
     {
         if (par2 == 0 && par1EntityWolf.getWolfShaking())
         {
@@ -47,7 +47,7 @@ public class RenderArcaneWolf extends RenderLiving
         }
     }
 	
-	protected ResourceLocation getEntityTexture(EntityArcaneWolf par1EntityWolf)
+	protected ResourceLocation getEntityTexture(EntitySpiritWolf par1EntityWolf)
     {
         return wolfTextures;
     }
@@ -57,7 +57,7 @@ public class RenderArcaneWolf extends RenderLiving
      */
     protected int shouldRenderPass(EntityLivingBase par1EntityLivingBase, int par2, float par3)
     {
-        return this.shouldRenderPass((EntityArcaneWolf)par1EntityLivingBase, par2, par3);
+        return this.shouldRenderPass((EntitySpiritWolf)par1EntityLivingBase, par2, par3);
     }
     
     /**
@@ -65,7 +65,7 @@ public class RenderArcaneWolf extends RenderLiving
      */
     protected float handleRotationFloat(EntityLivingBase par1EntityLivingBase, float par2)
     {
-        return this.handleRotationFloat((EntityArcaneWolf)par1EntityLivingBase, par2);
+        return this.handleRotationFloat((EntitySpiritWolf)par1EntityLivingBase, par2);
     }
 
     /**
@@ -73,6 +73,6 @@ public class RenderArcaneWolf extends RenderLiving
      */
     protected ResourceLocation getEntityTexture(Entity par1Entity)
     {
-        return this.getEntityTexture((EntityArcaneWolf)par1Entity);
+        return this.getEntityTexture((EntitySpiritWolf)par1Entity);
     }
 }

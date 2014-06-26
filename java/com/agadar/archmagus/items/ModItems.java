@@ -120,7 +120,7 @@ public class ModItems
 	    	((ItemSpellBook) ModItems.spell_book).func_92113_a(Spell.conjure_shovel, itemList);
 	    	((ItemSpellBook) ModItems.spell_book).func_92113_a(Spell.conjure_sword, itemList);
 	    	((ItemSpellBook) ModItems.spell_book).func_92113_a(Spell.conjure_armor, itemList);
-	    	((ItemSpellBook) ModItems.spell_book).func_92113_a(Spell.summon_arcane_wolf, itemList);
+	    	((ItemSpellBook) ModItems.spell_book).func_92113_a(Spell.summon_spirit_wolf, itemList);
 	    	((ItemSpellBook) ModItems.spell_book).func_92113_a(Spell.raise_skeleton, itemList);
 	    	((ItemSpellBook) ModItems.spell_book).func_92113_a(Spell.raise_wither_skeleton, itemList);
 	    	((ItemSpellBook) ModItems.spell_book).func_92113_a(Spell.teleport, itemList);

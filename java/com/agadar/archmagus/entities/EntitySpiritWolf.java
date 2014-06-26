@@ -28,7 +28,7 @@ import net.minecraft.world.World;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class EntityArcaneWolf extends EntitySummonable
+public class EntitySpiritWolf extends EntitySummonable
 {
     private float field_70926_e;
     /** true is the wolf is wet else false */
@@ -40,7 +40,7 @@ public class EntityArcaneWolf extends EntitySummonable
     private float timeWolfIsShaking;
     private float prevTimeWolfIsShaking;
 
-    public EntityArcaneWolf(World par1World)
+    public EntitySpiritWolf(World par1World)
     {
         super(par1World);
         this.setSize(0.6F, 0.8F);
@@ -56,7 +56,7 @@ public class EntityArcaneWolf extends EntitySummonable
         this.targetTasks.addTask(1, new EntityAIOwnerHurtByTarget(this));
         this.targetTasks.addTask(2, new EntityAIOwnerHurtTarget(this));
         this.targetTasks.addTask(3, new EntityAIHurtByTarget(this, false));
-        
+
         this.setTamed(true);
         this.setPathToEntity((PathEntity)null);
         this.setAttackTarget((EntityLivingBase)null);
@@ -154,7 +154,7 @@ public class EntityArcaneWolf extends EntitySummonable
     {
         super.onUpdate();
 
-        if (this.ticksExisted >= Spell.summon_arcane_wolf.getCooldown())
+        if (this.ticksExisted >= Spell.summon_spirit_wolf.getCooldown())
         {
         	this.damageEntity(DamageSource.generic, this.getMaxHealth());
         }
@@ -324,9 +324,9 @@ public class EntityArcaneWolf extends EntitySummonable
     {
         if (!(par1EntityLivingBase instanceof EntityCreeper) && !(par1EntityLivingBase instanceof EntityGhast))
         {
-            if (par1EntityLivingBase instanceof EntityArcaneWolf)
+            if (par1EntityLivingBase instanceof EntitySpiritWolf)
             {
-            	EntityArcaneWolf entitywolf = (EntityArcaneWolf) par1EntityLivingBase;
+            	EntitySpiritWolf entitywolf = (EntitySpiritWolf) par1EntityLivingBase;
 
                 if (entitywolf.getOwner() == par2EntityLivingBase)
                 {

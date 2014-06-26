@@ -1,11 +1,11 @@
 package com.agadar.archmagus.client;
 
 import com.agadar.archmagus.CommonProxy;
-import com.agadar.archmagus.entities.EntityArcaneWolf;
+import com.agadar.archmagus.entities.EntitySpiritWolf;
 import com.agadar.archmagus.entities.EntityRisenSkeleton;
 import com.agadar.archmagus.entities.EntityRisenWitherSkeleton;
-import com.agadar.archmagus.models.ModelArcaneWolf;
-import com.agadar.archmagus.renderers.RenderArcaneWolf;
+import com.agadar.archmagus.models.ModelSpiritWolf;
+import com.agadar.archmagus.renderers.RenderSpiritWolf;
 import com.agadar.archmagus.renderers.RenderRisenSkeleton;
 import com.agadar.archmagus.renderers.RenderRisenWitherSkeleton;
 
@@ -16,7 +16,7 @@ public class ClientProxy extends CommonProxy
 	@Override
 	public void registerRenderers() 
 	{
-		RenderingRegistry.registerEntityRenderingHandler(EntityArcaneWolf.class, new RenderArcaneWolf(new ModelArcaneWolf(), new ModelArcaneWolf(), 0.5F));
+		RenderingRegistry.registerEntityRenderingHandler(EntitySpiritWolf.class, new RenderSpiritWolf(new ModelSpiritWolf(), new ModelSpiritWolf(), 0.5F));
 		RenderingRegistry.registerEntityRenderingHandler(EntityRisenSkeleton.class, new RenderRisenSkeleton());
 		RenderingRegistry.registerEntityRenderingHandler(EntityRisenWitherSkeleton.class, new RenderRisenWitherSkeleton());
 	}
