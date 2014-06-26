@@ -107,6 +107,11 @@ public class ItemSpellBook extends Item
         return EnumRarity.rare;
     }
 
+    /** BUG: For some reason, HOLDING the right button makes it so that this
+     *  code is run only on the server. The result is that the particles are
+     *  only spawned once or twice. Other than that it works fine, and tapping
+     *  instead of holding DOES spawn the particles on every spell cast, but this
+     *  certainly needs to be fixed. */
     @Override
     public ItemStack onItemRightClick(ItemStack par1ItemStack, World par2World, EntityPlayer par3EntityPlayer)
     {		
@@ -121,22 +126,22 @@ public class ItemSpellBook extends Item
     		if (par3EntityPlayer.getFoodStats().getFoodLevel() >= spell.getHungerCost() || inCreative)
     		{
     			short level = nbttagcomp.getShort("lvl");
-    			boolean succes = spell.cast(level, par2World, par3EntityPlayer);
+    			boolean succes = spell.castSpell(level, par2World, par3EntityPlayer);
 
-    			if (!par2World.isRemote && succes)
+    			if (succes)
     			{
-    				nbttagcomp.setShort("cooldown", spell.getCooldown());
-    			}
-    			
-    			if (!inCreative && succes) par3EntityPlayer.getFoodStats().addStats(-spell.getHungerCost(), 0);        		
-    		
-    	    	for (int i = 0; i < 10; ++i)
-    	        {
-    	            double d0 = par2World.rand.nextGaussian() * 0.02D;
-    	            double d1 = par2World.rand.nextGaussian() * 0.02D;
-    	            double d2 = par2World.rand.nextGaussian() * 0.02D;
-    	            par2World.spawnParticle("flame", par3EntityPlayer.posX + (double)(par2World.rand.nextFloat() * par3EntityPlayer.width * 2.0F) - (double)par3EntityPlayer.width, par3EntityPlayer.posY - 1.5D + (double)(par2World.rand.nextFloat() * par3EntityPlayer.height), par3EntityPlayer.posZ + (double)(par2World.rand.nextFloat() * par3EntityPlayer.width * 2.0F) - (double)par3EntityPlayer.width, d0, d1, d2);
-    	        }
+    				if (!par2World.isRemote)
+        			{
+        				nbttagcomp.setShort("cooldown", spell.getCooldown());
+        			}
+    				
+    				if (!inCreative) 
+    				{
+    					par3EntityPlayer.getFoodStats().addStats(-spell.getHungerCost(), 0);
+    				}
+    				
+    				spell.generateRandomParticles(par2World, par3EntityPlayer);
+    			}      		
     		}
     	}
 

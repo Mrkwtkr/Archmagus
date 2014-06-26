@@ -24,9 +24,23 @@ public class SpellWitherBlast extends Spell
 	{
 		return 40;
 	}
+	
+	/**
+	 * Returns the amount of particles spawned when this spell is cast.
+	 */
+	public int getParticleAmount()
+	{
+		return 40;
+	}
+	
+	@Override
+	public String getParticleName()
+	{
+		return "smoke";
+	}
 
 	@Override
-	public boolean cast(short par1Level, World par2World, EntityPlayer par3EntityPlayer) 
+	public boolean castSpell(short par1Level, World par2World, EntityPlayer par3EntityPlayer) 
 	{
 		par2World.playAuxSFXAtEntity((EntityPlayer)null, 1014, (int)par3EntityPlayer.posX, (int)par3EntityPlayer.posY, (int)par3EntityPlayer.posZ, 0);      
 		

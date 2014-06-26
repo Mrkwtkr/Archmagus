@@ -18,9 +18,21 @@ public class SpellBlazeFire extends Spell
     {
         return 3;
     }
+	
+	@Override
+	public String getParticleName()
+	{
+		return "flame";
+	}
+	
+	@Override
+	public int getParticleAmount()
+	{
+		return 15;
+	}
 
 	@Override
-	public boolean cast(short par1Level, World par2World, EntityPlayer par3EntityPlayer) 
+	public boolean castSpell(short par1Level, World par2World, EntityPlayer par3EntityPlayer) 
 	{
 		par2World.playAuxSFXAtEntity((EntityPlayer)null, 1009, (int)par3EntityPlayer.posX, (int)par3EntityPlayer.posY, (int)par3EntityPlayer.posZ, 0);
 		
@@ -36,7 +48,6 @@ public class SpellBlazeFire extends Spell
 				par2World.spawnEntityInWorld(smallfireball);
 			}
 		}
-		
 		return true;
 	}
 }

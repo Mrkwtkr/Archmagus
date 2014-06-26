@@ -7,6 +7,8 @@ import com.agadar.archmagus.entities.EntityRisenSkeleton;
 import com.agadar.archmagus.entities.EntityRisenWitherSkeleton;
 import com.agadar.archmagus.items.ModItems;
 
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.util.StatCollector;
@@ -90,6 +92,22 @@ public abstract class Spell
     }
     
     /**
+     * Returns the name of the particles spawned when this spell is cast.
+     */
+    public String getParticleName()
+    {
+    	return "happyVillager";
+    }
+    
+	/**
+	 * Returns the amount of particles spawned when this spell is cast.
+	 */
+	public int getParticleAmount()
+	{
+		return 20;
+	}
+    
+    /**
      * Sets the spell name.
      */
     protected Spell setName(String par1Str)
@@ -122,12 +140,6 @@ public abstract class Spell
     {
     	return Math.max(getMinLevel(), Math.min(par1Level, getMaxLevel()));
     }
-
-    /**
-     * Casts this spell based on the given level.
-     * @return An indication of whether the spell was cast succesfully.
-     */
-	public abstract boolean cast(short par1Level, World par2World, EntityPlayer par3EntityPlayer);
 	
 	/**
 	 * Returns the spell with the given index.
@@ -136,4 +148,25 @@ public abstract class Spell
 	{
 		return spellList[Math.max(0, Math.min(index, spellList.length - 1))];
 	}
+    
+	/**
+	 * Spawns random particles.
+	 */
+    @SideOnly(Side.CLIENT)
+    public void generateRandomParticles(World par2World, EntityPlayer par3EntityPlayer)
+    {
+    	for (int i = 0; i < this.getParticleAmount(); ++i)
+        {
+            double d0 = par2World.rand.nextGaussian() * 0.02D;
+            double d1 = par2World.rand.nextGaussian() * 0.02D;
+            double d2 = par2World.rand.nextGaussian() * 0.02D;
+            par2World.spawnParticle(this.getParticleName(), par3EntityPlayer.posX + (double)(par2World.rand.nextFloat() * par3EntityPlayer.width * 2.0F) - (double)par3EntityPlayer.width, par3EntityPlayer.posY - 1.5D + (double)(par2World.rand.nextFloat() * par3EntityPlayer.height), par3EntityPlayer.posZ + (double)(par2World.rand.nextFloat() * par3EntityPlayer.width * 2.0F) - (double)par3EntityPlayer.width, d0, d1, d2);
+        }
+    }
+    
+    /**
+     * Casts this spell based on the given level.
+     * @return An indication of whether the spell was cast succesfully.
+     */
+	public abstract boolean castSpell(short par1Level, World par2World, EntityPlayer par3EntityPlayer);
 }

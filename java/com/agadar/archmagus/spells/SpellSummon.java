@@ -59,7 +59,7 @@ public class SpellSummon extends Spell
 	}
 
 	@Override
-	public boolean cast(short par1Level, World par2World, EntityPlayer par3EntityPlayer) 
+	public boolean castSpell(short par1Level, World par2World, EntityPlayer par3EntityPlayer) 
 	{
 		if (!par2World.isRemote)
 		{

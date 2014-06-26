@@ -23,9 +23,21 @@ public class SpellRespawn extends Spell
     {
     	return 6000;
     }
+    
+	@Override
+	public String getParticleName()
+	{
+		return "portal";
+	}
+	
+	@Override
+	public int getParticleAmount()
+	{
+		return 128;
+	}
 
 	@Override
-	public boolean cast(short par1Level, World par2World, EntityPlayer par3EntityPlayer) 
+	public boolean castSpell(short par1Level, World par2World, EntityPlayer par3EntityPlayer) 
 	{
 		if (!par2World.isRemote)
 		{

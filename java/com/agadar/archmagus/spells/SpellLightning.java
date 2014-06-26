@@ -32,7 +32,7 @@ public class SpellLightning extends Spell
 	}
 
 	@Override
-	public boolean cast(short par1Level, World par2World, EntityPlayer par3EntityPlayer) 
+	public boolean castSpell(short par1Level, World par2World, EntityPlayer par3EntityPlayer) 
 	{
 		int distance = 100;
 		Minecraft mc = Minecraft.getMinecraft();
