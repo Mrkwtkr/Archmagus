@@ -4,12 +4,14 @@ import com.agadar.archmagus.help.References;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
-
 import net.minecraft.entity.Entity;
 import net.minecraft.item.EnumRarity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.nbt.NBTTagList;
+import net.minecraft.world.World;
 
 public class ItemConjuredArmor extends ItemArmor
 {
@@ -51,4 +53,21 @@ public class ItemConjuredArmor extends ItemArmor
     {
         return EnumRarity.rare;
     }
+	
+	@Override
+	/** Currently a dirty, inefficient way of making an armor piece have the 'enchantment glow'. */
+	public void onUpdate(ItemStack par1ItemStack, World par2World, Entity par3Entity, int par4, boolean par5) 
+	{
+		super.onUpdate(par1ItemStack, par2World, par3Entity, par4, par5);
+		
+		if (par1ItemStack.stackTagCompound == null)
+    	{
+    		par1ItemStack.stackTagCompound = new NBTTagCompound();
+    	}
+		
+		if (!par1ItemStack.stackTagCompound.hasKey("ench", 9))
+		{
+			par1ItemStack.stackTagCompound.setTag("ench", new NBTTagList());
+		}
+	} 
 }
