@@ -50,6 +50,7 @@ spell.raise_skeleton=Raise Skeleton
 spell.raise_wither_skeleton=Raise Wither Skeleton
 spell.raise_zombie=Raise Zombie
 spell.raise_zombie_pigman=Raise Zombie Pigman
+spell.summon_witch=Summon Witch
 spell.teleport=Teleport
 spell.respawn=Respawn
 
@@ -69,3 +70,4 @@ entity.risen_skeleton.name=Skeleton
 entity.risen_wither_skeleton.name=Wither Skeleton
 entity.risen_zombie.name=Zombie
 entity.risen_zombie_pigman.name=Zombie Pigman
+entity.summoned_witch.name=Witch

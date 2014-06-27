@@ -7,6 +7,7 @@ import com.agadar.archmagus.entities.EntityRisenWitherSkeleton;
 import com.agadar.archmagus.entities.EntityRisenZombie;
 import com.agadar.archmagus.entities.EntityRisenZombiePigman;
 import com.agadar.archmagus.entities.EntitySpiritWolf;
+import com.agadar.archmagus.entities.EntitySummonedWitch;
 import com.agadar.archmagus.items.ModItems;
 
 public class Spells 
@@ -35,8 +36,9 @@ public class Spells
 	public final static Spell raise_wither_skeleton = new SpellSummon(15, "raise_wither_skeleton", EntityRisenWitherSkeleton.class);
 	public final static Spell raise_zombie = new SpellSummon(16, "raise_zombie", EntityRisenZombie.class);
 	public final static Spell raise_zombie_pigman = new SpellSummon(17, "raise_zombie_pigman", EntityRisenZombiePigman.class);
-	public final static Spell teleport = new SpellTeleport(18);
-	public final static Spell respawn = new SpellRespawn(19);
+	public final static Spell summon_witch = new SpellSummon(18, "summon_witch", EntitySummonedWitch.class);
+	public final static Spell teleport = new SpellTeleport(19);
+	public final static Spell respawn = new SpellRespawn(20);
 	
 	/**
 	 * Registers a new spell with the given ID.
