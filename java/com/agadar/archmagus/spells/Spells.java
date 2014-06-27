@@ -36,15 +36,18 @@ public class Spells
 	public final static Spell teleport = new SpellTeleport(17);
 	public final static Spell respawn = new SpellRespawn(18);
 	
-	protected static void addSpell(Spell par1Spell, int par2Index)
+	/**
+	 * Registers a new spell with the given ID.
+	 */
+	protected static void registerSpell(Spell par1Spell, int par2effectId)
 	{
-		if (spellList[par2Index] != null)
+		if (spellList[par2effectId] != null)
         {
             throw new IllegalArgumentException("Duplicate spell id!");
         }
         else
         {
-        	spellList[par2Index] = par1Spell;
+        	spellList[par2effectId] = par1Spell;
         }
 	}
 	

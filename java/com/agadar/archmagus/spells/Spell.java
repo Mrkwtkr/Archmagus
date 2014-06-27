@@ -20,7 +20,7 @@ public abstract class Spell
     protected Spell(int par1)
     {
         this.effectId = par1;
-        Spells.addSpell(this, par1);
+        Spells.registerSpell(this, par1);
     }
     
 	/**
