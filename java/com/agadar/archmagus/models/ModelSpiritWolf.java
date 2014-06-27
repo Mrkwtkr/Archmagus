@@ -66,9 +66,7 @@ public class ModelSpiritWolf extends ModelBase
         this.wolfHeadMain.setTextureOffset(0, 10).addBox(-1.5F, 0.0F, -5.0F, 3, 3, 4, f);
     }
 
-    /**
-     * Sets the models various rotation angles then renders the model.
-     */
+    @Override
     public void render(Entity par1Entity, float par2, float par3, float par4, float par5, float par6, float par7)
     {
         super.render(par1Entity, par2, par3, par4, par5, par6, par7);
@@ -106,10 +104,7 @@ public class ModelSpiritWolf extends ModelBase
         }
     }
 
-    /**
-     * Used for easily adding entity-dependent animations. The second and third float params here are the same second
-     * and third as in the setRotationAngles method.
-     */
+    @Override
     public void setLivingAnimations(EntityLivingBase par1EntityLivingBase, float par2, float par3, float par4)
     {
         EntitySpiritWolf entitywolf = (EntitySpiritWolf)par1EntityLivingBase;
@@ -155,11 +150,7 @@ public class ModelSpiritWolf extends ModelBase
         this.wolfTail.rotateAngleZ = entitywolf.getShakeAngle(par4, -0.2F);
     }
 
-    /**
-     * Sets the model's various rotation angles. For bipeds, par1 and par2 are used for animating the movement of arms
-     * and legs, where par1 represents the time(so that arms and legs swing back and forth) and par2 represents how
-     * "far" arms and legs can swing at most.
-     */
+    @Override
     public void setRotationAngles(float par1, float par2, float par3, float par4, float par5, float par6, Entity par7Entity)
     {
         super.setRotationAngles(par1, par2, par3, par4, par5, par6, par7Entity);

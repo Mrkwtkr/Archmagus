@@ -24,19 +24,14 @@ public class RenderSpiritWolf extends RenderLiving
 		this.setRenderPassModel(par2ModelBase);
 	}
 	
-	/**
-     * Defines what float the third param in setRotationAngles of ModelBase is
-     */
-    protected float handleRotationFloat(EntitySpiritWolf par1EntityWolf, float par2)
+	@Override
+    protected int shouldRenderPass(EntityLivingBase par1EntityLivingBase, int par2, float par3)
     {
-        return par1EntityWolf.getTailRotation();
-    }
-	
-	protected int shouldRenderPass(EntitySpiritWolf par1EntityWolf, int par2, float par3)
-    {
-        if (par2 == 0 && par1EntityWolf.getWolfShaking())
+		EntitySpiritWolf wolf = (EntitySpiritWolf) par1EntityLivingBase;
+		
+		if (par2 == 0 && wolf.getWolfShaking())
         {
-            float f1 = par1EntityWolf.getBrightness(par3) * par1EntityWolf.getShadingWhileShaking(par3);
+            float f1 = wolf.getBrightness(par3) * wolf.getShadingWhileShaking(par3);
             this.bindTexture(wolfTextures);
             GL11.glColor3f(f1, f1, f1);
             return 1;
@@ -46,33 +41,16 @@ public class RenderSpiritWolf extends RenderLiving
             return -1;
         }
     }
-	
-	protected ResourceLocation getEntityTexture(EntitySpiritWolf par1EntityWolf)
-    {
-        return wolfTextures;
-    }
-	
-	/**
-     * Queries whether should render the specified pass or not.
-     */
-    protected int shouldRenderPass(EntityLivingBase par1EntityLivingBase, int par2, float par3)
-    {
-        return this.shouldRenderPass((EntitySpiritWolf)par1EntityLivingBase, par2, par3);
-    }
     
-    /**
-     * Defines what float the third param in setRotationAngles of ModelBase is
-     */
+    @Override
     protected float handleRotationFloat(EntityLivingBase par1EntityLivingBase, float par2)
     {
-        return this.handleRotationFloat((EntitySpiritWolf)par1EntityLivingBase, par2);
+    	return ((EntitySpiritWolf) par1EntityLivingBase).getTailRotation();
     }
 
-    /**
-     * Returns the location of an entity's texture. Doesn't seem to be called unless you call Render.bindEntityTexture.
-     */
+    @Override
     protected ResourceLocation getEntityTexture(Entity par1Entity)
     {
-        return this.getEntityTexture((EntitySpiritWolf)par1Entity);
+    	return wolfTextures;
     }
 }

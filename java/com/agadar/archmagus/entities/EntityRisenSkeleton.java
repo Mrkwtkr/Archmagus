@@ -41,6 +41,7 @@ public class EntityRisenSkeleton extends EntitySummonable implements IRangedAtta
     {
         super.applyEntityAttributes();
         this.getEntityAttribute(SharedMonsterAttributes.movementSpeed).setBaseValue(0.30000001192092896D);
+        this.getEntityAttribute(SharedMonsterAttributes.maxHealth).setBaseValue(20.0D);
     }
 
     @Override
