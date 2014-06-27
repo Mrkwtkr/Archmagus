@@ -64,7 +64,7 @@ public class SpellSummon extends Spell
 		if (!par2World.isRemote)
 		{
 			@SuppressWarnings("unchecked")
-			List<EntitySummonable> entities = par2World.getEntitiesWithinAABB(EntitySummonable.class, par3EntityPlayer.boundingBox.expand(10.0D, 10.0D, 10.0D));
+			List<EntitySummonable> entities = par2World.getEntitiesWithinAABB(EntitySummonable.class, par3EntityPlayer.boundingBox.expand(20.0D, 20.0D, 20.0D));
 			
 			for (EntitySummonable entity : entities)
 			{

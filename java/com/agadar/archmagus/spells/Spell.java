@@ -2,6 +2,7 @@ package com.agadar.archmagus.spells;
 
 import java.util.Random;
 
+import com.agadar.archmagus.entities.EntityRisenZombie;
 import com.agadar.archmagus.entities.EntitySpiritWolf;
 import com.agadar.archmagus.entities.EntityRisenSkeleton;
 import com.agadar.archmagus.entities.EntityRisenWitherSkeleton;
@@ -36,8 +37,9 @@ public abstract class Spell
 	public final static Spell summon_spirit_wolf = new SpellSummon(11, "summon_spirit_wolf", EntitySpiritWolf.class);
 	public final static Spell raise_skeleton = new SpellSummon(12, "raise_skeleton", EntityRisenSkeleton.class);
 	public final static Spell raise_wither_skeleton = new SpellSummon(13, "raise_wither_skeleton", EntityRisenWitherSkeleton.class);
-	public final static Spell teleport = new SpellTeleport(14);
-	public final static Spell respawn = new SpellRespawn(15);
+	public final static Spell raise_zombie = new SpellSummon(14, "raise_zombie", EntityRisenZombie.class);
+	public final static Spell teleport = new SpellTeleport(15);
+	public final static Spell respawn = new SpellRespawn(16);
 	/** A Random object used by some child classes of Spell. */
 	protected final static Random random = new Random();
 	/** The index of this spell in the spellList. */

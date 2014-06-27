@@ -46,6 +46,7 @@ spell.conjure_armor=Conjure Armor
 spell.summon_spirit_wolf=Summon Spirit Wolf
 spell.raise_skeleton=Raise Skeleton
 spell.raise_wither_skeleton=Raise Wither Skeleton
+spell.raise_zombie=Raise Zombie
 spell.teleport=Teleport
 spell.respawn=Respawn
 
