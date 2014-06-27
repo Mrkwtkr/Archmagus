@@ -126,6 +126,7 @@ public class ModItems
 	    	((ItemSpellBook) ModItems.spell_book).func_92113_a(Spells.raise_skeleton, itemList);
 	    	((ItemSpellBook) ModItems.spell_book).func_92113_a(Spells.raise_wither_skeleton, itemList);
 	    	((ItemSpellBook) ModItems.spell_book).func_92113_a(Spells.raise_zombie, itemList);
+	    	((ItemSpellBook) ModItems.spell_book).func_92113_a(Spells.raise_zombie_pigman, itemList);
 	    	((ItemSpellBook) ModItems.spell_book).func_92113_a(Spells.teleport, itemList);
 	    	((ItemSpellBook) ModItems.spell_book).func_92113_a(Spells.respawn, itemList);
 	    }
