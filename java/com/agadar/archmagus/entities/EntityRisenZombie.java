@@ -1,7 +1,5 @@
 package com.agadar.archmagus.entities;
 
-import com.agadar.archmagus.spells.Spell;
-
 import net.minecraft.block.Block;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
@@ -41,18 +39,7 @@ public class EntityRisenZombie extends EntitySummonable
         super.applyEntityAttributes();
         this.getEntityAttribute(SharedMonsterAttributes.movementSpeed).setBaseValue(0.30000001192092896D);
     }
-
-    @Override
-    public void onLivingUpdate()
-    {
-        super.onLivingUpdate();
-        
-        if (this.ticksExisted >= Spell.raise_zombie.getCooldown())
-        {
-        	this.damageEntity(DamageSource.generic, this.getMaxHealth());
-        }
-    }
-
+    
     @Override
     public boolean attackEntityAsMob(Entity par1Entity)
     {

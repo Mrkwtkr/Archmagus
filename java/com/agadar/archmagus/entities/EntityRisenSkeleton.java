@@ -1,7 +1,5 @@
 package com.agadar.archmagus.entities;
 
-import com.agadar.archmagus.spells.Spell;
-
 import net.minecraft.block.Block;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityCreature;
@@ -18,7 +16,6 @@ import net.minecraft.entity.ai.EntityAIWatchClosest;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.projectile.EntityArrow;
 import net.minecraft.init.Items;
-
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.DamageSource;
 import net.minecraft.world.World;
@@ -90,11 +87,6 @@ public class EntityRisenSkeleton extends EntitySummonable implements IRangedAtta
         if (this.worldObj.isRemote)
         {
         	 this.setSize(0.6F, 1.8F);
-        }
-               
-        if (this.ticksExisted >= Spell.raise_skeleton.getCooldown())
-        {
-        	this.damageEntity(DamageSource.generic, this.getMaxHealth());
         }
     }
 

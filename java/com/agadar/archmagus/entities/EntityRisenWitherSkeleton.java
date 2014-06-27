@@ -1,7 +1,5 @@
 package com.agadar.archmagus.entities;
 
-import com.agadar.archmagus.spells.Spell;
-
 import net.minecraft.block.Block;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityCreature;
@@ -93,11 +91,6 @@ public class EntityRisenWitherSkeleton extends EntitySummonable implements IRang
         if (this.worldObj.isRemote)
         {
             this.setSize(0.72F, 2.34F);
-        }
-        
-        if (this.ticksExisted >= Spell.raise_wither_skeleton.getCooldown())
-        {
-        	this.damageEntity(DamageSource.generic, this.getMaxHealth());
         }
     }
 

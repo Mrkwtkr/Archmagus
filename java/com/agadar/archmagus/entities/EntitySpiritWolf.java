@@ -1,7 +1,5 @@
 package com.agadar.archmagus.entities;
 
-import com.agadar.archmagus.spells.Spell;
-
 import net.minecraft.block.Block;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
@@ -153,11 +151,6 @@ public class EntitySpiritWolf extends EntitySummonable
     public void onUpdate()
     {
         super.onUpdate();
-
-        if (this.ticksExisted >= Spell.summon_spirit_wolf.getCooldown())
-        {
-        	this.damageEntity(DamageSource.generic, this.getMaxHealth());
-        }
         
         this.field_70926_e += (0.0F - this.field_70926_e) * 0.4F;
         this.numTicksToChaseTarget = 10;
