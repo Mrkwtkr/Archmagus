@@ -4,6 +4,7 @@ import com.agadar.archmagus.spells.Spell;
 
 import net.minecraft.block.Block;
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.EnumCreatureAttribute;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.EntityAIAttackOnCollide;
@@ -12,6 +13,7 @@ import net.minecraft.entity.ai.EntityAILookIdle;
 import net.minecraft.entity.ai.EntityAISwimming;
 import net.minecraft.entity.ai.EntityAIWander;
 import net.minecraft.entity.ai.EntityAIWatchClosest;
+import net.minecraft.entity.passive.EntityVillager;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.DamageSource;
 import net.minecraft.world.World;
@@ -56,6 +58,24 @@ public class EntityRisenZombie extends EntitySummonable
     {
     	float attackDamage = (float)getEntityAttribute(SharedMonsterAttributes.attackDamage).getAttributeValue();
     	return par1Entity.attackEntityFrom(DamageSource.causeMobDamage(this), attackDamage);
+    }
+    
+    @Override
+    public void onKillEntity(EntityLivingBase par1EntityLivingBase)
+    {
+        super.onKillEntity(par1EntityLivingBase);
+
+        if (par1EntityLivingBase instanceof EntityVillager || par1EntityLivingBase instanceof EntityPlayer)
+        {
+            EntityRisenZombie entityzombie = new EntityRisenZombie(par1EntityLivingBase.worldObj);
+            entityzombie.copyLocationAndAnglesFrom(par1EntityLivingBase);
+            String comSendName = this.getOwnerName();
+            entityzombie.setOwner(comSendName);
+            entityzombie.setCustomNameTag(comSendName + "'s Minion");
+            entityzombie.setAlwaysRenderNameTag(true);
+            par1EntityLivingBase.worldObj.spawnEntityInWorld(entityzombie);
+            par1EntityLivingBase.worldObj.playAuxSFXAtEntity((EntityPlayer)null, 1016, (int)this.posX, (int)this.posY, (int)this.posZ, 0);
+        }
     }
 
     @Override
