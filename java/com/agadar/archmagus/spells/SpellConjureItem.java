@@ -5,6 +5,7 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 
+/** Conjures an item. */
 public class SpellConjureItem extends Spell
 {
 	/**

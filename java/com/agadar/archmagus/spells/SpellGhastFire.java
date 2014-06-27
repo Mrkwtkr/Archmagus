@@ -5,6 +5,7 @@ import net.minecraft.entity.projectile.EntityLargeFireball;
 import net.minecraft.util.Vec3;
 import net.minecraft.world.World;
 
+/** Fires a large fireball. */
 public class SpellGhastFire extends Spell 
 {
 	protected SpellGhastFire(int par1) 

@@ -11,6 +11,7 @@ import net.minecraft.util.DamageSource;
 import net.minecraft.world.World;
 import net.minecraft.entity.passive.EntityTameable;
 
+/** Summons a friendly minion that follows and protects the player. */
 public class SpellSummon extends Spell 
 {
 	/** The constructor of the entity this spell summons. 

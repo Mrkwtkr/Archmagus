@@ -3,7 +3,7 @@ package com.agadar.archmagus.items;
 import java.util.List;
 
 import com.agadar.archmagus.help.RegisterHelper;
-import com.agadar.archmagus.spells.Spell;
+import com.agadar.archmagus.spells.Spells;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -109,23 +109,25 @@ public class ModItems
 		@SideOnly(Side.CLIENT)
 	    public void displayAllReleventItems(List itemList) 
 	    {       
-	    	((ItemSpellBook) ModItems.spell_book).func_92113_a(Spell.blazefire, itemList);
-	    	((ItemSpellBook) ModItems.spell_book).func_92113_a(Spell.ghastfire, itemList);
-	    	((ItemSpellBook) ModItems.spell_book).func_92113_a(Spell.witherblast, itemList);
-	    	((ItemSpellBook) ModItems.spell_book).func_92113_a(Spell.lightning, itemList);
-	    	((ItemSpellBook) ModItems.spell_book).func_92113_a(Spell.conjure_axe, itemList);
-	    	((ItemSpellBook) ModItems.spell_book).func_92113_a(Spell.conjure_bow, itemList);
-	    	((ItemSpellBook) ModItems.spell_book).func_92113_a(Spell.conjure_hoe, itemList);
-	    	((ItemSpellBook) ModItems.spell_book).func_92113_a(Spell.conjure_pickaxe, itemList);
-	    	((ItemSpellBook) ModItems.spell_book).func_92113_a(Spell.conjure_shovel, itemList);
-	    	((ItemSpellBook) ModItems.spell_book).func_92113_a(Spell.conjure_sword, itemList);
-	    	((ItemSpellBook) ModItems.spell_book).func_92113_a(Spell.conjure_armor, itemList);
-	    	((ItemSpellBook) ModItems.spell_book).func_92113_a(Spell.summon_spirit_wolf, itemList);
-	    	((ItemSpellBook) ModItems.spell_book).func_92113_a(Spell.raise_skeleton, itemList);
-	    	((ItemSpellBook) ModItems.spell_book).func_92113_a(Spell.raise_wither_skeleton, itemList);
-	    	((ItemSpellBook) ModItems.spell_book).func_92113_a(Spell.raise_zombie, itemList);
-	    	((ItemSpellBook) ModItems.spell_book).func_92113_a(Spell.teleport, itemList);
-	    	((ItemSpellBook) ModItems.spell_book).func_92113_a(Spell.respawn, itemList);
+	    	((ItemSpellBook) ModItems.spell_book).func_92113_a(Spells.blazefire, itemList);
+	    	((ItemSpellBook) ModItems.spell_book).func_92113_a(Spells.ghastfire, itemList);
+	    	((ItemSpellBook) ModItems.spell_book).func_92113_a(Spells.witherblast, itemList);
+	    	((ItemSpellBook) ModItems.spell_book).func_92113_a(Spells.lightning, itemList);
+	    	((ItemSpellBook) ModItems.spell_book).func_92113_a(Spells.flamestrike, itemList);
+	    	((ItemSpellBook) ModItems.spell_book).func_92113_a(Spells.thunderstrike, itemList);
+	    	((ItemSpellBook) ModItems.spell_book).func_92113_a(Spells.conjure_axe, itemList);
+	    	((ItemSpellBook) ModItems.spell_book).func_92113_a(Spells.conjure_bow, itemList);
+	    	((ItemSpellBook) ModItems.spell_book).func_92113_a(Spells.conjure_hoe, itemList);
+	    	((ItemSpellBook) ModItems.spell_book).func_92113_a(Spells.conjure_pickaxe, itemList);
+	    	((ItemSpellBook) ModItems.spell_book).func_92113_a(Spells.conjure_shovel, itemList);
+	    	((ItemSpellBook) ModItems.spell_book).func_92113_a(Spells.conjure_sword, itemList);
+	    	((ItemSpellBook) ModItems.spell_book).func_92113_a(Spells.conjure_armor, itemList);
+	    	((ItemSpellBook) ModItems.spell_book).func_92113_a(Spells.summon_spirit_wolf, itemList);
+	    	((ItemSpellBook) ModItems.spell_book).func_92113_a(Spells.raise_skeleton, itemList);
+	    	((ItemSpellBook) ModItems.spell_book).func_92113_a(Spells.raise_wither_skeleton, itemList);
+	    	((ItemSpellBook) ModItems.spell_book).func_92113_a(Spells.raise_zombie, itemList);
+	    	((ItemSpellBook) ModItems.spell_book).func_92113_a(Spells.teleport, itemList);
+	    	((ItemSpellBook) ModItems.spell_book).func_92113_a(Spells.respawn, itemList);
 	    }
 	};
 }

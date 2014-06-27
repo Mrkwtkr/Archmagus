@@ -5,6 +5,7 @@ import net.minecraft.entity.projectile.EntitySmallFireball;
 import net.minecraft.util.Vec3;
 import net.minecraft.world.World;
 
+/** Fires a number of small fireballs. */
 public class SpellBlazeFire extends Spell 
 {
 	protected SpellBlazeFire(int par1)

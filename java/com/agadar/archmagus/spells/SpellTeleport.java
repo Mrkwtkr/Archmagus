@@ -4,6 +4,7 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.world.World;
 
+/** Teleports the player to where he is aiming, up to a certain distance. */
 public class SpellTeleport extends Spell 
 {
 	/**

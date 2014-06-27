@@ -5,6 +5,7 @@ import net.minecraft.entity.projectile.EntityWitherSkull;
 import net.minecraft.util.Vec3;
 import net.minecraft.world.World;
 
+/** Fires a Wither Skull. */
 public class SpellWitherBlast extends Spell 
 {
 	protected SpellWitherBlast(int par1) 

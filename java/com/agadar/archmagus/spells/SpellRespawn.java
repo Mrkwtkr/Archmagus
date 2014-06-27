@@ -4,6 +4,7 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.ChunkCoordinates;
 import net.minecraft.world.World;
 
+/** Teleports the player to his bed, and otherwise to the world spawn. */
 public class SpellRespawn extends Spell 
 {
 	protected SpellRespawn(int par1) 

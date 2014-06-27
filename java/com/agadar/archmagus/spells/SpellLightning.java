@@ -5,6 +5,7 @@ import net.minecraft.entity.effect.EntityLightningBolt;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.world.World;
 
+/** Causes a lightning strike. */
 public class SpellLightning extends Spell 
 {
 	protected SpellLightning(int par1) 
@@ -12,12 +13,6 @@ public class SpellLightning extends Spell
 		super(par1);
 		this.setName("lightning");
 	}
-	
-	@Override
-    public int getMaxLevel()
-    {
-        return 3;
-    }
 	
 	@Override
     public int getHungerCost()

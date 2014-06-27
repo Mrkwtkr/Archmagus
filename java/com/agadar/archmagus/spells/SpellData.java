@@ -15,6 +15,6 @@ public class SpellData
 
     public SpellData(int par1, int par2)
     {
-        this(Spell.getSpellAt(par1), par2);
+        this(Spells.getSpellAt(par1), par2);
     }
 }

@@ -5,6 +5,7 @@ import java.util.List;
 import com.agadar.archmagus.help.References;
 import com.agadar.archmagus.spells.Spell;
 import com.agadar.archmagus.spells.SpellData;
+import com.agadar.archmagus.spells.Spells;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -58,7 +59,7 @@ public class ItemSpellBook extends Item
         short short1 = nbttagcomp.getShort("id");
         short short2 = nbttagcomp.getShort("lvl");
         short cooldown = (short) (nbttagcomp.getShort("cooldown") / 20);
-        Spell spell = Spell.getSpellAt(short1); 
+        Spell spell = Spells.getSpellAt(short1); 
         
         if (spell != null)
         {
@@ -121,7 +122,7 @@ public class ItemSpellBook extends Item
     	
     	if (cooldown == 0 || inCreative)
     	{
-    		Spell spell = Spell.getSpellAt(nbttagcomp.getShort("id"));	
+    		Spell spell = Spells.getSpellAt(nbttagcomp.getShort("id"));	
 
     		if (par3EntityPlayer.getFoodStats().getFoodLevel() >= spell.getHungerCost() || inCreative)
     		{

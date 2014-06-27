@@ -5,6 +5,7 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 
+/** Conjures a set of armor. */
 public class SpellConjureArmor extends Spell 
 {
 	/**
