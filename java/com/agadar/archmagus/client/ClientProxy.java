@@ -6,6 +6,7 @@ import com.agadar.archmagus.entities.EntityRisenZombiePigman;
 import com.agadar.archmagus.entities.EntitySpiritWolf;
 import com.agadar.archmagus.entities.EntityRisenSkeleton;
 import com.agadar.archmagus.entities.EntityRisenWitherSkeleton;
+import com.agadar.archmagus.entities.EntitySummonedSpider;
 import com.agadar.archmagus.entities.EntitySummonedWitch;
 import com.agadar.archmagus.models.ModelSpiritWolf;
 import com.agadar.archmagus.renderers.RenderRisenZombie;
@@ -13,6 +14,7 @@ import com.agadar.archmagus.renderers.RenderRisenZombiePigman;
 import com.agadar.archmagus.renderers.RenderSpiritWolf;
 import com.agadar.archmagus.renderers.RenderRisenSkeleton;
 import com.agadar.archmagus.renderers.RenderRisenWitherSkeleton;
+import com.agadar.archmagus.renderers.RenderSummonedSpider;
 import com.agadar.archmagus.renderers.RenderSummonedWitch;
 
 import cpw.mods.fml.client.registry.RenderingRegistry;
@@ -28,5 +30,6 @@ public class ClientProxy extends CommonProxy
 		RenderingRegistry.registerEntityRenderingHandler(EntityRisenZombie.class, new RenderRisenZombie());
 		RenderingRegistry.registerEntityRenderingHandler(EntityRisenZombiePigman.class, new RenderRisenZombiePigman());
 		RenderingRegistry.registerEntityRenderingHandler(EntitySummonedWitch.class, new RenderSummonedWitch());
+		RenderingRegistry.registerEntityRenderingHandler(EntitySummonedSpider.class, new RenderSummonedSpider());
 	}
 }
