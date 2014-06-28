@@ -52,6 +52,7 @@ spell.raise_zombie=Raise Zombie
 spell.raise_zombie_pigman=Raise Zombie Pigman
 spell.summon_witch=Summon Witch
 spell.summon_spider=Summon Spider
+spell.summon_cave_spider=Summon Cave Spider
 spell.teleport=Teleport
 spell.respawn=Respawn
 
@@ -73,3 +74,4 @@ entity.risen_zombie.name=Zombie
 entity.risen_zombie_pigman.name=Zombie Pigman
 entity.summoned_witch.name=Witch
 entity.summoned_spider.name=Spider
+entity.summoned_cave_spider.name=Cave Spider
