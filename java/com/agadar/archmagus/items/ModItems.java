@@ -130,6 +130,7 @@ public class ModItems
 	    	((ItemSpellBook) ModItems.spell_book).func_92113_a(Spells.summon_witch, itemList);
 	    	((ItemSpellBook) ModItems.spell_book).func_92113_a(Spells.summon_spider, itemList);
 	    	((ItemSpellBook) ModItems.spell_book).func_92113_a(Spells.summon_cave_spider, itemList);
+	    	((ItemSpellBook) ModItems.spell_book).func_92113_a(Spells.summon_blaze, itemList);
 	    	((ItemSpellBook) ModItems.spell_book).func_92113_a(Spells.teleport, itemList);
 	    	((ItemSpellBook) ModItems.spell_book).func_92113_a(Spells.respawn, itemList);
 	    }
