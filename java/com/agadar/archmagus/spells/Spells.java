@@ -47,7 +47,7 @@ public class Spells
 	public final static Spell respawn = new SpellRespawn(23);
 	
 	/**
-	 * Registers a new spell with the given ID.
+	 * Registers a new spell at the given id.
 	 */
 	protected static void registerSpell(Spell par1Spell, int par2effectId)
 	{
@@ -62,10 +62,13 @@ public class Spells
 	}
 	
 	/**
-	 * Returns the spell with the given index.
+	 * Returns the spell at the given id. 
+	 * If id <= 0 then the spell with id = 0 is returned.
+	 * If id >= the highest possible id, then the spell with the highest possible id is returned.
+	 * May return null.
 	 */
-	public static Spell getSpellAt(int index)
+	public static Spell getSpellAt(int id)
 	{
-		return spellList[Math.max(0, Math.min(index, spellList.length - 1))];
+		return spellList[Math.max(0, Math.min(id, spellList.length - 1))];
 	}
 }

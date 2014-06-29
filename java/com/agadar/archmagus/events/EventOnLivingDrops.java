@@ -2,13 +2,26 @@ package com.agadar.archmagus.events;
 
 import com.agadar.archmagus.items.ItemSpellBook;
 import com.agadar.archmagus.items.ModItems;
+import com.agadar.archmagus.spells.Spell;
 import com.agadar.archmagus.spells.SpellData;
 import com.agadar.archmagus.spells.Spells;
 
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.boss.EntityWither;
 import net.minecraft.entity.item.EntityItem;
+import net.minecraft.entity.monster.EntityBlaze;
+import net.minecraft.entity.monster.EntityCaveSpider;
+import net.minecraft.entity.monster.EntityCreeper;
+import net.minecraft.entity.monster.EntityEnderman;
+import net.minecraft.entity.monster.EntityGhast;
+import net.minecraft.entity.monster.EntityPigZombie;
 import net.minecraft.entity.monster.EntitySkeleton;
+import net.minecraft.entity.monster.EntitySpider;
+import net.minecraft.entity.monster.EntityWitch;
+import net.minecraft.entity.monster.EntityZombie;
+import net.minecraft.entity.passive.EntityVillager;
+import net.minecraft.entity.passive.EntityWolf;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.event.entity.living.LivingDropsEvent;
 
@@ -16,20 +29,101 @@ public class EventOnLivingDrops
 {
 	@SubscribeEvent
 	public void OnLivingDrops (LivingDropsEvent event)
-	{
-		int randResult = event.entity.worldObj.rand.nextInt(1);
+	{		
+		Class<? extends Entity> entityClass = event.entity.getClass();
 
-		if (randResult == 0)
+		if (entityClass.equals(EntityBlaze.class))
 		{
-			Class<? extends Entity> entityClass = event.entity.getClass();
-			ItemStack spellBookDrop = new ItemStack(ModItems.spell_book);
-
-			if (entityClass.equals(EntitySkeleton.class))
+			randomDrop(event, Spells.blazefire, 1, 7.5);
+			randomDrop(event, Spells.summon_blaze, 1, 2.5);
+		}
+		else if (entityClass.equals(EntityGhast.class))
+		{
+			randomDrop(event, Spells.ghastfire, 1, 20);
+		}
+		else if (entityClass.equals(EntityWither.class))
+		{
+			randomDrop(event, Spells.witherblast, 1, 100);
+		}
+		else if (entityClass.equals(EntityCreeper.class))
+		{
+			randomDrop(event, Spells.lightning, 1, 5);
+		} 
+		// Flamestrike, Thunderstrike here
+		else if (entityClass.equals(EntityZombie.class))
+		{
+			double chance = 5D / 6D;
+			randomDrop(event, Spells.conjure_axe, 1, chance);
+			randomDrop(event, Spells.conjure_pickaxe, 1, chance);
+			randomDrop(event, Spells.conjure_shovel, 1, chance);
+			randomDrop(event, Spells.conjure_sword, 1, chance);
+			randomDrop(event, Spells.conjure_armor, 1, chance);
+			randomDrop(event, Spells.raise_zombie, 1, chance);
+		}
+		else if (entityClass.equals(EntityPigZombie.class))
+		{
+			randomDrop(event, Spells.conjure_sword, 1, 3);
+			randomDrop(event, Spells.conjure_armor, 1, 1);
+			randomDrop(event, Spells.raise_zombie_pigman, 1, 1);
+		}
+		else if (entityClass.equals(EntitySkeleton.class))
+		{
+			int skeletonType = ((EntitySkeleton) event.entity).getSkeletonType();
+			
+			if (skeletonType == 0)
 			{
-				SpellData spellData = new SpellData(Spells.raise_skeleton, 1);
-				((ItemSpellBook) ModItems.spell_book).addSpell(spellBookDrop, spellData);
-				event.drops.add(new EntityItem(event.entity.worldObj, event.entity.posX, event.entity.posY, event.entity.posZ, spellBookDrop));
+				randomDrop(event, Spells.conjure_bow, 1, 5);
+				randomDrop(event, Spells.conjure_armor, 1, 2.5);
+				randomDrop(event, Spells.raise_skeleton, 1, 2.5);
 			}
+			else if (skeletonType == 1)
+			{
+				randomDrop(event, Spells.conjure_sword, 1, 3);
+				randomDrop(event, Spells.raise_wither_skeleton, 1, 2);
+			}
+		}
+		else if (entityClass.equals(EntityVillager.class))
+		{
+			randomDrop(event, Spells.conjure_hoe, 1, 10);
+		}
+		else if (entityClass.equals(EntityWolf.class))
+		{
+			randomDrop(event, Spells.summon_spirit_wolf, 1, 10);
+		}
+		else if (entityClass.equals(EntityWitch.class))
+		{
+			randomDrop(event, Spells.summon_witch, 1, 25);
+		}
+		else if (entityClass.equals(EntitySpider.class))
+		{
+			randomDrop(event, Spells.summon_spider, 1, 5);
+		}
+		else if (entityClass.equals(EntityCaveSpider.class))
+		{
+			randomDrop(event, Spells.summon_cave_spider, 1, 5);
+		}
+		else if (entityClass.equals(EntityEnderman.class))
+		{
+			randomDrop(event, Spells.teleport, 1, 5);
+			randomDrop(event, Spells.respawn, 1, 5);
+		}
+	}
+	
+	/**
+	 * @param event A reference to the LivingDropsEvent.
+	 * @param spell The spell which the randomly dropped spell book will have.
+	 * @param level The level of the spell which the randomly dropped spell book will have.
+	 * @param percentage The chance that the spell book will be dropped.
+	 */
+	private void randomDrop (LivingDropsEvent event, Spell spell, int level, double percentage)
+	{
+		double  randResult = event.entity.worldObj.rand.nextDouble() * 100;
+		
+		if (randResult < percentage)
+		{
+			SpellData spellData = new SpellData(spell, level);
+			ItemStack spellBookDrop = ((ItemSpellBook) ModItems.spell_book).getSpellItemStack(spellData);
+			event.drops.add(new EntityItem(event.entity.worldObj, event.entity.posX, event.entity.posY, event.entity.posZ, spellBookDrop));
 		}
 	}
 }

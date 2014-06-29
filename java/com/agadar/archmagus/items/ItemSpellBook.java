@@ -73,7 +73,7 @@ public class ItemSpellBook extends Item
     }
 
     /**
-     * Adds a stored spell to a spell tome ItemStack.
+     * Adds the given spell to the given ItemStack.
      */
     public void addSpell(ItemStack par1ItemStack, SpellData par2SpellData)
     {
@@ -83,7 +83,7 @@ public class ItemSpellBook extends Item
     }
     
     /**
-     * Returns the ItemStack of a spell version of this item.
+     * Returns an ItemStack of a single Spell Book with the given spell.
      */
     public ItemStack getSpellItemStack(SpellData par1SpellData)
     {
