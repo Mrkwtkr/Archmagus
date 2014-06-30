@@ -107,6 +107,18 @@ public class EntitySummonedWolf extends EntitySummoned
     {
         return "mob.wolf.hurt";
     }
+    
+    @Override
+    protected String getSwimSound()
+    {
+        return "game.hostile.swim";
+    }
+
+    @Override
+    protected String getSplashSound()
+    {
+        return "game.hostile.swim.splash";
+    }
 
     /**
      * Returns the sound this mob makes on death.

@@ -24,6 +24,7 @@ import net.minecraft.entity.passive.EntityWolf;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.event.entity.living.LivingDropsEvent;
 
+/** Handles mobs dropping spell books. */
 public class EventOnLivingDrops 
 {
 	@SubscribeEvent

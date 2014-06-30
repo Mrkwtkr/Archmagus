@@ -77,6 +77,18 @@ public class EntitySummonedWitch extends EntitySummoned implements IRangedAttack
     {
         return "mob.witch.death";
     }
+    
+    @Override
+    protected String getSwimSound()
+    {
+        return "game.hostile.swim";
+    }
+
+    @Override
+    protected String getSplashSound()
+    {
+        return "game.hostile.swim.splash";
+    }
 
     /**
      * Set whether this witch is aggressive at an entity.

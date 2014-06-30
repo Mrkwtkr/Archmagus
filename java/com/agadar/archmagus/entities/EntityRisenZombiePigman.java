@@ -67,6 +67,18 @@ public class EntityRisenZombiePigman extends EntitySummoned
     {
     	return "mob.zombiepig.zpigdeath";
     }
+    
+    @Override
+    protected String getSwimSound()
+    {
+        return "game.hostile.swim";
+    }
+
+    @Override
+    protected String getSplashSound()
+    {
+        return "game.hostile.swim.splash";
+    }
 
     @Override
     protected void func_145780_a(int p_145780_1_, int p_145780_2_, int p_145780_3_, Block p_145780_4_)

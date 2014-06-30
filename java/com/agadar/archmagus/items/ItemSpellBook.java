@@ -87,7 +87,8 @@ public class ItemSpellBook extends Item
     /** Attempts to combine two spell books. Returns null if it failed. */
     public static ItemStack combine(ItemStack par1ItemStack, ItemStack par2ItemStack)
     {
-    	if (par1ItemStack.stackTagCompound != null && par2ItemStack.stackTagCompound != null)
+    	if (par1ItemStack.getItem() == ModItems.spell_book && par2ItemStack.getItem() == ModItems.spell_book &&
+    			par1ItemStack.stackTagCompound != null && par2ItemStack.stackTagCompound != null)
     	{
     		short id = par1ItemStack.stackTagCompound.getShort("id");
     		
