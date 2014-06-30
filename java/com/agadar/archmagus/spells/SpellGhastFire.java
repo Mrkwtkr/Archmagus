@@ -33,9 +33,9 @@ public class SpellGhastFire extends Spell
 	}
 	
 	@Override
-	public int getParticleAmount()
+	public double getParticleAmount()
 	{
-		return 15;
+		return 0.3;
 	}
 
 	@Override

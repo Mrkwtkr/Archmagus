@@ -188,8 +188,6 @@ public class ItemSpellBook extends Item
     				{
     					par3EntityPlayer.getFoodStats().addStats(-spell.getHungerCost(), 0);
     				}
-    				
-    				spell.generateRandomParticles(par2World, par3EntityPlayer);
     			}      		
     		}
     	}

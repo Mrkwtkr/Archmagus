@@ -37,7 +37,7 @@ public class ModItems
 	    	((ItemSpellBook) ModItems.spell_book).func_92113_a(Spells.blazefire, itemList);
 	    	((ItemSpellBook) ModItems.spell_book).func_92113_a(Spells.ghastfire, itemList);
 	    	((ItemSpellBook) ModItems.spell_book).func_92113_a(Spells.witherblast, itemList);
-	    	((ItemSpellBook) ModItems.spell_book).func_92113_a(Spells.lightning, itemList);
+	    	//((ItemSpellBook) ModItems.spell_book).func_92113_a(Spells.lightning, itemList);
 	    	((ItemSpellBook) ModItems.spell_book).func_92113_a(Spells.summon_wolf, itemList);
 	    	((ItemSpellBook) ModItems.spell_book).func_92113_a(Spells.raise_skeleton, itemList);
 	    	((ItemSpellBook) ModItems.spell_book).func_92113_a(Spells.raise_wither_skeleton, itemList);

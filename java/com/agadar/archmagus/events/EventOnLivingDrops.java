@@ -100,7 +100,7 @@ public class EventOnLivingDrops
 	 */
 	private void randomDrop (LivingDropsEvent event, Spell spell, int level, double percentage)
 	{
-		double  randResult = event.entity.worldObj.rand.nextDouble() * 100;
+		double randResult = event.entity.worldObj.rand.nextDouble() * 100;
 		
 		if (randResult < percentage)
 		{

@@ -58,6 +58,18 @@ public class SpellSummon extends Spell
 	{
 		return 1200;
 	}
+	
+	@Override
+	public double getParticleAmount()
+	{
+		return 0.5;
+	}
+	
+	@Override
+	public String getParticleName()
+	{
+		return "witchMagic";
+	}
 
 	@Override
 	public boolean castSpell(short par1Level, World par2World, EntityPlayer par3EntityPlayer) 

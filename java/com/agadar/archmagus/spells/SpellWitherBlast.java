@@ -26,12 +26,10 @@ public class SpellWitherBlast extends Spell
 		return 40;
 	}
 	
-	/**
-	 * Returns the amount of particles spawned when this spell is cast.
-	 */
-	public int getParticleAmount()
+	@Override
+	public double getParticleAmount()
 	{
-		return 40;
+		return 0.5;
 	}
 	
 	@Override

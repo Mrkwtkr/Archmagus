@@ -46,9 +46,9 @@ public class SpellTeleport extends Spell
 	}
 	
 	@Override
-	public int getParticleAmount()
+	public double getParticleAmount()
 	{
-		return 128;
+		return 1;
 	}
 
 	@Override

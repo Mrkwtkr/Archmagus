@@ -2,8 +2,6 @@ package com.agadar.archmagus.spells;
 
 import java.util.Random;
 
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.StatCollector;
 import net.minecraft.world.World;
@@ -48,7 +46,7 @@ public abstract class Spell
     }
     
     /**
-     * Returns the cooldown of this spell in game ticks.
+     * Returns the cooldown of this spell in game ticks. (20 ticks = 1 second)
      */
     public short getCooldown()
     {
@@ -56,7 +54,8 @@ public abstract class Spell
     }
     
     /**
-     * Returns the name of the particles spawned when this spell is cast.
+     * Returns the name of the particles spawned when a spell book
+     * that contains this spell is being held by an entity.
      */
     public String getParticleName()
     {
@@ -64,11 +63,12 @@ public abstract class Spell
     }
     
 	/**
-	 * Returns the amount of particles spawned when this spell is cast.
+	 * Returns the amount of particles spawned per gametick when a spell book
+	 * that contains this spell is being held by an entity. (20 ticks = 1 second)
 	 */
-	public int getParticleAmount()
+	public double getParticleAmount()
 	{
-		return 20;
+		return 1;
 	}
     
     /**
@@ -103,21 +103,6 @@ public abstract class Spell
     protected int getNormalizedLevel(int par1Level)
     {
     	return Math.max(getMinLevel(), Math.min(par1Level, getMaxLevel()));
-    }
-    
-	/**
-	 * Spawns random particles.
-	 */
-    @SideOnly(Side.CLIENT)
-    public void generateRandomParticles(World par2World, EntityPlayer par3EntityPlayer)
-    {
-    	for (int i = 0; i < this.getParticleAmount(); ++i)
-        {
-            double d0 = par2World.rand.nextGaussian() * 0.02D;
-            double d1 = par2World.rand.nextGaussian() * 0.02D;
-            double d2 = par2World.rand.nextGaussian() * 0.02D;
-            par2World.spawnParticle(this.getParticleName(), par3EntityPlayer.posX + (double)(par2World.rand.nextFloat() * par3EntityPlayer.width * 2.0F) - (double)par3EntityPlayer.width, par3EntityPlayer.posY - 1.5D + (double)(par2World.rand.nextFloat() * par3EntityPlayer.height), par3EntityPlayer.posZ + (double)(par2World.rand.nextFloat() * par3EntityPlayer.width * 2.0F) - (double)par3EntityPlayer.width, d0, d1, d2);
-        }
     }
     
     /**
