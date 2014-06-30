@@ -16,7 +16,7 @@ import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.DamageSource;
 import net.minecraft.world.World;
 
-public class EntitySummonedSpider extends EntitySummonable 
+public class EntitySummonedSpider extends EntitySummoned 
 {
 	public EntitySummonedSpider(World par1World) 
 	{ 

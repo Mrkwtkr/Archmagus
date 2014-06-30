@@ -26,7 +26,7 @@ import net.minecraft.world.World;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class EntitySpiritWolf extends EntitySummonable
+public class EntitySummonedWolf extends EntitySummoned
 {
     private float field_70926_e;
     /** true is the wolf is wet else false */
@@ -38,7 +38,7 @@ public class EntitySpiritWolf extends EntitySummonable
     private float timeWolfIsShaking;
     private float prevTimeWolfIsShaking;
 
-    public EntitySpiritWolf(World par1World)
+    public EntitySummonedWolf(World par1World)
     {
         super(par1World);
         this.setSize(0.6F, 0.8F);
@@ -317,9 +317,9 @@ public class EntitySpiritWolf extends EntitySummonable
     {
         if (!(par1EntityLivingBase instanceof EntityCreeper) && !(par1EntityLivingBase instanceof EntityGhast))
         {
-            if (par1EntityLivingBase instanceof EntitySpiritWolf)
+            if (par1EntityLivingBase instanceof EntitySummonedWolf)
             {
-            	EntitySpiritWolf entitywolf = (EntitySpiritWolf) par1EntityLivingBase;
+            	EntitySummonedWolf entitywolf = (EntitySummonedWolf) par1EntityLivingBase;
 
                 if (entitywolf.getOwner() == par2EntityLivingBase)
                 {

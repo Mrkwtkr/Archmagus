@@ -16,7 +16,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.DamageSource;
 import net.minecraft.world.World;
 
-public class EntityRisenZombiePigman extends EntitySummonable
+public class EntityRisenZombiePigman extends EntitySummoned
 {
 	public EntityRisenZombiePigman(World par1World)
     {

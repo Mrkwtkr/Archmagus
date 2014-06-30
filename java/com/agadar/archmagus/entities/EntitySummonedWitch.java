@@ -28,7 +28,7 @@ import net.minecraft.util.DamageSource;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
 
-public class EntitySummonedWitch extends EntitySummonable implements IRangedAttackMob 
+public class EntitySummonedWitch extends EntitySummoned implements IRangedAttackMob 
 {
     private static final UUID field_110184_bp = UUID.fromString("5CD17E52-A79A-43D3-A529-90FDE04B181E");
     private static final AttributeModifier field_110185_bq = (new AttributeModifier(field_110184_bp, "Drinking speed penalty", -0.25D, 0)).setSaved(false);

@@ -21,7 +21,7 @@ import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.DamageSource;
 import net.minecraft.world.World;
 
-public class EntityRisenWitherSkeleton extends EntitySummonable implements IRangedAttackMob
+public class EntityRisenWitherSkeleton extends EntitySummoned implements IRangedAttackMob
 {
     public EntityRisenWitherSkeleton(World par1World)
     {

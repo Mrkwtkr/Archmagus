@@ -8,13 +8,13 @@ import net.minecraft.util.MathHelper;
 
 import org.lwjgl.opengl.GL11;
 
-import com.agadar.archmagus.entities.EntitySpiritWolf;
+import com.agadar.archmagus.entities.EntitySummonedWolf;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
 @SideOnly(Side.CLIENT)
-public class ModelSpiritWolf extends ModelBase
+public class ModelSummonedWolf extends ModelBase
 {
     /** main box for the wolf head */
     public ModelRenderer wolfHeadMain;
@@ -33,7 +33,7 @@ public class ModelSpiritWolf extends ModelBase
     /** The wolf's mane */
     ModelRenderer wolfMane;
 
-    public ModelSpiritWolf()
+    public ModelSummonedWolf()
     {
         float f = 0.0F;
         float f1 = 13.5F;
@@ -107,7 +107,7 @@ public class ModelSpiritWolf extends ModelBase
     @Override
     public void setLivingAnimations(EntityLivingBase par1EntityLivingBase, float par2, float par3, float par4)
     {
-        EntitySpiritWolf entitywolf = (EntitySpiritWolf)par1EntityLivingBase;
+        EntitySummonedWolf entitywolf = (EntitySummonedWolf)par1EntityLivingBase;
 
         this.wolfTail.rotateAngleY = 0.0F;
 

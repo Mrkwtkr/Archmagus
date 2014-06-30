@@ -20,7 +20,6 @@ import net.minecraft.entity.monster.EntitySkeleton;
 import net.minecraft.entity.monster.EntitySpider;
 import net.minecraft.entity.monster.EntityWitch;
 import net.minecraft.entity.monster.EntityZombie;
-import net.minecraft.entity.passive.EntityVillager;
 import net.minecraft.entity.passive.EntityWolf;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.event.entity.living.LivingDropsEvent;
@@ -34,8 +33,7 @@ public class EventOnLivingDrops
 
 		if (entityClass.equals(EntityBlaze.class))
 		{
-			randomDrop(event, Spells.blazefire, 1, 7.5);
-			randomDrop(event, Spells.summon_blaze, 1, 2.5);
+			randomDrop(event, Spells.blazefire, 1, 10);
 		}
 		else if (entityClass.equals(EntityGhast.class))
 		{
@@ -47,24 +45,15 @@ public class EventOnLivingDrops
 		}
 		else if (entityClass.equals(EntityCreeper.class))
 		{
-			randomDrop(event, Spells.lightning, 1, 5);
+			randomDrop(event, Spells.lightning, 1, 10);
 		} 
-		// Flamestrike, Thunderstrike here
 		else if (entityClass.equals(EntityZombie.class))
 		{
-			double chance = 5D / 6D;
-			randomDrop(event, Spells.conjure_axe, 1, chance);
-			randomDrop(event, Spells.conjure_pickaxe, 1, chance);
-			randomDrop(event, Spells.conjure_shovel, 1, chance);
-			randomDrop(event, Spells.conjure_sword, 1, chance);
-			randomDrop(event, Spells.conjure_armor, 1, chance);
-			randomDrop(event, Spells.raise_zombie, 1, chance);
+			randomDrop(event, Spells.raise_zombie, 1, 10);
 		}
 		else if (entityClass.equals(EntityPigZombie.class))
 		{
-			randomDrop(event, Spells.conjure_sword, 1, 3);
-			randomDrop(event, Spells.conjure_armor, 1, 1);
-			randomDrop(event, Spells.raise_zombie_pigman, 1, 1);
+			randomDrop(event, Spells.raise_zombie_pigman, 1, 10);
 		}
 		else if (entityClass.equals(EntitySkeleton.class))
 		{
@@ -72,23 +61,16 @@ public class EventOnLivingDrops
 			
 			if (skeletonType == 0)
 			{
-				randomDrop(event, Spells.conjure_bow, 1, 5);
-				randomDrop(event, Spells.conjure_armor, 1, 2.5);
-				randomDrop(event, Spells.raise_skeleton, 1, 2.5);
+				randomDrop(event, Spells.raise_skeleton, 1, 10);
 			}
 			else if (skeletonType == 1)
 			{
-				randomDrop(event, Spells.conjure_sword, 1, 3);
-				randomDrop(event, Spells.raise_wither_skeleton, 1, 2);
+				randomDrop(event, Spells.raise_wither_skeleton, 1, 10);
 			}
-		}
-		else if (entityClass.equals(EntityVillager.class))
-		{
-			randomDrop(event, Spells.conjure_hoe, 1, 10);
 		}
 		else if (entityClass.equals(EntityWolf.class))
 		{
-			randomDrop(event, Spells.summon_spirit_wolf, 1, 10);
+			randomDrop(event, Spells.summon_wolf, 1, 10);
 		}
 		else if (entityClass.equals(EntityWitch.class))
 		{
@@ -96,16 +78,16 @@ public class EventOnLivingDrops
 		}
 		else if (entityClass.equals(EntitySpider.class))
 		{
-			randomDrop(event, Spells.summon_spider, 1, 5);
+			randomDrop(event, Spells.summon_spider, 1, 10);
 		}
 		else if (entityClass.equals(EntityCaveSpider.class))
 		{
-			randomDrop(event, Spells.summon_cave_spider, 1, 5);
+			randomDrop(event, Spells.summon_cave_spider, 1, 10);
 		}
 		else if (entityClass.equals(EntityEnderman.class))
 		{
-			randomDrop(event, Spells.teleport, 1, 5);
-			randomDrop(event, Spells.respawn, 1, 5);
+			randomDrop(event, Spells.teleport, 1, 10);
+			randomDrop(event, Spells.respawn, 1, 10);
 		}
 	}
 	

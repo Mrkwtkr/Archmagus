@@ -12,9 +12,9 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.pathfinding.PathEntity;
 import net.minecraft.world.World;
 
-public abstract class EntitySummonable extends EntityTameable 
+public abstract class EntitySummoned extends EntityTameable 
 {
-	public EntitySummonable(World par1World) 
+	public EntitySummoned(World par1World) 
 	{
 		super(par1World);
 		

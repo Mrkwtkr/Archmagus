@@ -2,9 +2,7 @@ package com.agadar.archmagus.renderers;
 
 import org.lwjgl.opengl.GL11;
 
-import com.agadar.archmagus.entities.EntitySpiritWolf;
-import com.agadar.archmagus.help.References;
-
+import com.agadar.archmagus.entities.EntitySummonedWolf;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.client.model.ModelBase;
@@ -14,11 +12,11 @@ import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.util.ResourceLocation;
 
 @SideOnly(Side.CLIENT)
-public class RenderSpiritWolf extends RenderLiving 
+public class RenderSummonedWolf extends RenderLiving 
 {
-	private static final ResourceLocation wolfTextures = new ResourceLocation(References.MODID + ":textures/entity/spirit_wolf.png");
+	private static final ResourceLocation wolfTextures = new ResourceLocation("textures/entity/wolf/wolf.png");
 	
-	public RenderSpiritWolf(ModelBase par1ModelBase, ModelBase par2ModelBase, float par3) 
+	public RenderSummonedWolf(ModelBase par1ModelBase, ModelBase par2ModelBase, float par3) 
 	{
 		super(par1ModelBase, par3);
 		this.setRenderPassModel(par2ModelBase);
@@ -27,7 +25,7 @@ public class RenderSpiritWolf extends RenderLiving
 	@Override
     protected int shouldRenderPass(EntityLivingBase par1EntityLivingBase, int par2, float par3)
     {
-		EntitySpiritWolf wolf = (EntitySpiritWolf) par1EntityLivingBase;
+		EntitySummonedWolf wolf = (EntitySummonedWolf) par1EntityLivingBase;
 		
 		if (par2 == 0 && wolf.getWolfShaking())
         {
@@ -45,7 +43,7 @@ public class RenderSpiritWolf extends RenderLiving
     @Override
     protected float handleRotationFloat(EntityLivingBase par1EntityLivingBase, float par2)
     {
-    	return ((EntitySpiritWolf) par1EntityLivingBase).getTailRotation();
+    	return ((EntitySummonedWolf) par1EntityLivingBase).getTailRotation();
     }
 
     @Override

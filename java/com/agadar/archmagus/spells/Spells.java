@@ -1,17 +1,13 @@
 package com.agadar.archmagus.spells;
 
-import net.minecraft.item.Item;
-
 import com.agadar.archmagus.entities.EntityRisenSkeleton;
 import com.agadar.archmagus.entities.EntityRisenWitherSkeleton;
 import com.agadar.archmagus.entities.EntityRisenZombie;
 import com.agadar.archmagus.entities.EntityRisenZombiePigman;
-import com.agadar.archmagus.entities.EntitySpiritWolf;
-import com.agadar.archmagus.entities.EntitySummonedBlaze;
+import com.agadar.archmagus.entities.EntitySummonedWolf;
 import com.agadar.archmagus.entities.EntitySummonedCaveSpider;
 import com.agadar.archmagus.entities.EntitySummonedSpider;
 import com.agadar.archmagus.entities.EntitySummonedWitch;
-import com.agadar.archmagus.items.ModItems;
 
 public class Spells 
 {
@@ -22,29 +18,16 @@ public class Spells
 	public final static Spell ghastfire = new SpellGhastFire(1);
 	public final static Spell witherblast = new SpellWitherBlast(2);
 	public final static Spell lightning = new SpellLightning(3);
-	public final static Spell flamestrike = new SpellFlamestrike(4);
-	public final static Spell thunderstrike = new SpellThunderStrike(5);
-	public final static Spell conjure_axe = new SpellConjureItem(6, "conjure_axe", new Item[] { ModItems.conjured_axe_1, ModItems.conjured_axe_2, ModItems.conjured_axe_3, ModItems.conjured_axe_4 });
-	public final static Spell conjure_bow = new SpellConjureItem(7, "conjure_bow", new Item[] { ModItems.conjured_bow });
-	public final static Spell conjure_hoe = new SpellConjureItem(8, "conjure_hoe", new Item[] { ModItems.conjured_hoe });
-	public final static Spell conjure_pickaxe = new SpellConjureItem(9, "conjure_pickaxe", new Item[] { ModItems.conjured_pickaxe_1, ModItems.conjured_pickaxe_2, ModItems.conjured_pickaxe_3, ModItems.conjured_pickaxe_4 });
-	public final static Spell conjure_shovel = new SpellConjureItem(10, "conjure_shovel", new Item[] { ModItems.conjured_shovel_1, ModItems.conjured_shovel_2, ModItems.conjured_shovel_3, ModItems.conjured_shovel_4 });
-	public final static Spell conjure_sword = new SpellConjureItem(11, "conjure_sword", new Item[] { ModItems.conjured_sword_1, ModItems.conjured_sword_2, ModItems.conjured_sword_3, ModItems.conjured_sword_4 });
-	public final static Spell conjure_armor = new SpellConjureArmor(12, "conjure_armor", new Item[][] { 
-			new Item[] { ModItems.conjured_helmet_1, ModItems.conjured_chestplate_1, ModItems.conjured_leggings_1, ModItems.conjured_boots_1 }, 
-			new Item[] { ModItems.conjured_helmet_2, ModItems.conjured_chestplate_2, ModItems.conjured_leggings_2, ModItems.conjured_boots_2 },
-			new Item[] { ModItems.conjured_helmet_3, ModItems.conjured_chestplate_3, ModItems.conjured_leggings_3, ModItems.conjured_boots_3 }});
-	public final static Spell summon_spirit_wolf = new SpellSummon(13, "summon_spirit_wolf", EntitySpiritWolf.class);
-	public final static Spell raise_skeleton = new SpellSummon(14, "raise_skeleton", EntityRisenSkeleton.class);
-	public final static Spell raise_wither_skeleton = new SpellSummon(15, "raise_wither_skeleton", EntityRisenWitherSkeleton.class);
-	public final static Spell raise_zombie = new SpellSummon(16, "raise_zombie", EntityRisenZombie.class);
-	public final static Spell raise_zombie_pigman = new SpellSummon(17, "raise_zombie_pigman", EntityRisenZombiePigman.class);
-	public final static Spell summon_witch = new SpellSummon(18, "summon_witch", EntitySummonedWitch.class);
-	public final static Spell summon_spider = new SpellSummon(19, "summon_spider", EntitySummonedSpider.class);
-	public final static Spell summon_cave_spider = new SpellSummon(20, "summon_cave_spider", EntitySummonedCaveSpider.class);
-	public final static Spell summon_blaze = new SpellSummon(21, "summon_blaze", EntitySummonedBlaze.class);
-	public final static Spell teleport = new SpellTeleport(22);
-	public final static Spell respawn = new SpellRespawn(23);
+	public final static Spell summon_wolf = new SpellSummon(4, "summon_wolf", EntitySummonedWolf.class);
+	public final static Spell raise_skeleton = new SpellSummon(5, "raise_skeleton", EntityRisenSkeleton.class);
+	public final static Spell raise_wither_skeleton = new SpellSummon(6, "raise_wither_skeleton", EntityRisenWitherSkeleton.class);
+	public final static Spell raise_zombie = new SpellSummon(7, "raise_zombie", EntityRisenZombie.class);
+	public final static Spell raise_zombie_pigman = new SpellSummon(8, "raise_zombie_pigman", EntityRisenZombiePigman.class);
+	public final static Spell summon_witch = new SpellSummon(9, "summon_witch", EntitySummonedWitch.class);
+	public final static Spell summon_spider = new SpellSummon(10, "summon_spider", EntitySummonedSpider.class);
+	public final static Spell summon_cave_spider = new SpellSummon(11, "summon_cave_spider", EntitySummonedCaveSpider.class);
+	public final static Spell teleport = new SpellTeleport(12);
+	public final static Spell respawn = new SpellRespawn(13);
 	
 	/**
 	 * Registers a new spell at the given id.

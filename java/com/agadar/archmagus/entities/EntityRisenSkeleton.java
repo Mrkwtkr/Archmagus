@@ -20,7 +20,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.DamageSource;
 import net.minecraft.world.World;
 
-public class EntityRisenSkeleton extends EntitySummonable implements IRangedAttackMob
+public class EntityRisenSkeleton extends EntitySummoned implements IRangedAttackMob
 {
     public EntityRisenSkeleton(World par1World)
     {

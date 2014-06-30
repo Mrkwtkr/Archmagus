@@ -23,10 +23,8 @@ public class Archmagus
 	@EventHandler
 	public void preInit(FMLPreInitializationEvent event) 
 	{		
-		ModItems.loadItems();
-		
-		ModEntities.registerEntities();
-		
+		ModItems.loadItems();	
+		ModEntities.registerEntities();	
 		ModEvents.subscribeEvents();
 	}
 }

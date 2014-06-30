@@ -16,7 +16,7 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.DamageSource;
 import net.minecraft.world.World;
 
-public class EntityRisenZombie extends EntitySummonable
+public class EntityRisenZombie extends EntitySummoned
 {
     public EntityRisenZombie(World par1World)
     {
