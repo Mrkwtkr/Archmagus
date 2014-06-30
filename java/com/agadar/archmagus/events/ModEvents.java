@@ -8,8 +8,11 @@ public class ModEvents
 	{
 		/** For making mobs drop spell books. */
 		MinecraftForge.EVENT_BUS.register(new EventOnLivingDrops());
-		
+		 
 		/** For making spell books combineable in anvils. */
 		MinecraftForge.EVENT_BUS.register(new EventOnAnvilUpdate());
+		
+		/** For spawning particles around entities holding spell books. */
+		MinecraftForge.EVENT_BUS.register(new EventOnLivingUpdate());
 	}
 }
