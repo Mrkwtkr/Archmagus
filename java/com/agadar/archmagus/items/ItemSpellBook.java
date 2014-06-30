@@ -39,6 +39,8 @@ public class ItemSpellBook extends Item
         return false;
     }
 
+	/** Returns the ItemStack's NBTTag. If it doesn't have one (is null), then
+	 * it is assigned a new one, which is then returned. */
     public NBTTagCompound func_92110_g(ItemStack par1ItemStack)
     {
     	if (par1ItemStack.stackTagCompound == null)
@@ -76,14 +78,58 @@ public class ItemSpellBook extends Item
      * Adds the given spell to the given ItemStack.
      */
     public void addSpell(ItemStack par1ItemStack, SpellData par2SpellData)
+    {        
+    	NBTTagCompound nbttagcomp = this.func_92110_g(par1ItemStack);
+    	nbttagcomp.setShort("id", (short)par2SpellData.spellObj.effectId);
+    	nbttagcomp.setShort("lvl", (short)par2SpellData.spellLevel);
+    }
+    
+    /** Attempts to combine two spell books. Returns null if it failed. */
+    public static ItemStack combine(ItemStack par1ItemStack, ItemStack par2ItemStack)
     {
-        NBTTagCompound nbttagcomp = this.func_92110_g(par1ItemStack);
-        nbttagcomp.setShort("id", (short)par2SpellData.spellObj.effectId);
-        nbttagcomp.setShort("lvl", (short)par2SpellData.spellLevel);
+    	if (par1ItemStack.stackTagCompound != null && par2ItemStack.stackTagCompound != null)
+    	{
+    		short id = par1ItemStack.stackTagCompound.getShort("id");
+    		
+    		if (id == par2ItemStack.stackTagCompound.getShort("id"))
+    		{
+    			short level1 = par1ItemStack.stackTagCompound.getShort("lvl");
+    			short level2 = par2ItemStack.stackTagCompound.getShort("lvl");
+				
+    			if (level1 > level2)
+    			{
+        			ItemStack itemStack = new ItemStack(ModItems.spell_book);
+    				itemStack.stackTagCompound = new NBTTagCompound();
+    				itemStack.stackTagCompound.setShort("id", id);
+    				itemStack.stackTagCompound.setShort("lvl", level1);
+    				
+    				return itemStack;
+    			}
+    			else if (level1 == level2)
+    			{
+        			ItemStack itemStack = new ItemStack(ModItems.spell_book);
+    				itemStack.stackTagCompound = new NBTTagCompound();
+    				itemStack.stackTagCompound.setShort("id", id);
+    				
+    				if (level1 + 1 <= Spells.getSpellAt(id).getMaxLevel())
+    				{
+    					itemStack.stackTagCompound.setShort("lvl", (short) (level1 + 1));
+    				}
+    				else
+    				{
+    					itemStack.stackTagCompound.setShort("lvl", level1);
+    				}
+
+    				return itemStack;
+    			}
+    		}
+    	}
+    	
+    	return null;
     }
     
     /**
-     * Returns an ItemStack of a single Spell Book with the given spell.
+     * Returns an ItemStack of a single spell book with the given spell.
      */
     public ItemStack getSpellItemStack(SpellData par1SpellData)
     {
@@ -92,6 +138,7 @@ public class ItemSpellBook extends Item
         return itemstack;
     }
 
+    /** Adds spell books of all possible levels of the given Spell to the given List . */
     @SuppressWarnings({ "unchecked", "rawtypes" })
 	@SideOnly(Side.CLIENT)
     public void func_92113_a(Spell par1Spell, List par2List)
