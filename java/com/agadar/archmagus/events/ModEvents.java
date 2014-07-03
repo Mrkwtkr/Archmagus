@@ -13,6 +13,7 @@ public class ModEvents
 		MinecraftForge.EVENT_BUS.register(new EventOnAnvilUpdate());
 		
 		/** For spawning particles around entities holding spell books. */
-		MinecraftForge.EVENT_BUS.register(new EventOnLivingUpdate());
+		//MinecraftForge.EVENT_BUS.register(new EventOnLivingUpdate());
+		// Currently disabled due to the particles spawning very low to the ground when viewed by another player for some reason.
 	}
 }

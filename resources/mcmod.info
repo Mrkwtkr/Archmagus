@@ -5,7 +5,6 @@
   "description": "Archmagus is a Minecraft mod which adds a variety of obtainable spell books to the game.",
   "version": "${version}",
   "mcversion": "${mcversion}",
-  "url": "",
   "authorList": ["Agadar"]
 }
 ]

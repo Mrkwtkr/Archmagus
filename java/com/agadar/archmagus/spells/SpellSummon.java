@@ -62,7 +62,7 @@ public class SpellSummon extends Spell
 	@Override
 	public double getParticleAmount()
 	{
-		return 0.5;
+		return 0.25;
 	}
 	
 	@Override
