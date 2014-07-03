@@ -1,5 +1,7 @@
 package com.agadar.archmagus.spells;
 
+import java.util.List;
+
 import com.agadar.archmagus.entities.EntityRisenSkeleton;
 import com.agadar.archmagus.entities.EntityRisenWitherSkeleton;
 import com.agadar.archmagus.entities.EntityRisenZombie;
@@ -8,6 +10,11 @@ import com.agadar.archmagus.entities.EntitySummonedWolf;
 import com.agadar.archmagus.entities.EntitySummonedCaveSpider;
 import com.agadar.archmagus.entities.EntitySummonedSpider;
 import com.agadar.archmagus.entities.EntitySummonedWitch;
+import com.agadar.archmagus.items.ItemSpellBook;
+import com.agadar.archmagus.items.ModItems;
+
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 
 public class Spells 
 {
@@ -17,7 +24,7 @@ public class Spells
 	public final static Spell blazefire = new SpellBlazeFire(0);
 	public final static Spell ghastfire = new SpellGhastFire(1);
 	public final static Spell witherblast = new SpellWitherBlast(2);
-	public final static Spell lightning = new SpellLightning(3);
+	//public final static Spell lightning = new SpellLightning(3);
 	public final static Spell summon_wolf = new SpellSummon(4, "summon_wolf", EntitySummonedWolf.class);
 	public final static Spell raise_skeleton = new SpellSummon(5, "raise_skeleton", EntityRisenSkeleton.class);
 	public final static Spell raise_wither_skeleton = new SpellSummon(6, "raise_wither_skeleton", EntityRisenWitherSkeleton.class);
@@ -54,4 +61,24 @@ public class Spells
 	{
 		return spellList[Math.max(0, Math.min(id, spellList.length - 1))];
 	}
+	
+    /** Adds all possible spell books to the given List.
+     *  Used for placing all possible spell books in the creative menu. */
+    @SuppressWarnings({ "unchecked", "rawtypes" })
+	@SideOnly(Side.CLIENT)
+    public static void getAllSpellBooks(List par1List)
+    {
+    	for (int i1 = 0; i1 < spellList.length; i1++)
+    	{
+    		Spell spell = spellList[i1];
+    		
+    		if (spell != null)
+    		{
+    			for (int i2 = spell.getMinLevel(); i2 <= spell.getMaxLevel(); i2++)
+            	{
+                	par1List.add(((ItemSpellBook) ModItems.spell_book).getSpellItemStack(new SpellData(spell, i2)));
+            	}
+    		}
+    	}
+    }
 }

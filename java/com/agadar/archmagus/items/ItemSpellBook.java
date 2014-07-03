@@ -35,9 +35,9 @@ public class ItemSpellBook extends Item
         return true;
     }
 
-	/** Returns the ItemStack's NBTTag. If it doesn't have one (is null), then
-	 * it is assigned a new one, which is then returned. */
-    public NBTTagCompound func_92110_g(ItemStack par1ItemStack)
+	/** Returns the ItemStack's spell tag. If it doesn't have one then
+	 *  it is first assigned one before it is returned. */
+    public NBTTagCompound getSpellTag(ItemStack par1ItemStack)
     {
     	if (par1ItemStack.stackTagCompound == null)
     	{
@@ -60,7 +60,7 @@ public class ItemSpellBook extends Item
     {
         super.addInformation(par1ItemStack, par2EntityPlayer, par3List, par4);
         
-        NBTTagCompound spelldata = this.func_92110_g(par1ItemStack);               
+        NBTTagCompound spelldata = this.getSpellTag(par1ItemStack);               
         short short1 = spelldata.getShort("id");
         short short2 = spelldata.getShort("lvl");
         short cooldown = (short) (spelldata.getShort("cooldown") / 20);
@@ -78,11 +78,11 @@ public class ItemSpellBook extends Item
     }
 
     /**
-     * Adds the given spell to the given ItemStack.
+     * Adds the given spell data to the given ItemStack.
      */
     public void addSpell(ItemStack par1ItemStack, SpellData par2SpellData)
     {        
-    	NBTTagCompound spelldata = this.func_92110_g(par1ItemStack);               
+    	NBTTagCompound spelldata = this.getSpellTag(par1ItemStack);               
     	spelldata.setShort("id", (short) par2SpellData.spellObj.effectId);
     	spelldata.setShort("lvl", (short) par2SpellData.spellLevel);
     }
@@ -142,25 +142,13 @@ public class ItemSpellBook extends Item
     }
     
     /**
-     * Returns an ItemStack of a single spell book with the given spell.
+     * Returns an ItemStack of a single spell book with the given spell data.
      */
     public ItemStack getSpellItemStack(SpellData par1SpellData)
     {
         ItemStack itemstack = new ItemStack(this);
         this.addSpell(itemstack, par1SpellData);
         return itemstack;
-    }
-
-    /** Adds spell books of all possible levels of the given Spell to the given List.
-     *  Used for placing all possible spell books in the creative menu. */
-    @SuppressWarnings({ "unchecked", "rawtypes" })
-	@SideOnly(Side.CLIENT)
-    public void func_92113_a(Spell par1Spell, List par2List)
-    {
-        for (int i = par1Spell.getMinLevel(); i <= par1Spell.getMaxLevel(); ++i)
-        {
-            par2List.add(this.getSpellItemStack(new SpellData(par1Spell, i)));
-        }
     }
 
     /** Makes the item tooltip text a light blue color. */
@@ -174,7 +162,7 @@ public class ItemSpellBook extends Item
     @Override
     public ItemStack onItemRightClick(ItemStack par1ItemStack, World par2World, EntityPlayer par3EntityPlayer)
     {		
-    	NBTTagCompound spelldata = this.func_92110_g(par1ItemStack);
+    	NBTTagCompound spelldata = this.getSpellTag(par1ItemStack);
     	short cooldown = spelldata.getShort("cooldown");	
     	boolean inCreative = par3EntityPlayer.capabilities.isCreativeMode;
     	
@@ -211,7 +199,7 @@ public class ItemSpellBook extends Item
     {
     	if (!par2World.isRemote)
     	{
-    		NBTTagCompound spelldata = this.func_92110_g(par1ItemStack);
+    		NBTTagCompound spelldata = this.getSpellTag(par1ItemStack);
     		short cooldown = spelldata.getShort("cooldown");
 
     		if (cooldown > 0)

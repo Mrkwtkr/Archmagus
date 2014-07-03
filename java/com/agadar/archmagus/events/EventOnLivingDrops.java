@@ -46,7 +46,7 @@ public class EventOnLivingDrops
 		}
 		else if (entityClass.equals(EntityCreeper.class))
 		{
-			randomDrop(event, Spells.lightning, 1, 10);
+			//randomDrop(event, Spells.lightning, 1, 10);
 		} 
 		else if (entityClass.equals(EntityZombie.class))
 		{

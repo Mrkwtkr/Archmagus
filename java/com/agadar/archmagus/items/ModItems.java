@@ -34,20 +34,7 @@ public class ModItems
 		@SideOnly(Side.CLIENT)
 	    public void displayAllReleventItems(List itemList) 
 	    {       
-	    	((ItemSpellBook) ModItems.spell_book).func_92113_a(Spells.blazefire, itemList);
-	    	((ItemSpellBook) ModItems.spell_book).func_92113_a(Spells.ghastfire, itemList);
-	    	((ItemSpellBook) ModItems.spell_book).func_92113_a(Spells.witherblast, itemList);
-	    	//((ItemSpellBook) ModItems.spell_book).func_92113_a(Spells.lightning, itemList);
-	    	((ItemSpellBook) ModItems.spell_book).func_92113_a(Spells.summon_wolf, itemList);
-	    	((ItemSpellBook) ModItems.spell_book).func_92113_a(Spells.raise_skeleton, itemList);
-	    	((ItemSpellBook) ModItems.spell_book).func_92113_a(Spells.raise_wither_skeleton, itemList);
-	    	((ItemSpellBook) ModItems.spell_book).func_92113_a(Spells.raise_zombie, itemList);
-	    	((ItemSpellBook) ModItems.spell_book).func_92113_a(Spells.raise_zombie_pigman, itemList);
-	    	((ItemSpellBook) ModItems.spell_book).func_92113_a(Spells.summon_witch, itemList);
-	    	((ItemSpellBook) ModItems.spell_book).func_92113_a(Spells.summon_spider, itemList);
-	    	((ItemSpellBook) ModItems.spell_book).func_92113_a(Spells.summon_cave_spider, itemList);
-	    	((ItemSpellBook) ModItems.spell_book).func_92113_a(Spells.teleport, itemList);
-	    	((ItemSpellBook) ModItems.spell_book).func_92113_a(Spells.respawn, itemList);
+	    	Spells.getAllSpellBooks(itemList);
 	    }
 	};
 }
