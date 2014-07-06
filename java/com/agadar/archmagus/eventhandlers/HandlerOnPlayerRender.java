@@ -7,6 +7,7 @@ import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import net.minecraft.client.renderer.entity.Render;
 import net.minecraftforge.client.event.RenderPlayerEvent;
 
+/** For altering the player's model in case he is polymorphed. */
 public class HandlerOnPlayerRender 
 {
 	private final Render renderPolyBat = new RenderPolyBat();

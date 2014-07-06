@@ -44,3 +44,5 @@ entity.risen_zombie_pigman.name=Zombie Pigman
 entity.summoned_witch.name=Witch
 entity.summoned_spider.name=Spider
 entity.summoned_cave_spider.name=Cave Spider
+
+potion.shapeshift=Polymorph

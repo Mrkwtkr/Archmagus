@@ -12,8 +12,11 @@ public class ModEventHandlers
 		/** For making spell books combineable in anvils. */
 		MinecraftForge.EVENT_BUS.register(new HandlerOnAnvilUpdate());
 		
-		/** For altering the player's rendering in case he is polymorphed. */
+		/** For altering the player's model in case he is polymorphed. */
 		MinecraftForge.EVENT_BUS.register(new HandlerOnPlayerRender());
+		
+		/** For hiding the player's hand in case he is polymorphed. */
+		MinecraftForge.EVENT_BUS.register(new HandlerOnRenderHand());
 		
 		/** For spawning particles around entities holding spell books. */
 		//MinecraftForge.EVENT_BUS.register(new HandlerOnLivingUpdate());

@@ -9,7 +9,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraftforge.event.entity.living.LivingEvent.LivingUpdateEvent;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 
-/** Handles spawning particles around entities holding spell books. */
+/** For spawning particles around entities holding spell books. */
 public class HandlerOnLivingUpdate 
 {
 	@SubscribeEvent
