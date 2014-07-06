@@ -1,7 +1,7 @@
 package com.agadar.archmagus;
 
 import com.agadar.archmagus.entities.ModEntities;
-import com.agadar.archmagus.events.ModEvents;
+import com.agadar.archmagus.eventhandlers.ModEventHandlers;
 import com.agadar.archmagus.help.References;
 import com.agadar.archmagus.items.ModItems;
 
@@ -25,6 +25,6 @@ public class Archmagus
 	{		
 		ModItems.loadItems();	
 		ModEntities.registerEntities();	
-		ModEvents.subscribeEvents();
+		ModEventHandlers.subscribeEvents();
 	}
 }

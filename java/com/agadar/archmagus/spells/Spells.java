@@ -35,6 +35,7 @@ public class Spells
 	public final static Spell summon_cave_spider = new SpellSummon(11, "summon_cave_spider", EntitySummonedCaveSpider.class);
 	public final static Spell teleport = new SpellTeleport(12);
 	public final static Spell respawn = new SpellRespawn(13);
+	public final static Spell polymorph = new SpellPolymorph(14);
 	
 	/**
 	 * Registers a new spell at the given id.

@@ -1,4 +1,4 @@
-package com.agadar.archmagus.events;
+package com.agadar.archmagus.eventhandlers;
 
 import com.agadar.archmagus.items.ItemSpellBook;
 import com.agadar.archmagus.items.ModItems;
@@ -25,7 +25,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraftforge.event.entity.living.LivingDropsEvent;
 
 /** Handles mobs dropping spell books. */
-public class EventOnLivingDrops 
+public class HandlerOnLivingDrops 
 {
 	@SubscribeEvent
 	public void OnLivingDrops (LivingDropsEvent event)

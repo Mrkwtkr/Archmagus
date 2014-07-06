@@ -23,6 +23,7 @@ spell.summon_spider=Summon Spider
 spell.summon_cave_spider=Summon Cave Spider
 spell.teleport=Teleport
 spell.respawn=Respawn
+spell.polymorph=Polymorph
 
 spell.level.1=I
 spell.level.2=II

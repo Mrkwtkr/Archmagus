@@ -1,4 +1,4 @@
-package com.agadar.archmagus.events;
+package com.agadar.archmagus.eventhandlers;
 
 import com.agadar.archmagus.items.ModItems;
 import com.agadar.archmagus.spells.Spell;
@@ -10,7 +10,7 @@ import net.minecraftforge.event.entity.living.LivingEvent.LivingUpdateEvent;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 
 /** Handles spawning particles around entities holding spell books. */
-public class EventOnLivingUpdate 
+public class HandlerOnLivingUpdate 
 {
 	@SubscribeEvent
 	public void OnLivingUpdate(LivingUpdateEvent event)
