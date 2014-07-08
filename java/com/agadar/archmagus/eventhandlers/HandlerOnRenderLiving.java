@@ -1,24 +1,24 @@
 package com.agadar.archmagus.eventhandlers;
 
-import com.agadar.archmagus.items.ModItems;
+import com.agadar.archmagus.potions.ModPotions;
 import com.agadar.archmagus.renderers.RenderPolyBat;
 
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import net.minecraft.client.renderer.entity.Render;
-import net.minecraftforge.client.event.RenderPlayerEvent;
+import net.minecraftforge.client.event.RenderLivingEvent;
 
 /** For altering the player's model in case he is polymorphed. */
-public class HandlerOnPlayerRender 
+public class HandlerOnRenderLiving 
 {
 	private final Render renderPolyBat = new RenderPolyBat();
 	
 	@SubscribeEvent
-	public void OnPlayerRender(RenderPlayerEvent.Pre event)
+	public void onRenderLiving(RenderLivingEvent.Pre event)
 	{
-		if (event.entityPlayer.isPotionActive(ModItems.shapeshiftPotion))
+		if (event.entity.isPotionActive(ModPotions.shapeshiftPotion))
 		{
 			event.setCanceled(true);
-			renderPolyBat.doRender(event.entity, 0D, 0D, 0D, 0F, 0F);
+			renderPolyBat.doRender(event.entity, 0F, 0F, 0F, 0F, 0F);
 		}
 	}
 }

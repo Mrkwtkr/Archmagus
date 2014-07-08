@@ -13,11 +13,12 @@ public class PotionShapeshift extends Potion
 	/** The location of our custom potion effect icons. */
 	private static final ResourceLocation resourceLoc = new ResourceLocation(References.MODID + ":textures/custom_icons.png");
 
-	public PotionShapeshift(int par1, boolean par2, int par3) 
+	public PotionShapeshift(int par1Id) 
 	{
-		super(par1, par2, par3);
+		super(par1Id, false, 1);
 	}
 
+	@Override
 	public Potion setIconIndex(int par1, int par2) 
 	{
 		super.setIconIndex(par1, par2);

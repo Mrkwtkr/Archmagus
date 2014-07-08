@@ -1,12 +1,12 @@
 package com.agadar.archmagus.spells;
 
-import com.agadar.archmagus.items.ModItems;
+import com.agadar.archmagus.potions.ModPotions;
 
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.world.World;
 
-/** Polymorphs the caster into a random animal. */
+/** Polymorphs the caster into an animal. */
 public class SpellPolymorph extends Spell 
 {
 	protected SpellPolymorph(int par1) 
@@ -32,7 +32,8 @@ public class SpellPolymorph extends Spell
 	{
 		if (!par2World.isRemote)
 		{
-			par3EntityPlayer.addPotionEffect(new PotionEffect(ModItems.shapeshiftPotion.getId(), 200, 0));
+			par3EntityPlayer.addPotionEffect(new PotionEffect(ModPotions.shapeshiftPotion.getId(), 200, 0));
+			
 		}
 		
 		return true;

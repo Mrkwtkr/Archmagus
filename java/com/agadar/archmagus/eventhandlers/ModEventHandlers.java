@@ -13,7 +13,7 @@ public class ModEventHandlers
 		MinecraftForge.EVENT_BUS.register(new HandlerOnAnvilUpdate());
 		
 		/** For altering the player's model in case he is polymorphed. */
-		MinecraftForge.EVENT_BUS.register(new HandlerOnPlayerRender());
+		MinecraftForge.EVENT_BUS.register(new HandlerOnRenderLiving());
 		
 		/** For hiding the player's hand in case he is polymorphed. */
 		MinecraftForge.EVENT_BUS.register(new HandlerOnRenderHand());
