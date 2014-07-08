@@ -29,9 +29,9 @@ public class SpellConjureArmor extends Spell
     }
 	
 	@Override
-    public int getMaxLevel()
+    public short getMaxLevel()
     {
-        return armorSets.length;
+        return (short) armorSets.length;
     }
 	
 	@Override

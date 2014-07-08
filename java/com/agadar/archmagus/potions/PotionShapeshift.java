@@ -1,4 +1,4 @@
-package com.agadar.archmagus.items;
+package com.agadar.archmagus.potions;
 
 import com.agadar.archmagus.help.References;
 

@@ -1,20 +1,81 @@
 package com.agadar.archmagus.spells;
 
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.world.World;
+
+/** This class is used for applying and identifying Spells onto items. */
 public class SpellData 
 {
 	/** Spell object associated with this SpellData. */
     public final Spell spellObj;
     /** Spell level associated with this SpellData. */
-    public final int spellLevel;
+    public final short spellLevel;
+    /** The remaining cooldown associated with this SpellData. */
+    public final short spellCooldown;
     
-    public SpellData(Spell par1Spell, int par2)
+    /** Name of the Spell's id's variable name in NBTTagCompounds. */
+    private final static String id = "id";
+    /** Name of the Spell's level's variable name in NBTTagCompounds. */
+    private final static String lvl = "lvl";
+    /** Name of the Spell's cooldown's variable name in NBTTagCompounds. */
+    private final static String cd = "cd";
+    
+    public SpellData(Spell par1Spell, short par2Level, short par3Cooldown)
     {
-        this.spellObj = par1Spell;
-        this.spellLevel = par2;
+    	this.spellObj = par1Spell;
+        this.spellLevel = par2Level;
+        this.spellCooldown = par3Cooldown;
     }
-
-    public SpellData(int par1, int par2)
+    
+    public SpellData(Spell par1Spell, short par2Level)
     {
-        this(Spells.getSpellAt(par1), par2);
+        this(par1Spell, par2Level, (short) 0);
+    }
+    
+    /** Casts the Spell associated with this SpellData. */
+    public boolean castSpell(World par1World, EntityPlayer par2EntityPlayer)
+    {
+    	return this.spellObj.castSpell(this.spellLevel, par1World, par2EntityPlayer);
+    }
+    
+    /** Reads a SpellData and returns an NBTTagCompound with corresponding values. */
+    public static NBTTagCompound writeToNBTTagCompound(SpellData par1SpellData)
+    {
+    	NBTTagCompound tag = new NBTTagCompound();
+    	
+    	tag.setShort(id, (short) par1SpellData.spellObj.effectId);
+    	tag.setShort(lvl, (short) par1SpellData.spellLevel);
+    	tag.setShort(cd, (short) par1SpellData.spellCooldown);
+    	
+    	return tag;
+    }
+    
+    /** Reads an NBTTagCompound and returns a SpellData with corresponding values. */
+    public static SpellData readFromNBTTagCompound(NBTTagCompound par1NBTTagCompound)
+    {
+    	Spell spell = Spells.getSpellAt(par1NBTTagCompound.getShort(id));
+        short tagLevel = par1NBTTagCompound.getShort(lvl);
+        short tagCooldown = par1NBTTagCompound.getShort(cd);      
+		
+		return new SpellData(spell, tagLevel, tagCooldown);
+    }
+    
+    /** Reads an NBTTagCompound and reduces the remaining cooldown by one tick. */
+    public static void tickCooldown(NBTTagCompound par1NBTTagCompound)
+    {
+    	short cooldown = par1NBTTagCompound.getShort(cd);
+
+		if (cooldown > 0)
+		{
+			par1NBTTagCompound.setShort(cd, (short) (cooldown - 1));
+		}
+    }
+    
+    /** Reads an NBTTagCompound and starts the cooldown anew. */
+    public static void startCooldown(NBTTagCompound par1NBTTagCompound)
+    {
+    	Spell spell = Spells.getSpellAt(par1NBTTagCompound.getShort(id));
+    	par1NBTTagCompound.setShort(cd, spell.getCooldown());
     }
 }

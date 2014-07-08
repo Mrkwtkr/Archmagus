@@ -25,6 +25,6 @@ public class Archmagus
 	{		
 		ModItems.loadItems();	
 		ModEntities.registerEntities();	
-		ModEventHandlers.subscribeEvents();
+		ModEventHandlers.registerEventHandlers();
 	}
 }

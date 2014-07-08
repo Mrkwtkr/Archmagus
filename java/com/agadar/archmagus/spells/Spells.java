@@ -16,6 +16,7 @@ import com.agadar.archmagus.items.ModItems;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
+/** Holds and manages all Spells. */
 public class Spells 
 {
 	/** The list of all spells. */
@@ -75,7 +76,7 @@ public class Spells
     		
     		if (spell != null)
     		{
-    			for (int i2 = spell.getMinLevel(); i2 <= spell.getMaxLevel(); i2++)
+    			for (short i2 = spell.getMinLevel(); i2 <= spell.getMaxLevel(); i2++)
             	{
                 	par1List.add(((ItemSpellBook) ModItems.spell_book).getSpellItemStack(new SpellData(spell, i2)));
             	}

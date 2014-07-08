@@ -34,9 +34,9 @@ public class SpellTeleport extends Spell
     }
     
     @Override
-    public int getMaxLevel()
+    public short getMaxLevel()
     {
-        return distances.length;
+        return (short) distances.length;
     }
     
 	@Override

@@ -15,7 +15,7 @@ public class SpellBlazeFire extends Spell
     }
 	
 	@Override
-    public int getMaxLevel()
+    public short getMaxLevel()
     {
         return 3;
     }

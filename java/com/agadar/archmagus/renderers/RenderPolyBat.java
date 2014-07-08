@@ -21,15 +21,11 @@ import cpw.mods.fml.relauncher.SideOnly;
 @SideOnly(Side.CLIENT)
 public class RenderPolyBat extends RendererLivingEntity
 {
+	/** Copied from the super. */
 	private static final Logger logger = LogManager.getLogger();
+	/** Copied from the super. */
 	private static final ResourceLocation RES_ITEM_GLINT = new ResourceLocation("textures/misc/enchanted_item_glint.png");
-	
-	
     private static final ResourceLocation batTextures = new ResourceLocation("textures/entity/bat.png");
-    /**
-     * not actually sure this is size, is not used as of now, but the model would be recreated if the value changed and
-     * it seems a good match for a bats size
-     */
     private int renderedBatSize;
 
     public RenderPolyBat()
@@ -62,7 +58,8 @@ public class RenderPolyBat extends RendererLivingEntity
             this.mainModel = new ModelPolyBat();
         }
 
-        //super.doRender(par1EntityLivingBase, par2, par4, par6, par8, par9);
+        /** Everything below this comment was copied from the super in order
+         *  to prevent an infinite loop from occuring. */
         
         GL11.glPushMatrix();
         GL11.glDisable(GL11.GL_CULL_FACE);
@@ -275,6 +272,7 @@ public class RenderPolyBat extends RendererLivingEntity
         this.passSpecialRender(par1EntityLivingBase, par2, par4, par6);
     }
     
+    /** Copied from the super. */
     private float interpolateRotation(float par1, float par2, float par3)
     {
         float f3;

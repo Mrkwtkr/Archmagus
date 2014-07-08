@@ -63,7 +63,7 @@ public class ItemSpellBook extends Item
         NBTTagCompound spelldata = this.getSpellTag(par1ItemStack);               
         short short1 = spelldata.getShort("id");
         short short2 = spelldata.getShort("lvl");
-        short cooldown = (short) (spelldata.getShort("cooldown") / 20);
+        short cooldown = (short) (spelldata.getShort("cd") / 20);
         Spell spell = Spells.getSpellAt(short1); 
         
         if (spell != null)
@@ -162,31 +162,22 @@ public class ItemSpellBook extends Item
     @Override
     public ItemStack onItemRightClick(ItemStack par1ItemStack, World par2World, EntityPlayer par3EntityPlayer)
     {		
-    	NBTTagCompound spelldata = this.getSpellTag(par1ItemStack);
-    	short cooldown = spelldata.getShort("cooldown");	
+    	NBTTagCompound spellTag = this.getSpellTag(par1ItemStack);
+    	SpellData spellData = SpellData.readFromNBTTagCompound(spellTag);	
     	boolean inCreative = par3EntityPlayer.capabilities.isCreativeMode;
-    	
-    	if (cooldown == 0 || inCreative)
+
+    	if ((spellData.spellCooldown == 0 || inCreative) &&
+    			(par3EntityPlayer.getFoodStats().getFoodLevel() >= spellData.spellObj.getHungerCost() || inCreative) &&
+    			(spellData.castSpell(par2World, par3EntityPlayer)))
     	{
-    		Spell spell = Spells.getSpellAt(spelldata.getShort("id"));	
-
-    		if (par3EntityPlayer.getFoodStats().getFoodLevel() >= spell.getHungerCost() || inCreative)
+    		if (!par2World.isRemote)
     		{
-    			short level = spelldata.getShort("lvl");
-    			boolean succes = spell.castSpell(level, par2World, par3EntityPlayer);
+    			SpellData.startCooldown(spellTag);
+    		}
 
-    			if (succes)
-    			{
-    				if (!par2World.isRemote)
-        			{
-    					spelldata.setShort("cooldown", spell.getCooldown());
-        			}
-    				
-    				if (!inCreative) 
-    				{
-    					par3EntityPlayer.getFoodStats().addStats(-spell.getHungerCost(), 0);
-    				}
-    			}      		
+    		if (!inCreative) 
+    		{
+    			par3EntityPlayer.getFoodStats().addStats(-spellData.spellObj.getHungerCost(), 0);
     		}
     	}
 
@@ -200,12 +191,7 @@ public class ItemSpellBook extends Item
     	if (!par2World.isRemote)
     	{
     		NBTTagCompound spelldata = this.getSpellTag(par1ItemStack);
-    		short cooldown = spelldata.getShort("cooldown");
-
-    		if (cooldown > 0)
-    		{
-    			spelldata.setShort("cooldown", (short) (cooldown - 1));
-    		}
+    		SpellData.tickCooldown(spelldata);
     	}
     }
 }

@@ -2,9 +2,11 @@ package com.agadar.archmagus.eventhandlers;
 
 import net.minecraftforge.common.MinecraftForge;
 
+/** Responsible for registering this mod's event handlers.  */
 public class ModEventHandlers 
 {
-	public static void subscribeEvents() 
+	/** Registers this mod's event handlers. */
+	public static void registerEventHandlers() 
 	{
 		/** For making mobs drop spell books. */
 		MinecraftForge.EVENT_BUS.register(new HandlerOnLivingDrops());

@@ -3,10 +3,9 @@ package com.agadar.archmagus.potions;
 import java.lang.reflect.Field;
 import java.lang.reflect.Modifier;
 
-import com.agadar.archmagus.items.PotionShapeshift;
-
 import net.minecraft.potion.Potion;
 
+/** Responsible for instantiating this mod's Potions. */
 public class ModPotions 
 {
 	/** The potion that is applied when a player is polymorphed. */

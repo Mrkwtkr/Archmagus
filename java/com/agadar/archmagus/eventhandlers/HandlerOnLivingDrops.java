@@ -34,15 +34,15 @@ public class HandlerOnLivingDrops
 
 		if (entityClass.equals(EntityBlaze.class))
 		{
-			randomDrop(event, Spells.blazefire, 1, 10);
+			randomDrop(event, Spells.blazefire, (short) 1, 10);
 		}
 		else if (entityClass.equals(EntityGhast.class))
 		{
-			randomDrop(event, Spells.ghastfire, 1, 20);
+			randomDrop(event, Spells.ghastfire, (short) 1, 20);
 		}
 		else if (entityClass.equals(EntityWither.class))
 		{
-			randomDrop(event, Spells.witherblast, 1, 100);
+			randomDrop(event, Spells.witherblast, (short) 1, 100);
 		}
 		else if (entityClass.equals(EntityCreeper.class))
 		{
@@ -50,11 +50,11 @@ public class HandlerOnLivingDrops
 		} 
 		else if (entityClass.equals(EntityZombie.class))
 		{
-			randomDrop(event, Spells.raise_zombie, 1, 10);
+			randomDrop(event, Spells.raise_zombie, (short) 1, 10);
 		}
 		else if (entityClass.equals(EntityPigZombie.class))
 		{
-			randomDrop(event, Spells.raise_zombie_pigman, 1, 10);
+			randomDrop(event, Spells.raise_zombie_pigman, (short) 1, 10);
 		}
 		else if (entityClass.equals(EntitySkeleton.class))
 		{
@@ -62,33 +62,33 @@ public class HandlerOnLivingDrops
 			
 			if (skeletonType == 0)
 			{
-				randomDrop(event, Spells.raise_skeleton, 1, 10);
+				randomDrop(event, Spells.raise_skeleton, (short) 1, 10);
 			}
 			else if (skeletonType == 1)
 			{
-				randomDrop(event, Spells.raise_wither_skeleton, 1, 10);
+				randomDrop(event, Spells.raise_wither_skeleton, (short) 1, 10);
 			}
 		}
 		else if (entityClass.equals(EntityWolf.class))
 		{
-			randomDrop(event, Spells.summon_wolf, 1, 10);
+			randomDrop(event, Spells.summon_wolf, (short) 1, 10);
 		}
 		else if (entityClass.equals(EntityWitch.class))
 		{
-			randomDrop(event, Spells.summon_witch, 1, 25);
+			randomDrop(event, Spells.summon_witch, (short) 1, 25);
 		}
 		else if (entityClass.equals(EntitySpider.class))
 		{
-			randomDrop(event, Spells.summon_spider, 1, 10);
+			randomDrop(event, Spells.summon_spider, (short) 1, 10);
 		}
 		else if (entityClass.equals(EntityCaveSpider.class))
 		{
-			randomDrop(event, Spells.summon_cave_spider, 1, 10);
+			randomDrop(event, Spells.summon_cave_spider, (short) 1, 10);
 		}
 		else if (entityClass.equals(EntityEnderman.class))
 		{
-			randomDrop(event, Spells.teleport, 1, 10);
-			randomDrop(event, Spells.respawn, 1, 10);
+			randomDrop(event, Spells.teleport, (short) 1, 10);
+			randomDrop(event, Spells.respawn, (short) 1, 10);
 		}
 	}
 	
@@ -98,7 +98,7 @@ public class HandlerOnLivingDrops
 	 * @param level The level of the spell which the randomly dropped spell book will have.
 	 * @param percentage The chance that the spell book will be dropped.
 	 */
-	private void randomDrop (LivingDropsEvent event, Spell spell, int level, double percentage)
+	private void randomDrop (LivingDropsEvent event, Spell spell, short level, double percentage)
 	{
 		double randResult = event.entity.worldObj.rand.nextDouble() * 100;
 		

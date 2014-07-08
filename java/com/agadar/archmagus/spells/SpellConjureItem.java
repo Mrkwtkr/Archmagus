@@ -29,9 +29,9 @@ public class SpellConjureItem extends Spell
     }
 	
 	@Override
-    public int getMaxLevel()
+    public short getMaxLevel()
     {
-        return items.length;
+        return (short) items.length;
     }
 	
 	@Override

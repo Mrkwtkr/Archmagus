@@ -6,6 +6,7 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.StatCollector;
 import net.minecraft.world.World;
 
+/** The archetype of all Spells. */
 public abstract class Spell 
 {
 	/** A Random object used by some child classes of Spell. */
@@ -24,7 +25,7 @@ public abstract class Spell
 	/**
      * Returns the minimum level that the spell can be.
      */
-    public int getMinLevel()
+    public short getMinLevel()
     {
         return 1;
     }
@@ -32,7 +33,7 @@ public abstract class Spell
     /**
      * Returns the maximum level that the spell can be.
      */
-    public int getMaxLevel()
+    public short getMaxLevel()
     {
         return 1;
     }
@@ -100,7 +101,7 @@ public abstract class Spell
     /**
      * Ensures that a given level lies between this spell's minimum and maximum levels.
      */
-    protected int getNormalizedLevel(int par1Level)
+    protected int getNormalizedLevel(short par1Level)
     {
     	return Math.max(getMinLevel(), Math.min(par1Level, getMaxLevel()));
     }

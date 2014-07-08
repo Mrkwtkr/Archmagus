@@ -42,7 +42,7 @@ public class SpellSummon extends Spell
 	}
 	
 	@Override
-	public int getMaxLevel()
+	public short getMaxLevel()
     {
         return 4;
     }

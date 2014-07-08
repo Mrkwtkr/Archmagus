@@ -10,12 +10,13 @@ import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 
+/** Responsible for instantiating and registering this mod's items. */
 public class ModItems 
 {
 	/** The spell book. */
 	public final static Item spell_book = new ItemSpellBook();
 
-	/** Instantiates and registers all items. */
+	/** Instantiates and registers this mod's items. */
 	public static void loadItems()
 	{
 		RegisterHelper.registerItem(spell_book);
