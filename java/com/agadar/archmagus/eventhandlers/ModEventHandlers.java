@@ -20,6 +20,9 @@ public class ModEventHandlers
 		/** For hiding the player's hand in case he is polymorphed. */
 		MinecraftForge.EVENT_BUS.register(new HandlerOnRenderHand());
 		
+		/** For applying magical shield effects. */
+		MinecraftForge.EVENT_BUS.register(new HandlerOnLivingHurt());
+		
 		/** For spawning particles around entities holding spell books. */
 		//MinecraftForge.EVENT_BUS.register(new HandlerOnLivingUpdate());
 		// Currently disabled due to the particles spawning very low to the ground when viewed by another player for some reason.
