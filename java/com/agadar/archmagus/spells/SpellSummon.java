@@ -20,19 +20,19 @@ public class SpellSummon extends Spell
 	private final Constructor entityConstr;
 	
 	@SuppressWarnings({ "rawtypes" })
-	protected SpellSummon(int par1, String name, Class entityClass)
+	protected SpellSummon(int par1, String par2Name, Class par3EntityClass)
 	{
 		super(par1);
-		this.setName(name);	
-		entityConstr = getConstructor(entityClass);
+		this.setName("summon." + par2Name);	
+		entityConstr = getConstructor(par3EntityClass);
 	}
 	
 	@SuppressWarnings({ "unchecked", "rawtypes" })
-	private static Constructor getConstructor(Class entityClass)
+	private static Constructor getConstructor(Class par1EntityClass)
 	{
 		try 
 		{
-			return entityClass.getConstructor(World.class);
+			return par1EntityClass.getConstructor(World.class);
 		} 
 		catch (NoSuchMethodException | SecurityException e) 
 		{

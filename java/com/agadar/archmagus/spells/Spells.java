@@ -12,6 +12,7 @@ import com.agadar.archmagus.entities.EntitySummonedSpider;
 import com.agadar.archmagus.entities.EntitySummonedWitch;
 import com.agadar.archmagus.items.ItemSpellBook;
 import com.agadar.archmagus.items.ModItems;
+import com.agadar.archmagus.potions.ModPotions;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -26,17 +27,24 @@ public class Spells
 	public final static Spell ghastfire = new SpellGhastFire(1);
 	public final static Spell witherblast = new SpellWitherBlast(2);
 	//public final static Spell lightning = new SpellLightning(3);
-	public final static Spell summon_wolf = new SpellSummon(4, "summon_wolf", EntitySummonedWolf.class);
-	public final static Spell raise_skeleton = new SpellSummon(5, "raise_skeleton", EntityRisenSkeleton.class);
-	public final static Spell raise_wither_skeleton = new SpellSummon(6, "raise_wither_skeleton", EntityRisenWitherSkeleton.class);
-	public final static Spell raise_zombie = new SpellSummon(7, "raise_zombie", EntityRisenZombie.class);
-	public final static Spell raise_zombie_pigman = new SpellSummon(8, "raise_zombie_pigman", EntityRisenZombiePigman.class);
-	public final static Spell summon_witch = new SpellSummon(9, "summon_witch", EntitySummonedWitch.class);
-	public final static Spell summon_spider = new SpellSummon(10, "summon_spider", EntitySummonedSpider.class);
-	public final static Spell summon_cave_spider = new SpellSummon(11, "summon_cave_spider", EntitySummonedCaveSpider.class);
+	public final static Spell summon_wolf = new SpellSummon(4, "wolf", EntitySummonedWolf.class);
+	public final static Spell raise_skeleton = new SpellSummon(5, "skeleton", EntityRisenSkeleton.class);
+	public final static Spell raise_wither_skeleton = new SpellSummon(6, "wither_skeleton", EntityRisenWitherSkeleton.class);
+	public final static Spell raise_zombie = new SpellSummon(7, "zombie", EntityRisenZombie.class);
+	public final static Spell raise_zombie_pigman = new SpellSummon(8, "zombie_pigman", EntityRisenZombiePigman.class);
+	public final static Spell summon_witch = new SpellSummon(9, "witch", EntitySummonedWitch.class);
+	public final static Spell summon_spider = new SpellSummon(10, "spider", EntitySummonedSpider.class);
+	public final static Spell summon_cave_spider = new SpellSummon(11, "cave_spider", EntitySummonedCaveSpider.class);
 	public final static Spell teleport = new SpellTeleport(12);
 	public final static Spell respawn = new SpellRespawn(13);
 	public final static Spell polymorph = new SpellPolymorph(14);
+	public final static Spell fireShield = new SpellShield(15, ModPotions.fireShield, "fire");
+	public final static Spell earthenShield = new SpellShield(16, ModPotions.earthenShield, "earthen");
+	public final static Spell waterShield = new SpellShield(17, ModPotions.waterShield, "water");
+	public final static Spell etherealShield = new SpellShield(18, ModPotions.etherealShield, "ethereal");
+	public final static Spell frostArmor = new SpellShield(19, ModPotions.frostArmor, "frost");
+	public final static Spell divineShield = new SpellShield(20, ModPotions.divineShield, "divine");
+	public final static Spell demonArmor = new SpellShield(21, ModPotions.demonArmor, "demon");
 	
 	/**
 	 * Registers a new spell at the given id.

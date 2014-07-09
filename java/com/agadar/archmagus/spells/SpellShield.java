@@ -14,10 +14,11 @@ public class SpellShield extends Spell
 	/** The duration/cooldown of all shields in ticks. */
 	private final static short duration = 1200;
 	
-	protected SpellShield(int par1, Potion shieldType) 
+	protected SpellShield(int par1, Potion par2ShieldType, String par2Name) 
 	{
 		super(par1);
-		this.shieldType = shieldType;
+		this.shieldType = par2ShieldType;
+		this.setName("shield." + par2Name);
 	}
 	
 	@Override
