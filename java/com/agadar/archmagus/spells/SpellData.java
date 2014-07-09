@@ -78,4 +78,30 @@ public class SpellData
     	Spell spell = Spells.getSpellAt(par1NBTTagCompound.getShort(id));
     	par1NBTTagCompound.setShort(cd, spell.getCooldown());
     }
+    
+    /** Attempts to combine two SpellData's. Returns null if the combining failed.
+     *  Used for combining spell books in an anvil. */
+    public static SpellData tryCombine(SpellData par1SpellData, SpellData par2SpellData)
+    {
+    	if (par1SpellData.spellObj.effectId == par2SpellData.spellObj.effectId)
+		{
+			if (par1SpellData.spellLevel > par2SpellData.spellLevel)
+			{
+				return par1SpellData; 				
+			}
+			else if (par1SpellData.spellLevel == par2SpellData.spellLevel)
+			{
+    			short newSpellLevel = par1SpellData.spellLevel;
+				
+				if (par1SpellData.spellLevel + 1 <= par1SpellData.spellObj.getMaxLevel())
+				{
+					newSpellLevel++;
+				}
+				   				
+				return new SpellData(par1SpellData.spellObj, newSpellLevel);
+			}
+		}
+    	
+    	return null;
+    }
 }

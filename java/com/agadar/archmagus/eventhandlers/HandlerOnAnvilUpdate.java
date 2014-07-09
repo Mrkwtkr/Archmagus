@@ -14,7 +14,7 @@ public class HandlerOnAnvilUpdate
 	{
 		if (event.left.getItem().equals(ModItems.spell_book) && event.right.getItem().equals(ModItems.spell_book))
 		{
-			event.output = ((ItemSpellBook) ModItems.spell_book).combine(event.left, event.right);
+			event.output = ((ItemSpellBook) ModItems.spell_book).tryCombine(event.left, event.right);
 			event.cost = 10;
 		}
 	}

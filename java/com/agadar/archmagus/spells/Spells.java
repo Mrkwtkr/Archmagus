@@ -54,14 +54,16 @@ public class Spells
 	}
 	
 	/**
-	 * Returns the spell at the given id. 
-	 * If id <= 0 then the spell with id = 0 is returned.
-	 * If id >= the highest possible id, then the spell with the highest possible id is returned.
-	 * May return null.
+	 * Returns the spell at the given id. May return null.
 	 */
 	public static Spell getSpellAt(int id)
 	{
-		return spellList[Math.max(0, Math.min(id, spellList.length - 1))];
+		if (id >= 0 && id < spellList.length)
+		{
+			return spellList[id];
+		}
+		
+		return null;
 	}
 	
     /** Adds all possible spell books to the given List.

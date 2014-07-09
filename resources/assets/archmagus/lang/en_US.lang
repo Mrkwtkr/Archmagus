@@ -45,4 +45,12 @@ entity.summoned_witch.name=Witch
 entity.summoned_spider.name=Spider
 entity.summoned_cave_spider.name=Cave Spider
 
-potion.shapeshift=Polymorph
+potion.polymorphed=Polymorphed
+potion.shield.fire=Fire Shield
+potion.shield.earthen=Earthen Shield
+potion.shield.water=Water Shield
+potion.shield.ethereal=Ethereal Shield
+potion.shield.frost=Frost Armor
+potion.shield.divine=Divine Shield
+potion.shield.demon=Demon Armor
+potion.feared=Feared

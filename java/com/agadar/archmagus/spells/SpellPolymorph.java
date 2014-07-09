@@ -32,7 +32,7 @@ public class SpellPolymorph extends Spell
 	{
 		if (!par2World.isRemote)
 		{
-			par3EntityPlayer.addPotionEffect(new PotionEffect(ModPotions.shapeshiftPotion.getId(), 200, 0));
+			par3EntityPlayer.addPotionEffect(new PotionEffect(ModPotions.polymorphed.getId(), 200, 0));
 			
 		}
 		

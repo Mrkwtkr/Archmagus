@@ -15,7 +15,7 @@ public class HandlerOnRenderLiving
 	@SubscribeEvent
 	public void onRenderLiving(RenderLivingEvent.Pre event)
 	{
-		if (event.entity.isPotionActive(ModPotions.shapeshiftPotion))
+		if (event.entity.isPotionActive(ModPotions.polymorphed))
 		{
 			event.setCanceled(true);
 			renderPolyBat.doRender(event.entity, 0F, 0F, 0F, 0F, 0F);

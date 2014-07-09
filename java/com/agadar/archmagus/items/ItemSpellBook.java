@@ -3,10 +3,7 @@ package com.agadar.archmagus.items;
 import java.util.List;
 
 import com.agadar.archmagus.help.References;
-import com.agadar.archmagus.spells.Spell;
 import com.agadar.archmagus.spells.SpellData;
-import com.agadar.archmagus.spells.Spells;
-
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.entity.Entity;
@@ -17,6 +14,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.world.World;
 
+/** This Item allows for casting spells. */
 public class ItemSpellBook extends Item 
 {
 	public ItemSpellBook()
@@ -59,20 +57,15 @@ public class ItemSpellBook extends Item
     public void addInformation(ItemStack par1ItemStack, EntityPlayer par2EntityPlayer, List par3List, boolean par4)
     {
         super.addInformation(par1ItemStack, par2EntityPlayer, par3List, par4);
-        
-        NBTTagCompound spelldata = this.getSpellTag(par1ItemStack);               
-        short short1 = spelldata.getShort("id");
-        short short2 = spelldata.getShort("lvl");
-        short cooldown = (short) (spelldata.getShort("cd") / 20);
-        Spell spell = Spells.getSpellAt(short1); 
-        
-        if (spell != null)
+        SpellData spellData = SpellData.readFromNBTTagCompound(this.getSpellTag(par1ItemStack));
+
+        if (spellData.spellObj != null)
         {
-        	par3List.add(spell.getTranslatedName(short2));
+        	par3List.add(spellData.spellObj.getTranslatedName(spellData.spellLevel));
         	
-        	if (cooldown != 0)
+        	if (spellData.spellCooldown != 0)
         	{
-        		par3List.add("Cooldown: " + cooldown + " seconds");
+        		par3List.add("Cooldown: " + (spellData.spellCooldown / 20) + " seconds");
         	}
         }
     }
@@ -81,60 +74,34 @@ public class ItemSpellBook extends Item
      * Adds the given spell data to the given ItemStack.
      */
     public void addSpell(ItemStack par1ItemStack, SpellData par2SpellData)
-    {        
-    	NBTTagCompound spelldata = this.getSpellTag(par1ItemStack);               
-    	spelldata.setShort("id", (short) par2SpellData.spellObj.effectId);
-    	spelldata.setShort("lvl", (short) par2SpellData.spellLevel);
+    {           	
+    	if (par1ItemStack.stackTagCompound == null)
+    	{
+    		par1ItemStack.stackTagCompound = new NBTTagCompound();
+    	}
+    	
+    	NBTTagCompound spellTag = SpellData.writeToNBTTagCompound(par2SpellData);
+    	par1ItemStack.stackTagCompound.setTag("spell", spellTag);
     }
     
     /** Attempts to combine two spell books. Returns null if it failed.
      *  Used for combining spell books in an Anvil. */
-    public ItemStack combine(ItemStack par1ItemStack, ItemStack par2ItemStack)
+    public ItemStack tryCombine(ItemStack par1ItemStack, ItemStack par2ItemStack)
     {
     	if (par1ItemStack.getItem() == ModItems.spell_book && par2ItemStack.getItem() == ModItems.spell_book &&
     			par1ItemStack.stackTagCompound != null && par2ItemStack.stackTagCompound != null &&
     			par1ItemStack.stackTagCompound.hasKey("spell") && par2ItemStack.stackTagCompound.hasKey("spell"))
     	{
-    		NBTTagCompound spelldata1 = par1ItemStack.stackTagCompound.getCompoundTag("spell");               
-    		NBTTagCompound spelldata2 = par2ItemStack.stackTagCompound.getCompoundTag("spell");                  		
-    		short id = spelldata1.getShort("id");
+    		NBTTagCompound spellTag1 = par1ItemStack.stackTagCompound.getCompoundTag("spell");               
+    		NBTTagCompound spellTag2 = par2ItemStack.stackTagCompound.getCompoundTag("spell"); 
     		
-    		if (id == spelldata2.getShort("id"))
+    		SpellData spellData1 = SpellData.readFromNBTTagCompound(spellTag1);
+    		SpellData spellData2 = SpellData.readFromNBTTagCompound(spellTag2);   		
+    		SpellData spellData3 = SpellData.tryCombine(spellData1, spellData2);
+    		
+    		if (spellData3 != null)
     		{
-    			short level1 = spelldata1.getShort("lvl");
-    			short level2 = spelldata2.getShort("lvl");
-				
-    			if (level1 > level2)
-    			{
-        			ItemStack result = new ItemStack(ModItems.spell_book);
-    				result.stackTagCompound = new NBTTagCompound();
-    				NBTTagCompound spelldata3 = new NBTTagCompound();
-    				spelldata3.setShort("id", id);
-    				spelldata3.setShort("lvl", level1);
-    				result.stackTagCompound.setTag("spell", spelldata3);  
-    				
-    				return result;
-    			}
-    			else if (level1 == level2)
-    			{
-        			ItemStack result = new ItemStack(ModItems.spell_book);
-    				result.stackTagCompound = new NBTTagCompound();
-    				NBTTagCompound spelldata3 = new NBTTagCompound();               
-    				spelldata3.setShort("id", id);
-    				
-    				if (level1 + 1 <= Spells.getSpellAt(id).getMaxLevel())
-    				{
-    					spelldata3.setShort("lvl", (short) (level1 + 1));
-    				}
-    				else
-    				{
-    					spelldata3.setShort("lvl", level1);
-    				}
-    				
-    				result.stackTagCompound.setTag("spell", spelldata3);
-
-    				return result;
-    			}
+    			return this.getSpellItemStack(spellData3);
     		}
     	}
     	
@@ -190,8 +157,7 @@ public class ItemSpellBook extends Item
     {
     	if (!par2World.isRemote)
     	{
-    		NBTTagCompound spelldata = this.getSpellTag(par1ItemStack);
-    		SpellData.tickCooldown(spelldata);
+    		SpellData.tickCooldown(this.getSpellTag(par1ItemStack));
     	}
     }
 }

@@ -24,7 +24,7 @@ public class SpellTeleport extends Spell
     @Override
     public int getHungerCost()
     {
-    	return 4;
+    	return 3;
     }
     
     @Override

@@ -12,7 +12,7 @@ public class HandlerOnRenderHand
 	@SubscribeEvent
 	public void OnRenderHand(RenderHandEvent event)
 	{
-		if (Minecraft.getMinecraft().thePlayer.isPotionActive(ModPotions.shapeshiftPotion))
+		if (Minecraft.getMinecraft().thePlayer.isPotionActive(ModPotions.polymorphed))
 		{
 			event.setCanceled(true);
 		}
