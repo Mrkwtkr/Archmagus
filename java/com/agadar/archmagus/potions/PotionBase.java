@@ -13,9 +13,9 @@ public class PotionBase extends Potion
 	/** The location of our custom potion effect icons. */
 	private static final ResourceLocation resourceLoc = new ResourceLocation(References.MODID + ":textures/custom_icons.png");
 
-	public PotionBase(int par1Id) 
+	public PotionBase(int par1Id, boolean par2IsBadEffect, int par3LiquidColor) 
 	{
-		super(par1Id, false, 1);
+		super(par1Id, par2IsBadEffect, par3LiquidColor);
 	}
 
 	@Override

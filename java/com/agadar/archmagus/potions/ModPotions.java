@@ -27,15 +27,15 @@ public class ModPotions
 	{
 		openUpPotionTypes();		
 		int id = 32;
-		polymorphed = new PotionBase(id++).setIconIndex(0, 0).setPotionName("potion.polymorphed");
-		fireShield = new PotionBase(id++).setIconIndex(1, 0).setPotionName("potion.shield.fire");
-		earthShield = new PotionBase(id++).setIconIndex(2, 0).setPotionName("potion.shield.earth");
-		waterShield = new PotionBase(id++).setIconIndex(3, 0).setPotionName("potion.shield.water");
-		stormShield = new PotionBase(id++).setIconIndex(4, 0).setPotionName("potion.shield.storm");
-		frostShield = new PotionBase(id++).setIconIndex(5, 0).setPotionName("potion.shield.frost");
-		feared = new PotionBase(id++).setIconIndex(6, 0).setPotionName("potion.feared");
-		projectileImmunity = new PotionBase(id++).setIconIndex(7, 0).setPotionName("potion.immunity.projectile");
-		knockbackImmunity = new PotionBase(id++).setIconIndex(0, 1).setPotionName("potion.immunity.knockback");
+		polymorphed = new PotionBase(id++, false, 0).setIconIndex(0, 0).setPotionName("potion.polymorphed");
+		fireShield = new PotionBase(id++, false, 14981690).setIconIndex(1, 0).setPotionName("potion.shield.fire");
+		earthShield = new PotionBase(id++, false, 10044730).setIconIndex(2, 0).setPotionName("potion.shield.earth");
+		waterShield = new PotionBase(id++, false, 3035801).setIconIndex(3, 0).setPotionName("potion.shield.water");
+		stormShield = new PotionBase(id++, false, 8171462).setIconIndex(4, 0).setPotionName("potion.shield.storm");
+		frostShield = new PotionBase(id++, false, 15463164).setIconIndex(5, 0).setPotionName("potion.shield.frost");
+		feared = new PotionBase(id++, true, 4393481).setIconIndex(6, 0).setPotionName("potion.feared");
+		projectileImmunity = new PotionBase(id++, false, 0).setIconIndex(7, 0).setPotionName("potion.immunity.projectile");
+		knockbackImmunity = new PotionBase(id++, false, 0).setIconIndex(0, 1).setPotionName("potion.immunity.knockback");
 	}
 	
 	/** Calling this method allows us to register new Potions
