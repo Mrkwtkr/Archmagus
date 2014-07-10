@@ -20,6 +20,8 @@ public class ModPotions
 	public final static Potion feared;
 	/** The potion that is applied when a player is made immune to projectiles. */
 	public final static Potion projectileImmunity;
+	/** The potion that is applied when a player is made immune to knockback. */
+	public final static Potion knockbackImmunity;
 	
 	static
 	{
@@ -33,6 +35,7 @@ public class ModPotions
 		frostArmor = new PotionBase(id++).setIconIndex(5, 0).setPotionName("potion.shield.frost");
 		feared = new PotionBase(id++).setIconIndex(6, 0).setPotionName("potion.feared");
 		projectileImmunity = new PotionBase(id++).setIconIndex(7, 0).setPotionName("potion.immunity.projectile");
+		knockbackImmunity = new PotionBase(id++).setIconIndex(0, 1).setPotionName("potion.immunity.knockback");
 	}
 	
 	/** Calling this method allows us to register new Potions

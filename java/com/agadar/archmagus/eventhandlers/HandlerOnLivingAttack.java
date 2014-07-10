@@ -4,17 +4,18 @@ import com.agadar.archmagus.potions.ModPotions;
 
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.DamageSource;
 import net.minecraftforge.event.entity.living.LivingAttackEvent;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 
-/** For applying magical shield effects. */
-public class HandlerOnLivingHurt 
+/** For applying magical shield effects and the potion effects they apply. */
+public class HandlerOnLivingAttack 
 {
 	@SubscribeEvent
-	public void onLivingHurt(LivingAttackEvent event)
+	public void onLivingAttack(LivingAttackEvent event)
 	{
 		if (event.entityLiving.worldObj.isRemote)
 		{
@@ -31,6 +32,16 @@ public class HandlerOnLivingHurt
 				event.setCanceled(true);
 			}
 			
+			/** Apply knockback immunity. */
+			if (event.entityLiving.isPotionActive(ModPotions.knockbackImmunity))
+			{
+				event.entityLiving.getAttributeMap().getAttributeInstance(SharedMonsterAttributes.knockbackResistance).setBaseValue(1.0F);
+			}
+			else
+			{
+				event.entityLiving.getAttributeMap().getAttributeInstance(SharedMonsterAttributes.knockbackResistance).setBaseValue(0F);
+			}
+			
 			/** Apply magical shield effects. */
 			if (event.entityLiving.isPotionActive(ModPotions.fireShield) && attacker instanceof EntityLivingBase)
 			{
@@ -40,8 +51,7 @@ public class HandlerOnLivingHurt
 			else if (event.entityLiving.isPotionActive(ModPotions.earthenShield))
 			{
 				event.entityLiving.addPotionEffect(new PotionEffect(Potion.resistance.getId(), 80));
-				
-				/** TODO: Implement the knockback immunity. */
+				event.entityLiving.addPotionEffect(new PotionEffect(ModPotions.knockbackImmunity.getId(), 80));
 			}
 			else if (event.entityLiving.isPotionActive(ModPotions.waterShield))
 			{
