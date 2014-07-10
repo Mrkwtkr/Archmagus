@@ -18,6 +18,8 @@ public class ModPotions
 	public final static Potion frostArmor;
 	/** The potion that is applied when a player is Feared. */
 	public final static Potion feared;
+	/** The potion that is applied when a player is made immune to projectiles. */
+	public final static Potion projectileImmunity;
 	
 	static
 	{
@@ -29,7 +31,8 @@ public class ModPotions
 		waterShield = new PotionBase(id++).setIconIndex(3, 0).setPotionName("potion.shield.water");
 		aetherShield = new PotionBase(id++).setIconIndex(4, 0).setPotionName("potion.shield.aether");
 		frostArmor = new PotionBase(id++).setIconIndex(5, 0).setPotionName("potion.shield.frost");
-		feared = new PotionBase(id++).setIconIndex(0, 1).setPotionName("potion.feared");
+		feared = new PotionBase(id++).setIconIndex(6, 0).setPotionName("potion.feared");
+		projectileImmunity = new PotionBase(id++).setIconIndex(7, 0).setPotionName("potion.immunity.projectile");
 	}
 	
 	/** Calling this method allows us to register new Potions

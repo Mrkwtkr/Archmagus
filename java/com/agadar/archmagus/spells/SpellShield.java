@@ -8,11 +8,11 @@ import net.minecraft.potion.PotionEffect;
 import net.minecraft.world.World;
 
 /** Summons a defensive magical shield. We currently have the following shields:
- *  Fire Shield, which causes damage and sets fire to enemies whenever they hit the caster;
- *  Earthen Shield, which reduces the caster's damage taken by 25%, and makes him immune to knockback;
- *  Water Shield, which heals the caster whenever he is hit, and makes him immune to fire;
- *  Aether Shield, which makes the caster immune to projectiles, and increases his running speed;
- *  Frost Armor, which causes slowness and weakness to enemies whenever they hit the caster. */
+ *  Fire Shield, which causes damage and sets fire to attackers when he is hit;
+ *  Earthen Shield, which gives the caster the resistance and knockback immunity effects when he is hit;
+ *  Water Shield, which gives the caster the regeneration and fire resistance effects when he is hit;
+ *  Aether Shield, which gives the caster the speed and projectile immunity effects when he is hit;
+ *  Frost Armor, which causes the slowness and weakness effects to attackers when he is hit; */
 public class SpellShield extends Spell
 {
 	/** The type of shield that is applied when this spell is cast. */
@@ -45,7 +45,7 @@ public class SpellShield extends Spell
 		if (!par2World.isRemote)
 		{
 			clearShields(par3EntityPlayer);
-			par3EntityPlayer.addPotionEffect(new PotionEffect(shieldType.getId(), duration, 0));			
+			par3EntityPlayer.addPotionEffect(new PotionEffect(shieldType.getId(), duration, par1Level - 1));			
 		}
 		
 		return true;

@@ -3,15 +3,18 @@ package com.agadar.archmagus.eventhandlers;
 import com.agadar.archmagus.potions.ModPotions;
 
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.potion.Potion;
+import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.DamageSource;
-import net.minecraftforge.event.entity.living.LivingHurtEvent;
+import net.minecraftforge.event.entity.living.LivingAttackEvent;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 
 /** For applying magical shield effects. */
 public class HandlerOnLivingHurt 
 {
 	@SubscribeEvent
-	public void onLivingHurt(LivingHurtEvent event)
+	public void onLivingHurt(LivingAttackEvent event)
 	{
 		if (event.entityLiving.worldObj.isRemote)
 		{
@@ -22,28 +25,38 @@ public class HandlerOnLivingHurt
 
 		if (attacker != null)
 		{
-			if (event.entityLiving.isPotionActive(ModPotions.fireShield))
+			/** Apply projectile immunity. */
+			if (event.entityLiving.isPotionActive(ModPotions.projectileImmunity) && event.source.isProjectile())
 			{
-				attacker.setFire(6);
+				event.setCanceled(true);
+			}
+			
+			/** Apply magical shield effects. */
+			if (event.entityLiving.isPotionActive(ModPotions.fireShield) && attacker instanceof EntityLivingBase)
+			{
+				attacker.setFire(4);				
 				attacker.attackEntityFrom(DamageSource.onFire, 1);
 			}
-			else if (event.entityLiving.isPotionActive(ModPotions.earthenShield) &&
-					!event.source.isDamageAbsolute())
+			else if (event.entityLiving.isPotionActive(ModPotions.earthenShield))
 			{
-				event.ammount *= 0.75F;
+				event.entityLiving.addPotionEffect(new PotionEffect(Potion.resistance.getId(), 80));
+				
 				/** TODO: Implement the knockback immunity. */
 			}
 			else if (event.entityLiving.isPotionActive(ModPotions.waterShield))
 			{
-				/** TODO: Implement the healing-on-hit and fire immunity. */
+				event.entityLiving.addPotionEffect(new PotionEffect(Potion.regeneration.getId(), 80));
+				event.entityLiving.addPotionEffect(new PotionEffect(Potion.fireResistance.getId(), 80));
 			}
 			else if (event.entityLiving.isPotionActive(ModPotions.aetherShield))
 			{
-				/** TODO: Implement the projectile-immunity and walking-speed effect. */
+				event.entityLiving.addPotionEffect(new PotionEffect(Potion.moveSpeed.getId(), 80));
+				event.entityLiving.addPotionEffect(new PotionEffect(ModPotions.projectileImmunity.getId(), 80));
 			}
-			else if (event.entityLiving.isPotionActive(ModPotions.frostArmor))
+			else if (event.entityLiving.isPotionActive(ModPotions.frostArmor) && attacker instanceof EntityLivingBase)
 			{
-				/** TODO: Implement the slow-enemy-on-hit and weaken-enemy-on hit. */
+				((EntityLivingBase) attacker).addPotionEffect(new PotionEffect(Potion.moveSlowdown.getId(), 80));
+				((EntityLivingBase) attacker).addPotionEffect(new PotionEffect(Potion.weakness.getId(), 80));
 			}
 		}
 	}
