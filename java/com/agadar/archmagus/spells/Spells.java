@@ -41,10 +41,8 @@ public class Spells
 	public final static Spell fireShield = new SpellShield(15, ModPotions.fireShield, "fire");
 	public final static Spell earthenShield = new SpellShield(16, ModPotions.earthenShield, "earthen");
 	public final static Spell waterShield = new SpellShield(17, ModPotions.waterShield, "water");
-	public final static Spell etherealShield = new SpellShield(18, ModPotions.etherealShield, "ethereal");
+	public final static Spell aetherShield = new SpellShield(18, ModPotions.aetherShield, "aether");
 	public final static Spell frostArmor = new SpellShield(19, ModPotions.frostArmor, "frost");
-	public final static Spell divineShield = new SpellShield(20, ModPotions.divineShield, "divine");
-	public final static Spell demonArmor = new SpellShield(21, ModPotions.demonArmor, "demon");
 	
 	/**
 	 * Registers a new spell at the given id.

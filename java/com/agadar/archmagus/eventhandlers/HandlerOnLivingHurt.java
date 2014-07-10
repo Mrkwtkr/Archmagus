@@ -31,7 +31,19 @@ public class HandlerOnLivingHurt
 					!event.source.isDamageAbsolute())
 			{
 				event.ammount *= 0.75F;
-				
+				/** TODO: Implement the knockback immunity. */
+			}
+			else if (event.entityLiving.isPotionActive(ModPotions.waterShield))
+			{
+				/** TODO: Implement the healing-on-hit and fire immunity. */
+			}
+			else if (event.entityLiving.isPotionActive(ModPotions.aetherShield))
+			{
+				/** TODO: Implement the projectile-immunity and walking-speed effect. */
+			}
+			else if (event.entityLiving.isPotionActive(ModPotions.frostArmor))
+			{
+				/** TODO: Implement the slow-enemy-on-hit and weaken-enemy-on hit. */
 			}
 		}
 	}
