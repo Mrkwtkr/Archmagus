@@ -12,10 +12,10 @@ public class ModPotions
 	public final static Potion polymorphed;
 	/** The potions that are applied when a player casts a Shield spell. */
 	public final static Potion fireShield;
-	public final static Potion earthenShield;
+	public final static Potion earthShield;
 	public final static Potion waterShield;
-	public final static Potion aetherShield;
-	public final static Potion frostArmor;
+	public final static Potion stormShield;
+	public final static Potion frostShield;
 	/** The potion that is applied when a player is Feared. */
 	public final static Potion feared;
 	/** The potion that is applied when a player is made immune to projectiles. */
@@ -29,10 +29,10 @@ public class ModPotions
 		int id = 32;
 		polymorphed = new PotionBase(id++).setIconIndex(0, 0).setPotionName("potion.polymorphed");
 		fireShield = new PotionBase(id++).setIconIndex(1, 0).setPotionName("potion.shield.fire");
-		earthenShield = new PotionBase(id++).setIconIndex(2, 0).setPotionName("potion.shield.earthen");
+		earthShield = new PotionBase(id++).setIconIndex(2, 0).setPotionName("potion.shield.earth");
 		waterShield = new PotionBase(id++).setIconIndex(3, 0).setPotionName("potion.shield.water");
-		aetherShield = new PotionBase(id++).setIconIndex(4, 0).setPotionName("potion.shield.aether");
-		frostArmor = new PotionBase(id++).setIconIndex(5, 0).setPotionName("potion.shield.frost");
+		stormShield = new PotionBase(id++).setIconIndex(4, 0).setPotionName("potion.shield.storm");
+		frostShield = new PotionBase(id++).setIconIndex(5, 0).setPotionName("potion.shield.frost");
 		feared = new PotionBase(id++).setIconIndex(6, 0).setPotionName("potion.feared");
 		projectileImmunity = new PotionBase(id++).setIconIndex(7, 0).setPotionName("potion.immunity.projectile");
 		knockbackImmunity = new PotionBase(id++).setIconIndex(0, 1).setPotionName("potion.immunity.knockback");

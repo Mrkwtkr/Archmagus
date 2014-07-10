@@ -45,28 +45,33 @@ public class HandlerOnLivingAttack
 			/** Apply magical shield effects. */
 			if (event.entityLiving.isPotionActive(ModPotions.fireShield) && attacker instanceof EntityLivingBase)
 			{
-				attacker.setFire(4);				
-				attacker.attackEntityFrom(DamageSource.onFire, 1);
+				int amplifier = event.entityLiving.getActivePotionEffect(ModPotions.fireShield).getAmplifier() + 1;			
+				attacker.setFire(4 * amplifier);				
+				attacker.attackEntityFrom(DamageSource.onFire, amplifier);
 			}
-			else if (event.entityLiving.isPotionActive(ModPotions.earthenShield))
+			else if (event.entityLiving.isPotionActive(ModPotions.earthShield))
 			{
-				event.entityLiving.addPotionEffect(new PotionEffect(Potion.resistance.getId(), 80));
+				int amplifier = event.entityLiving.getActivePotionEffect(ModPotions.earthShield).getAmplifier();
+				event.entityLiving.addPotionEffect(new PotionEffect(Potion.resistance.getId(), 80, amplifier));
 				event.entityLiving.addPotionEffect(new PotionEffect(ModPotions.knockbackImmunity.getId(), 80));
 			}
 			else if (event.entityLiving.isPotionActive(ModPotions.waterShield))
 			{
-				event.entityLiving.addPotionEffect(new PotionEffect(Potion.regeneration.getId(), 80));
+				int amplifier = event.entityLiving.getActivePotionEffect(ModPotions.waterShield).getAmplifier();
+				event.entityLiving.addPotionEffect(new PotionEffect(Potion.regeneration.getId(), 80, amplifier));
 				event.entityLiving.addPotionEffect(new PotionEffect(Potion.fireResistance.getId(), 80));
 			}
-			else if (event.entityLiving.isPotionActive(ModPotions.aetherShield))
+			else if (event.entityLiving.isPotionActive(ModPotions.stormShield))
 			{
-				event.entityLiving.addPotionEffect(new PotionEffect(Potion.moveSpeed.getId(), 80));
+				int amplifier = event.entityLiving.getActivePotionEffect(ModPotions.stormShield).getAmplifier();
+				event.entityLiving.addPotionEffect(new PotionEffect(Potion.moveSpeed.getId(), 80, amplifier));
 				event.entityLiving.addPotionEffect(new PotionEffect(ModPotions.projectileImmunity.getId(), 80));
 			}
-			else if (event.entityLiving.isPotionActive(ModPotions.frostArmor) && attacker instanceof EntityLivingBase)
+			else if (event.entityLiving.isPotionActive(ModPotions.frostShield) && attacker instanceof EntityLivingBase)
 			{
-				((EntityLivingBase) attacker).addPotionEffect(new PotionEffect(Potion.moveSlowdown.getId(), 80));
-				((EntityLivingBase) attacker).addPotionEffect(new PotionEffect(Potion.weakness.getId(), 80));
+				int amplifier = event.entityLiving.getActivePotionEffect(ModPotions.frostShield).getAmplifier();
+				((EntityLivingBase) attacker).addPotionEffect(new PotionEffect(Potion.moveSlowdown.getId(), 80, amplifier));
+				((EntityLivingBase) attacker).addPotionEffect(new PotionEffect(Potion.weakness.getId(), 80, amplifier));
 			}
 		}
 	}

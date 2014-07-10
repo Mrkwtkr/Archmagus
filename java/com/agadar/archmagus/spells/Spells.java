@@ -39,10 +39,10 @@ public class Spells
 	public final static Spell respawn = new SpellRespawn(13);
 	public final static Spell polymorph = new SpellPolymorph(14);
 	public final static Spell fireShield = new SpellShield(15, ModPotions.fireShield, "fire");
-	public final static Spell earthenShield = new SpellShield(16, ModPotions.earthenShield, "earthen");
+	public final static Spell earthShield = new SpellShield(16, ModPotions.earthShield, "earth");
 	public final static Spell waterShield = new SpellShield(17, ModPotions.waterShield, "water");
-	public final static Spell aetherShield = new SpellShield(18, ModPotions.aetherShield, "aether");
-	public final static Spell frostArmor = new SpellShield(19, ModPotions.frostArmor, "frost");
+	public final static Spell stormShield = new SpellShield(18, ModPotions.stormShield, "storm");
+	public final static Spell frostShield = new SpellShield(19, ModPotions.frostShield, "frost");
 	
 	/**
 	 * Registers a new spell at the given id.

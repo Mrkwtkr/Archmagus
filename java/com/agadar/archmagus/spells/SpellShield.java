@@ -9,10 +9,10 @@ import net.minecraft.world.World;
 
 /** Summons a defensive magical shield. We currently have the following shields:
  *  Fire Shield, which causes damage and sets fire to attackers when he is hit;
- *  Earthen Shield, which gives the caster the resistance and knockback immunity effects when he is hit;
+ *  Earth Shield, which gives the caster the resistance and knockback immunity effects when he is hit;
  *  Water Shield, which gives the caster the regeneration and fire resistance effects when he is hit;
- *  Aether Shield, which gives the caster the speed and projectile immunity effects when he is hit;
- *  Frost Armor, which causes the slowness and weakness effects to attackers when he is hit; */
+ *  Storm Shield, which gives the caster the speed and projectile immunity effects when he is hit;
+ *  Frost Shield, which causes the slowness and weakness effects to attackers when he is hit; */
 public class SpellShield extends Spell
 {
 	/** The type of shield that is applied when this spell is cast. */
@@ -38,6 +38,12 @@ public class SpellShield extends Spell
 	{
 		return duration;
 	}
+	
+	@Override
+	public short getMaxLevel()
+    {
+        return 3;
+    }
 
 	@Override
 	public boolean castSpell(short par1Level, World par2World, EntityPlayer par3EntityPlayer) 
@@ -57,9 +63,9 @@ public class SpellShield extends Spell
 	private static void clearShields(EntityPlayer par1EntityPlayer)
 	{
 		par1EntityPlayer.removePotionEffect(ModPotions.fireShield.getId());
-		par1EntityPlayer.removePotionEffect(ModPotions.earthenShield.getId());
+		par1EntityPlayer.removePotionEffect(ModPotions.earthShield.getId());
 		par1EntityPlayer.removePotionEffect(ModPotions.waterShield.getId());
-		par1EntityPlayer.removePotionEffect(ModPotions.aetherShield.getId());
-		par1EntityPlayer.removePotionEffect(ModPotions.frostArmor.getId());
+		par1EntityPlayer.removePotionEffect(ModPotions.stormShield.getId());
+		par1EntityPlayer.removePotionEffect(ModPotions.frostShield.getId());
 	}
 }
