@@ -44,6 +44,7 @@ public class Spells
 	public final static Spell stormShield = new SpellShield(18, ModPotions.stormShield, "storm");
 	public final static Spell frostShield = new SpellShield(19, ModPotions.frostShield, "frost");
 	public final static Spell blazestorm = new SpellBlazeStorm(20);
+	public final static Spell lightningstorm = new SpellLightningStorm(21);
 	
 	/**
 	 * Registers a new spell at the given id.

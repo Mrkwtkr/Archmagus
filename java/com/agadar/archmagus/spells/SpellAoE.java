@@ -5,6 +5,7 @@ import java.util.List;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.passive.EntityTameable;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.util.ChatComponentText;
 import net.minecraft.world.World;
 
 /** The archetype of all Area-Of-Effect Spells. */
@@ -39,8 +40,14 @@ public abstract class SpellAoE extends Spell
 	{
 		if (!par2World.isRemote)
 		{
-			double areaSize = par1Level * 5;
+			double areaSize = par1Level * 4;
 			List<EntityLivingBase> entities = par2World.getEntitiesWithinAABB(EntityLivingBase.class, par3EntityPlayer.boundingBox.expand(areaSize, areaSize, areaSize));
+			
+			if (entities.size() <= 1)
+			{
+				par3EntityPlayer.addChatMessage(new ChatComponentText("No targets nearby!"));
+				return true;
+			}
 			
 			for (EntityLivingBase entity : entities)
 			{

@@ -4,6 +4,7 @@ import com.agadar.archmagus.potions.ModPotions;
 import com.agadar.archmagus.renderers.RenderPolyBat;
 
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
+import net.minecraft.client.renderer.Tessellator;
 import net.minecraft.client.renderer.entity.Render;
 import net.minecraftforge.client.event.RenderLivingEvent;
 
@@ -15,6 +16,10 @@ public class HandlerOnRenderLiving
 	@SubscribeEvent
 	public void onRenderLiving(RenderLivingEvent.Pre event)
 	{
+		Tessellator tessellator = Tessellator.instance;
+        tessellator.setBrightness(14);
+        tessellator.setColorOpaque_F(1.0F, 1.0F, 1.0F);
+        
 		if (event.entity.isPotionActive(ModPotions.polymorphed))
 		{
 			event.setCanceled(true);

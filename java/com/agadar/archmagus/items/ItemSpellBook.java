@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.agadar.archmagus.help.References;
 import com.agadar.archmagus.spells.SpellData;
+
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.entity.Entity;
@@ -133,19 +134,19 @@ public class ItemSpellBook extends Item
     	SpellData spellData = SpellData.readFromNBTTagCompound(spellTag);	
     	boolean inCreative = par3EntityPlayer.capabilities.isCreativeMode;
 
-    	if ((spellData.spellCooldown == 0 || inCreative) &&
-    			(par3EntityPlayer.getFoodStats().getFoodLevel() >= spellData.spellObj.getHungerCost() || inCreative) &&
-    			(spellData.castSpell(par2World, par3EntityPlayer)))
+    	if (spellData.spellCooldown > 0 && !inCreative)
+    		return par1ItemStack;
+    	
+    	if (par3EntityPlayer.getFoodStats().getFoodLevel() < spellData.spellObj.getHungerCost() && !inCreative)
+    		return par1ItemStack;
+    	
+    	if (spellData.castSpell(par2World, par3EntityPlayer))
     	{
     		if (!par2World.isRemote)
-    		{
     			SpellData.startCooldown(spellTag);
-    		}
-
+    		
     		if (!inCreative) 
-    		{
     			par3EntityPlayer.getFoodStats().addStats(-spellData.spellObj.getHungerCost(), 0);
-    		}
     	}
 
     	return par1ItemStack;
