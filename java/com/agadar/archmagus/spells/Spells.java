@@ -37,12 +37,13 @@ public class Spells
 	public final static Spell summon_cave_spider = new SpellSummon(11, "cave_spider", EntitySummonedCaveSpider.class);
 	public final static Spell teleport = new SpellTeleport(12);
 	public final static Spell respawn = new SpellRespawn(13);
-	public final static Spell polymorph = new SpellPolymorph(14);
+	//public final static Spell polymorph = new SpellPolymorph(14);
 	public final static Spell fireShield = new SpellShield(15, ModPotions.fireShield, "fire");
 	public final static Spell earthShield = new SpellShield(16, ModPotions.earthShield, "earth");
 	public final static Spell waterShield = new SpellShield(17, ModPotions.waterShield, "water");
 	public final static Spell stormShield = new SpellShield(18, ModPotions.stormShield, "storm");
 	public final static Spell frostShield = new SpellShield(19, ModPotions.frostShield, "frost");
+	public final static Spell blazestorm = new SpellBlazeStorm(20);
 	
 	/**
 	 * Registers a new spell at the given id.

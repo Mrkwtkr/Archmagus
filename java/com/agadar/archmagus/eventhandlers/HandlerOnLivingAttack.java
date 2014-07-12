@@ -71,7 +71,7 @@ public class HandlerOnLivingAttack
 			{
 				int amplifier = event.entityLiving.getActivePotionEffect(ModPotions.frostShield).getAmplifier();
 				((EntityLivingBase) attacker).addPotionEffect(new PotionEffect(Potion.moveSlowdown.getId(), 80, amplifier));
-				((EntityLivingBase) attacker).addPotionEffect(new PotionEffect(Potion.weakness.getId(), 80, amplifier));
+				((EntityLivingBase) attacker).addPotionEffect(new PotionEffect(Potion.weakness.getId(), 80, amplifier * 2));
 			}
 		}
 	}

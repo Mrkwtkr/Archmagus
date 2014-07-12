@@ -22,6 +22,7 @@ spell.shield.earth=Earth Shield
 spell.shield.water=Water Shield
 spell.shield.storm=Storm Shield
 spell.shield.frost=Frost Shield
+spell.blazestorm=Blazestorm
 
 spell.level.1=I
 spell.level.2=II
@@ -51,4 +52,4 @@ potion.shield.storm=Storm Shield
 potion.shield.frost=Frost Shield
 potion.feared=Feared
 potion.immunity.projectile=Reflection
-potion.immunity.knockback=Immovable
+potion.immunity.knockback=Steadfast

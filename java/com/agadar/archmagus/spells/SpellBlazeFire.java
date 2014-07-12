@@ -35,10 +35,10 @@ public class SpellBlazeFire extends Spell
 	@Override
 	public boolean castSpell(short par1Level, World par2World, EntityPlayer par3EntityPlayer) 
 	{
-		par2World.playAuxSFXAtEntity((EntityPlayer)null, 1009, (int)par3EntityPlayer.posX, (int)par3EntityPlayer.posY, (int)par3EntityPlayer.posZ, 0);
-		
 		if (!par2World.isRemote)
 		{
+			par2World.playAuxSFXAtEntity((EntityPlayer)null, 1009, (int)par3EntityPlayer.posX, (int)par3EntityPlayer.posY, (int)par3EntityPlayer.posZ, 0);
+			
 			Vec3 v3 = par3EntityPlayer.getLook(1);
 			int[] accuracies = { 10, 8, 6 };
 
