@@ -42,6 +42,8 @@ public class SpellRespawn extends Spell
 	{
 		if (!par2World.isRemote)
 		{
+			par2World.playSoundAtEntity(par3EntityPlayer, "mob.endermen.portal", 1.0F, 1.0F);
+			
 			ChunkCoordinates coordBed = par3EntityPlayer.getBedLocation(0);
 
 			if (coordBed != null)
@@ -53,6 +55,8 @@ public class SpellRespawn extends Spell
 				ChunkCoordinates coordSpawn = par2World.getSpawnPoint();
 				par3EntityPlayer.setPositionAndUpdate(coordSpawn.posX, coordSpawn.posY, coordSpawn.posZ);
 			}
+			
+			par2World.playSoundAtEntity(par3EntityPlayer, "mob.endermen.portal", 1.0F, 1.0F);
 		}
 		
 		return true;

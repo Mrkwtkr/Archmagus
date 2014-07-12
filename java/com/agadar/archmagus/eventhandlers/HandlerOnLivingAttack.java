@@ -59,7 +59,7 @@ public class HandlerOnLivingAttack
 			{
 				int amplifier = event.entityLiving.getActivePotionEffect(ModPotions.waterShield).getAmplifier();
 				event.entityLiving.addPotionEffect(new PotionEffect(Potion.regeneration.getId(), 80, amplifier));
-				event.entityLiving.addPotionEffect(new PotionEffect(Potion.fireResistance.getId(), 80));
+				event.entityLiving.addPotionEffect(new PotionEffect(Potion.fireResistance.getId(), 160));
 			}
 			else if (event.entityLiving.isPotionActive(ModPotions.stormShield))
 			{

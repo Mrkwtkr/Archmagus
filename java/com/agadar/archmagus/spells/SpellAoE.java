@@ -44,7 +44,8 @@ public abstract class SpellAoE extends Spell
 			
 			for (EntityLivingBase entity : entities)
 			{
-				if (!(entity instanceof EntityTameable && ((EntityTameable)entity).getOwner() == par3EntityPlayer))
+				if (!(entity instanceof EntityTameable && ((EntityTameable)entity).getOwner() == par3EntityPlayer) &&
+						!(entity == par3EntityPlayer))
 				{
 					affectEntity(par2World, entity);
 				}
