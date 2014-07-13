@@ -17,9 +17,11 @@ import net.minecraft.entity.monster.EntityEnderman;
 import net.minecraft.entity.monster.EntityGhast;
 import net.minecraft.entity.monster.EntityPigZombie;
 import net.minecraft.entity.monster.EntitySkeleton;
+import net.minecraft.entity.monster.EntitySnowman;
 import net.minecraft.entity.monster.EntitySpider;
 import net.minecraft.entity.monster.EntityWitch;
 import net.minecraft.entity.monster.EntityZombie;
+import net.minecraft.entity.passive.EntitySquid;
 import net.minecraft.entity.passive.EntityWolf;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.event.entity.living.LivingDropsEvent;
@@ -35,10 +37,13 @@ public class HandlerOnLivingDrops
 		if (entityClass.equals(EntityBlaze.class))
 		{
 			randomDrop(event, Spells.blazefire, (short) 1, 10);
+			randomDrop(event, Spells.blazestorm, (short) 1, 5);
+			randomDrop(event, Spells.fireShield, (short) 1, 5);
 		}
 		else if (entityClass.equals(EntityGhast.class))
 		{
 			randomDrop(event, Spells.ghastfire, (short) 1, 20);
+			randomDrop(event, Spells.fireShield, (short) 1, 10);
 		}
 		else if (entityClass.equals(EntityWither.class))
 		{
@@ -46,15 +51,18 @@ public class HandlerOnLivingDrops
 		}
 		else if (entityClass.equals(EntityCreeper.class))
 		{
-			//randomDrop(event, Spells.lightning, 1, 10);
+			randomDrop(event, Spells.lightningstorm, (short) 1, 5);
+			randomDrop(event, Spells.stormShield, (short) 1, 5);
 		} 
 		else if (entityClass.equals(EntityZombie.class))
 		{
-			randomDrop(event, Spells.raise_zombie, (short) 1, 10);
+			randomDrop(event, Spells.raise_zombie, (short) 1, 5);
+			randomDrop(event, Spells.earthShield, (short) 1, 5);
 		}
 		else if (entityClass.equals(EntityPigZombie.class))
 		{
-			randomDrop(event, Spells.raise_zombie_pigman, (short) 1, 10);
+			randomDrop(event, Spells.raise_zombie_pigman, (short) 1, 5);
+			randomDrop(event, Spells.earthShield, (short) 1, 5);
 		}
 		else if (entityClass.equals(EntitySkeleton.class))
 		{
@@ -62,33 +70,42 @@ public class HandlerOnLivingDrops
 			
 			if (skeletonType == 0)
 			{
-				randomDrop(event, Spells.raise_skeleton, (short) 1, 10);
+				randomDrop(event, Spells.raise_skeleton, (short) 1, 5);
 			}
 			else if (skeletonType == 1)
 			{
-				randomDrop(event, Spells.raise_wither_skeleton, (short) 1, 10);
+				randomDrop(event, Spells.raise_wither_skeleton, (short) 1, 5);
 			}
 		}
 		else if (entityClass.equals(EntityWolf.class))
 		{
-			randomDrop(event, Spells.summon_wolf, (short) 1, 10);
+			randomDrop(event, Spells.summon_wolf, (short) 1, 5);
+			randomDrop(event, Spells.frostShield, (short) 1, 5);
 		}
 		else if (entityClass.equals(EntityWitch.class))
 		{
-			randomDrop(event, Spells.summon_witch, (short) 1, 25);
+			randomDrop(event, Spells.summon_witch, (short) 1, 15);
 		}
 		else if (entityClass.equals(EntitySpider.class))
 		{
-			randomDrop(event, Spells.summon_spider, (short) 1, 10);
+			randomDrop(event, Spells.summon_spider, (short) 1, 5);
 		}
 		else if (entityClass.equals(EntityCaveSpider.class))
 		{
-			randomDrop(event, Spells.summon_cave_spider, (short) 1, 10);
+			randomDrop(event, Spells.summon_cave_spider, (short) 1, 5);
 		}
 		else if (entityClass.equals(EntityEnderman.class))
 		{
 			randomDrop(event, Spells.teleport, (short) 1, 10);
-			randomDrop(event, Spells.respawn, (short) 1, 10);
+			randomDrop(event, Spells.respawn, (short) 1, 5);
+		}
+		else if (entityClass.equals(EntitySquid.class))
+		{
+			randomDrop(event, Spells.waterShield, (short) 1, 5);
+		}
+		else if (entityClass.equals(EntitySnowman.class))
+		{
+			randomDrop(event, Spells.frostShield, (short) 1, 5);
 		}
 	}
 	
