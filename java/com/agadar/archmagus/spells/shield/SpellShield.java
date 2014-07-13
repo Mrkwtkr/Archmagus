@@ -1,6 +1,7 @@
-package com.agadar.archmagus.spells;
+package com.agadar.archmagus.spells.shield;
 
 import com.agadar.archmagus.potions.ModPotions;
+import com.agadar.archmagus.spells.Spell;
 
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.potion.Potion;
@@ -13,17 +14,11 @@ import net.minecraft.world.World;
  *  Water Shield, which gives the caster the regeneration and fire resistance effects when he is hit;
  *  Storm Shield, which gives the caster the speed and projectile immunity effects when he is hit;
  *  Frost Shield, which causes the slowness and weakness effects to attackers when he is hit; */
-public class SpellShield extends Spell
+public abstract class SpellShield extends Spell
 {
-	/** The type of shield that is applied when this spell is cast. */
-	private final Potion shieldType;
-	/** The duration/cooldown of all shields in ticks. */
-	private final static short duration = 1200;
-	
-	protected SpellShield(int par1, Potion par2ShieldType, String par2Name) 
+	protected SpellShield(int par1, String par2Name) 
 	{
 		super(par1);
-		this.shieldType = par2ShieldType;
 		this.setName("shield." + par2Name);
 	}
 	
@@ -36,7 +31,7 @@ public class SpellShield extends Spell
 	@Override
 	public short getCooldown()
 	{
-		return duration;
+		return 1200;
 	}
 	
 	@Override
@@ -44,6 +39,12 @@ public class SpellShield extends Spell
     {
         return 3;
     }
+	
+	/**
+	 * Returns the shield (potion) effect applied to the caster
+	 * when this shield spell is cast.
+	 */
+	public abstract Potion getShieldEffect();
 
 	@Override
 	public boolean castSpell(short par1Level, World par2World, EntityPlayer par3EntityPlayer) 
@@ -52,7 +53,7 @@ public class SpellShield extends Spell
 		{
 			par2World.playSoundAtEntity(par3EntityPlayer, this.getSoundName(), 1.0F, 1.0F);
 			clearShields(par3EntityPlayer);
-			par3EntityPlayer.addPotionEffect(new PotionEffect(shieldType.getId(), duration, par1Level - 1));			
+			par3EntityPlayer.addPotionEffect(new PotionEffect(this.getShieldEffect().getId(), 1200, par1Level - 1));			
 		}
 		
 		return true;

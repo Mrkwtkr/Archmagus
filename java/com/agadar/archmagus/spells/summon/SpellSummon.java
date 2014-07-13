@@ -1,9 +1,10 @@
-package com.agadar.archmagus.spells;
+package com.agadar.archmagus.spells.summon;
 
 import java.lang.reflect.Constructor;
 import java.util.List;
 
 import com.agadar.archmagus.entities.EntitySummoned;
+import com.agadar.archmagus.spells.Spell;
 
 import net.minecraft.entity.EntityCreature;
 import net.minecraft.entity.player.EntityPlayer;
@@ -20,7 +21,7 @@ public class SpellSummon extends Spell
 	private final Constructor entityConstr;
 	
 	@SuppressWarnings({ "rawtypes" })
-	protected SpellSummon(int par1, String par2Name, Class par3EntityClass)
+	public SpellSummon(int par1, String par2Name, Class par3EntityClass)
 	{
 		super(par1);
 		this.setName("summon." + par2Name);	

@@ -1,6 +1,8 @@
-package com.agadar.archmagus.spells;
+package com.agadar.archmagus.spells.aoe;
 
 import java.util.List;
+
+import com.agadar.archmagus.spells.Spell;
 
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.passive.EntityTameable;

@@ -1,24 +1,24 @@
-package com.agadar.archmagus.spells;
+package com.agadar.archmagus.spells.aoe;
 
 import net.minecraft.entity.EntityLivingBase;
-import net.minecraft.entity.effect.EntityLightningBolt;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.util.DamageSource;
 import net.minecraft.world.World;
 
-/** Lightning strikes all non-allied creatures in the area. */
-public class SpellLightningStorm extends SpellAoE {
-
-	public SpellLightningStorm(int par1) 
+/** Damages and sets fire to all non-allied creatures in the area. */
+public class SpellBlazeStorm extends SpellAoE 
+{
+	public SpellBlazeStorm(int par1) 
 	{
 		super(par1);
-		this.setName("lightningstorm");
+		this.setName("blazestorm");
 	}
 	
 	@Override
-	public int getHungerCost()
-    {
-    	return 8;
-    }
+	public String getSoundName()
+	{
+		return "mob.ghast.fireball";
+	}
 	
 	@Override
 	public boolean castSpell(short par1Level, World par2World, EntityPlayer par3EntityPlayer) 
@@ -32,7 +32,8 @@ public class SpellLightningStorm extends SpellAoE {
 	@Override
 	protected void affectEntity(World par1World, EntityLivingBase par2EntityLivingBase) 
 	{
-		par1World.spawnEntityInWorld(new EntityLightningBolt(par1World, par2EntityLivingBase.posX, par2EntityLivingBase.posY, par2EntityLivingBase.posZ));
+		par2EntityLivingBase.setFire(5);				
+		par2EntityLivingBase.attackEntityFrom(DamageSource.onFire, 4F);	
 		par2EntityLivingBase.knockBack(par2EntityLivingBase, 0F, 1F, 0F);
 	}
 }

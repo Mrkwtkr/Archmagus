@@ -12,7 +12,14 @@ import com.agadar.archmagus.entities.EntitySummonedSpider;
 import com.agadar.archmagus.entities.EntitySummonedWitch;
 import com.agadar.archmagus.items.ItemSpellBook;
 import com.agadar.archmagus.items.ModItems;
-import com.agadar.archmagus.potions.ModPotions;
+import com.agadar.archmagus.spells.aoe.SpellBlazeStorm;
+import com.agadar.archmagus.spells.aoe.SpellLightningStorm;
+import com.agadar.archmagus.spells.shield.SpellEarthShield;
+import com.agadar.archmagus.spells.shield.SpellFireShield;
+import com.agadar.archmagus.spells.shield.SpellFrostShield;
+import com.agadar.archmagus.spells.shield.SpellStormShield;
+import com.agadar.archmagus.spells.shield.SpellWaterShield;
+import com.agadar.archmagus.spells.summon.SpellSummon;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -37,11 +44,11 @@ public class Spells
 	public final static Spell teleport = new SpellTeleport(11);
 	public final static Spell respawn = new SpellRespawn(12);
 	//public final static Spell polymorph = new SpellPolymorph(14);
-	public final static Spell fireShield = new SpellShield(13, ModPotions.fireShield, "fire");
-	public final static Spell earthShield = new SpellShield(14, ModPotions.earthShield, "earth");
-	public final static Spell waterShield = new SpellShield(15, ModPotions.waterShield, "water");
-	public final static Spell stormShield = new SpellShield(16, ModPotions.stormShield, "storm");
-	public final static Spell frostShield = new SpellShield(17, ModPotions.frostShield, "frost");
+	public final static Spell fireShield = new SpellFireShield(13);
+	public final static Spell earthShield = new SpellEarthShield(14);
+	public final static Spell waterShield = new SpellWaterShield(15);
+	public final static Spell stormShield = new SpellStormShield(16);
+	public final static Spell frostShield = new SpellFrostShield(17);
 	public final static Spell blazestorm = new SpellBlazeStorm(18);
 	public final static Spell lightningstorm = new SpellLightningStorm(19);
 	
