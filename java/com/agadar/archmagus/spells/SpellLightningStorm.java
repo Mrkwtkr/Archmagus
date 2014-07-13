@@ -2,6 +2,7 @@ package com.agadar.archmagus.spells;
 
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.effect.EntityLightningBolt;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.world.World;
 
 /** Lightning strikes all non-allied creatures in the area. */
@@ -18,6 +19,15 @@ public class SpellLightningStorm extends SpellAoE {
     {
     	return 8;
     }
+	
+	@Override
+	public boolean castSpell(short par1Level, World par2World, EntityPlayer par3EntityPlayer) 
+	{
+		if (!par2World.isRemote)
+			par2World.playSoundAtEntity(par3EntityPlayer, this.getSoundName(), 1.0F, 1.0F);
+		
+		return super.castSpell(par1Level, par2World, par3EntityPlayer);
+	}
 
 	@Override
 	protected void affectEntity(World par1World, EntityLivingBase par2EntityLivingBase) 

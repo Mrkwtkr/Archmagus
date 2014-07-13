@@ -32,8 +32,8 @@ public class SpellPolymorph extends Spell
 	{
 		if (!par2World.isRemote)
 		{
-			par3EntityPlayer.addPotionEffect(new PotionEffect(ModPotions.polymorphed.getId(), 200, 0));
-			
+			par2World.playSoundAtEntity(par3EntityPlayer, this.getSoundName(), 1.0F, 1.0F);
+			par3EntityPlayer.addPotionEffect(new PotionEffect(ModPotions.polymorphed.getId(), 200, 0));			
 		}
 		
 		return true;

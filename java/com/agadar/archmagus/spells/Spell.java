@@ -55,6 +55,14 @@ public abstract class Spell
     }
     
     /**
+     * Returns the name of the sound played when this spell is cast.
+     */
+    public String getSoundName()
+    {
+    	return "random.levelup";
+    }
+    
+    /**
      * Returns the name of the particles spawned when a spell book
      * that contains this spell is being held by an entity.
      */

@@ -50,6 +50,12 @@ public class SpellTeleport extends Spell
 	{
 		return 1;
 	}
+	
+	@Override
+	public String getSoundName()
+	{
+		return "mob.ghast.fireball";
+	}
 
 	@Override
 	public boolean castSpell(short par1Level, World par2World, EntityPlayer par3EntityPlayer) 
@@ -61,14 +67,14 @@ public class SpellTeleport extends Spell
 
 			if((mc.renderViewEntity.rayTrace(distance, 1.0F) != null))
 			{
-				par2World.playSoundAtEntity(par3EntityPlayer, "mob.endermen.portal", 1.0F, 1.0F);
+				par2World.playSoundAtEntity(par3EntityPlayer, this.getSoundName(), 1.0F, 1.0F);
 				
 				int blockHitX = mc.renderViewEntity.rayTrace(distance, 1.0F).blockX;
 				int blockHitY = mc.renderViewEntity.rayTrace(distance, 1.0F).blockY;
 				int blockHitZ = mc.renderViewEntity.rayTrace(distance, 1.0F).blockZ;
 				par3EntityPlayer.setPositionAndUpdate(blockHitX, blockHitY + 1, blockHitZ);
 				
-				par2World.playSoundAtEntity(par3EntityPlayer, "mob.endermen.portal", 1.0F, 1.0F);
+				par2World.playSoundAtEntity(par3EntityPlayer, this.getSoundName(), 1.0F, 1.0F);
 			} 
 			else
 			{

@@ -36,13 +36,19 @@ public class SpellRespawn extends Spell
 	{
 		return 1;
 	}
+	
+	@Override
+	public String getSoundName()
+	{
+		return "mob.ghast.fireball";
+	}
 
 	@Override
 	public boolean castSpell(short par1Level, World par2World, EntityPlayer par3EntityPlayer) 
 	{
 		if (!par2World.isRemote)
 		{
-			par2World.playSoundAtEntity(par3EntityPlayer, "mob.endermen.portal", 1.0F, 1.0F);
+			par2World.playSoundAtEntity(par3EntityPlayer, this.getSoundName(), 1.0F, 1.0F);
 			
 			ChunkCoordinates coordBed = par3EntityPlayer.getBedLocation(0);
 
@@ -56,7 +62,7 @@ public class SpellRespawn extends Spell
 				par3EntityPlayer.setPositionAndUpdate(coordSpawn.posX, coordSpawn.posY, coordSpawn.posZ);
 			}
 			
-			par2World.playSoundAtEntity(par3EntityPlayer, "mob.endermen.portal", 1.0F, 1.0F);
+			par2World.playSoundAtEntity(par3EntityPlayer, this.getSoundName(), 1.0F, 1.0F);
 		}
 		
 		return true;

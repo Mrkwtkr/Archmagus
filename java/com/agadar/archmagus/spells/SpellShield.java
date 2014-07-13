@@ -50,6 +50,7 @@ public class SpellShield extends Spell
 	{
 		if (!par2World.isRemote)
 		{
+			par2World.playSoundAtEntity(par3EntityPlayer, this.getSoundName(), 1.0F, 1.0F);
 			clearShields(par3EntityPlayer);
 			par3EntityPlayer.addPotionEffect(new PotionEffect(shieldType.getId(), duration, par1Level - 1));			
 		}
