@@ -285,23 +285,6 @@ public class EntitySummonedWolf extends EntitySummoned
         return par1Entity.attackEntityFrom(DamageSource.causeMobDamage(this), (float) 4);
     }
 
-    /**
-     * Called when a player interacts with a mob. e.g. gets milk from a cow, gets into the saddle on a pig.
-     */
-    @Override
-    public boolean interact(EntityPlayer par1EntityPlayer)
-    {
-    	if (par1EntityPlayer.getCommandSenderName().equalsIgnoreCase(this.getOwnerName()) && !this.worldObj.isRemote)
-    	{
-    		this.aiSit.setSitting(!this.isSitting());
-    		this.isJumping = false;
-    		this.setPathToEntity((PathEntity)null);
-    		this.setTarget((Entity)null);
-    		this.setAttackTarget((EntityLivingBase)null);
-    	}
-        return super.interact(par1EntityPlayer);
-    }
-
     @SideOnly(Side.CLIENT)
     @Override
     public void handleHealthUpdate(byte par1)

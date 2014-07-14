@@ -50,7 +50,7 @@ public class Spells
 	public final static Spell frostShield = new SpellFrostShield(17);
 	public final static Spell blazestorm = new SpellBlazeStorm(18);
 	public final static Spell lightningstorm = new SpellLightningStorm(19);
-	public final static Spell polymorph = new SpellPolymorph(20);
+	//public final static Spell polymorph = new SpellPolymorph(20);
 	
 	/**
 	 * Registers a new spell at the given id.
