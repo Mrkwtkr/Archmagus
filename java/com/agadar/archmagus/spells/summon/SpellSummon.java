@@ -35,7 +35,7 @@ public class SpellSummon extends Spell
 		{
 			return par1EntityClass.getConstructor(World.class);
 		} 
-		catch (NoSuchMethodException | SecurityException e) 
+		catch (Exception e) 
 		{
 			e.printStackTrace();
 			return null;
