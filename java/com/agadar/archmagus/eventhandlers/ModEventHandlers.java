@@ -15,10 +15,10 @@ public class ModEventHandlers
 		MinecraftForge.EVENT_BUS.register(new HandlerOnAnvilUpdate());
 		
 		/** For altering the player's model in case he is polymorphed. */
-		//MinecraftForge.EVENT_BUS.register(new HandlerOnRenderLiving());
+		MinecraftForge.EVENT_BUS.register(new HandlerOnRenderLiving());
 		
 		/** For hiding the player's hand in case he is polymorphed. */
-		//MinecraftForge.EVENT_BUS.register(new HandlerOnRenderHand());
+		MinecraftForge.EVENT_BUS.register(new HandlerOnRenderHand());
 		
 		/** For applying magical shield effects and the potions effects they apply. */
 		MinecraftForge.EVENT_BUS.register(new HandlerOnLivingAttack());

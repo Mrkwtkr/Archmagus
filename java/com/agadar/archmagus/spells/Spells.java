@@ -43,7 +43,6 @@ public class Spells
 	public final static Spell summon_cave_spider = new SpellSummon(10, "cave_spider", EntitySummonedCaveSpider.class);
 	public final static Spell teleport = new SpellTeleport(11);
 	public final static Spell respawn = new SpellRespawn(12);
-	//public final static Spell polymorph = new SpellPolymorph(14);
 	public final static Spell fireShield = new SpellFireShield(13);
 	public final static Spell earthShield = new SpellEarthShield(14);
 	public final static Spell waterShield = new SpellWaterShield(15);
@@ -51,6 +50,7 @@ public class Spells
 	public final static Spell frostShield = new SpellFrostShield(17);
 	public final static Spell blazestorm = new SpellBlazeStorm(18);
 	public final static Spell lightningstorm = new SpellLightningStorm(19);
+	public final static Spell polymorph = new SpellPolymorph(20);
 	
 	/**
 	 * Registers a new spell at the given id.
