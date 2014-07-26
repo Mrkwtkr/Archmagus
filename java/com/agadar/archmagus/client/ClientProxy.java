@@ -1,23 +1,23 @@
 package com.agadar.archmagus.client;
 
 import com.agadar.archmagus.CommonProxy;
-import com.agadar.archmagus.entities.EntityRisenZombie;
-import com.agadar.archmagus.entities.EntityRisenZombiePigman;
-import com.agadar.archmagus.entities.EntitySummonedWolf;
-import com.agadar.archmagus.entities.EntityRisenSkeleton;
-import com.agadar.archmagus.entities.EntityRisenWitherSkeleton;
-import com.agadar.archmagus.entities.EntitySummonedCaveSpider;
-import com.agadar.archmagus.entities.EntitySummonedSpider;
-import com.agadar.archmagus.entities.EntitySummonedWitch;
-import com.agadar.archmagus.models.ModelSummonedWolf;
-import com.agadar.archmagus.renderers.RenderRisenZombie;
-import com.agadar.archmagus.renderers.RenderRisenZombiePigman;
-import com.agadar.archmagus.renderers.RenderSummonedWolf;
-import com.agadar.archmagus.renderers.RenderRisenSkeleton;
-import com.agadar.archmagus.renderers.RenderRisenWitherSkeleton;
-import com.agadar.archmagus.renderers.RenderSummonedCaveSpider;
-import com.agadar.archmagus.renderers.RenderSummonedSpider;
-import com.agadar.archmagus.renderers.RenderSummonedWitch;
+import com.agadar.archmagus.entity.EntityRisenSkeleton;
+import com.agadar.archmagus.entity.EntityRisenWitherSkeleton;
+import com.agadar.archmagus.entity.EntityRisenZombie;
+import com.agadar.archmagus.entity.EntityRisenZombiePigman;
+import com.agadar.archmagus.entity.EntitySummonedCaveSpider;
+import com.agadar.archmagus.entity.EntitySummonedSpider;
+import com.agadar.archmagus.entity.EntitySummonedWitch;
+import com.agadar.archmagus.entity.EntitySummonedWolf;
+import com.agadar.archmagus.model.ModelSummonedWolf;
+import com.agadar.archmagus.render.RenderRisenSkeleton;
+import com.agadar.archmagus.render.RenderRisenWitherSkeleton;
+import com.agadar.archmagus.render.RenderRisenZombie;
+import com.agadar.archmagus.render.RenderRisenZombiePigman;
+import com.agadar.archmagus.render.RenderSummonedCaveSpider;
+import com.agadar.archmagus.render.RenderSummonedSpider;
+import com.agadar.archmagus.render.RenderSummonedWitch;
+import com.agadar.archmagus.render.RenderSummonedWolf;
 
 import cpw.mods.fml.client.registry.RenderingRegistry;
 

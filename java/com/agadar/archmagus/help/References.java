@@ -5,7 +5,7 @@ package com.agadar.archmagus.help;
 public class References 
 {
 	public static final String MODID = "archmagus";
-	public static final String VERSION = "0.2.0";
+	public static final String VERSION = "0.3.0";
 	public static final String NAME = "Archmagus";
 	public static final String CLIENTSIDE = "com.agadar.archmagus.client.ClientProxy";
 	public static final String SERVERSIDE = "com.agadar.archmagus.CommonProxy";

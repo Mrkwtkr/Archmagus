@@ -1,9 +1,9 @@
 package com.agadar.archmagus;
 
-import com.agadar.archmagus.entities.ModEntities;
-import com.agadar.archmagus.eventhandlers.ModEventHandlers;
+import com.agadar.archmagus.entity.ModEntities;
+import com.agadar.archmagus.eventhandler.ModEventHandlers;
 import com.agadar.archmagus.help.References;
-import com.agadar.archmagus.items.ModItems;
+import com.agadar.archmagus.item.ModItems;
 
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.SidedProxy;
