@@ -11,12 +11,6 @@ public class SpellFireShield extends SpellShield
 	{
 		super(par1, "fire");
 	}
-	
-	@Override
-	public String getSoundName()
-	{
-		return "mob.ghast.fireball";
-	}
 
 	@Override
 	public Potion getShieldEffect() 

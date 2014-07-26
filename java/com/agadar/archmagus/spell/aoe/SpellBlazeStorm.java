@@ -15,12 +15,6 @@ public class SpellBlazeStorm extends SpellAoE
 	}
 	
 	@Override
-	public String getSoundName()
-	{
-		return "mob.ghast.fireball";
-	}
-	
-	@Override
 	public boolean castSpell(short par1Level, World par2World, EntityPlayer par3EntityPlayer) 
 	{
 		if (!par2World.isRemote) par2World.playSoundAtEntity(par3EntityPlayer, this.getSoundName(), 1.0F, 1.0F);

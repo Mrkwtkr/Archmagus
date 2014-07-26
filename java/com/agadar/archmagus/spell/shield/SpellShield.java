@@ -40,10 +40,7 @@ public abstract class SpellShield extends Spell
         return 3;
     }
 	
-	/**
-	 * Returns the shield (potion) effect applied to the caster
-	 * when this shield spell is cast.
-	 */
+	/** Returns the shield (potion) effect applied to the caster when this shield spell is cast. */
 	public abstract Potion getShieldEffect();
 
 	@Override
@@ -53,7 +50,7 @@ public abstract class SpellShield extends Spell
 		{
 			par2World.playSoundAtEntity(par3EntityPlayer, this.getSoundName(), 1.0F, 1.0F);
 			clearShields(par3EntityPlayer);
-			par3EntityPlayer.addPotionEffect(new PotionEffect(this.getShieldEffect().getId(), 1200, par1Level - 1));			
+			par3EntityPlayer.addPotionEffect(new PotionEffect(this.getShieldEffect().getId(), 12000, par1Level - 1));			
 		}
 		
 		return true;

@@ -52,12 +52,6 @@ public class SpellTeleport extends Spell implements ISpellTargeted
 	{
 		return 1;
 	}
-	
-	@Override
-	public String getSoundName()
-	{
-		return "mob.ghast.fireball";
-	}
 
 	@Override
 	public boolean castSpell(short par1Level, World par2World, EntityPlayer par3EntityPlayer) 

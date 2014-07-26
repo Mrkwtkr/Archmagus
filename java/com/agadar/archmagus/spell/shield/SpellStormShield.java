@@ -11,12 +11,6 @@ public class SpellStormShield extends SpellShield
 	{
 		super(par1, "storm");
 	}
-	
-	@Override
-	public String getSoundName()
-	{
-		return "ambient.weather.thunder";
-	}
 
 	@Override
 	public Potion getShieldEffect() 

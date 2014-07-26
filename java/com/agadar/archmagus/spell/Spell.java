@@ -59,7 +59,7 @@ public abstract class Spell
      */
     public String getSoundName()
     {
-    	return "random.levelup";
+    	return "mob.ghast.fireball";
     }
     
     /**
