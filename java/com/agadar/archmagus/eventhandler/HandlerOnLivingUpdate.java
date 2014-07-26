@@ -24,7 +24,7 @@ public class HandlerOnLivingUpdate
 			{
 				double particleChance = player.worldObj.rand.nextDouble();
 				short id = heldItem.stackTagCompound.getShort("id");
-				Spell spell = Spells.getSpellAt(id);
+				Spell spell = Spells.spellList[id];
 				
 				if (particleChance < spell.getParticleAmount())
 				{

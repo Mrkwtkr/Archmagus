@@ -3,7 +3,9 @@ package com.agadar.archmagus.item;
 import java.util.List;
 
 import com.agadar.archmagus.help.References;
+import com.agadar.archmagus.spell.Spell;
 import com.agadar.archmagus.spell.SpellData;
+import com.agadar.archmagus.spell.Spells;
 import com.agadar.archmagus.spell.aoe.SpellAoE;
 import com.agadar.archmagus.spell.shield.SpellShield;
 import com.agadar.archmagus.spell.summon.SpellSummon;
@@ -11,6 +13,7 @@ import com.agadar.archmagus.spell.targeted.ISpellTargeted;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
+import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.EnumRarity;
@@ -29,6 +32,7 @@ public class ItemSpellBook extends Item
 		this.setMaxDamage(0);
 		this.setUnlocalizedName("spell_book");
 		this.setTextureName(References.MODID + ":" + getUnlocalizedName().substring(5));
+		this.setCreativeTab(ModItems.tabSpellBooks);
 	}
 	
 	/** Gives the item the enchanted glow. */ 
@@ -154,5 +158,24 @@ public class ItemSpellBook extends Item
     public void onUpdate(ItemStack par1ItemStack, World par2World, Entity par3Entity, int par4, boolean par5) 
     {
     	if (!par2World.isRemote) SpellData.tickCooldown(this.getSpellTag(par1ItemStack));
+    }
+    
+    @SuppressWarnings({ "rawtypes", "unchecked" })
+	@Override
+    @SideOnly(Side.CLIENT)
+    public void getSubItems(Item par1Item, CreativeTabs par2CreativeTab, List par3List)
+    {
+    	for (int i1 = 0; i1 < Spells.spellList.length; i1++)
+    	{
+    		Spell spell = Spells.spellList[i1];
+    		
+    		if (spell != null)
+    		{
+    			for (short i2 = spell.getMinLevel(); i2 <= spell.getMaxLevel(); i2++)
+            	{
+    				par3List.add(((ItemSpellBook) ModItems.spell_book).getSpellItemStack(new SpellData(spell, i2)));
+            	}
+    		}
+    	}
     }
 }

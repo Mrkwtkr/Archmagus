@@ -1,7 +1,5 @@
 package com.agadar.archmagus.spell;
 
-import java.util.List;
-
 import com.agadar.archmagus.entity.EntityRisenSkeleton;
 import com.agadar.archmagus.entity.EntityRisenWitherSkeleton;
 import com.agadar.archmagus.entity.EntityRisenZombie;
@@ -10,8 +8,6 @@ import com.agadar.archmagus.entity.EntitySummonedCaveSpider;
 import com.agadar.archmagus.entity.EntitySummonedSpider;
 import com.agadar.archmagus.entity.EntitySummonedWitch;
 import com.agadar.archmagus.entity.EntitySummonedWolf;
-import com.agadar.archmagus.item.ItemSpellBook;
-import com.agadar.archmagus.item.ModItems;
 import com.agadar.archmagus.spell.aoe.SpellBlazeStorm;
 import com.agadar.archmagus.spell.aoe.SpellLightningStorm;
 import com.agadar.archmagus.spell.shield.SpellEarthShield;
@@ -25,14 +21,11 @@ import com.agadar.archmagus.spell.targeted.SpellGhastFire;
 import com.agadar.archmagus.spell.targeted.SpellTeleport;
 import com.agadar.archmagus.spell.targeted.SpellWitherBlast;
 
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
-
 /** Manages all Spells. */
 public class Spells 
 {
 	/** The list of all spells. */
-	private final static Spell[] spellList = new Spell[256];
+	public final static Spell[] spellList = new Spell[256];
 	/** All individual spells. */
 	public final static Spell blazefire = new SpellBlazeFire(0);
 	public final static Spell ghastfire = new SpellGhastFire(1);
@@ -56,51 +49,10 @@ public class Spells
 	public final static Spell lightningstorm = new SpellLightningStorm(19);
 	//public final static Spell polymorph = new SpellPolymorph(20);
 	
-	/**
-	 * Registers a new spell at the given id.
-	 */
-	protected static void registerSpell(Spell par1Spell, int par2effectId)
+	/** Registers a new spell at the given id. */
+	public static void registerSpell(Spell par1Spell, int par2effectId)
 	{
-		if (spellList[par2effectId] != null)
-        {
-            throw new IllegalArgumentException("Duplicate spell id!");
-        }
-        else
-        {
-        	spellList[par2effectId] = par1Spell;
-        }
+		if (spellList[par2effectId] != null) throw new IllegalArgumentException("Duplicate spell id!");
+        else spellList[par2effectId] = par1Spell;
 	}
-	
-	/**
-	 * Returns the spell at the given id. May return null.
-	 */
-	public static Spell getSpellAt(int id)
-	{
-		if (id >= 0 && id < spellList.length)
-		{
-			return spellList[id];
-		}
-		
-		return null;
-	}
-	
-    /** Adds all possible spell books to the given List.
-     *  Used for placing all possible spell books in the creative menu. */
-    @SuppressWarnings({ "unchecked", "rawtypes" })
-	@SideOnly(Side.CLIENT)
-    public static void getAllSpellBooks(List par1List)
-    {
-    	for (int i1 = 0; i1 < spellList.length; i1++)
-    	{
-    		Spell spell = spellList[i1];
-    		
-    		if (spell != null)
-    		{
-    			for (short i2 = spell.getMinLevel(); i2 <= spell.getMaxLevel(); i2++)
-            	{
-                	par1List.add(((ItemSpellBook) ModItems.spell_book).getSpellItemStack(new SpellData(spell, i2)));
-            	}
-    		}
-    	}
-    }
 }
