@@ -4,6 +4,10 @@ import java.util.List;
 
 import com.agadar.archmagus.help.References;
 import com.agadar.archmagus.spell.SpellData;
+import com.agadar.archmagus.spell.aoe.SpellAoE;
+import com.agadar.archmagus.spell.shield.SpellShield;
+import com.agadar.archmagus.spell.summon.SpellSummon;
+import com.agadar.archmagus.spell.targeted.ISpellTargeted;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -13,6 +17,7 @@ import net.minecraft.item.EnumRarity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.util.EnumChatFormatting;
 import net.minecraft.world.World;
 
 /** This Item allows for casting spells. */
@@ -38,15 +43,8 @@ public class ItemSpellBook extends Item
 	 *  it is first assigned one before it is returned. */
     public NBTTagCompound getSpellTag(ItemStack par1ItemStack)
     {
-    	if (par1ItemStack.stackTagCompound == null)
-    	{
-    		par1ItemStack.stackTagCompound = new NBTTagCompound();
-    	}
-    	
-    	if (!par1ItemStack.stackTagCompound.hasKey("spell"))
-    	{
-    		par1ItemStack.stackTagCompound.setTag("spell", new NBTTagCompound());
-    	}
+    	if (par1ItemStack.stackTagCompound == null) par1ItemStack.stackTagCompound = new NBTTagCompound();	
+    	if (!par1ItemStack.stackTagCompound.hasKey("spell")) par1ItemStack.stackTagCompound.setTag("spell", new NBTTagCompound());
     	
         return (NBTTagCompound) par1ItemStack.stackTagCompound.getTag("spell");
     }
@@ -57,18 +55,29 @@ public class ItemSpellBook extends Item
 	@SideOnly(Side.CLIENT)
     public void addInformation(ItemStack par1ItemStack, EntityPlayer par2EntityPlayer, List par3List, boolean par4)
     {
-        super.addInformation(par1ItemStack, par2EntityPlayer, par3List, par4);
         SpellData spellData = SpellData.readFromNBTTagCompound(this.getSpellTag(par1ItemStack));
 
         if (spellData.spellObj != null)
         {
-        	par3List.add(spellData.spellObj.getTranslatedName(spellData.spellLevel));
+        	if (spellData.spellObj instanceof ISpellTargeted) par3List.add("Targeted");
+        	else if (spellData.spellObj instanceof SpellSummon) par3List.add("Summoning");
+        	else if (spellData.spellObj instanceof SpellShield) par3List.add("Enhancement");
+        	else if (spellData.spellObj instanceof SpellAoE) par3List.add("Area of effect");
+        	else par3List.add("Miscellaneous");
         	
-        	if (spellData.spellCooldown != 0)
-        	{
-        		par3List.add("Cooldown: " + (spellData.spellCooldown / 20) + " seconds");
-        	}
+        	if (spellData.spellCooldown != 0) par3List.add(EnumChatFormatting.RED + "Cooldown: " + (spellData.spellCooldown / 20) + " seconds");
         }
+    }
+    
+    /** Returns the given ItemStack's display name. */
+    @Override
+    public String getItemStackDisplayName(ItemStack par1ItemStack)
+    {
+    	SpellData spellData = SpellData.readFromNBTTagCompound(this.getSpellTag(par1ItemStack));
+
+        if (spellData.spellObj != null) return (spellData.spellObj.getTranslatedName(spellData.spellLevel));
+        
+        return super.getItemStackDisplayName(par1ItemStack);
     }
 
     /**
@@ -76,10 +85,7 @@ public class ItemSpellBook extends Item
      */
     public void addSpell(ItemStack par1ItemStack, SpellData par2SpellData)
     {           	
-    	if (par1ItemStack.stackTagCompound == null)
-    	{
-    		par1ItemStack.stackTagCompound = new NBTTagCompound();
-    	}
+    	if (par1ItemStack.stackTagCompound == null) par1ItemStack.stackTagCompound = new NBTTagCompound();
     	
     	NBTTagCompound spellTag = SpellData.writeToNBTTagCompound(par2SpellData);
     	par1ItemStack.stackTagCompound.setTag("spell", spellTag);
@@ -100,10 +106,7 @@ public class ItemSpellBook extends Item
     		SpellData spellData2 = SpellData.readFromNBTTagCompound(spellTag2);   		
     		SpellData spellData3 = SpellData.tryCombine(spellData1, spellData2);
     		
-    		if (spellData3 != null)
-    		{
-    			return this.getSpellItemStack(spellData3);
-    		}
+    		if (spellData3 != null) return this.getSpellItemStack(spellData3);
     	}
     	
     	return null;
@@ -133,20 +136,14 @@ public class ItemSpellBook extends Item
     	NBTTagCompound spellTag = this.getSpellTag(par1ItemStack);
     	SpellData spellData = SpellData.readFromNBTTagCompound(spellTag);	
     	boolean inCreative = par3EntityPlayer.capabilities.isCreativeMode;
-
-    	if (spellData.spellCooldown > 0 && !inCreative)
-    		return par1ItemStack;
     	
-    	if (par3EntityPlayer.getFoodStats().getFoodLevel() < spellData.spellObj.getHungerCost() && !inCreative)
-    		return par1ItemStack;
+    	if (spellData.spellCooldown > 0 && !inCreative) return par1ItemStack;    	
+    	if (par3EntityPlayer.getFoodStats().getFoodLevel() < spellData.spellObj.getHungerCost() && !inCreative) return par1ItemStack;
     	
     	if (spellData.castSpell(par2World, par3EntityPlayer))
     	{
-    		if (!par2World.isRemote)
-    			SpellData.startCooldown(spellTag);
-    		
-    		if (!inCreative) 
-    			par3EntityPlayer.getFoodStats().addStats(-spellData.spellObj.getHungerCost(), 0);
+    		if (!par2World.isRemote) SpellData.startCooldown(spellTag);  		
+    		if (!inCreative) par3EntityPlayer.getFoodStats().addStats(-spellData.spellObj.getHungerCost(), 0);
     	}
 
     	return par1ItemStack;
@@ -156,9 +153,6 @@ public class ItemSpellBook extends Item
     @Override
     public void onUpdate(ItemStack par1ItemStack, World par2World, Entity par3Entity, int par4, boolean par5) 
     {
-    	if (!par2World.isRemote)
-    	{
-    		SpellData.tickCooldown(this.getSpellTag(par1ItemStack));
-    	}
+    	if (!par2World.isRemote) SpellData.tickCooldown(this.getSpellTag(par1ItemStack));
     }
 }

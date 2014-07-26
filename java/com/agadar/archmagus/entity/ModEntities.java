@@ -8,7 +8,7 @@ import cpw.mods.fml.common.registry.EntityRegistry;
 public class ModEntities 
 {
 	/** Registers this mod's entities and their renderers. */
-	public static void registerEntities()
+	public static void registerModEntities()
 	{
 		/** Register the entities */
 		EntityRegistry.registerGlobalEntityID(EntitySummonedWolf.class, "summoned_wolf", EntityRegistry.findGlobalUniqueEntityId());

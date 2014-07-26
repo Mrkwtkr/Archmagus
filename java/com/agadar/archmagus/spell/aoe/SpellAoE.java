@@ -40,27 +40,24 @@ public abstract class SpellAoE extends Spell
 	@Override
 	public boolean castSpell(short par1Level, World par2World, EntityPlayer par3EntityPlayer) 
 	{
-		if (!par2World.isRemote)
+		double areaSize = par1Level * 4;
+		List<EntityLivingBase> entities = par2World.getEntitiesWithinAABB(EntityLivingBase.class, par3EntityPlayer.boundingBox.expand(areaSize, areaSize, areaSize));
+
+		if (entities.size() <= 1)
 		{
-			double areaSize = par1Level * 4;
-			List<EntityLivingBase> entities = par2World.getEntitiesWithinAABB(EntityLivingBase.class, par3EntityPlayer.boundingBox.expand(areaSize, areaSize, areaSize));
-			
-			if (entities.size() <= 1)
+			par3EntityPlayer.addChatMessage(new ChatComponentText("No targets nearby!"));
+			return true;
+		}
+
+		for (EntityLivingBase entity : entities)
+		{
+			if (!(entity instanceof EntityTameable && ((EntityTameable)entity).getOwner() == par3EntityPlayer) &&
+					!(entity == par3EntityPlayer))
 			{
-				par3EntityPlayer.addChatMessage(new ChatComponentText("No targets nearby!"));
-				return true;
-			}
-			
-			for (EntityLivingBase entity : entities)
-			{
-				if (!(entity instanceof EntityTameable && ((EntityTameable)entity).getOwner() == par3EntityPlayer) &&
-						!(entity == par3EntityPlayer))
-				{
-					affectEntity(par2World, entity);
-				}
+				affectEntity(par2World, entity);
 			}
 		}
-		
+
 		return true;
 	}
 	

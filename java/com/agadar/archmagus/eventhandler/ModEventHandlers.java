@@ -6,7 +6,7 @@ import net.minecraftforge.common.MinecraftForge;
 public class ModEventHandlers 
 {
 	/** Registers this mod's event handlers. */
-	public static void registerEventHandlers() 
+	public static void registerModEventHandlers() 
 	{
 		/** For making mobs drop spell books. */
 		MinecraftForge.EVENT_BUS.register(new HandlerOnLivingDrops());

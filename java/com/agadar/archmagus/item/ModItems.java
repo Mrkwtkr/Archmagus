@@ -17,7 +17,7 @@ public class ModItems
 	public final static Item spell_book = new ItemSpellBook();
 
 	/** Instantiates and registers this mod's items. */
-	public static void loadItems()
+	public static void loadModItems()
 	{
 		RegisterHelper.registerItem(spell_book);
 	}

@@ -1,4 +1,6 @@
-package com.agadar.archmagus.spell;
+package com.agadar.archmagus.spell.targeted;
+
+import com.agadar.archmagus.spell.Spell;
 
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.projectile.EntityWitherSkull;
@@ -6,9 +8,9 @@ import net.minecraft.util.Vec3;
 import net.minecraft.world.World;
 
 /** Fires a Wither Skull. */
-public class SpellWitherBlast extends Spell 
+public class SpellWitherBlast extends Spell implements ISpellTargeted
 {
-	protected SpellWitherBlast(int par1) 
+	public SpellWitherBlast(int par1) 
 	{
 		super(par1);
 		this.setName("witherblast");

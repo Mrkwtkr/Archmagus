@@ -1,11 +1,13 @@
-package com.agadar.archmagus.spell;
+package com.agadar.archmagus.spell.targeted;
+
+import com.agadar.archmagus.spell.Spell;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.world.World;
 
 /** Teleports the player to where he is aiming, up to a certain distance. */
-public class SpellTeleport extends Spell 
+public class SpellTeleport extends Spell implements ISpellTargeted
 {
 	/**
 	 * Holds the distances this spell can teleport a player, where the distance with 
@@ -15,7 +17,7 @@ public class SpellTeleport extends Spell
 	 */
 	private final int[] distances = { 10, 15, 20};
 	
-	protected SpellTeleport(int par1) 
+	public SpellTeleport(int par1) 
 	{
 		super(par1);
 		this.setName("teleport");

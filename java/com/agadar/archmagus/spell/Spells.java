@@ -20,6 +20,10 @@ import com.agadar.archmagus.spell.shield.SpellFrostShield;
 import com.agadar.archmagus.spell.shield.SpellStormShield;
 import com.agadar.archmagus.spell.shield.SpellWaterShield;
 import com.agadar.archmagus.spell.summon.SpellSummon;
+import com.agadar.archmagus.spell.targeted.SpellBlazeFire;
+import com.agadar.archmagus.spell.targeted.SpellGhastFire;
+import com.agadar.archmagus.spell.targeted.SpellTeleport;
+import com.agadar.archmagus.spell.targeted.SpellWitherBlast;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;

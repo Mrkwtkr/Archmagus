@@ -14,13 +14,6 @@ public class SpellData
     /** The remaining cooldown associated with this SpellData. */
     public final short spellCooldown;
     
-    /** Name of the Spell's id's variable name in NBTTagCompounds. */
-    private final static String id = "id";
-    /** Name of the Spell's level's variable name in NBTTagCompounds. */
-    private final static String lvl = "lvl";
-    /** Name of the Spell's cooldown's variable name in NBTTagCompounds. */
-    private final static String cd = "cd";
-    
     public SpellData(Spell par1Spell, short par2Level, short par3Cooldown)
     {
     	this.spellObj = par1Spell;
@@ -44,9 +37,9 @@ public class SpellData
     {
     	NBTTagCompound tag = new NBTTagCompound();
     	
-    	tag.setShort(id, (short) par1SpellData.spellObj.effectId);
-    	tag.setShort(lvl, (short) par1SpellData.spellLevel);
-    	tag.setShort(cd, (short) par1SpellData.spellCooldown);
+    	tag.setShort("id", (short) par1SpellData.spellObj.effectId);
+    	tag.setShort("lvl", (short) par1SpellData.spellLevel);
+    	tag.setShort("cd", (short) par1SpellData.spellCooldown);
     	
     	return tag;
     }
@@ -54,9 +47,9 @@ public class SpellData
     /** Reads an NBTTagCompound and returns a SpellData with corresponding values. */
     public static SpellData readFromNBTTagCompound(NBTTagCompound par1NBTTagCompound)
     {
-    	Spell spell = Spells.getSpellAt(par1NBTTagCompound.getShort(id));
-        short tagLevel = par1NBTTagCompound.getShort(lvl);
-        short tagCooldown = par1NBTTagCompound.getShort(cd);      
+    	Spell spell = Spells.getSpellAt(par1NBTTagCompound.getShort("id"));
+        short tagLevel = par1NBTTagCompound.getShort("lvl");
+        short tagCooldown = par1NBTTagCompound.getShort("cd");      
 		
 		return new SpellData(spell, tagLevel, tagCooldown);
     }
@@ -64,19 +57,19 @@ public class SpellData
     /** Reads an NBTTagCompound and reduces the remaining cooldown by one tick. */
     public static void tickCooldown(NBTTagCompound par1NBTTagCompound)
     {
-    	short cooldown = par1NBTTagCompound.getShort(cd);
+    	short cooldown = par1NBTTagCompound.getShort("cd");
 
 		if (cooldown > 0)
 		{
-			par1NBTTagCompound.setShort(cd, (short) (cooldown - 1));
+			par1NBTTagCompound.setShort("cd", (short) (cooldown - 1));
 		}
     }
     
     /** Reads an NBTTagCompound and starts the cooldown anew. */
     public static void startCooldown(NBTTagCompound par1NBTTagCompound)
     {
-    	Spell spell = Spells.getSpellAt(par1NBTTagCompound.getShort(id));
-    	par1NBTTagCompound.setShort(cd, spell.getCooldown());
+    	Spell spell = Spells.getSpellAt(par1NBTTagCompound.getShort("id"));
+    	par1NBTTagCompound.setShort("cd", spell.getCooldown());
     }
     
     /** Attempts to combine two SpellData's. Returns null if the combining failed.
@@ -93,10 +86,7 @@ public class SpellData
 			{
     			short newSpellLevel = par1SpellData.spellLevel;
 				
-				if (par1SpellData.spellLevel + 1 <= par1SpellData.spellObj.getMaxLevel())
-				{
-					newSpellLevel++;
-				}
+				if (par1SpellData.spellLevel + 1 <= par1SpellData.spellObj.getMaxLevel()) newSpellLevel++;
 				   				
 				return new SpellData(par1SpellData.spellObj, newSpellLevel);
 			}
