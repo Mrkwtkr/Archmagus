@@ -30,7 +30,6 @@ public class EntitySummonedSpider extends EntitySummoned
         this.tasks.addTask(5, new EntityAILookIdle(this));
         
         this.setSize(1.4F, 0.9F);
-        this.getAttributeMap().registerAttribute(SharedMonsterAttributes.attackDamage).setBaseValue(4.0D);
 	}
 	
     @Override
@@ -56,14 +55,6 @@ public class EntitySummonedSpider extends EntitySummoned
         {
             this.setBesideClimbableBlock(this.isCollidedHorizontally);
         }
-    }
-	
-	@Override
-	protected void applyEntityAttributes()
-    {
-        super.applyEntityAttributes();
-        this.getEntityAttribute(SharedMonsterAttributes.maxHealth).setBaseValue(20.0D);
-        this.getEntityAttribute(SharedMonsterAttributes.movementSpeed).setBaseValue(0.30000001192092896D);
     }
 	
 	@Override

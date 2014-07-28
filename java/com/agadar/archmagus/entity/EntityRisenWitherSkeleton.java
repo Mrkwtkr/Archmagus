@@ -35,15 +35,7 @@ public class EntityRisenWitherSkeleton extends EntitySummoned implements IRanged
         this.tasks.addTask(5, new EntityAILookIdle(this));
 
         this.setCurrentItemOrArmor(0, new ItemStack(Items.stone_sword));
-        this.getAttributeMap().registerAttribute(SharedMonsterAttributes.attackDamage).setBaseValue(4.0D);
-    }
-
-    @Override
-    protected void applyEntityAttributes()
-    {
-        super.applyEntityAttributes();
-        this.getEntityAttribute(SharedMonsterAttributes.movementSpeed).setBaseValue(0.30000001192092896D);
-        this.getEntityAttribute(SharedMonsterAttributes.maxHealth).setBaseValue(20.0D);
+        this.setCanPickUpLoot(true);
     }
 
     @Override

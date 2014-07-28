@@ -106,14 +106,6 @@ public class EntitySummonedWitch extends EntitySummoned implements IRangedAttack
         return this.getDataWatcher().getWatchableObjectByte(21) == 1;
     }
 
-    @Override
-    protected void applyEntityAttributes()
-    {
-        super.applyEntityAttributes();
-        this.getEntityAttribute(SharedMonsterAttributes.maxHealth).setBaseValue(20.0D);
-        this.getEntityAttribute(SharedMonsterAttributes.movementSpeed).setBaseValue(0.30000001192092896D);
-    }
-
     /**
      * Called frequently so the entity can update its state every tick as required. For example, zombies and skeletons
      * use this to react to sunlight and start to burn.

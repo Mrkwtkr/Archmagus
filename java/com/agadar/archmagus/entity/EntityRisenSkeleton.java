@@ -6,7 +6,6 @@ import net.minecraft.entity.EntityCreature;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.EnumCreatureAttribute;
 import net.minecraft.entity.IRangedAttackMob;
-import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.EntityAIArrowAttack;
 import net.minecraft.entity.ai.EntityAIFollowOwner;
 import net.minecraft.entity.ai.EntityAILookIdle;
@@ -34,14 +33,7 @@ public class EntityRisenSkeleton extends EntitySummoned implements IRangedAttack
         this.tasks.addTask(5, new EntityAILookIdle(this));
         
         this.setCurrentItemOrArmor(0, new ItemStack(Items.bow));
-    }
-
-    @Override
-    protected void applyEntityAttributes()
-    {
-        super.applyEntityAttributes();
-        this.getEntityAttribute(SharedMonsterAttributes.movementSpeed).setBaseValue(0.30000001192092896D);
-        this.getEntityAttribute(SharedMonsterAttributes.maxHealth).setBaseValue(20.0D);
+        this.setCanPickUpLoot(true);
     }
 
     @Override

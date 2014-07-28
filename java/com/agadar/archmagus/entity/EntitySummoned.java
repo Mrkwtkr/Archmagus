@@ -2,6 +2,7 @@ package com.agadar.archmagus.entity;
 
 import net.minecraft.entity.EntityAgeable;
 import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.EntityAIHurtByTarget;
 import net.minecraft.entity.ai.EntityAIOwnerHurtByTarget;
 import net.minecraft.entity.ai.EntityAIOwnerHurtTarget;
@@ -26,6 +27,15 @@ public abstract class EntitySummoned extends EntityTameable
         this.setPathToEntity((PathEntity)null);
         this.setAttackTarget((EntityLivingBase)null);
 	}
+	
+	@Override
+    protected void applyEntityAttributes()
+    {
+        super.applyEntityAttributes();
+        this.getEntityAttribute(SharedMonsterAttributes.movementSpeed).setBaseValue(0.30000001192092896D);
+        this.getEntityAttribute(SharedMonsterAttributes.maxHealth).setBaseValue(20.0D);
+        this.getAttributeMap().registerAttribute(SharedMonsterAttributes.attackDamage).setBaseValue(4.0D);
+    }
 
 	@Override
 	public EntityAgeable createChild(EntityAgeable var1) 

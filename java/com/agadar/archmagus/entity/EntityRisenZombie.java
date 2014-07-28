@@ -11,13 +11,20 @@ import net.minecraft.entity.ai.EntityAILookIdle;
 import net.minecraft.entity.ai.EntityAISwimming;
 import net.minecraft.entity.ai.EntityAIWander;
 import net.minecraft.entity.ai.EntityAIWatchClosest;
+import net.minecraft.entity.ai.attributes.AttributeModifier;
+import net.minecraft.entity.ai.attributes.IAttribute;
+import net.minecraft.entity.ai.attributes.RangedAttribute;
 import net.minecraft.entity.passive.EntityVillager;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.DamageSource;
+import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
+import net.minecraftforge.common.ForgeModContainer;
 
 public class EntityRisenZombie extends EntitySummoned
 {
+	protected static final IAttribute field_110186_bp = (new RangedAttribute("zombie.spawnReinforcements", 0.0D, 0.0D, 1.0D)).setDescription("Spawn Reinforcements Chance");
+	
     public EntityRisenZombie(World par1World)
     {
         super(par1World);
@@ -30,15 +37,14 @@ public class EntityRisenZombie extends EntitySummoned
         this.tasks.addTask(5, new EntityAILookIdle(this));
         
         this.setSize(0.6F, 1.8F);
-        this.getAttributeMap().registerAttribute(SharedMonsterAttributes.attackDamage).setBaseValue(3.0D);
+        this.setCanPickUpLoot(true);
     }
-
+    
     @Override
     protected void applyEntityAttributes()
     {
         super.applyEntityAttributes();
-        this.getEntityAttribute(SharedMonsterAttributes.movementSpeed).setBaseValue(0.30000001192092896D);
-        this.getEntityAttribute(SharedMonsterAttributes.maxHealth).setBaseValue(20.0D);
+        this.getAttributeMap().registerAttribute(field_110186_bp).setBaseValue(this.rand.nextDouble() * ForgeModContainer.zombieSummonBaseChance);
     }
     
     @Override
@@ -46,6 +52,64 @@ public class EntityRisenZombie extends EntitySummoned
     {
     	float attackDamage = (float)getEntityAttribute(SharedMonsterAttributes.attackDamage).getAttributeValue();
     	return par1Entity.attackEntityFrom(DamageSource.causeMobDamage(this), attackDamage);
+    }
+    
+    @Override
+    public boolean attackEntityFrom(DamageSource par1DamageSource, float par2)
+    {
+        if (!super.attackEntityFrom(par1DamageSource, par2))
+        {
+            return false;
+        }
+        else
+        {
+            EntityLivingBase entitylivingbase = this.getAttackTarget();
+
+            if (entitylivingbase == null && this.getEntityToAttack() instanceof EntityLivingBase)
+            {
+                entitylivingbase = (EntityLivingBase)this.getEntityToAttack();
+            }
+
+            if (entitylivingbase == null && par1DamageSource.getEntity() instanceof EntityLivingBase)
+            {
+                entitylivingbase = (EntityLivingBase)par1DamageSource.getEntity();
+            }
+
+            int i = MathHelper.floor_double(this.posX);
+            int j = MathHelper.floor_double(this.posY);
+            int k = MathHelper.floor_double(this.posZ);
+            
+            if (entitylivingbase != null && (double)this.rand.nextFloat() < this.getEntityAttribute(field_110186_bp).getAttributeValue())
+            {
+                EntityRisenZombie entityzombie = new EntityRisenZombie(this.worldObj);
+
+                for (int l = 0; l < 50; ++l)
+                {
+                    int i1 = i + MathHelper.getRandomIntegerInRange(this.rand, 7, 40) * MathHelper.getRandomIntegerInRange(this.rand, -1, 1);
+                    int j1 = j + MathHelper.getRandomIntegerInRange(this.rand, 7, 40) * MathHelper.getRandomIntegerInRange(this.rand, -1, 1);
+                    int k1 = k + MathHelper.getRandomIntegerInRange(this.rand, 7, 40) * MathHelper.getRandomIntegerInRange(this.rand, -1, 1);
+
+                    if (World.doesBlockHaveSolidTopSurface(this.worldObj, i1, j1 - 1, k1))
+                    {
+                        entityzombie.setPosition((double)i1, (double)j1, (double)k1);
+
+                        if (this.worldObj.checkNoEntityCollision(entityzombie.boundingBox) && this.worldObj.getCollidingBoundingBoxes(entityzombie, entityzombie.boundingBox).isEmpty() && !this.worldObj.isAnyLiquid(entityzombie.boundingBox))
+                        {
+                        	String comSendName = this.getOwnerName();
+                        	entityzombie.setOwner(comSendName);
+                        	entityzombie.setCustomNameTag(comSendName + "'s Minion");
+                        	entityzombie.setAlwaysRenderNameTag(true);				                 	
+                            this.worldObj.spawnEntityInWorld(entityzombie);                          
+                            this.getEntityAttribute(field_110186_bp).applyModifier(new AttributeModifier("Zombie reinforcement caller charge", -0.05000000074505806D, 0));
+                            entityzombie.getEntityAttribute(field_110186_bp).applyModifier(new AttributeModifier("Zombie reinforcement callee charge", -0.05000000074505806D, 0));
+                            break;
+                        }
+                    }
+                }
+            }
+
+            return true;
+        }
     }
     
     @Override
