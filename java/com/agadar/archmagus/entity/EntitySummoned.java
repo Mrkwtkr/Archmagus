@@ -11,6 +11,7 @@ import net.minecraft.entity.passive.EntityTameable;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.pathfinding.PathEntity;
+import net.minecraft.util.DamageSource;
 import net.minecraft.world.World;
 
 public abstract class EntitySummoned extends EntityTameable 
@@ -77,5 +78,20 @@ public abstract class EntitySummoned extends EntityTameable
     protected boolean canDespawn()
     {
         return false;
+    }
+    
+    @Override
+	public void onUpdate()
+    {
+        super.onUpdate();
+
+        if (this.worldObj.isRemote) return;
+        
+        EntityLivingBase owner = this.getOwner();
+        if (owner != null) 
+        {
+        	if (owner.isDead) this.attackEntityFrom(DamageSource.generic, this.getMaxHealth());
+        }
+        else this.attackEntityFrom(DamageSource.generic, this.getMaxHealth());
     }
 }
