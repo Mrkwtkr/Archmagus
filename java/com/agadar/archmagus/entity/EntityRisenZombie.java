@@ -11,13 +11,11 @@ import net.minecraft.entity.ai.EntityAILookIdle;
 import net.minecraft.entity.ai.EntityAISwimming;
 import net.minecraft.entity.ai.EntityAIWander;
 import net.minecraft.entity.ai.EntityAIWatchClosest;
-import net.minecraft.entity.ai.attributes.AttributeModifier;
 import net.minecraft.entity.ai.attributes.IAttribute;
 import net.minecraft.entity.ai.attributes.RangedAttribute;
 import net.minecraft.entity.passive.EntityVillager;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.DamageSource;
-import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
 import net.minecraftforge.common.ForgeModContainer;
 
@@ -57,7 +55,9 @@ public class EntityRisenZombie extends EntitySummoned
     @Override
     public boolean attackEntityFrom(DamageSource par1DamageSource, float par2)
     {
-        if (!super.attackEntityFrom(par1DamageSource, par2))
+    	return super.attackEntityFrom(par1DamageSource, par2);
+    	
+        /*if (!super.attackEntityFrom(par1DamageSource, par2))
         {
             return false;
         }
@@ -109,7 +109,7 @@ public class EntityRisenZombie extends EntitySummoned
             }
 
             return true;
-        }
+        }*/
     }
     
     @Override

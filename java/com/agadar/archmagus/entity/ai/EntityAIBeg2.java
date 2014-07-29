@@ -1,4 +1,4 @@
-package com.agadar.entity.ai;
+package com.agadar.archmagus.entity.ai;
 
 import com.agadar.archmagus.entity.EntitySummonedWolf;
 
