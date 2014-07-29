@@ -1,5 +1,7 @@
 package com.agadar.archmagus.entity;
 
+import com.agadar.entity.ai.EntityAIBeg2;
+
 import net.minecraft.block.Block;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
@@ -15,6 +17,8 @@ import net.minecraft.entity.monster.EntityGhast;
 import net.minecraft.entity.passive.EntityHorse;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.projectile.EntityArrow;
+import net.minecraft.item.ItemFood;
+import net.minecraft.item.ItemStack;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
@@ -24,6 +28,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 public class EntitySummonedWolf extends EntitySummoned
 {
     private float field_70926_e;
+    private float field_70924_f;
     /** true is the wolf is wet else false */
     private boolean isShaking;
     private boolean field_70928_h;
@@ -43,13 +48,35 @@ public class EntitySummonedWolf extends EntitySummoned
         this.tasks.addTask(3, new EntityAIAttackOnCollide(this, 1.0D, true));
         this.tasks.addTask(4, new EntityAIFollowOwner(this, 1.0D, 10.0F, 2.0F));
         this.tasks.addTask(5, new EntityAIWander(this, 1.0D));
-        this.tasks.addTask(6, new EntityAIWatchClosest(this, EntityPlayer.class, 8.0F));
-        this.tasks.addTask(6, new EntityAILookIdle(this));
+        this.tasks.addTask(6, new EntityAIBeg2(this, 8.0F));
+        this.tasks.addTask(7, new EntityAIWatchClosest(this, EntityPlayer.class, 8.0F));
+        this.tasks.addTask(7, new EntityAILookIdle(this));
     }
 
-    /**
-     * main AI tick function, replaces updateEntityActionState
-     */
+    @Override
+    public boolean interact(EntityPlayer par1EntityPlayer)
+    {
+    	ItemStack itemstack = par1EntityPlayer.inventory.getCurrentItem();
+
+    	if (itemstack != null && itemstack.getItem() instanceof ItemFood)
+    	{
+    		ItemFood itemfood = (ItemFood)itemstack.getItem();
+
+    		if (itemfood.isWolfsFavoriteMeat() && this.dataWatcher.getWatchableObjectFloat(18) < 20.0F)
+    		{
+    			if (!par1EntityPlayer.capabilities.isCreativeMode) --itemstack.stackSize;
+
+    			this.heal((float)itemfood.func_150905_g(itemstack));
+
+    			if (itemstack.stackSize <= 0) par1EntityPlayer.inventory.setInventorySlotContents(par1EntityPlayer.inventory.currentItem, (ItemStack)null);
+
+    			return true;
+    		}
+    	}
+    	
+    	return false;
+    }
+    
     @Override
     protected void updateAITick()
     {
@@ -61,6 +88,7 @@ public class EntitySummonedWolf extends EntitySummoned
     {
         super.entityInit();
         this.dataWatcher.addObject(18, new Float(this.getHealth()));
+        this.dataWatcher.addObject(19, new Byte((byte)0));
     }
 
     @Override
@@ -69,18 +97,12 @@ public class EntitySummonedWolf extends EntitySummoned
         this.playSound("mob.wolf.step", 0.15F, 1.0F);
     }
 
-    /**
-     * Returns the sound this mob makes while it's alive.
-     */
     @Override
     protected String getLivingSound()
     {
         return this.rand.nextInt(3) == 0 ? (this.dataWatcher.getWatchableObjectFloat(18) < 10.0F ? "mob.wolf.whine" : "mob.wolf.panting") : "mob.wolf.bark";
     }
 
-    /**
-     * Returns the sound this mob makes when it is hurt.
-     */
     @Override
     protected String getHurtSound()
     {
@@ -99,28 +121,18 @@ public class EntitySummonedWolf extends EntitySummoned
         return "game.hostile.swim.splash";
     }
 
-    /**
-     * Returns the sound this mob makes on death.
-     */
     @Override
     protected String getDeathSound()
     {
         return "mob.wolf.death";
     }
 
-    /**
-     * Returns the volume for the sounds this mob makes.
-     */
     @Override
     protected float getSoundVolume()
     {
         return 0.4F;
     }
 
-    /**
-     * Called frequently so the entity can update its state every tick as required. For example, zombies and skeletons
-     * use this to react to sunlight and start to burn.
-     */
     @Override
     public void onLivingUpdate()
     {
@@ -135,16 +147,25 @@ public class EntitySummonedWolf extends EntitySummoned
         }
     }
 
-    /**
-     * Called to update the entity's position/logic.
-     */
     @Override
     public void onUpdate()
     {
-        super.onUpdate();
-        
-        this.field_70926_e += (0.0F - this.field_70926_e) * 0.4F;
-        this.numTicksToChaseTarget = 10;
+    	super.onUpdate();
+        this.field_70924_f = this.field_70926_e;
+
+        if (this.func_70922_bv())
+        {
+            this.field_70926_e += (1.0F - this.field_70926_e) * 0.4F;
+        }
+        else
+        {
+            this.field_70926_e += (0.0F - this.field_70926_e) * 0.4F;
+        }
+
+        if (this.func_70922_bv())
+        {
+            this.numTicksToChaseTarget = 10;
+        }
 
         if (this.isWet())
         {
@@ -185,6 +206,29 @@ public class EntitySummonedWolf extends EntitySummoned
             }
         }
     }
+    
+    public boolean func_70922_bv()
+    {
+        return this.dataWatcher.getWatchableObjectByte(19) == 1;
+    }
+    
+    @SideOnly(Side.CLIENT)
+    public float getInterestedAngle(float par1)
+    {
+        return (this.field_70924_f + (this.field_70926_e - this.field_70924_f) * par1) * 0.15F * (float)Math.PI;
+    }
+    
+    public void func_70918_i(boolean par1)
+    {
+        if (par1)
+        {
+            this.dataWatcher.updateObject(19, Byte.valueOf((byte)1));
+        }
+        else
+        {
+            this.dataWatcher.updateObject(19, Byte.valueOf((byte)0));
+        }
+    }
 
     @SideOnly(Side.CLIENT)
     public boolean getWolfShaking()
@@ -192,9 +236,7 @@ public class EntitySummonedWolf extends EntitySummoned
         return this.isShaking;
     }
 
-    /**
-     * Used when calculating the amount of shading to apply while the wolf is shaking.
-     */
+    /** Used when calculating the amount of shading to apply while the wolf is shaking. */
     @SideOnly(Side.CLIENT)
     public float getShadingWhileShaking(float par1)
     {
@@ -224,9 +266,6 @@ public class EntitySummonedWolf extends EntitySummoned
         return this.height * 0.8F;
     }
 
-    /**
-     * Called when the entity is attacked.
-     */
     @Override
     public boolean attackEntityFrom(DamageSource par1DamageSource, float par2)
     {
@@ -296,5 +335,11 @@ public class EntitySummonedWolf extends EntitySummoned
         {
             return false;
         }
+    }
+    
+    @Override
+    public boolean isBreedingItem(ItemStack par1ItemStack)
+    {
+        return par1ItemStack == null ? false : (!(par1ItemStack.getItem() instanceof ItemFood) ? false : ((ItemFood)par1ItemStack.getItem()).isWolfsFavoriteMeat());
     }
 }
