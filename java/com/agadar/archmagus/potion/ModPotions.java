@@ -5,7 +5,7 @@ import java.lang.reflect.Modifier;
 
 import net.minecraft.potion.Potion;
 
-/** Responsible for instantiating this mod's Potions. */
+/** Responsible for managing this mod's Potions. */
 public class ModPotions 
 {
 	/** The potion that is applied when a player is polymorphed. */
@@ -23,23 +23,36 @@ public class ModPotions
 	/** The potion that is applied when a player is made immune to knockback. */
 	public final static Potion knockbackImmunity;
 	
+	/** The next unique Potion Id. Should only be used and altered by getUniquePotionId(). */
+	private static int nextPotionId = 32;
+	
 	static
 	{
 		openUpPotionTypes();		
-		int id = 32;
-		polymorphed = new PotionBase(id++, false, 0).setIconIndex(0, 0).setPotionName("potion.polymorphed");
-		fireShield = new PotionBase(id++, false, 14981690).setIconIndex(1, 0).setPotionName("potion.shield.fire");
-		earthShield = new PotionBase(id++, false, 10044730).setIconIndex(2, 0).setPotionName("potion.shield.earth");
-		waterShield = new PotionBase(id++, false, 3035801).setIconIndex(3, 0).setPotionName("potion.shield.water");
-		stormShield = new PotionBase(id++, false, 8171462).setIconIndex(4, 0).setPotionName("potion.shield.storm");
-		frostShield = new PotionBase(id++, false, 15463164).setIconIndex(5, 0).setPotionName("potion.shield.frost");
-		feared = new PotionBase(id++, true, 4393481).setIconIndex(6, 0).setPotionName("potion.feared");
-		projectileImmunity = new PotionBase(id++, false, 0).setIconIndex(7, 0).setPotionName("potion.immunity.projectile");
-		knockbackImmunity = new PotionBase(id++, false, 0).setIconIndex(0, 1).setPotionName("potion.immunity.knockback");
+
+		polymorphed = new PotionBase(getUniquePotionId(), false, 0).setIconIndex(0, 0).setPotionName("potion.polymorphed");
+		fireShield = new PotionBase(getUniquePotionId(), false, 14981690).setIconIndex(1, 0).setPotionName("potion.shield.fire");
+		earthShield = new PotionBase(getUniquePotionId(), false, 10044730).setIconIndex(2, 0).setPotionName("potion.shield.earth");
+		waterShield = new PotionBase(getUniquePotionId(), false, 3035801).setIconIndex(3, 0).setPotionName("potion.shield.water");
+		stormShield = new PotionBase(getUniquePotionId(), false, 8171462).setIconIndex(4, 0).setPotionName("potion.shield.storm");
+		frostShield = new PotionBase(getUniquePotionId(), false, 15463164).setIconIndex(5, 0).setPotionName("potion.shield.frost");
+		feared = new PotionBase(getUniquePotionId(), true, 4393481).setIconIndex(6, 0).setPotionName("potion.feared");
+		projectileImmunity = new PotionBase(getUniquePotionId(), false, 0).setIconIndex(7, 0).setPotionName("potion.immunity.projectile");
+		knockbackImmunity = new PotionBase(getUniquePotionId(), false, 0).setIconIndex(0, 1).setPotionName("potion.immunity.knockback");
 	}
 	
-	/** Calling this method allows us to register new Potions
-	 *  and mod existing Potions. */
+	/** Returns the next unique Potion Id. */
+	private static int getUniquePotionId()
+	{
+		while (nextPotionId < Potion.potionTypes.length && Potion.potionTypes[nextPotionId] != null)
+		{
+			nextPotionId++;
+		}
+		
+		return nextPotionId;
+	}
+	
+	/** Calling this method allows us to register new Potions and modify existing Potions. */
 	private static void openUpPotionTypes()
 	{
 		Potion[] potionTypes = null;
