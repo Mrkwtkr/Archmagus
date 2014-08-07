@@ -84,7 +84,7 @@ public class SpellSummon extends Spell
 			
 			for (EntitySummoned entity : entities)
 			{
-				if (entity.getOwnerName().equalsIgnoreCase(par3EntityPlayer.getCommandSenderName()))
+				if (entity.getOwner() == par3EntityPlayer)
 				{
 					entity.attackEntityFrom(DamageSource.generic, entity.getMaxHealth());
 				}
@@ -100,7 +100,7 @@ public class SpellSummon extends Spell
 					EntityCreature entity = (EntityCreature) entityConstr.newInstance(par2World);
 					entity.setLocationAndAngles(par3EntityPlayer.posX + xSpawnOffset[i], par3EntityPlayer.posY, par3EntityPlayer.posZ + zSpawnOffset[i], entity.rotationYaw, 0.0F);					
 					String comSendName = par3EntityPlayer.getCommandSenderName();
-					((EntityTameable) entity).setOwner(comSendName);
+					((EntityTameable) entity).func_152115_b(par3EntityPlayer.getUniqueID().toString());
 					entity.setCustomNameTag(comSendName + "'s Minion");
 					entity.setAlwaysRenderNameTag(true);
 					par2World.spawnEntityInWorld(entity);
