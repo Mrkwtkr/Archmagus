@@ -38,16 +38,12 @@ public class GuiManaBar extends Gui
 		int xPos = 2;
 		int yPos = 2;
 
-		// The center of the screen can be gotten like this during this event:
-		// int xPos = event.resolution.getScaledWidth() / 2;
-		// int yPos = event.resolution.getScaledHeight() / 2;
-
-		// Be sure to offset based on your texture size or your texture will not be truly centered:
-		// int xPos = (event.resolution.getScaledWidth() + textureWidth) / 2;
-		// int yPos = (event.resolution.getScaledHeight() + textureHeight) / 2;
-
-		// setting all color values to 1.0F will render the texture as it looks in your texture file
+		GL11.glEnable(GL11.GL_BLEND);
+		GL11.glDisable(GL11.GL_DEPTH_TEST);
+		GL11.glDepthMask(false);
+		GL11.glBlendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA);
 		GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
+		GL11.glDisable(GL11.GL_ALPHA_TEST);
 
 		// Somewhere in Minecraft vanilla code it says to do this because of a lighting bug
 		GL11.glDisable(GL11.GL_LIGHTING);
@@ -73,8 +69,12 @@ public class GuiManaBar extends Gui
 
 		// However, we want the length to be based on current mana, so we need a new variable:
 		int manabarwidth = (int)(((float) props.getCurrentMana() / props.getMaxMana()) * 49);
-		System.out.println("[GUI MANA] Current mana bar width: " + manabarwidth);
+		//System.out.println("[GUI MANA] Current mana bar width: " + manabarwidth);
 		// Now we can draw our mana bar at yPos+1 so it centers in the background:
 		this.drawTexturedModalRect(xPos, yPos + 1, 0, 4, manabarwidth, 2);
+		// NOTE: be sure to reset the openGL settings after you're done or your character model will be messed up
+		GL11.glDisable(GL11.GL_BLEND);
+		GL11.glEnable(GL11.GL_DEPTH_TEST);
+		GL11.glDepthMask(true);
 	}
 }
