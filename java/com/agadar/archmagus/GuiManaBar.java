@@ -26,7 +26,7 @@ public class GuiManaBar extends Gui
 	@SubscribeEvent(priority = EventPriority.NORMAL)
 	public void onRenderExperienceBar(RenderGameOverlayEvent event)
 	{
-		if (event.isCancelable() || event.type != ElementType.EXPERIENCE)
+		if (event.isCancelable() || event.type != ElementType.FOOD)
 			return;
 
 		ManaProperties props = ManaProperties.get(this.mc.thePlayer);
