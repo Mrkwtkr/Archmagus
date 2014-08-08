@@ -1,0 +1,99 @@
+package com.agadar.archmagus;
+
+import net.minecraft.entity.Entity;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.world.World;
+import net.minecraftforge.common.IExtendedEntityProperties;
+
+public class ManaProperties implements IExtendedEntityProperties 
+{
+	/** The unique name of this property. */
+	public final static String NAME = "ManaProperties";
+	/** The index at which the player's current mana is stored in the player's DataWatcher. */
+	public static final int MANA_WATCHER = 20;
+	/** The player to which this instance belongs to. */
+	private EntityPlayer player;
+	/** The maximum amount of mana this player can have. */
+	private int maxMana;
+	
+	public ManaProperties(EntityPlayer player)
+	{
+		this.player = player;
+		this.maxMana = 20;
+		this.player.getDataWatcher().addObject(MANA_WATCHER, this.maxMana);
+	}
+	
+	/** Attempts to consume the given amount of mana. */
+	public boolean consumeMana(int amount)
+	{
+		if (amount < 0)
+			return false;
+		
+		int currentMana = this.player.getDataWatcher().getWatchableObjectInt(MANA_WATCHER);
+		
+		if (currentMana >= amount)
+		{
+			currentMana -= amount;
+			this.player.getDataWatcher().updateObject(MANA_WATCHER, currentMana);
+			return true;
+		}
+		
+		return false;
+	}
+
+	/** Attempts to replenish the given amount of mana. */
+	public void replenishMana(int amount)
+	{
+		if (amount <= 0)
+			return;
+		
+		int currentMana = this.player.getDataWatcher().getWatchableObjectInt(MANA_WATCHER);
+		currentMana = Math.min(currentMana + amount, this.maxMana);
+		this.player.getDataWatcher().updateObject(MANA_WATCHER, currentMana);
+	}
+	
+	/** Returns the maximum amount of mana this player can have. */
+	public int getMaxMana() 
+	{
+		return this.maxMana;
+	}
+	
+	/** Returns the current amount of mana this player has. */
+	public int getCurrentMana()
+	{
+		return this.player.getDataWatcher().getWatchableObjectInt(MANA_WATCHER);
+	}
+	
+	/** Used to register these extended properties for the given player during the EntityConstructing event. */
+	public static final void register(EntityPlayer player)
+	{
+		player.registerExtendedProperties(NAME, new ManaProperties(player));
+	}
+	
+	/** Returns the ExtendedPlayer properties for the given player. */
+	public static final ManaProperties get(EntityPlayer player)
+	{
+		return (ManaProperties) player.getExtendedProperties(NAME);
+	}
+	
+	@Override
+	public void saveNBTData(NBTTagCompound compound) 
+	{
+		NBTTagCompound properties = new NBTTagCompound();
+		properties.setInteger("CurrentMana", this.player.getDataWatcher().getWatchableObjectInt(MANA_WATCHER));
+		properties.setInteger("MaxMana", this.maxMana);
+		compound.setTag(NAME, properties);
+	}
+
+	@Override
+	public void loadNBTData(NBTTagCompound compound) 
+	{
+		NBTTagCompound properties = (NBTTagCompound) compound.getTag(NAME);
+		this.player.getDataWatcher().updateObject(MANA_WATCHER, properties.getInteger("CurrentMana"));;
+		this.maxMana = properties.getInteger("MaxMana");	
+	}
+
+	@Override
+	public void init(Entity entity, World world) { }
+}

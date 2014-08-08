@@ -2,6 +2,7 @@ package com.agadar.archmagus.item;
 
 import java.util.List;
 
+import com.agadar.archmagus.ManaProperties;
 import com.agadar.archmagus.help.References;
 import com.agadar.archmagus.spell.Spell;
 import com.agadar.archmagus.spell.SpellData;
@@ -149,6 +150,25 @@ public class ItemSpellBook extends Item
     		if (!par2World.isRemote) SpellData.startCooldown(spellTag);  		
     		if (!inCreative) par3EntityPlayer.getFoodStats().addStats(-spellData.spellObj.getHungerCost(), 0);
     	}
+    	
+    	/** TESTZONE */
+    	
+    	if (!par2World.isRemote)
+    	{
+    		ManaProperties props = ManaProperties.get(par3EntityPlayer);
+
+    		if (inCreative || props.consumeMana(5))
+    		{
+    			System.out.println("[MANA ITEM] Player had enough mana. Do something awesome!");
+    		}
+    		else
+    		{
+    			System.out.println("[MANA ITEM] Player ran out of mana. Sad face.");
+    			props.replenishMana(props.getMaxMana());
+    		}
+    	}
+    	
+    	/** TESTZONE END */
 
     	return par1ItemStack;
     }

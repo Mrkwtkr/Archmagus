@@ -1,7 +1,5 @@
 package com.agadar.archmagus.entity;
 
-import com.agadar.archmagus.Archmagus;
-
 import cpw.mods.fml.common.registry.EntityRegistry;
 
 /** Responsible for registering this mod's entities and their renderers. */
@@ -19,8 +17,5 @@ public class ModEntities
 		EntityRegistry.registerGlobalEntityID(EntitySummonedWitch.class, "summoned_witch", EntityRegistry.findGlobalUniqueEntityId());
 		EntityRegistry.registerGlobalEntityID(EntitySummonedSpider.class, "summoned_spider", EntityRegistry.findGlobalUniqueEntityId());
 		EntityRegistry.registerGlobalEntityID(EntitySummonedCaveSpider.class, "summoned_cave_spider", EntityRegistry.findGlobalUniqueEntityId());
-		
-		/** Register the renderers. */
-		Archmagus.proxy.registerRenderers();
 	}
 }

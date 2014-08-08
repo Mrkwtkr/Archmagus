@@ -1,6 +1,10 @@
 package com.agadar.archmagus.client;
 
+import net.minecraft.client.Minecraft;
+import net.minecraftforge.common.MinecraftForge;
+
 import com.agadar.archmagus.CommonProxy;
+import com.agadar.archmagus.GuiManaBar;
 import com.agadar.archmagus.entity.EntityRisenSkeleton;
 import com.agadar.archmagus.entity.EntityRisenWitherSkeleton;
 import com.agadar.archmagus.entity.EntityRisenZombie;
@@ -26,6 +30,7 @@ public class ClientProxy extends CommonProxy
 	@Override
 	public void registerRenderers() 
 	{
+		/** Entity renderers. */
 		RenderingRegistry.registerEntityRenderingHandler(EntitySummonedWolf.class, new RenderSummonedWolf(new ModelSummonedWolf(), new ModelSummonedWolf(), 0.5F));
 		RenderingRegistry.registerEntityRenderingHandler(EntityRisenSkeleton.class, new RenderRisenSkeleton());
 		RenderingRegistry.registerEntityRenderingHandler(EntityRisenWitherSkeleton.class, new RenderRisenWitherSkeleton());
@@ -34,5 +39,8 @@ public class ClientProxy extends CommonProxy
 		RenderingRegistry.registerEntityRenderingHandler(EntitySummonedWitch.class, new RenderSummonedWitch());
 		RenderingRegistry.registerEntityRenderingHandler(EntitySummonedSpider.class, new RenderSummonedSpider());
 		RenderingRegistry.registerEntityRenderingHandler(EntitySummonedCaveSpider.class, new RenderSummonedCaveSpider());
+	
+		/** Gui renderers. */
+		MinecraftForge.EVENT_BUS.register(new GuiManaBar(Minecraft.getMinecraft()));
 	}
 }
