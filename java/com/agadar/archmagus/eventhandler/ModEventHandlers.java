@@ -1,5 +1,6 @@
 package com.agadar.archmagus.eventhandler;
 
+import cpw.mods.fml.common.FMLCommonHandler;
 import net.minecraftforge.common.MinecraftForge;
 
 /** Responsible for registering this mod's event handlers.  */
@@ -19,6 +20,9 @@ public class ModEventHandlers
 		
 		/** For applying magical shield effects and the potions effects they apply. */
 		MinecraftForge.EVENT_BUS.register(new HandlerOnLivingAttack());
+		
+		/** For naturally regenerating mana. */
+		FMLCommonHandler.instance().bus().register(new HandlerOnPlayerPostTick());
 		
 		/** For spawning particles around entities holding spell books. */
 		//MinecraftForge.EVENT_BUS.register(new HandlerOnLivingUpdate());

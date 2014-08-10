@@ -16,20 +16,20 @@ public class ManaProperties implements IExtendedEntityProperties
 	private EntityPlayer player;
 	/** The maximum amount of mana this player can have. */
 	private int maxMana;
+	/** A timer used for naturally regenerating mana. */
+	public int manaTimer;
 	
 	public ManaProperties(EntityPlayer player)
 	{
 		this.player = player;
 		this.maxMana = 20;
+		this.manaTimer = 0;
 		this.player.getDataWatcher().addObject(MANA_WATCHER, this.maxMana);
 	}
 	
-	/** Attempts to consume the given amount of mana. */
+	/** Attempts to consume the given amount of mana. Assumes amount >= 0. */
 	public boolean consumeMana(int amount)
 	{
-		if (amount < 0)
-			return false;
-		
 		int currentMana = this.player.getDataWatcher().getWatchableObjectInt(MANA_WATCHER);
 		
 		if (currentMana >= amount)
@@ -42,12 +42,9 @@ public class ManaProperties implements IExtendedEntityProperties
 		return false;
 	}
 
-	/** Attempts to replenish the given amount of mana. */
+	/** Attempts to replenish the given amount of mana. Assumes amount >= 0. */
 	public void replenishMana(int amount)
 	{
-		if (amount <= 0)
-			return;
-		
 		int currentMana = this.player.getDataWatcher().getWatchableObjectInt(MANA_WATCHER);
 		currentMana = Math.min(currentMana + amount, this.maxMana);
 		this.player.getDataWatcher().updateObject(MANA_WATCHER, currentMana);
@@ -83,6 +80,7 @@ public class ManaProperties implements IExtendedEntityProperties
 		NBTTagCompound properties = new NBTTagCompound();
 		properties.setInteger("CurrentMana", this.player.getDataWatcher().getWatchableObjectInt(MANA_WATCHER));
 		properties.setInteger("MaxMana", this.maxMana);
+		properties.setInteger("ManaTimer", this.manaTimer);
 		compound.setTag(NAME, properties);
 	}
 
@@ -90,8 +88,9 @@ public class ManaProperties implements IExtendedEntityProperties
 	public void loadNBTData(NBTTagCompound compound) 
 	{
 		NBTTagCompound properties = (NBTTagCompound) compound.getTag(NAME);
-		this.player.getDataWatcher().updateObject(MANA_WATCHER, properties.getInteger("CurrentMana"));;
-		this.maxMana = properties.getInteger("MaxMana");	
+		this.player.getDataWatcher().updateObject(MANA_WATCHER, properties.getInteger("CurrentMana"));
+		this.maxMana = properties.getInteger("MaxMana");
+		this.manaTimer = properties.getInteger("ManaTimer");
 	}
 
 	@Override
