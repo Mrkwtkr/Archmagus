@@ -16,7 +16,7 @@ public class SpellPolymorph extends Spell
 	}
 
 	@Override
-    public int getHungerCost()
+    public int getManaCost()
     {
     	return 6;
     }
@@ -28,14 +28,9 @@ public class SpellPolymorph extends Spell
     }
 	
 	@Override
-	public boolean castSpell(short par1Level, World par2World, EntityPlayer par3EntityPlayer) 
+	public void castSpell(short par1Level, World par2World, EntityPlayer par3EntityPlayer) 
 	{
-		if (!par2World.isRemote)
-		{
-			par2World.playSoundAtEntity(par3EntityPlayer, this.getSoundName(), 1.0F, 1.0F);
-			par3EntityPlayer.addPotionEffect(new PotionEffect(ModPotions.polymorphed.getId(), 200, 0));			
-		}
-		
-		return true;
+		par2World.playSoundAtEntity(par3EntityPlayer, this.getSoundName(), 1.0F, 1.0F);
+		par3EntityPlayer.addPotionEffect(new PotionEffect(ModPotions.polymorphed.getId(), 200, 0));			
 	}
 }

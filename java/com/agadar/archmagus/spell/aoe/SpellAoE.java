@@ -31,34 +31,26 @@ public abstract class SpellAoE extends Spell
     }
 	
 	@Override
-	public int getHungerCost()
+	public int getManaCost()
     {
     	return 6;
     }
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public boolean castSpell(short par1Level, World par2World, EntityPlayer par3EntityPlayer) 
+	public void castSpell(short par1Level, World par2World, EntityPlayer par3EntityPlayer) 
 	{
 		double areaSize = par1Level * 4;
 		List<EntityLivingBase> entities = par2World.getEntitiesWithinAABB(EntityLivingBase.class, par3EntityPlayer.boundingBox.expand(areaSize, areaSize, areaSize));
 
 		if (entities.size() <= 1)
-		{
 			par3EntityPlayer.addChatMessage(new ChatComponentText("No targets nearby!"));
-			return true;
-		}
 
 		for (EntityLivingBase entity : entities)
 		{
-			if (!(entity instanceof EntityTameable && ((EntityTameable)entity).getOwner() == par3EntityPlayer) &&
-					!(entity == par3EntityPlayer))
-			{
+			if (!(entity instanceof EntityTameable && ((EntityTameable)entity).getOwner() == par3EntityPlayer) && !(entity == par3EntityPlayer))
 				affectEntity(par2World, entity);
-			}
 		}
-
-		return true;
 	}
 	
 	/** Called by castSpell(...) for each EntityLiving in the area of effect. */

@@ -48,8 +48,11 @@ public class ItemSpellBook extends Item
 	 *  it is first assigned one before it is returned. */
     public NBTTagCompound getSpellTag(ItemStack par1ItemStack)
     {
-    	if (par1ItemStack.stackTagCompound == null) par1ItemStack.stackTagCompound = new NBTTagCompound();	
-    	if (!par1ItemStack.stackTagCompound.hasKey("spell")) par1ItemStack.stackTagCompound.setTag("spell", new NBTTagCompound());
+    	if (par1ItemStack.stackTagCompound == null) 
+    		par1ItemStack.stackTagCompound = new NBTTagCompound();	
+    	
+    	if (!par1ItemStack.stackTagCompound.hasKey("spell")) 
+    		par1ItemStack.stackTagCompound.setTag("spell", new NBTTagCompound());
     	
         return (NBTTagCompound) par1ItemStack.stackTagCompound.getTag("spell");
     }
@@ -138,38 +141,24 @@ public class ItemSpellBook extends Item
     @Override
     public ItemStack onItemRightClick(ItemStack par1ItemStack, World par2World, EntityPlayer par3EntityPlayer)
     {		
-    	NBTTagCompound spellTag = this.getSpellTag(par1ItemStack);
-    	SpellData spellData = SpellData.readFromNBTTagCompound(spellTag);	
-    	boolean inCreative = par3EntityPlayer.capabilities.isCreativeMode;
-    	
-    	if (spellData.spellCooldown > 0 && !inCreative) return par1ItemStack;    	
-    	if (par3EntityPlayer.getFoodStats().getFoodLevel() < spellData.spellObj.getHungerCost() && !inCreative) return par1ItemStack;
-    	
-    	if (spellData.castSpell(par2World, par3EntityPlayer))
-    	{
-    		if (!par2World.isRemote) SpellData.startCooldown(spellTag);  		
-    		if (!inCreative) par3EntityPlayer.getFoodStats().addStats(-spellData.spellObj.getHungerCost(), 0);
-    	}
-    	
-    	/** TESTZONE */
-    	
     	if (!par2World.isRemote)
     	{
-    		ManaProperties props = ManaProperties.get(par3EntityPlayer);
-
-    		if (inCreative || props.consumeMana(5))
-    		{
-    			System.out.println("[MANA ITEM] Player had enough mana. Do something awesome!");
-    		}
-    		else
-    		{
-    			System.out.println("[MANA ITEM] Player ran out of mana. Sad face.");
-    			props.replenishMana(props.getMaxMana());
-    		}
+    		NBTTagCompound spellTag = this.getSpellTag(par1ItemStack);
+        	SpellData spellData = SpellData.readFromNBTTagCompound(spellTag);	
+        	boolean inCreative = par3EntityPlayer.capabilities.isCreativeMode;
+        	
+        	if (!inCreative && spellData.spellCooldown > 0) 
+        		return par1ItemStack;  
+        	
+        	ManaProperties props = ManaProperties.get(par3EntityPlayer);
+        	
+        	if (inCreative || props.consumeMana(spellData.spellObj.getManaCost()))
+        	{
+        		spellData.castSpell(par2World, par3EntityPlayer);
+        		SpellData.startCooldown(spellTag);
+        	}
     	}
     	
-    	/** TESTZONE END */
-
     	return par1ItemStack;
     }
     
@@ -177,7 +166,8 @@ public class ItemSpellBook extends Item
     @Override
     public void onUpdate(ItemStack par1ItemStack, World par2World, Entity par3Entity, int par4, boolean par5) 
     {
-    	if (!par2World.isRemote) SpellData.tickCooldown(this.getSpellTag(par1ItemStack));
+    	if (!par2World.isRemote) 
+    		SpellData.tickCooldown(this.getSpellTag(par1ItemStack));
     }
     
     @SuppressWarnings({ "rawtypes", "unchecked" })

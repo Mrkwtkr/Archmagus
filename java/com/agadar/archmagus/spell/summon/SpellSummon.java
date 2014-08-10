@@ -49,7 +49,7 @@ public class SpellSummon extends Spell
     }
 	
 	@Override
-	public int getHungerCost()
+	public int getManaCost()
     {
     	return 8;
     }
@@ -73,46 +73,38 @@ public class SpellSummon extends Spell
 	}
 
 	@Override
-	public boolean castSpell(short par1Level, World par2World, EntityPlayer par3EntityPlayer) 
+	public void castSpell(short par1Level, World par2World, EntityPlayer par3EntityPlayer) 
 	{
-		if (!par2World.isRemote)
+		par2World.playSoundAtEntity(par3EntityPlayer, this.getSoundName(), 1.0F, 1.0F);
+
+		@SuppressWarnings("unchecked")
+		List<EntitySummoned> entities = par2World.getEntitiesWithinAABB(EntitySummoned.class, par3EntityPlayer.boundingBox.expand(20.0D, 20.0D, 20.0D));
+
+		for (EntitySummoned entity : entities)
 		{
-			par2World.playSoundAtEntity(par3EntityPlayer, this.getSoundName(), 1.0F, 1.0F);
-			
-			@SuppressWarnings("unchecked")
-			List<EntitySummoned> entities = par2World.getEntitiesWithinAABB(EntitySummoned.class, par3EntityPlayer.boundingBox.expand(20.0D, 20.0D, 20.0D));
-			
-			for (EntitySummoned entity : entities)
-			{
-				if (entity.getOwner() == par3EntityPlayer)
-				{
-					entity.attackEntityFrom(DamageSource.generic, entity.getMaxHealth());
-				}
-			}
-			
-			try 
-			{
-				int[] xSpawnOffset = { -2, 0, 2, 0 };
-				int[] zSpawnOffset = { 0, 2, 0, -2 };
-				
-				for (int i = 0; i < getNormalizedLevel(par1Level); i++)
-				{
-					EntityCreature entity = (EntityCreature) entityConstr.newInstance(par2World);
-					entity.setLocationAndAngles(par3EntityPlayer.posX + xSpawnOffset[i], par3EntityPlayer.posY, par3EntityPlayer.posZ + zSpawnOffset[i], entity.rotationYaw, 0.0F);					
-					String comSendName = par3EntityPlayer.getCommandSenderName();
-					((EntityTameable) entity).func_152115_b(par3EntityPlayer.getUniqueID().toString());
-					entity.setCustomNameTag(comSendName + "'s Minion");
-					entity.setAlwaysRenderNameTag(true);
-					par2World.spawnEntityInWorld(entity);
-				}	
-			} 
-			catch (Exception e) 
-			{
-				e.printStackTrace();
-				return false;
-			}
+			if (entity.getOwner() == par3EntityPlayer)
+				entity.attackEntityFrom(DamageSource.generic, entity.getMaxHealth());
 		}
-		
-		return true;
+
+		try 
+		{
+			int[] xSpawnOffset = { -2, 0, 2, 0 };
+			int[] zSpawnOffset = { 0, 2, 0, -2 };
+
+			for (int i = 0; i < getNormalizedLevel(par1Level); i++)
+			{
+				EntityCreature entity = (EntityCreature) entityConstr.newInstance(par2World);
+				entity.setLocationAndAngles(par3EntityPlayer.posX + xSpawnOffset[i], par3EntityPlayer.posY, par3EntityPlayer.posZ + zSpawnOffset[i], entity.rotationYaw, 0.0F);					
+				String comSendName = par3EntityPlayer.getCommandSenderName();
+				((EntityTameable) entity).func_152115_b(par3EntityPlayer.getUniqueID().toString());
+				entity.setCustomNameTag(comSendName + "'s Minion");
+				entity.setAlwaysRenderNameTag(true);
+				par2World.spawnEntityInWorld(entity);
+			}	
+		} 
+		catch (Exception e) 
+		{
+			e.printStackTrace();
+		}
 	}
 }

@@ -27,9 +27,9 @@ public class SpellData
     }
     
     /** Casts the Spell associated with this SpellData. */
-    public boolean castSpell(World par1World, EntityPlayer par2EntityPlayer)
+    public void castSpell(World par1World, EntityPlayer par2EntityPlayer)
     {
-    	return this.spellObj.castSpell(this.spellLevel, par1World, par2EntityPlayer);
+    	this.spellObj.castSpell(this.spellLevel, par1World, par2EntityPlayer);
     }
     
     /** Reads a SpellData and returns an NBTTagCompound with corresponding values. */

@@ -23,7 +23,7 @@ public abstract class SpellShield extends Spell
 	}
 	
 	@Override
-	public int getHungerCost()
+	public int getManaCost()
     {
     	return 4;
     }
@@ -44,16 +44,11 @@ public abstract class SpellShield extends Spell
 	public abstract Potion getShieldEffect();
 
 	@Override
-	public boolean castSpell(short par1Level, World par2World, EntityPlayer par3EntityPlayer) 
+	public void castSpell(short par1Level, World par2World, EntityPlayer par3EntityPlayer) 
 	{
-		if (!par2World.isRemote)
-		{
-			par2World.playSoundAtEntity(par3EntityPlayer, this.getSoundName(), 1.0F, 1.0F);
-			clearShields(par3EntityPlayer);
-			par3EntityPlayer.addPotionEffect(new PotionEffect(this.getShieldEffect().getId(), 12000, par1Level - 1));			
-		}
-		
-		return true;
+		par2World.playSoundAtEntity(par3EntityPlayer, this.getSoundName(), 1.0F, 1.0F);
+		clearShields(par3EntityPlayer);
+		par3EntityPlayer.addPotionEffect(new PotionEffect(this.getShieldEffect().getId(), 12000, par1Level - 1));			
 	}
 	
 	/** Removes all shield effects from the given EntityPlayer.

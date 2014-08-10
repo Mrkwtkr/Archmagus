@@ -24,7 +24,7 @@ public class SpellTeleport extends Spell implements ISpellTargeted
 	}
 	
     @Override
-    public int getHungerCost()
+    public int getManaCost()
     {
     	return 3;
     }
@@ -54,29 +54,19 @@ public class SpellTeleport extends Spell implements ISpellTargeted
 	}
 
 	@Override
-	public boolean castSpell(short par1Level, World par2World, EntityPlayer par3EntityPlayer) 
+	public void castSpell(short par1Level, World par2World, EntityPlayer par3EntityPlayer) 
 	{
-		if (!par2World.isRemote)
-		{
-			int distance = distances[getNormalizedLevel(par1Level) - 1];
-			Minecraft mc = Minecraft.getMinecraft();
+		int distance = distances[getNormalizedLevel(par1Level) - 1];
+		Minecraft mc = Minecraft.getMinecraft();
 
-			if((mc.renderViewEntity.rayTrace(distance, 1.0F) != null))
-			{
-				par2World.playSoundAtEntity(par3EntityPlayer, this.getSoundName(), 1.0F, 1.0F);
-				
-				int blockHitX = mc.renderViewEntity.rayTrace(distance, 1.0F).blockX;
-				int blockHitY = mc.renderViewEntity.rayTrace(distance, 1.0F).blockY;
-				int blockHitZ = mc.renderViewEntity.rayTrace(distance, 1.0F).blockZ;
-				par3EntityPlayer.setPositionAndUpdate(blockHitX, blockHitY + 1, blockHitZ);
-				
-				par2World.playSoundAtEntity(par3EntityPlayer, this.getSoundName(), 1.0F, 1.0F);
-			} 
-			else
-			{
-				return false;
-			}
-		}
-		return true;
+		if((mc.renderViewEntity.rayTrace(distance, 1.0F) != null))
+		{
+			par2World.playSoundAtEntity(par3EntityPlayer, this.getSoundName(), 1.0F, 1.0F);
+			int blockHitX = mc.renderViewEntity.rayTrace(distance, 1.0F).blockX;
+			int blockHitY = mc.renderViewEntity.rayTrace(distance, 1.0F).blockY;
+			int blockHitZ = mc.renderViewEntity.rayTrace(distance, 1.0F).blockZ;
+			par3EntityPlayer.setPositionAndUpdate(blockHitX, blockHitY + 1, blockHitZ);
+			par2World.playSoundAtEntity(par3EntityPlayer, this.getSoundName(), 1.0F, 1.0F);
+		} 
 	}
 }

@@ -35,22 +35,18 @@ public class SpellBlazeFire extends Spell implements ISpellTargeted
 	}
 
 	@Override
-	public boolean castSpell(short par1Level, World par2World, EntityPlayer par3EntityPlayer) 
+	public void castSpell(short par1Level, World par2World, EntityPlayer par3EntityPlayer) 
 	{
-		if (!par2World.isRemote)
-		{
-			par2World.playSoundAtEntity(par3EntityPlayer, this.getSoundName(), 1.0F, 1.0F);
-			
-			Vec3 v3 = par3EntityPlayer.getLook(1);
-			int[] accuracies = { 10, 8, 6 };
+		par2World.playSoundAtEntity(par3EntityPlayer, this.getSoundName(), 1.0F, 1.0F);
+		Vec3 v3 = par3EntityPlayer.getLook(1);
+		int[] accuracies = { 10, 8, 6 };
 
-			for (int i = 0; i < getNormalizedLevel(par1Level); i++)
-			{
-				EntitySmallFireball smallfireball = new EntitySmallFireball(par2World, par3EntityPlayer.posX, par3EntityPlayer.posY + par3EntityPlayer.eyeHeight, par3EntityPlayer.posZ, v3.xCoord + random.nextGaussian() / accuracies[par1Level - 1], v3.yCoord, v3.zCoord + random.nextGaussian() / accuracies[par1Level - 1]);
-				smallfireball.shootingEntity = par3EntityPlayer;
-				par2World.spawnEntityInWorld(smallfireball);
-			}
+		for (int i = 0; i < getNormalizedLevel(par1Level); i++)
+		{
+			EntitySmallFireball smallfireball = new EntitySmallFireball(par2World, par3EntityPlayer.posX, par3EntityPlayer.posY + par3EntityPlayer.eyeHeight, par3EntityPlayer.posZ, v3.xCoord + random.nextGaussian() / accuracies[par1Level - 1], v3.yCoord, v3.zCoord + random.nextGaussian() / accuracies[par1Level - 1]);
+			smallfireball.shootingEntity = par3EntityPlayer;
+			par2World.spawnEntityInWorld(smallfireball);
 		}
-		return true;
 	}
 }
+
