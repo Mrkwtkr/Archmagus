@@ -14,6 +14,7 @@ import com.agadar.archmagus.spell.targeted.ISpellTargeted;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
+import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
@@ -22,11 +23,17 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.EnumChatFormatting;
+import net.minecraft.util.IIcon;
+import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
 
 /** This Item allows for casting spells. */
 public class ItemSpellBook extends Item 
 {
+	/** An array containing icons for each Spell's spell book. */
+	@SideOnly(Side.CLIENT)
+	protected IIcon[] icons = new IIcon[256];	
+	
 	public ItemSpellBook()
 	{
 		this.setMaxStackSize(1);
@@ -35,26 +42,15 @@ public class ItemSpellBook extends Item
 		this.setTextureName(References.MODID + ":" + getUnlocalizedName().substring(5));
 		this.setCreativeTab(ModItems.tabSpellBooks);
 	}
-	
-	/** Gives the item the enchanted glow. */ 
-	@Override
-	@SideOnly(Side.CLIENT)
-    public boolean hasEffect(ItemStack par1ItemStack)
-    {
-        return true;
-    }
 
 	/** Returns the ItemStack's spell tag. If it doesn't have one then
 	 *  it is first assigned one before it is returned. */
     public NBTTagCompound getSpellTag(ItemStack par1ItemStack)
     {
-    	if (par1ItemStack.stackTagCompound == null) 
-    		par1ItemStack.stackTagCompound = new NBTTagCompound();	
+    	if (par1ItemStack.stackTagCompound != null && par1ItemStack.stackTagCompound.hasKey("spell"))
+    		return (NBTTagCompound) par1ItemStack.stackTagCompound.getTag("spell");
     	
-    	if (!par1ItemStack.stackTagCompound.hasKey("spell")) 
-    		par1ItemStack.stackTagCompound.setTag("spell", new NBTTagCompound());
-    	
-        return (NBTTagCompound) par1ItemStack.stackTagCompound.getTag("spell");
+    	return null;
     }
     
     /** Adds additional information to the item's tooltip. */
@@ -83,20 +79,10 @@ public class ItemSpellBook extends Item
     {
     	SpellData spellData = SpellData.readFromNBTTagCompound(this.getSpellTag(par1ItemStack));
 
-        if (spellData.spellObj != null) return (spellData.spellObj.getTranslatedName(spellData.spellLevel));
+        if (spellData.spellObj != null) 
+        	return (spellData.spellObj.getTranslatedName(spellData.spellLevel));
         
         return super.getItemStackDisplayName(par1ItemStack);
-    }
-
-    /**
-     * Adds the given spell data to the given ItemStack.
-     */
-    public void addSpell(ItemStack par1ItemStack, SpellData par2SpellData)
-    {           	
-    	if (par1ItemStack.stackTagCompound == null) par1ItemStack.stackTagCompound = new NBTTagCompound();
-    	
-    	NBTTagCompound spellTag = SpellData.writeToNBTTagCompound(par2SpellData);
-    	par1ItemStack.stackTagCompound.setTag("spell", spellTag);
     }
     
     /** Attempts to combine two spell books. Returns null if it failed.
@@ -114,19 +100,22 @@ public class ItemSpellBook extends Item
     		SpellData spellData2 = SpellData.readFromNBTTagCompound(spellTag2);   		
     		SpellData spellData3 = SpellData.tryCombine(spellData1, spellData2);
     		
-    		if (spellData3 != null) return this.getSpellItemStack(spellData3);
+    		if (spellData3 != null)
+    			return this.getSpellItemStack(spellData3);
     	}
     	
     	return null;
     }
     
-    /**
-     * Returns an ItemStack of a single spell book with the given spell data.
-     */
+    /** Returns an ItemStack of a single spell book with the given spell data. */
     public ItemStack getSpellItemStack(SpellData par1SpellData)
     {
         ItemStack itemstack = new ItemStack(this);
-        this.addSpell(itemstack, par1SpellData);
+        itemstack.stackTagCompound = new NBTTagCompound();  	
+    	NBTTagCompound spellTag = SpellData.writeToNBTTagCompound(par1SpellData);
+    	itemstack.stackTagCompound.setTag("spell", spellTag);
+    	itemstack.setItemDamage(par1SpellData.spellObj.effectId);
+    	
         return itemstack;
     }
 
@@ -187,5 +176,47 @@ public class ItemSpellBook extends Item
             	}
     		}
     	}
+    }
+    
+    @Override
+    public IIcon getIconFromDamage(int par1) 
+	{
+		int j = MathHelper.clamp_int(par1, 0, this.icons.length - 1);
+		
+		if (this.icons[j] != null)
+			return this.icons[j];
+		
+		return super.getIconFromDamage(par1);
+    }
+    
+    @Override
+    @SideOnly(Side.CLIENT)
+    public void registerIcons(IIconRegister par1IconRegister)
+    {
+        super.registerIcons(par1IconRegister);
+        IIcon blazefireIcon = par1IconRegister.registerIcon(References.MODID + ":blazefire_book");
+        IIcon teleportIcon = par1IconRegister.registerIcon(References.MODID + ":teleport_book");
+        IIcon witherIcon = par1IconRegister.registerIcon(References.MODID + ":wither_book");
+        IIcon skeletonIcon = par1IconRegister.registerIcon(References.MODID + ":skeleton_book");
+        icons[Spells.blazefire.effectId] = blazefireIcon;
+        icons[Spells.ghastfire.effectId] = skeletonIcon;
+        icons[Spells.witherblast.effectId] = witherIcon;
+        icons[Spells.summon_wolf.effectId] = par1IconRegister.registerIcon(References.MODID + ":wolf_book");
+        icons[Spells.raise_skeleton.effectId] = skeletonIcon;
+        icons[Spells.raise_wither_skeleton.effectId] = witherIcon;
+        icons[Spells.raise_zombie.effectId] = par1IconRegister.registerIcon(References.MODID + ":zombie_book");
+        icons[Spells.raise_zombie_pigman.effectId] = par1IconRegister.registerIcon(References.MODID + ":zombie_pigman_book");
+        icons[Spells.summon_witch.effectId] = par1IconRegister.registerIcon(References.MODID + ":witch_book");
+        icons[Spells.summon_spider.effectId] = par1IconRegister.registerIcon(References.MODID + ":spider_book");
+        icons[Spells.summon_cave_spider.effectId] = par1IconRegister.registerIcon(References.MODID + ":cave_spider_book");
+        icons[Spells.teleport.effectId] = teleportIcon;
+        icons[Spells.respawn.effectId] = teleportIcon;
+        icons[Spells.fireShield.effectId] = par1IconRegister.registerIcon(References.MODID + ":fire_shield_book");
+        icons[Spells.earthShield.effectId] = par1IconRegister.registerIcon(References.MODID + ":earth_shield_book");
+        icons[Spells.waterShield.effectId] = par1IconRegister.registerIcon(References.MODID + ":water_shield_book");
+        icons[Spells.stormShield.effectId] = par1IconRegister.registerIcon(References.MODID + ":storm_shield_book");
+        icons[Spells.frostShield.effectId] = par1IconRegister.registerIcon(References.MODID + ":frost_shield_book");
+        icons[Spells.blazestorm.effectId] = blazefireIcon;
+        icons[Spells.lightningstorm.effectId] = par1IconRegister.registerIcon(References.MODID + ":lightning_book");      
     }
 }
