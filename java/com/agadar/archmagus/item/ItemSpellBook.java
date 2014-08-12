@@ -32,7 +32,7 @@ public class ItemSpellBook extends Item
 {
 	/** An array containing icons for each Spell's spell book. */
 	@SideOnly(Side.CLIENT)
-	protected IIcon[] icons = new IIcon[256];	
+	protected IIcon[] icons;
 	
 	public ItemSpellBook()
 	{
@@ -179,6 +179,7 @@ public class ItemSpellBook extends Item
     }
     
     @Override
+    @SideOnly(Side.CLIENT)
     public IIcon getIconFromDamage(int par1) 
 	{
 		int j = MathHelper.clamp_int(par1, 0, this.icons.length - 1);
@@ -194,6 +195,7 @@ public class ItemSpellBook extends Item
     public void registerIcons(IIconRegister par1IconRegister)
     {
         super.registerIcons(par1IconRegister);
+        icons = new IIcon[256];
         IIcon blazefireIcon = par1IconRegister.registerIcon(References.MODID + ":blazefire_book");
         IIcon teleportIcon = par1IconRegister.registerIcon(References.MODID + ":teleport_book");
         IIcon witherIcon = par1IconRegister.registerIcon(References.MODID + ":wither_book");
