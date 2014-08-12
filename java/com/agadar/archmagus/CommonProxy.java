@@ -1,6 +1,6 @@
 package com.agadar.archmagus;
 
-public abstract class CommonProxy 
+public class CommonProxy 
 {
-	public abstract void registerRenderers();
+	public void registerRenderers() { }
 }
