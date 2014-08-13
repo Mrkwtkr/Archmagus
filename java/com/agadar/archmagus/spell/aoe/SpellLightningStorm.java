@@ -30,7 +30,7 @@ public class SpellLightningStorm extends SpellAoE {
 	@Override
 	protected void affectEntity(World par1World, EntityLivingBase par2EntityLivingBase) 
 	{
-		par1World.spawnEntityInWorld(new EntityLightningBolt(par1World, par2EntityLivingBase.posX, par2EntityLivingBase.posY, par2EntityLivingBase.posZ));
+		par1World.addWeatherEffect(new EntityLightningBolt(par1World, par2EntityLivingBase.posX, par2EntityLivingBase.posY, par2EntityLivingBase.posZ));
 		par2EntityLivingBase.knockBack(par2EntityLivingBase, 0F, 1F, 0F);
 	}
 }

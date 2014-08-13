@@ -19,7 +19,7 @@ public class Archmagus
 
 	@SidedProxy(clientSide = References.CLIENTSIDE, serverSide = References.SERVERSIDE)
 	public static CommonProxy proxy;
-
+	
 	@EventHandler
 	public void preInit(FMLPreInitializationEvent event) 
 	{		
