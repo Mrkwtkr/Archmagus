@@ -2,7 +2,7 @@ package com.agadar.archmagus;
 
 import com.agadar.archmagus.entity.ModEntities;
 import com.agadar.archmagus.eventhandler.ModEventHandlers;
-import com.agadar.archmagus.item.ModItems;
+import com.agadar.archmagus.itemblock.ModItemsBlocks;
 import com.agadar.archmagus.misc.References;
 
 import cpw.mods.fml.common.Mod;
@@ -34,7 +34,7 @@ public class Archmagus
 		networkWrapper.registerMessage(MaxManaMessage.Handler.class, MaxManaMessage.class, 0, Side.CLIENT);
 		
 		/** Register the mod stuff. */
-		ModItems.registerModItems();	
+		ModItemsBlocks.registerModItemsAndBlocks();	
 		ModEntities.registerModEntities();	
 		ModEventHandlers.registerModEventHandlers();
 		

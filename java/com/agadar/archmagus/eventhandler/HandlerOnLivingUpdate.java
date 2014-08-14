@@ -1,6 +1,6 @@
 package com.agadar.archmagus.eventhandler;
 
-import com.agadar.archmagus.item.ModItems;
+import com.agadar.archmagus.itemblock.ModItemsBlocks;
 import com.agadar.archmagus.spell.Spell;
 import com.agadar.archmagus.spell.Spells;
 
@@ -20,7 +20,7 @@ public class HandlerOnLivingUpdate
 			EntityPlayer player = (EntityPlayer) event.entity;
 			ItemStack heldItem = player.getHeldItem();
 			
-			if (heldItem != null && heldItem.getItem() == ModItems.spell_book && heldItem.stackTagCompound != null) 
+			if (heldItem != null && heldItem.getItem() == ModItemsBlocks.spell_book && heldItem.stackTagCompound != null) 
 			{
 				double particleChance = player.worldObj.rand.nextDouble();
 				short id = heldItem.stackTagCompound.getShort("id");

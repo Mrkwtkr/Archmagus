@@ -1,12 +1,10 @@
-package com.agadar.archmagus.item;
+package com.agadar.archmagus.itemblock;
 
 import java.util.List;
 
 import com.agadar.archmagus.Archmagus;
 import com.agadar.archmagus.ManaProperties;
 import com.agadar.archmagus.MaxManaMessage;
-import com.agadar.archmagus.misc.References;
-
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.entity.player.EntityPlayer;
@@ -25,7 +23,7 @@ public class ItemAppleMana extends ItemFood
         this.setAlwaysEdible();
         this.setUnlocalizedName("apple_mana");
         this.setTextureName("apple");//References.MODID + ":" + getUnlocalizedName().substring(5));
-        this.setCreativeTab(ModItems.tabSpellBooks);
+        this.setCreativeTab(ModItemsBlocks.tabArchmagus);
     }
 	
 	@SideOnly(Side.CLIENT)

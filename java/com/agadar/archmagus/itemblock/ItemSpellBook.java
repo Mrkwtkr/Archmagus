@@ -1,4 +1,4 @@
-package com.agadar.archmagus.item;
+package com.agadar.archmagus.itemblock;
 
 import java.util.List;
 
@@ -40,7 +40,7 @@ public class ItemSpellBook extends Item
 		this.setMaxDamage(0);
 		this.setUnlocalizedName("spell_book");
 		this.setTextureName(References.MODID + ":" + getUnlocalizedName().substring(5));
-		this.setCreativeTab(ModItems.tabSpellBooks);
+		this.setCreativeTab(ModItemsBlocks.tabArchmagus);
 	}
 
 	/** Returns the ItemStack's spell tag. If it doesn't have one then
@@ -90,7 +90,7 @@ public class ItemSpellBook extends Item
      *  Used for combining spell books in an Anvil. */
     public ItemStack tryCombine(ItemStack par1ItemStack, ItemStack par2ItemStack)
     {
-    	if (par1ItemStack.getItem() == ModItems.spell_book && par2ItemStack.getItem() == ModItems.spell_book &&
+    	if (par1ItemStack.getItem() == ModItemsBlocks.spell_book && par2ItemStack.getItem() == ModItemsBlocks.spell_book &&
     			par1ItemStack.stackTagCompound != null && par2ItemStack.stackTagCompound != null &&
     			par1ItemStack.stackTagCompound.hasKey("spell") && par2ItemStack.stackTagCompound.hasKey("spell"))
     	{
@@ -173,7 +173,7 @@ public class ItemSpellBook extends Item
     		{
     			for (short i2 = spell.getMinLevel(); i2 <= spell.getMaxLevel(); i2++)
             	{
-    				par3List.add(((ItemSpellBook) ModItems.spell_book).getSpellItemStack(new SpellData(spell, i2)));
+    				par3List.add(((ItemSpellBook) ModItemsBlocks.spell_book).getSpellItemStack(new SpellData(spell, i2)));
             	}
     		}
     	}

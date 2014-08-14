@@ -1,7 +1,7 @@
 package com.agadar.archmagus.eventhandler;
 
-import com.agadar.archmagus.item.ItemSpellBook;
-import com.agadar.archmagus.item.ModItems;
+import com.agadar.archmagus.itemblock.ItemSpellBook;
+import com.agadar.archmagus.itemblock.ModItemsBlocks;
 
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.event.AnvilUpdateEvent;
@@ -12,9 +12,9 @@ public class HandlerOnAnvilUpdate
 	@SubscribeEvent
 	public void OnAnvilUpdate(AnvilUpdateEvent event)
 	{
-		if (event.left.getItem().equals(ModItems.spell_book) && event.right.getItem().equals(ModItems.spell_book))
+		if (event.left.getItem().equals(ModItemsBlocks.spell_book) && event.right.getItem().equals(ModItemsBlocks.spell_book))
 		{
-			event.output = ((ItemSpellBook) ModItems.spell_book).tryCombine(event.left, event.right);
+			event.output = ((ItemSpellBook) ModItemsBlocks.spell_book).tryCombine(event.left, event.right);
 			event.cost = 10;
 		}
 	}
