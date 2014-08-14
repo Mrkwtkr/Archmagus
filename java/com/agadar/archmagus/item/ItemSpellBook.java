@@ -3,7 +3,7 @@ package com.agadar.archmagus.item;
 import java.util.List;
 
 import com.agadar.archmagus.ManaProperties;
-import com.agadar.archmagus.help.References;
+import com.agadar.archmagus.misc.References;
 import com.agadar.archmagus.spell.Spell;
 import com.agadar.archmagus.spell.SpellData;
 import com.agadar.archmagus.spell.Spells;
@@ -75,6 +75,7 @@ public class ItemSpellBook extends Item
     
     /** Returns the given ItemStack's display name. */
     @Override
+    @SideOnly(Side.CLIENT)
     public String getItemStackDisplayName(ItemStack par1ItemStack)
     {
     	SpellData spellData = SpellData.readFromNBTTagCompound(this.getSpellTag(par1ItemStack));

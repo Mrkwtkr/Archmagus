@@ -43,8 +43,9 @@ public class GuiManaBar extends Gui
 		int left = width / 2 + 91;
         int top = height - GuiIngameForge.right_height;
         int currentMana = props.getCurrentMana();
+        int maxMana = props.getMaxMana() / 2;
         
-        for (int i = 0; i < 10; ++i)
+        for (int i = 0; i < maxMana; ++i)
         {
             int idx = i * 2 + 1;
             int x = left - i * 8 - 9;

@@ -1,4 +1,4 @@
-package com.agadar.archmagus.help;
+package com.agadar.archmagus.misc;
 
 /** These are the references we use. These values are the same for our entire mod, so we only have to make
     them once here, and we can always access them. */

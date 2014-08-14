@@ -3,6 +3,7 @@ package com.agadar.archmagus;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
 import net.minecraftforge.common.IExtendedEntityProperties;
 
@@ -22,7 +23,7 @@ public class ManaProperties implements IExtendedEntityProperties
 	public ManaProperties(EntityPlayer player)
 	{
 		this.player = player;
-		this.maxMana = 20;
+		this.maxMana = 0;
 		this.manaTimer = 0;
 		this.player.getDataWatcher().addObject(MANA_WATCHER, this.maxMana);
 	}
@@ -49,11 +50,17 @@ public class ManaProperties implements IExtendedEntityProperties
 		currentMana = Math.min(currentMana + amount, this.maxMana);
 		this.player.getDataWatcher().updateObject(MANA_WATCHER, currentMana);
 	}
-	
-	/** Returns the maximum amount of mana this player can have. */
+
+	/** Returns the maximum amount of mana this player has. */
 	public int getMaxMana() 
 	{
 		return this.maxMana;
+	}
+	
+	/** Sets the maximum amount of mana this player has. */
+	public void setMaxMana(int maxMana)
+	{
+		this.maxMana = MathHelper.clamp_int(maxMana, 0, 20);
 	}
 	
 	/** Returns the current amount of mana this player has. */

@@ -1,6 +1,7 @@
 package com.agadar.archmagus.item;
 
-import com.agadar.archmagus.help.RegisterHelper;
+import com.agadar.archmagus.misc.RegisterHelper;
+
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.creativetab.CreativeTabs;
@@ -22,10 +23,17 @@ public class ModItems
 	
 	/** The spell book. */
 	public final static Item spell_book = new ItemSpellBook();
+	/** The mana apple. */
+	public final static Item apple_mana = new ItemAppleMana();
 
 	/** Instantiates and registers this mod's items. */
 	public static void registerModItems()
 	{
+		/** Register the items. */
 		RegisterHelper.registerItem(spell_book);
+		RegisterHelper.registerItem(apple_mana);
+		
+		/** Register the crafting recipes. */
+		// TODO: Crafting recipe for the Mana Apple.
 	}
 }

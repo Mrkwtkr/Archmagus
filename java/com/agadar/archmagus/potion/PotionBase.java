@@ -1,6 +1,6 @@
 package com.agadar.archmagus.potion;
 
-import com.agadar.archmagus.help.References;
+import com.agadar.archmagus.misc.References;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;

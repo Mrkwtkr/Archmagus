@@ -1,6 +1,7 @@
 itemGroup.tabSpellBooks=Spell Books
 
 item.spell_book.name=Spell Book
+item.apple_mana.name=Mana Apple
 
 spell.blazefire=Blazefire
 spell.ghastfire=Ghastfire

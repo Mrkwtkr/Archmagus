@@ -10,7 +10,7 @@ public class ModEventHandlers
 	public static void registerModEventHandlers() 
 	{
 		/** For assigning mana pools to players when they are constructed. */
-		MinecraftForge.EVENT_BUS.register(new HandlerOnPlayerConstructing());
+		MinecraftForge.EVENT_BUS.register(new HandlerManaEvents());
 		
 		/** For making mobs drop spell books. */
 		MinecraftForge.EVENT_BUS.register(new HandlerOnLivingDrops());
