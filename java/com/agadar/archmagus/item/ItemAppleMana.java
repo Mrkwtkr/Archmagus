@@ -1,5 +1,7 @@
 package com.agadar.archmagus.item;
 
+import java.util.List;
+
 import com.agadar.archmagus.Archmagus;
 import com.agadar.archmagus.ManaProperties;
 import com.agadar.archmagus.MaxManaMessage;
@@ -37,6 +39,14 @@ public class ItemAppleMana extends ItemFood
     public EnumRarity getRarity(ItemStack par1ItemStack)
     {
         return EnumRarity.rare;
+    }
+    
+	@Override
+    @SuppressWarnings({ "rawtypes", "unchecked" })
+	@SideOnly(Side.CLIENT)
+    public void addInformation(ItemStack par1ItemStack, EntityPlayer par2EntityPlayer, List par3List, boolean par4)
+    {
+    	par3List.add("Maximum Mana +2.");
     }
     
     @Override
