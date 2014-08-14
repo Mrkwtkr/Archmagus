@@ -2,8 +2,8 @@ package com.agadar.archmagus.itemblock;
 
 import java.util.List;
 
+import com.agadar.archmagus.Archmagus;
 import com.agadar.archmagus.ManaProperties;
-import com.agadar.archmagus.misc.References;
 import com.agadar.archmagus.spell.Spell;
 import com.agadar.archmagus.spell.SpellData;
 import com.agadar.archmagus.spell.Spells;
@@ -39,7 +39,7 @@ public class ItemSpellBook extends Item
 		this.setMaxStackSize(1);
 		this.setMaxDamage(0);
 		this.setUnlocalizedName("spell_book");
-		this.setTextureName(References.MODID + ":" + getUnlocalizedName().substring(5));
+		this.setTextureName(Archmagus.MODID + ":" + getUnlocalizedName().substring(5));
 		this.setCreativeTab(ModItemsBlocks.tabArchmagus);
 	}
 
@@ -197,29 +197,29 @@ public class ItemSpellBook extends Item
     {
         super.registerIcons(par1IconRegister);
         icons = new IIcon[256];
-        IIcon blazefireIcon = par1IconRegister.registerIcon(References.MODID + ":blazefire_book");
-        IIcon teleportIcon = par1IconRegister.registerIcon(References.MODID + ":teleport_book");
-        IIcon witherIcon = par1IconRegister.registerIcon(References.MODID + ":wither_book");
-        IIcon skeletonIcon = par1IconRegister.registerIcon(References.MODID + ":skeleton_book");
+        IIcon blazefireIcon = par1IconRegister.registerIcon(Archmagus.MODID + ":blazefire_book");
+        IIcon teleportIcon = par1IconRegister.registerIcon(Archmagus.MODID + ":teleport_book");
+        IIcon witherIcon = par1IconRegister.registerIcon(Archmagus.MODID + ":wither_book");
+        IIcon skeletonIcon = par1IconRegister.registerIcon(Archmagus.MODID + ":skeleton_book");
         icons[Spells.blazefire.effectId] = blazefireIcon;
         icons[Spells.ghastfire.effectId] = skeletonIcon;
         icons[Spells.witherblast.effectId] = witherIcon;
-        icons[Spells.summon_wolf.effectId] = par1IconRegister.registerIcon(References.MODID + ":wolf_book");
+        icons[Spells.summon_wolf.effectId] = par1IconRegister.registerIcon(Archmagus.MODID + ":wolf_book");
         icons[Spells.raise_skeleton.effectId] = skeletonIcon;
         icons[Spells.raise_wither_skeleton.effectId] = witherIcon;
-        icons[Spells.raise_zombie.effectId] = par1IconRegister.registerIcon(References.MODID + ":zombie_book");
-        icons[Spells.raise_zombie_pigman.effectId] = par1IconRegister.registerIcon(References.MODID + ":zombie_pigman_book");
-        icons[Spells.summon_witch.effectId] = par1IconRegister.registerIcon(References.MODID + ":witch_book");
-        icons[Spells.summon_spider.effectId] = par1IconRegister.registerIcon(References.MODID + ":spider_book");
-        icons[Spells.summon_cave_spider.effectId] = par1IconRegister.registerIcon(References.MODID + ":cave_spider_book");
+        icons[Spells.raise_zombie.effectId] = par1IconRegister.registerIcon(Archmagus.MODID + ":zombie_book");
+        icons[Spells.raise_zombie_pigman.effectId] = par1IconRegister.registerIcon(Archmagus.MODID + ":zombie_pigman_book");
+        icons[Spells.summon_witch.effectId] = par1IconRegister.registerIcon(Archmagus.MODID + ":witch_book");
+        icons[Spells.summon_spider.effectId] = par1IconRegister.registerIcon(Archmagus.MODID + ":spider_book");
+        icons[Spells.summon_cave_spider.effectId] = par1IconRegister.registerIcon(Archmagus.MODID + ":cave_spider_book");
         icons[Spells.teleport.effectId] = teleportIcon;
         icons[Spells.respawn.effectId] = teleportIcon;
-        icons[Spells.fireShield.effectId] = par1IconRegister.registerIcon(References.MODID + ":fire_shield_book");
-        icons[Spells.earthShield.effectId] = par1IconRegister.registerIcon(References.MODID + ":earth_shield_book");
-        icons[Spells.waterShield.effectId] = par1IconRegister.registerIcon(References.MODID + ":water_shield_book");
-        icons[Spells.stormShield.effectId] = par1IconRegister.registerIcon(References.MODID + ":storm_shield_book");
-        icons[Spells.frostShield.effectId] = par1IconRegister.registerIcon(References.MODID + ":frost_shield_book");
+        icons[Spells.fireShield.effectId] = par1IconRegister.registerIcon(Archmagus.MODID + ":fire_shield_book");
+        icons[Spells.earthShield.effectId] = par1IconRegister.registerIcon(Archmagus.MODID + ":earth_shield_book");
+        icons[Spells.waterShield.effectId] = par1IconRegister.registerIcon(Archmagus.MODID + ":water_shield_book");
+        icons[Spells.stormShield.effectId] = par1IconRegister.registerIcon(Archmagus.MODID + ":storm_shield_book");
+        icons[Spells.frostShield.effectId] = par1IconRegister.registerIcon(Archmagus.MODID + ":frost_shield_book");
         icons[Spells.blazestorm.effectId] = blazefireIcon;
-        icons[Spells.lightningstorm.effectId] = par1IconRegister.registerIcon(References.MODID + ":lightning_book");      
+        icons[Spells.lightningstorm.effectId] = par1IconRegister.registerIcon(Archmagus.MODID + ":lightning_book");      
     }
 }

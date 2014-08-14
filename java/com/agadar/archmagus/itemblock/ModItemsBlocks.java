@@ -1,6 +1,6 @@
 package com.agadar.archmagus.itemblock;
 
-import com.agadar.archmagus.misc.References;
+import com.agadar.archmagus.Archmagus;
 
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.relauncher.Side;
@@ -30,7 +30,7 @@ public class ModItemsBlocks
 	/** The mana apple. */
 	public final static Item apple_mana = new ItemAppleMana();
 	/** The mana crystal. */
-	public final static Item mana_crystal = new Item().setUnlocalizedName("mana_crystal").setCreativeTab(tabArchmagus).setTextureName(References.MODID + ":" + "mana_crystal");
+	public final static Item mana_crystal = new Item().setUnlocalizedName("mana_crystal").setCreativeTab(tabArchmagus).setTextureName(Archmagus.MODID + ":" + "mana_crystal");
 
 	/** The mana crystal ore. */
 	public final static Block mana_crystal_ore = new BlockManaCrystalOre();
@@ -59,7 +59,7 @@ public class ModItemsBlocks
      */
 	private static void registerBlock(Block block)
 	{
-		GameRegistry.registerBlock(block, References.MODID + "_" + block.getUnlocalizedName().substring(5));
+		GameRegistry.registerBlock(block, Archmagus.MODID + "_" + block.getUnlocalizedName().substring(5));
 	}
 
     /**
@@ -69,6 +69,6 @@ public class ModItemsBlocks
      */
 	private static void registerItem(Item item)
 	{
-		GameRegistry.registerItem(item, References.MODID + "_" + item.getUnlocalizedName().substring(5));
+		GameRegistry.registerItem(item, Archmagus.MODID + "_" + item.getUnlocalizedName().substring(5));
 	}
 }

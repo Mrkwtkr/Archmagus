@@ -45,9 +45,7 @@ public class ModPotions
 	private static int getUniquePotionId()
 	{
 		while (nextPotionId < Potion.potionTypes.length && Potion.potionTypes[nextPotionId] != null)
-		{
 			nextPotionId++;
-		}
 		
 		return nextPotionId;
 	}

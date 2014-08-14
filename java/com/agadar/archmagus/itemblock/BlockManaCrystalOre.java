@@ -2,7 +2,7 @@ package com.agadar.archmagus.itemblock;
 
 import java.util.Random;
 
-import com.agadar.archmagus.misc.References;
+import com.agadar.archmagus.Archmagus;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
@@ -21,7 +21,7 @@ public class BlockManaCrystalOre extends Block
 		this.setResistance(5.0F);
 		this.setStepSound(soundTypePiston);
 		this.setBlockName("mana_crystal_ore");
-		this.setBlockTextureName(References.MODID + ":" + getUnlocalizedName().substring(5));
+		this.setBlockTextureName(Archmagus.MODID + ":" + getUnlocalizedName().substring(5));
 		this.setCreativeTab(ModItemsBlocks.tabArchmagus);
 	}
 	
@@ -31,10 +31,26 @@ public class BlockManaCrystalOre extends Block
 		return ModItemsBlocks.mana_crystal;
     }
 	
+	@Override
+	public int quantityDroppedWithBonus(int p_149679_1_, Random p_149679_2_)
+    {
+        if (p_149679_1_ > 0 && Item.getItemFromBlock(this) != ModItemsBlocks.mana_crystal)
+        {
+            int j = p_149679_2_.nextInt(p_149679_1_ + 2) - 1;
+
+            if (j < 0)
+	            j = 0;
+
+            return (j + 1);
+        }
+        else
+        	return 1;
+    }
+	
     @Override
     public int getExpDrop(IBlockAccess p_149690_1_, int p_149690_5_, int p_149690_7_)
     {
-        if (this.getItemDropped(p_149690_5_, rand, p_149690_7_) != Item.getItemFromBlock(this))
+        if (ModItemsBlocks.mana_crystal != Item.getItemFromBlock(this))
         	return MathHelper.getRandomIntegerInRange(rand, 2, 5);
         
         return 0;
