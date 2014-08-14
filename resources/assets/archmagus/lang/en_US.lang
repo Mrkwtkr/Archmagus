@@ -4,7 +4,8 @@ item.spell_book.name=Spell Book
 item.apple_mana.name=Mana Apple
 item.mana_crystal.name=Mana Crystal
 
-tile.mana_crystal_ore.name=Mana Crystal Ore
+tile.mana_crystal_ore.name=Mana Crystal Source
+tile.mana_crystal_block.name=Block of Mana Crystals
 
 spell.blazefire=Blazefire
 spell.ghastfire=Ghastfire

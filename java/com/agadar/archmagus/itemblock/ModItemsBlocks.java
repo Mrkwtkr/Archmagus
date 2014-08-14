@@ -35,7 +35,7 @@ public class ModItemsBlocks
 	/** The mana crystal ore. */
 	public final static Block mana_crystal_ore = new BlockManaCrystalOre();
 	/** The mana crystal block. */
-	
+	public final static Block mana_crystal_block = new BlockManaCrystal();
 	
 	/** Instantiates and registers this mod's items and blocks. */
 	public static void registerModItemsAndBlocks()
@@ -47,9 +47,11 @@ public class ModItemsBlocks
 		
 		/** Register the blocks. */
 		registerBlock(mana_crystal_ore);
+		registerBlock(mana_crystal_block);
 		
 		/** Register the crafting recipes. */
 		GameRegistry.addRecipe(new ItemStack(apple_mana), "xxx", "xyx", "xxx", 'x', mana_crystal, 'y', Items.apple);
+		GameRegistry.addRecipe(new ItemStack(mana_crystal_block), "xxx", "xxx", "xxx", 'x', mana_crystal);
 	}
 	
 	/**
