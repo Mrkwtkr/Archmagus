@@ -11,6 +11,7 @@ import cpw.mods.fml.common.Mod.Instance;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.network.NetworkRegistry;
 import cpw.mods.fml.common.network.simpleimpl.SimpleNetworkWrapper;
+import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.relauncher.Side;
 
 @Mod(modid = Archmagus.MODID, version = Archmagus.VERSION, name = Archmagus.NAME)
@@ -32,6 +33,8 @@ public class Archmagus
 	
 	/** The message channel for this mod. */
 	public static SimpleNetworkWrapper networkWrapper;
+	/** The mana crystal ore generator. */
+	ManaCrystalGen manaCrystalGen = new ManaCrystalGen();
 	
 	@EventHandler
 	public void preInit(FMLPreInitializationEvent event) 
@@ -44,6 +47,7 @@ public class Archmagus
 		ModItemsBlocks.registerModItemsAndBlocks();	
 		ModEntities.registerModEntities();	
 		ModEventHandlers.registerModEventHandlers();
+		GameRegistry.registerWorldGenerator(manaCrystalGen, 0);
 		
 		/** Register the client-only stuff. */
 		proxy.registerRenderers();

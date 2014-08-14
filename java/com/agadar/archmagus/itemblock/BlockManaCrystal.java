@@ -15,6 +15,7 @@ public class BlockManaCrystal extends Block
 		this.setStepSound(soundTypePiston);
 		this.setBlockName("mana_crystal_block");
 		this.setBlockTextureName(Archmagus.MODID + ":" + getUnlocalizedName().substring(5));
+		this.setLightLevel(0.625F);
 		this.setCreativeTab(ModItemsBlocks.tabArchmagus);
 	}
 }

@@ -5,7 +5,7 @@ item.apple_mana.name=Mana Apple
 item.mana_crystal.name=Mana Crystal
 
 tile.mana_crystal_ore.name=Mana Crystal Source
-tile.mana_crystal_block.name=Block of Mana Crystals
+tile.mana_crystal_block.name=Mana Crystal Block
 
 spell.blazefire=Blazefire
 spell.ghastfire=Ghastfire
