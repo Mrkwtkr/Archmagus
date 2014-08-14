@@ -22,15 +22,15 @@ public class ItemAppleMana extends ItemFood
         super(4, 1.2F, false);
         this.setAlwaysEdible();
         this.setUnlocalizedName("apple_mana");
-        this.setTextureName("apple");//References.MODID + ":" + getUnlocalizedName().substring(5));
+        this.setTextureName(Archmagus.MODID + ":" + getUnlocalizedName().substring(5));
         this.setCreativeTab(ModItemsBlocks.tabArchmagus);
     }
 	
-	@SideOnly(Side.CLIENT)
+	/*@SideOnly(Side.CLIENT)
     public boolean hasEffect(ItemStack p_77636_1_)
     {
         return true;
-    }
+    }*/
 	
 	/** Makes the item tooltip text a light blue color. */
     @Override
