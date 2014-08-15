@@ -18,10 +18,14 @@ public class ModPotions
 	public final static Potion frostShield;
 	/** The potion that is applied when a player is Feared. */
 	public final static Potion feared;
-	/** The potion that is applied when a player is made immune to projectiles. */
+	/** The potion that makes the affected immune to projectiles. */
 	public final static Potion projectileImmunity;
-	/** The potion that is applied when a player is made immune to knockback. */
+	/** The potion that makes the affected immune to knockback. */
 	public final static Potion knockbackImmunity;
+	/** The potion that restores mana. */
+	public final static Potion mana;
+	/** The potion that applies mana regeneration. */
+	public final static Potion manaRegen;
 	
 	/** The next unique Potion Id. Should only be used and altered by getUniquePotionId(). */
 	private static int nextPotionId = 32;
@@ -39,6 +43,8 @@ public class ModPotions
 		feared = new PotionBase(getUniquePotionId(), true, 4393481).setIconIndex(6, 0).setPotionName("potion.feared");
 		projectileImmunity = new PotionBase(getUniquePotionId(), false, 0).setIconIndex(7, 0).setPotionName("potion.immunity.projectile");
 		knockbackImmunity = new PotionBase(getUniquePotionId(), false, 0).setIconIndex(0, 1).setPotionName("potion.immunity.knockback");
+		mana = new PotionBase(getUniquePotionId(), false, 0).setIconIndex(1, 1).setPotionName("potion.mana.instant");
+		manaRegen = new PotionBase(getUniquePotionId(), false, 0).setIconIndex(1, 1).setPotionName("potion.mana.regen");
 	}
 	
 	/** Returns the next unique Potion Id. */
