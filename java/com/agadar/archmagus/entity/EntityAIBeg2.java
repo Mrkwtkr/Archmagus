@@ -1,6 +1,4 @@
-package com.agadar.archmagus.entity.ai;
-
-import com.agadar.archmagus.entity.EntitySummonedWolf;
+package com.agadar.archmagus.entity;
 
 import net.minecraft.entity.ai.EntityAIBase;
 import net.minecraft.entity.player.EntityPlayer;

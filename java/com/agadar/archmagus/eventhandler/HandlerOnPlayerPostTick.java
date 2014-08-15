@@ -1,6 +1,6 @@
 package com.agadar.archmagus.eventhandler;
 
-import com.agadar.archmagus.ManaProperties;
+import com.agadar.archmagus.misc.ManaProperties;
 
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import cpw.mods.fml.common.gameevent.TickEvent;

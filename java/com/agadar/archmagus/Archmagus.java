@@ -3,6 +3,8 @@ package com.agadar.archmagus;
 import com.agadar.archmagus.entity.ModEntities;
 import com.agadar.archmagus.eventhandler.ModEventHandlers;
 import com.agadar.archmagus.itemblock.ModItemsBlocks;
+import com.agadar.archmagus.misc.ManaCrystalGen;
+import com.agadar.archmagus.misc.MaxManaMessage;
 
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.SidedProxy;

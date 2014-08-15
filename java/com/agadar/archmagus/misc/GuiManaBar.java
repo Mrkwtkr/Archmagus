@@ -1,4 +1,4 @@
-package com.agadar.archmagus;
+package com.agadar.archmagus.misc;
 
 import org.lwjgl.opengl.GL11;
 
@@ -14,7 +14,7 @@ import net.minecraftforge.client.event.RenderGameOverlayEvent.ElementType;
 public class GuiManaBar extends Gui 
 {
 	/** The path to the gui's icons. */
-	private static final ResourceLocation modIcons = new ResourceLocation("archmagus", "textures/gui/archmagus_icons.png");	
+	private static final ResourceLocation modIcons = new ResourceLocation("archmagus", "textures/gui/mana_icons.png");	
 	/** A reference to the Minecraft instance. */
 	private final Minecraft mc;
 	

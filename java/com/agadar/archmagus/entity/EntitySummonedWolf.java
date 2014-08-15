@@ -1,7 +1,5 @@
 package com.agadar.archmagus.entity;
 
-import com.agadar.archmagus.entity.ai.EntityAIBeg2;
-
 import net.minecraft.block.Block;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;

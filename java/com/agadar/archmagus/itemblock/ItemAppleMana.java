@@ -3,8 +3,9 @@ package com.agadar.archmagus.itemblock;
 import java.util.List;
 
 import com.agadar.archmagus.Archmagus;
-import com.agadar.archmagus.ManaProperties;
-import com.agadar.archmagus.MaxManaMessage;
+import com.agadar.archmagus.misc.ManaProperties;
+import com.agadar.archmagus.misc.MaxManaMessage;
+
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.entity.player.EntityPlayer;

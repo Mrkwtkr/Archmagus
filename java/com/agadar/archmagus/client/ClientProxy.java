@@ -4,7 +4,6 @@ import net.minecraft.client.Minecraft;
 import net.minecraftforge.common.MinecraftForge;
 
 import com.agadar.archmagus.CommonProxy;
-import com.agadar.archmagus.GuiManaBar;
 import com.agadar.archmagus.entity.EntityRisenSkeleton;
 import com.agadar.archmagus.entity.EntityRisenWitherSkeleton;
 import com.agadar.archmagus.entity.EntityRisenZombie;
@@ -13,6 +12,7 @@ import com.agadar.archmagus.entity.EntitySummonedCaveSpider;
 import com.agadar.archmagus.entity.EntitySummonedSpider;
 import com.agadar.archmagus.entity.EntitySummonedWitch;
 import com.agadar.archmagus.entity.EntitySummonedWolf;
+import com.agadar.archmagus.misc.GuiManaBar;
 import com.agadar.archmagus.model.ModelSummonedWolf;
 import com.agadar.archmagus.render.RenderRisenSkeleton;
 import com.agadar.archmagus.render.RenderRisenWitherSkeleton;

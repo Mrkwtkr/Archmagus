@@ -1,4 +1,4 @@
-package com.agadar.archmagus;
+package com.agadar.archmagus.misc;
 
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;

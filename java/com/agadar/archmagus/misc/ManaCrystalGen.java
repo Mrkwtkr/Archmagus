@@ -1,4 +1,4 @@
-package com.agadar.archmagus;
+package com.agadar.archmagus.misc;
 
 import java.util.Random;
 

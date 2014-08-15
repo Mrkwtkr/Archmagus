@@ -3,7 +3,7 @@ package com.agadar.archmagus.itemblock;
 import java.util.List;
 
 import com.agadar.archmagus.Archmagus;
-import com.agadar.archmagus.ManaProperties;
+import com.agadar.archmagus.misc.ManaProperties;
 import com.agadar.archmagus.spell.Spell;
 import com.agadar.archmagus.spell.SpellData;
 import com.agadar.archmagus.spell.Spells;

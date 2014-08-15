@@ -1,8 +1,8 @@
 package com.agadar.archmagus.eventhandler;
 
 import com.agadar.archmagus.Archmagus;
-import com.agadar.archmagus.ManaProperties;
-import com.agadar.archmagus.MaxManaMessage;
+import com.agadar.archmagus.misc.ManaProperties;
+import com.agadar.archmagus.misc.MaxManaMessage;
 
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
