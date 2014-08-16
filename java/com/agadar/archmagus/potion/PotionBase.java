@@ -21,26 +21,50 @@ public class PotionBase extends Potion
 		super(par1Id, par2IsBadEffect, par3LiquidColor);
 	}
 	
+	/** Performs the effect when drank. */
 	@Override
-    public void performEffect(EntityLivingBase par1EntityLivingBase, int par2)
+    public void performEffect(EntityLivingBase drinker, int amplifier)
     {
-		if (par1EntityLivingBase instanceof EntityPlayer)
+		if (drinker instanceof EntityPlayer)
 		{
 			if (this.id == ModPotions.manaRegen.id)
 	        {
-				ManaProperties prop = ManaProperties.get((EntityPlayer) par1EntityLivingBase);
 				
-				if (prop != null)
-					prop.replenishMana(1);
 	        }
 			else if (this.id == ModPotions.mana.id)
 			{
+				ManaProperties prop = ManaProperties.get((EntityPlayer) drinker);
 				
+				if (prop != null)
+					prop.replenishMana(Math.max(4 << amplifier, 0));
 			}
 		}
 		else
 		{
-			super.performEffect(par1EntityLivingBase, par2);
+			super.performEffect(drinker, amplifier);
+		}
+    }
+	
+	@Override
+    public void affectEntity(EntityLivingBase thrower, EntityLivingBase victim, int amplifier, double distanceModifier)
+    {
+		if (victim instanceof EntityPlayer)
+		{
+			if (this.id == ModPotions.manaRegen.id)
+	        {
+				
+	        }
+			else if (this.id == ModPotions.mana.id)
+			{
+				ManaProperties prop = ManaProperties.get((EntityPlayer) victim);
+				
+				if (prop != null)
+					prop.replenishMana((int)(distanceModifier * (double)(4 << amplifier) + 0.5D));
+			}
+		}
+		else
+		{
+			super.affectEntity(thrower, victim, amplifier, distanceModifier);
 		}
     }
 	
@@ -49,8 +73,8 @@ public class PotionBase extends Potion
     {
 		if (this.id == ModPotions.manaRegen.id)
         {
-            int k = 50 >> par2;
-            return k > 0 ? par1 % k == 0 : true;
+            /*int k = 50 >> par2;
+            return k > 0 ? par1 % k == 0 : true;*/
         }
 		else if (this.id == ModPotions.mana.id)
 		{

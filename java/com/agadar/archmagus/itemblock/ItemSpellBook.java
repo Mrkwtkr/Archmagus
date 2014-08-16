@@ -40,7 +40,7 @@ public class ItemSpellBook extends Item
 		this.setMaxDamage(0);
 		this.setUnlocalizedName("spell_book");
 		this.setTextureName(Archmagus.MODID + ":" + getUnlocalizedName().substring(5));
-		this.setCreativeTab(ModItemsBlocks.tabArchmagus);
+		this.setCreativeTab(ModItemsBlocks.tabSpellBooks);
 	}
 
 	/** Returns the ItemStack's spell tag. If it doesn't have one then

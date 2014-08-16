@@ -1,4 +1,4 @@
-itemGroup.tabArchmagus=Archmagus
+itemGroup.tabSpellBooks=Spell Books
 
 item.spell_book.name=Spell Book
 item.apple_mana.name=Crystalline Apple
@@ -59,3 +59,7 @@ potion.shield.frost=Frost Shield
 potion.feared=Feared
 potion.immunity.projectile=Reflection
 potion.immunity.knockback=Steadfast
+potion.mana.instant=Instant Mana
+potion.mana.instant.postfix=Potion of Mana
+potion.mana.regen=Mana Regeneration
+potion.mana.regen.postfix=Potion of Mana Regeneration

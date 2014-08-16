@@ -24,7 +24,6 @@ public class ItemAppleMana extends ItemFood
         this.setAlwaysEdible();
         this.setUnlocalizedName("apple_mana");
         this.setTextureName(Archmagus.MODID + ":" + getUnlocalizedName().substring(5));
-        this.setCreativeTab(ModItemsBlocks.tabArchmagus);
     }
 	
 	/*@SideOnly(Side.CLIENT)

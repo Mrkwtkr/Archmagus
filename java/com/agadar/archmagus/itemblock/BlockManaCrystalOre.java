@@ -6,6 +6,7 @@ import com.agadar.archmagus.Archmagus;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
+import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.IBlockAccess;
@@ -23,7 +24,7 @@ public class BlockManaCrystalOre extends Block
 		this.setBlockName("mana_crystal_ore");
 		this.setBlockTextureName(Archmagus.MODID + ":" + getUnlocalizedName().substring(5));
 		this.setLightLevel(0.625F);
-		this.setCreativeTab(ModItemsBlocks.tabArchmagus);
+		this.setCreativeTab(CreativeTabs.tabBlock);
 	}
 	
 	@Override

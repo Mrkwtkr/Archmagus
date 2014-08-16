@@ -14,8 +14,8 @@ import net.minecraft.item.ItemStack;
 /** Responsible for instantiating and registering this mod's items and blocks. */
 public class ModItemsBlocks 
 {
-	/** This mod's creative tab. */
- 	public final static CreativeTabs tabArchmagus = new CreativeTabs("tabArchmagus") 
+	/** The creative tab for the spell books. */
+ 	public final static CreativeTabs tabSpellBooks = new CreativeTabs("tabSpellBooks") 
 	{
 	    @Override
 	    @SideOnly(Side.CLIENT)
@@ -30,8 +30,10 @@ public class ModItemsBlocks
 	/** The mana apple. */
 	public final static Item apple_mana = new ItemAppleMana();
 	/** The mana crystal. */
-	public final static Item mana_crystal = new Item().setUnlocalizedName("mana_crystal").setCreativeTab(tabArchmagus).setTextureName(Archmagus.MODID + ":" + "mana_crystal");
-
+	public final static Item mana_crystal = new Item().setUnlocalizedName("mana_crystal").setCreativeTab(CreativeTabs.tabMaterials).setTextureName(Archmagus.MODID + ":" + "mana_crystal");
+	/** The base of this mod's ItemPotions. */
+	public final static Item itemPotionBase = new ItemPotionBase();
+	
 	/** The mana crystal ore. */
 	public final static Block mana_crystal_ore = new BlockManaCrystalOre();
 	/** The mana crystal block. */
@@ -44,6 +46,7 @@ public class ModItemsBlocks
 		registerItem(spell_book);
 		registerItem(apple_mana);
 		registerItem(mana_crystal);	
+		registerItem(itemPotionBase);
 		
 		/** Register the blocks. */
 		registerBlock(mana_crystal_ore);

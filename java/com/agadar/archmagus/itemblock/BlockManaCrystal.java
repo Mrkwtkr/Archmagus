@@ -4,6 +4,7 @@ import com.agadar.archmagus.Archmagus;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
+import net.minecraft.creativetab.CreativeTabs;
 
 public class BlockManaCrystal extends Block 
 {
@@ -16,6 +17,6 @@ public class BlockManaCrystal extends Block
 		this.setBlockName("mana_crystal_block");
 		this.setBlockTextureName(Archmagus.MODID + ":" + getUnlocalizedName().substring(5));
 		this.setLightLevel(0.625F);
-		this.setCreativeTab(ModItemsBlocks.tabArchmagus);
+		this.setCreativeTab(CreativeTabs.tabBlock);
 	}
 }
