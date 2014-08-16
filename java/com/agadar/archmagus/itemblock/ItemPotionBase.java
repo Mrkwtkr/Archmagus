@@ -21,6 +21,8 @@ public class ItemPotionBase extends ItemPotion
 {
 	@SideOnly(Side.CLIENT)
     private IIcon manaOverlayIcon;
+	@SideOnly(Side.CLIENT)
+	private IIcon manaRegenOverlayIcon;
     
 	public ItemPotionBase()
 	{
@@ -34,25 +36,51 @@ public class ItemPotionBase extends ItemPotion
     @SideOnly(Side.CLIENT)
     public void getSubItems(Item par1Item, CreativeTabs par2CreativeTab, List par3List)
     {
-		/** Potion of Mana and Splash Potion of Mana. */
-		ItemStack drinkable = new ItemStack(par1Item, 1, 1);		
+		/** Potion of Mana. */
+		ItemStack manaPotion = new ItemStack(par1Item, 1, 1);		
 		List<PotionEffect> effects = new ArrayList<PotionEffect>();
 		effects.add(new PotionEffect(ModPotions.mana.id, 1, 0));		
-		BrewingRecipes.brewing().setEffects(drinkable, effects);	
-		ItemStack splash = drinkable.copy();
-		splash.setItemDamage(16384);
-		par3List.add(drinkable);
-		par3List.add(splash);
-		
-		/** Potion of Mana (Amplified) and Splash Potion of Mana (Amplified). */
-		drinkable = new ItemStack(par1Item, 1, 1);		
+		BrewingRecipes.brewing().setEffects(manaPotion, effects);
+		par3List.add(manaPotion);
+		/** Potion of Mana (Amplified). */
+		ItemStack manaPotionAmplified = new ItemStack(par1Item, 1, 1);
 		effects = new ArrayList<PotionEffect>();
-		effects.add(new PotionEffect(ModPotions.mana.id, 1, 1));		
-		BrewingRecipes.brewing().setEffects(drinkable, effects);	
-		splash = drinkable.copy();
-		splash.setItemDamage(16384);
-		par3List.add(drinkable);
-		par3List.add(splash);
+		effects.add(new PotionEffect(ModPotions.mana.id, 1, 1));
+		BrewingRecipes.brewing().setEffects(manaPotionAmplified, effects);
+		par3List.add(manaPotionAmplified);
+		/** Splash Potion of Mana. */
+		manaPotion = manaPotion.copy();
+		manaPotion.setItemDamage(16384);
+		par3List.add(manaPotion);
+		/** Splash Potion of Mana (Amplified). */
+		manaPotionAmplified = manaPotionAmplified.copy();
+		manaPotionAmplified.setItemDamage(16384);
+		par3List.add(manaPotionAmplified);
+		
+		/** Potion of Mana Regeneration. */
+		ItemStack manaRegenPotion = new ItemStack(par1Item, 1, 1);		
+		effects = new ArrayList<PotionEffect>();
+		effects.add(new PotionEffect(ModPotions.manaRegen.id, 900, 0));		
+		BrewingRecipes.brewing().setEffects(manaRegenPotion, effects);
+		par3List.add(manaRegenPotion);
+		/** Potion of Mana Regeneration (Amplified). */
+		ItemStack manaRegenPotionAmplified = new ItemStack(par1Item, 1, 1);
+		effects = new ArrayList<PotionEffect>();
+		effects.add(new PotionEffect(ModPotions.manaRegen.id, 450, 1));
+		BrewingRecipes.brewing().setEffects(manaRegenPotionAmplified, effects);
+		par3List.add(manaRegenPotionAmplified);
+		/** Splash Potion of Mana Regeneration. */
+		manaRegenPotion = new ItemStack(par1Item, 1, 16384);		
+		effects = new ArrayList<PotionEffect>();
+		effects.add(new PotionEffect(ModPotions.manaRegen.id, 660, 0));		
+		BrewingRecipes.brewing().setEffects(manaRegenPotion, effects);
+		par3List.add(manaRegenPotion);
+		/** Splash Potion of Mana Regeneration (Amplified). */
+		manaRegenPotionAmplified = new ItemStack(par1Item, 1, 16384);
+		effects = new ArrayList<PotionEffect>();
+		effects.add(new PotionEffect(ModPotions.manaRegen.id, 320, 1));
+		BrewingRecipes.brewing().setEffects(manaRegenPotionAmplified, effects);
+		par3List.add(manaRegenPotionAmplified);
     }
 	
 	@Override
@@ -78,6 +106,10 @@ public class ItemPotionBase extends ItemPotion
 				{
 					return this.manaOverlayIcon;
 				}
+				else if (potionId == ModPotions.manaRegen.id)
+				{
+					return this.manaRegenOverlayIcon;
+				}
 			}
 		}
 		
@@ -90,6 +122,7 @@ public class ItemPotionBase extends ItemPotion
     {
 		super.registerIcons(par1IconRegister);
         this.manaOverlayIcon = par1IconRegister.registerIcon(Archmagus.MODID + ":mana_potion_overlay");
+        this.manaRegenOverlayIcon = par1IconRegister.registerIcon(Archmagus.MODID + ":mana_regen_overlay");
     }
 	
 	@Override

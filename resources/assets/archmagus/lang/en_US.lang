@@ -61,5 +61,5 @@ potion.immunity.projectile=Reflection
 potion.immunity.knockback=Steadfast
 potion.mana.instant=Instant Mana
 potion.mana.instant.postfix=Potion of Mana
-potion.mana.regen=Mana Regeneration
-potion.mana.regen.postfix=Potion of Mana Regeneration
+potion.mana.regen=Mana Regen
+potion.mana.regen.postfix=Potion of Mana Regen

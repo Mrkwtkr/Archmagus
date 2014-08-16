@@ -21,19 +21,21 @@ public class PotionBase extends Potion
 		super(par1Id, par2IsBadEffect, par3LiquidColor);
 	}
 	
-	/** Performs the effect when drank. */
 	@Override
-    public void performEffect(EntityLivingBase drinker, int amplifier)
+    public void performEffect(EntityLivingBase affected, int amplifier)
     {
-		if (drinker instanceof EntityPlayer)
+		if (affected instanceof EntityPlayer)
 		{
 			if (this.id == ModPotions.manaRegen.id)
 	        {
+				ManaProperties prop = ManaProperties.get((EntityPlayer) affected);
 				
+				if (prop != null)
+					prop.replenishMana(1);
 	        }
 			else if (this.id == ModPotions.mana.id)
 			{
-				ManaProperties prop = ManaProperties.get((EntityPlayer) drinker);
+				ManaProperties prop = ManaProperties.get((EntityPlayer) affected);
 				
 				if (prop != null)
 					prop.replenishMana(Math.max(4 << amplifier, 0));
@@ -41,7 +43,7 @@ public class PotionBase extends Potion
 		}
 		else
 		{
-			super.performEffect(drinker, amplifier);
+			super.performEffect(affected, amplifier);
 		}
     }
 	
@@ -50,11 +52,7 @@ public class PotionBase extends Potion
     {
 		if (victim instanceof EntityPlayer)
 		{
-			if (this.id == ModPotions.manaRegen.id)
-	        {
-				
-	        }
-			else if (this.id == ModPotions.mana.id)
+			if (this.id == ModPotions.mana.id)
 			{
 				ManaProperties prop = ManaProperties.get((EntityPlayer) victim);
 				
@@ -69,19 +67,19 @@ public class PotionBase extends Potion
     }
 	
 	@Override
-    public boolean isReady(int par1, int par2)
+    public boolean isReady(int duration, int amplifier)
     {
 		if (this.id == ModPotions.manaRegen.id)
         {
-            /*int k = 50 >> par2;
-            return k > 0 ? par1 % k == 0 : true;*/
+            int k = 50 >> amplifier;
+            return k > 0 ? duration % k == 0 : true;
         }
 		else if (this.id == ModPotions.mana.id)
 		{
-			return par1 >= 1;
+			return duration >= 1;
 		}
 		
-		return super.isReady(par1, par2);
+		return super.isReady(duration, amplifier);
     }
 	
 	@Override

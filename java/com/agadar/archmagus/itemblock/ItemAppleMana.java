@@ -26,12 +26,6 @@ public class ItemAppleMana extends ItemFood
         this.setTextureName(Archmagus.MODID + ":" + getUnlocalizedName().substring(5));
     }
 	
-	/*@SideOnly(Side.CLIENT)
-    public boolean hasEffect(ItemStack p_77636_1_)
-    {
-        return true;
-    }*/
-	
 	/** Makes the item tooltip text a light blue color. */
     @Override
     public EnumRarity getRarity(ItemStack par1ItemStack)
@@ -44,7 +38,7 @@ public class ItemAppleMana extends ItemFood
 	@SideOnly(Side.CLIENT)
     public void addInformation(ItemStack par1ItemStack, EntityPlayer par2EntityPlayer, List par3List, boolean par4)
     {
-    	par3List.add("Maximum Mana +2.");
+    	par3List.add("Increases Maximum Mana +2.");
     }
     
     @Override
