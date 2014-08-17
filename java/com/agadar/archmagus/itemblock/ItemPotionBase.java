@@ -64,11 +64,17 @@ public class ItemPotionBase extends ItemPotion
 		BrewingRecipes.brewing().setEffects(manaRegenPotion, effects);
 		par3List.add(manaRegenPotion);
 		/** Potion of Mana Regeneration (Amplified). */
-		ItemStack manaRegenPotionAmplified = new ItemStack(par1Item, 1, 1);
+		manaRegenPotion = new ItemStack(par1Item, 1, 1);
 		effects = new ArrayList<PotionEffect>();
 		effects.add(new PotionEffect(ModPotions.manaRegen.id, 450, 1));
-		BrewingRecipes.brewing().setEffects(manaRegenPotionAmplified, effects);
-		par3List.add(manaRegenPotionAmplified);
+		BrewingRecipes.brewing().setEffects(manaRegenPotion, effects);
+		par3List.add(manaRegenPotion);
+		/** Potion of Mana Regeneration (Extended). */
+		manaRegenPotion = new ItemStack(par1Item, 1, 1);		
+		effects = new ArrayList<PotionEffect>();
+		effects.add(new PotionEffect(ModPotions.manaRegen.id, 2400, 0));		
+		BrewingRecipes.brewing().setEffects(manaRegenPotion, effects);
+		par3List.add(manaRegenPotion);
 		/** Splash Potion of Mana Regeneration. */
 		manaRegenPotion = new ItemStack(par1Item, 1, 16384);		
 		effects = new ArrayList<PotionEffect>();
@@ -76,11 +82,17 @@ public class ItemPotionBase extends ItemPotion
 		BrewingRecipes.brewing().setEffects(manaRegenPotion, effects);
 		par3List.add(manaRegenPotion);
 		/** Splash Potion of Mana Regeneration (Amplified). */
-		manaRegenPotionAmplified = new ItemStack(par1Item, 1, 16384);
+		manaRegenPotion = new ItemStack(par1Item, 1, 16384);
 		effects = new ArrayList<PotionEffect>();
 		effects.add(new PotionEffect(ModPotions.manaRegen.id, 320, 1));
-		BrewingRecipes.brewing().setEffects(manaRegenPotionAmplified, effects);
-		par3List.add(manaRegenPotionAmplified);
+		BrewingRecipes.brewing().setEffects(manaRegenPotion, effects);
+		par3List.add(manaRegenPotion);
+		/** Splash Potion of Mana Regeneration (Extended). */
+		manaRegenPotion = new ItemStack(par1Item, 1, 16384);
+		effects = new ArrayList<PotionEffect>();
+		effects.add(new PotionEffect(ModPotions.manaRegen.id, 1800, 0));
+		BrewingRecipes.brewing().setEffects(manaRegenPotion, effects);
+		par3List.add(manaRegenPotion);
     }
 	
 	@Override
