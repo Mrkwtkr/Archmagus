@@ -1,6 +1,7 @@
 package com.agadar.archmagus.itemblock;
 
 import com.agadar.archmagus.Archmagus;
+import com.agadar.brewingapi.BrewingRecipes;
 
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.relauncher.Side;
@@ -56,6 +57,71 @@ public class ModItemsBlocks
 		GameRegistry.addRecipe(new ItemStack(apple_mana), "xxx", "xyx", "xxx", 'x', mana_crystal, 'y', Items.apple);
 		GameRegistry.addRecipe(new ItemStack(mana_crystal_block), "xxx", "xxx", "xxx", 'x', mana_crystal);
 		GameRegistry.addRecipe(new ItemStack(mana_crystal, 9), "x", 'x', mana_crystal_block);
+	
+		/** Register the brewing recipes. */		
+		/** Ingredients. */
+		ItemStack awkward = new ItemStack(Items.potionitem, 1, 16);
+		ItemStack gunpowder = new ItemStack(Items.gunpowder);
+		ItemStack glowstone = new ItemStack(Items.glowstone_dust);
+		ItemStack redstone = new ItemStack(Items.redstone);
+		
+		/** Potion of Mana. */
+		ItemStack mana = ItemPotionBase.getManaPotionStack(false, 0); 
+		/** Potion of Mana (Amplified). */
+		ItemStack manaAmpl = ItemPotionBase.getManaPotionStack(false, 1);
+		/** Splash Potion of Mana. */
+		ItemStack manaSplash = ItemPotionBase.getManaPotionStack(true, 0);
+		/** Splash Potion of Mana (Amplified). */
+		ItemStack manaSplashAmpl = ItemPotionBase.getManaPotionStack(true, 1);
+				
+		/** Potion of Mana Regeneration. */
+		ItemStack regen = ItemPotionBase.getManaRegenPotionStack(false, 0, false);
+		/** Potion of Mana Regeneration (Amplified). */
+		ItemStack regenAmpl = ItemPotionBase.getManaRegenPotionStack(false, 1, false);
+		/** Potion of Mana Regeneration (Extended). */
+		ItemStack regenExt = ItemPotionBase.getManaRegenPotionStack(false, 0, true);
+		/** Splash Potion of Mana Regeneration. */
+		ItemStack regenSplash = ItemPotionBase.getManaRegenPotionStack(true, 0, false);
+		/** Splash Potion of Mana Regeneration (Amplified). */
+		ItemStack regenSplashAmpl = ItemPotionBase.getManaRegenPotionStack(true, 1, false);
+		/** Splash Potion of Mana Regeneration (Extended). */
+		ItemStack regenSplashExt = ItemPotionBase.getManaRegenPotionStack(true, 0, true);
+
+		/** Awkward Potion + Mana Crystal -> Potion of Mana. */
+		BrewingRecipes.brewing().addBrewing(awkward, new ItemStack(mana_crystal), mana);
+		/** Potion of Mana + Glowstone -> Potion of Mana (Amplified). */
+		BrewingRecipes.brewing().addBrewing(mana, glowstone, manaAmpl);
+		/** Potion of Mana + Gunpowder -> Splash Potion of Mana. */
+		BrewingRecipes.brewing().addBrewing(mana, gunpowder, manaSplash);
+		/** Potion of Mana (Amplified) + Gunpowder -> Splash Potion of Mana (Amplified). */
+		BrewingRecipes.brewing().addBrewing(manaAmpl, gunpowder, manaSplashAmpl);
+		/** Splash Potion of Mana + Glowstone -> Splash Potion of Mana (Amplified). */
+		BrewingRecipes.brewing().addBrewing(manaSplash, glowstone, manaSplashAmpl);
+		
+		/** Awkward Potion + Crystalline Apple -> Potion of Mana Regen. */
+		BrewingRecipes.brewing().addBrewing(awkward, new ItemStack(apple_mana), regen);
+		/** Potion of Mana Regen + Glowstone -> Potion of Mana Regen (Amplified). */
+		BrewingRecipes.brewing().addBrewing(regen, glowstone, regenAmpl);
+		/** Potion of Mana Regen (Extended) + Glowstone -> Potion of Mana Regen (Amplified). */
+		BrewingRecipes.brewing().addBrewing(regenExt, glowstone, regenAmpl);
+		/** Potion of Mana Regen + Redstone -> Potion of Mana Regen (Extended). */
+		BrewingRecipes.brewing().addBrewing(regen, redstone, regenExt);
+		/** Potion of Mana Regen (Amplified) + Redstone -> Potion of Mana Regen (Extended). */
+		BrewingRecipes.brewing().addBrewing(regenAmpl, redstone, regenExt);
+		/** Potion of Mana Regen + Gunpowder -> Splash Potion of Mana Regen. */
+		BrewingRecipes.brewing().addBrewing(regen, gunpowder, regenSplash);
+		/** Potion of Mana Regen (Amplified) + Gunpowder -> Splash Potion of Mana Regen (Amplified). */
+		BrewingRecipes.brewing().addBrewing(regenAmpl, gunpowder, regenSplashAmpl);
+		/** Splash Potion of Mana Regen + Glowstone -> Splash Potion of Mana Regen (Amplified). */
+		BrewingRecipes.brewing().addBrewing(regenSplash, glowstone, regenSplashAmpl);
+		/** Splash Potion of Mana Regen (Extended) + Glowstone -> Splash Potion of Mana Regen (Amplified). */
+		BrewingRecipes.brewing().addBrewing(regenSplashExt, glowstone, regenSplashAmpl);
+		/** Potion of Mana Regen (Extended) + Gunpowder -> Splash Potion of Mana Regen (Extended). */
+		BrewingRecipes.brewing().addBrewing(regenExt, gunpowder, regenSplashExt);
+		/** Splash Potion of Mana Regen + Redstone -> Splash Potion of Mana Regen (Extended). */
+		BrewingRecipes.brewing().addBrewing(regenSplash, redstone, regenSplashExt);
+		/** Splash Potion of Mana Regen (Amplified) + Redstone -> Splash Potion of Mana Regen (Extended). */
+		BrewingRecipes.brewing().addBrewing(regenSplashAmpl, redstone, regenSplashExt);
 	}
 	
 	/**
