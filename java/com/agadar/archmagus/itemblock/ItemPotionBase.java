@@ -37,63 +37,56 @@ public class ItemPotionBase extends ItemPotion
     public void getSubItems(Item par1Item, CreativeTabs par2CreativeTab, List par3List)
     {
 		/** Potion of Mana. */
-		ItemStack manaPotion = new ItemStack(par1Item, 1, 1);		
-		List<PotionEffect> effects = new ArrayList<PotionEffect>();
-		effects.add(new PotionEffect(ModPotions.mana.id, 1, 0));		
-		BrewingRecipes.brewing().setEffects(manaPotion, effects);
-		par3List.add(manaPotion);
+		par3List.add(getManaPotionStack(false, 0));
 		/** Potion of Mana (Amplified). */
-		ItemStack manaPotionAmplified = new ItemStack(par1Item, 1, 1);
-		effects = new ArrayList<PotionEffect>();
-		effects.add(new PotionEffect(ModPotions.mana.id, 1, 1));
-		BrewingRecipes.brewing().setEffects(manaPotionAmplified, effects);
-		par3List.add(manaPotionAmplified);
+		par3List.add(getManaPotionStack(false, 1));
 		/** Splash Potion of Mana. */
-		manaPotion = manaPotion.copy();
-		manaPotion.setItemDamage(16384);
-		par3List.add(manaPotion);
+		par3List.add(getManaPotionStack(true, 0));
 		/** Splash Potion of Mana (Amplified). */
-		manaPotionAmplified = manaPotionAmplified.copy();
-		manaPotionAmplified.setItemDamage(16384);
-		par3List.add(manaPotionAmplified);
+		par3List.add(getManaPotionStack(true, 1));
 		
 		/** Potion of Mana Regeneration. */
-		ItemStack manaRegenPotion = new ItemStack(par1Item, 1, 1);		
-		effects = new ArrayList<PotionEffect>();
-		effects.add(new PotionEffect(ModPotions.manaRegen.id, 900, 0));		
-		BrewingRecipes.brewing().setEffects(manaRegenPotion, effects);
-		par3List.add(manaRegenPotion);
+		par3List.add(getManaRegenPotionStack(false, 0, false));
 		/** Potion of Mana Regeneration (Amplified). */
-		manaRegenPotion = new ItemStack(par1Item, 1, 1);
-		effects = new ArrayList<PotionEffect>();
-		effects.add(new PotionEffect(ModPotions.manaRegen.id, 450, 1));
-		BrewingRecipes.brewing().setEffects(manaRegenPotion, effects);
-		par3List.add(manaRegenPotion);
+		par3List.add(getManaRegenPotionStack(false, 1, false));
 		/** Potion of Mana Regeneration (Extended). */
-		manaRegenPotion = new ItemStack(par1Item, 1, 1);		
-		effects = new ArrayList<PotionEffect>();
-		effects.add(new PotionEffect(ModPotions.manaRegen.id, 2400, 0));		
-		BrewingRecipes.brewing().setEffects(manaRegenPotion, effects);
-		par3List.add(manaRegenPotion);
+		par3List.add(getManaRegenPotionStack(false, 0, true));
 		/** Splash Potion of Mana Regeneration. */
-		manaRegenPotion = new ItemStack(par1Item, 1, 16384);		
-		effects = new ArrayList<PotionEffect>();
-		effects.add(new PotionEffect(ModPotions.manaRegen.id, 660, 0));		
-		BrewingRecipes.brewing().setEffects(manaRegenPotion, effects);
-		par3List.add(manaRegenPotion);
+		par3List.add(getManaRegenPotionStack(true, 0, false));
 		/** Splash Potion of Mana Regeneration (Amplified). */
-		manaRegenPotion = new ItemStack(par1Item, 1, 16384);
-		effects = new ArrayList<PotionEffect>();
-		effects.add(new PotionEffect(ModPotions.manaRegen.id, 320, 1));
-		BrewingRecipes.brewing().setEffects(manaRegenPotion, effects);
-		par3List.add(manaRegenPotion);
+		par3List.add(getManaRegenPotionStack(true, 1, false));
 		/** Splash Potion of Mana Regeneration (Extended). */
-		manaRegenPotion = new ItemStack(par1Item, 1, 16384);
-		effects = new ArrayList<PotionEffect>();
-		effects.add(new PotionEffect(ModPotions.manaRegen.id, 1800, 0));
-		BrewingRecipes.brewing().setEffects(manaRegenPotion, effects);
-		par3List.add(manaRegenPotion);
+		par3List.add(getManaRegenPotionStack(true, 0, true));
     }
+	
+	/** Returns an item stack of a Mana potion. */
+	public static ItemStack getManaPotionStack(boolean splash, int amplification)
+	{
+		ItemStack itemStack = new ItemStack(ModItemsBlocks.itemPotionBase, 1, splash ? 16384 : 1);		
+		List<PotionEffect> effects = new ArrayList<PotionEffect>();
+		effects.add(new PotionEffect(ModPotions.mana.id, 1, amplification));		
+		BrewingRecipes.brewing().setEffects(itemStack, effects);
+		return itemStack;
+	}
+	
+	/** Returns an item stack of a Mana Regeneration potion. */
+	public static ItemStack getManaRegenPotionStack(boolean splash, int amplification, boolean extended)
+	{
+		ItemStack itemStack = new ItemStack(ModItemsBlocks.itemPotionBase, 1, splash ? 16384 : 1);		
+		List<PotionEffect> effects = new ArrayList<PotionEffect>();
+		effects.add(new PotionEffect(ModPotions.manaRegen.id, (int)(900 * getDurationModifier(splash, amplification, extended)), amplification));		
+		BrewingRecipes.brewing().setEffects(itemStack, effects);
+		return itemStack;
+	}
+	
+	/** Calculates a duration modifier for potion effects depending on the given parameters. */
+	private static float getDurationModifier(boolean splash, int amplification, boolean extended)
+	{
+		float modifier = splash ? 0.75F : 1.0F;		
+		for (int i = 0; i < amplification; i++)
+			modifier /= 2;
+		return extended ? modifier * 8 / 3 : modifier;
+	}
 	
 	@Override
 	@SideOnly(Side.CLIENT)
