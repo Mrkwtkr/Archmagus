@@ -20,6 +20,10 @@ import net.minecraft.util.IIcon;
 public class ItemPotionBase extends ItemPotion 
 {
 	@SideOnly(Side.CLIENT)
+	private IIcon bottleDrinkable;
+	@SideOnly(Side.CLIENT)
+	private IIcon bottleSplash;
+	@SideOnly(Side.CLIENT)
     private IIcon manaOverlayIcon;
 	@SideOnly(Side.CLIENT)
 	private IIcon manaRegenOverlayIcon;
@@ -90,6 +94,13 @@ public class ItemPotionBase extends ItemPotion
 	
 	@Override
 	@SideOnly(Side.CLIENT)
+    public IIcon getIconFromDamage(int p_77617_1_)
+    {
+        return isSplash(p_77617_1_) ? this.bottleSplash : this.bottleDrinkable;
+    }
+	
+	@Override
+	@SideOnly(Side.CLIENT)
     public int getColorFromItemStack(ItemStack par1ItemStack, int par2)
     {
         return 16777215;
@@ -125,15 +136,9 @@ public class ItemPotionBase extends ItemPotion
 	@SideOnly(Side.CLIENT)
     public void registerIcons(IIconRegister par1IconRegister)
     {
-		super.registerIcons(par1IconRegister);
+		this.bottleDrinkable = par1IconRegister.registerIcon(Archmagus.MODID + ":bottle_drinkable");
+        this.bottleSplash = par1IconRegister.registerIcon(Archmagus.MODID + ":bottle_splash");
         this.manaOverlayIcon = par1IconRegister.registerIcon(Archmagus.MODID + ":mana_potion_overlay");
-        this.manaRegenOverlayIcon = par1IconRegister.registerIcon(Archmagus.MODID + ":mana_regen_overlay");
-    }
-	
-	@Override
-	@SideOnly(Side.CLIENT)
-    public boolean hasEffect(ItemStack par1ItemStack)
-    {
-        return false;
+        this.manaRegenOverlayIcon = par1IconRegister.registerIcon(Archmagus.MODID + ":mana_regen_potion_overlay");
     }
 }
