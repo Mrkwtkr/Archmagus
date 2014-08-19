@@ -1,6 +1,7 @@
 package com.agadar.archmagus.misc;
 
-import net.minecraft.client.Minecraft;
+import com.agadar.archmagus.Archmagus;
+
 import net.minecraft.entity.player.EntityPlayer;
 import io.netty.buffer.ByteBuf;
 import cpw.mods.fml.common.network.ByteBufUtils;
@@ -38,10 +39,10 @@ public class MaxManaMessage implements IMessage
 		@Override
 		public IMessage onMessage(MaxManaMessage message, MessageContext ctx) 
 		{
-			EntityPlayer player = Minecraft.getMinecraft().thePlayer;
+			EntityPlayer player = Archmagus.proxy.getPlayerFromMessageContext(ctx);
 			ManaProperties prop = ManaProperties.get(player);
-			prop.setMaxMana(message.maxMana);				
+			prop.setMaxMana(message.maxMana);	
 			return null;
 		}
-    }
+	}
 }

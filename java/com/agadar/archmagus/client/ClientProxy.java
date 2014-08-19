@@ -1,6 +1,7 @@
 package com.agadar.archmagus.client;
 
 import net.minecraft.client.Minecraft;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraftforge.common.MinecraftForge;
 
 import com.agadar.archmagus.CommonProxy;
@@ -24,6 +25,7 @@ import com.agadar.archmagus.render.RenderSummonedWitch;
 import com.agadar.archmagus.render.RenderSummonedWolf;
 
 import cpw.mods.fml.client.registry.RenderingRegistry;
+import cpw.mods.fml.common.network.simpleimpl.MessageContext;
 
 public class ClientProxy extends CommonProxy 
 {
@@ -42,5 +44,11 @@ public class ClientProxy extends CommonProxy
 	
 		/** Gui renderers. */
 		MinecraftForge.EVENT_BUS.register(new GuiManaBar(Minecraft.getMinecraft()));
+	}
+
+	@Override
+	public EntityPlayer getPlayerFromMessageContext(MessageContext ctx)
+	{
+		return Minecraft.getMinecraft().thePlayer;
 	}
 }
